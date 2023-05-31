@@ -9,7 +9,11 @@
 declare -r DOTFILES="$HOME/Projects/dotfiles"
 declare -r LOG_FILE="$DOTFILES/dotfiles.log"
 
-declare -r INSTALLS=()
+declare -r INSTALL=()
+declare -r BOOTSTRAP=()
+
+declare -r SMALL_TAB="   "
+declare -r LARGE_TAB="     "
 
 
 # ┌────────────────────────────┐
@@ -39,19 +43,23 @@ print_in_purple() {
 }
 
 print_success() {
-    print_in_green "  [✔] $1"
+    print_in_green "${LARGE_TAB}[✔] $1"
 }
 
 print_fail() {
-    print_in_red "  [✖] $1"
+    print_in_red "${LARGE_TAB}[✖] $1"
 }
 
 print_warning() {
-    print_in_yellow "  [!] $1"
+    print_in_yellow "${LARGE_TAB}[!] $1"
+}
+
+print_main_header() {
+    print_in_purple "\n • $1\n"
 }
 
 print_header() {
-    print_in_purple "\n • $1\n"
+    print_in_purple "\n${SMALL_TAB}$1\n"
 }
 
 
@@ -112,7 +120,7 @@ run_command() {
     # Run the command in the background and store its pid.
     # Then, show a spinner while the command is running.
     eval "${command}" \
-        >> "${LOG_FILE}" \
+        &''> "${LOG_FILE}" \
         & pid=$!
 
     show_spinner "${pid}" "${message}"

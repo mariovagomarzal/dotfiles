@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Run the shell scripts of each package and create the symlinks.
+# Run the setup scripts and symlink the files of each package.
 # NOTE: This script is meant to be run from the root of the dotfiles repo.
 
 
@@ -8,79 +8,122 @@
 . "src/utils.sh"
 
 
-# ┌─────────────────┐
-# │ Setup functions │
-# └─────────────────┘
+# ┌─────────────────────────────┐
+# │ Setup and symlink functions │
+# └─────────────────────────────┘
 
-# -
-# Run a given setup script
+# - - - - - - - - - - - - - - - - - - - - - -
+# Run the `setup.sh` script of a given dir.
 # Arguments:
-#   $1. The setup script to run.
+#   $1. The dir to setup.
 # Returns:
-#   Exit code of the `.sh` script.
-# -
-run_script() {
-    local -r script="${1}"
-
-    run_command "bash ${script}" \
-        "Running '${script}'..." \
-        "'${script}' successfully ran." \
-        "'${script}' failed to run."
-
-    return $?
-}
-
-# -
-# Find all the `.sh` scripts of a given folder different
-# from `intall.sh` and `aliases.sh`.
-# Arguments:
-#   $1. The folder to search.
-# Returns:
-#   An array of `.sh` scripts.
-# -
-find_scripts() {
+#   Exit code of the `setup.sh` script.
+# - - - - - - - - - - - - - - - - - - - - - -
+setup() {
     local -r dir="${1}"
-    local -a scripts=()
+    local exit_code=0
 
-    while IFS= read -r -d '' file; do
-        if [[ "${file}" != "${dir}/install.sh" ]] && \
-           [[ "${file}" != "${dir}/aliases.sh" ]]; then
-            scripts+=("${file}")
-        fi
-    done < <(find "${dir}" -type f -name "*.sh" -print0)
+    # Check if the dir has a `setup.sh` script.
+    if [[ -f "${dir}/setup.sh" ]]; then
+        run_command "bash ${dir}/setup.sh" \
+            "Setting up '${dir}'..." \
+            "'${dir}' successfully setup." \
+            "$'{dir}' failed to setup."
+        exit_code=$?
+    else
+        print_warning "No 'setup.sh' script found for '${dir}'."
+    fi
 
-    printf '%s\n' "${scripts[@]}"
+    return $exit_code
 }
 
-# -
-# Run all the `.sh` scripts of a given folder.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Locate the `symlinks` folder of a given dir.
+# Then, symlink each file assuming root of the symlink is the home dir
+# and following the same folder structure as the `symlinks` folder.
 # Arguments:
-#   $1. The folder to search.
+#   $1. The dir to symlink.
 # Returns:
 #   None.
-# -
-run_all_dir_scripts() {
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+symlink() {
     local -r dir="${1}"
+    local -r symlinks_dir="${dir}/symlinks"
 
-    for script in $(find_scripts "${dir}"); do
-        run_script "${script}"
-    done
+    local relative_path=""
+    local absolute_path=""
+
+    # Check if the dir has a `symlinks` folder.
+    if [[ -d "${symlinks_dir}" ]]; then
+        # Loop through each file in the `symlinks` folder recursively.
+        for file in $(find "${symlinks_dir}" -type f); do
+            # Get the absolute path of the file of the target symlink.
+            relative_path="${file#${symlinks_dir}/}"
+            absolute_path="${HOME}/${relative_path}"
+
+            # Create the symlink (note that we make $file absolute by prepending $DOTFILES)
+            run_command "ln -sf ${DOTFILES}/${file} ${absolute_path}" \
+                "Symlinking to '${absolute_path}'..." \
+                "'${absolute_path}' successfully symlinked." \
+                "'${absolute_path}' failed to symlink."
+        done
+    else
+        print_warning "No 'symlinks' folder found for '${dir}'."
+    fi
 }
 
-# -
-# Run all the `.sh` scripts of the BOOTSTRAP array.
+
+# ┌─────────────────────┐
+# │ Bootstrap functions │
+# └─────────────────────┘
+
+# - - - - - - - - - - - - - - - - - - - -
+# Setup and symlink a given dir.
+# Arguments:
+#   $1. The dir to bootstrap.
+# Returns:
+#   Exit code of the `setup.sh` script.
+# - - - - - - - - - - - - - - - - - - - -
+bootstrap() {
+    local -r dir="${1}"
+    local exit_code=0
+
+    print_header "Bootstrapping '${dir}'"
+
+    # Setup the dir.
+    setup "${dir}"
+    exit_code=$?
+
+    if [[ $exit_code -eq 0 ]]; then
+        # Symlink the dir.
+        symlink "${dir}"
+    else
+        print_warning "Skipping symlinking of '${dir}' due to errors during setup."
+    fi
+
+    return $exit_code
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - 
+# Bootstrap all dirs of the `BOOTSTRAP` array.
 # Globals:
-#   BOOTSTRAP: Array of dirs to run the `.sh` scripts.
+#   BOOTSTRAP: Array of dirs to bootstrap.
 # Arguments:
 #   None.
 # Returns:
 #   None.
-# -
-run_all() {
-    print_main_header "Running bootstrap scripts"
+# - - - - - - - - - - - - - - - - - - - - - - -
+bootstrap_all() {
+    print_main_header "Bootstrapping packages"
 
     for dir in "${BOOTSTRAP[@]}"; do
-        print_header "Running scripts of '${dir}'"
-        run_all_dir_scripts "${dir}"
+        bootstrap "${dir}"
     done
 }
+
+
+# ┌──────────────┐
+# │ Main program │
+# └──────────────┘
+bootstrap_all
+exit 0

@@ -38,18 +38,18 @@ install() {
 }
 
 # - - - - - - - - - - - - - - - - - - - - - -
-# Install all dirs of the `INSTALLS` array.
+# Install all dirs of the `INSTALL` array.
 # Globals:
-#   INSTALLS: Array of dirs to install.
+#   INSTALL: Array of dirs to install.
 # Arguments:
 #   None.
 # Returns:
 #   None.
 # - - - - - - - - - - - - - - - - - - - - - -
 install_all() {
-    print_header "Installing packages"
+    print_main_header "Installing packages"
 
-    for dir in "${INSTALLS[@]}"; do
+    for dir in "${INSTALL[@]}"; do
         install "${dir}"
     done
 }
