@@ -2,7 +2,6 @@
 #
 # Run the installers of each package.
 # NOTE: This script is meant to be run from the root of the dotfiles repo.
-# NOTE: You may want to run this script as sudo to avoid permission issues.
 
 
 # Load utils

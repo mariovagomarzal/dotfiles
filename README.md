@@ -2,7 +2,7 @@
 
 ## Setup
 ```bash
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/mariovagomarzal/dotfiles/main/src/setup.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/mariovagomarzal/dotfiles/main/src/setup.sh)"
 ```
 
 ## TODO

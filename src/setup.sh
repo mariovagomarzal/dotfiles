@@ -2,7 +2,6 @@
 #
 # Setup a new macOS machine.
 # NOTE: Make sure you know what you are doing before running this script.
-# NOTE: You may want to run this script as sudo to avoid permission issues.
 
 
 # ┌───────────┐
