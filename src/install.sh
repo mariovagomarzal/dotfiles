@@ -39,6 +39,8 @@ install() {
 
 # - - - - - - - - - - - - - - - - - - - - - -
 # Install all dirs of the `INSTALLS` array.
+# Globals:
+#   INSTALLS: Array of dirs to install.
 # Arguments:
 #   None.
 # Returns:
@@ -56,6 +58,5 @@ install_all() {
 # ┌──────────────┐
 # │ Main program │
 # └──────────────┘
-
 install_all
 exit 0
