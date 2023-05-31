@@ -125,5 +125,9 @@ bootstrap_all() {
 # ┌──────────────┐
 # │ Main program │
 # └──────────────┘
-bootstrap_all
-exit 0
+main() {
+    bootstrap_all
+    exit 0
+}
+
+main

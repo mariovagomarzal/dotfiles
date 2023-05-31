@@ -58,5 +58,9 @@ install_all() {
 # ┌──────────────┐
 # │ Main program │
 # └──────────────┘
-install_all
-exit 0
+main () {
+    install_all
+    exit 0
+}
+
+main
