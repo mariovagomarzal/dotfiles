@@ -2,6 +2,7 @@
 #
 # Run the setup scripts and symlink the files of each package.
 # NOTE: This script is meant to be run from the root of the dotfiles repo.
+# NOTE: You may want to run this script as sudo to avoid permission issues.
 
 
 # Load utils
@@ -114,8 +115,6 @@ bootstrap() {
 #   None.
 # - - - - - - - - - - - - - - - - - - - - - - -
 bootstrap_all() {
-    print_main_header "Bootstrapping packages"
-
     for dir in "${BOOTSTRAP[@]}"; do
         bootstrap "${dir}"
     done
@@ -126,6 +125,7 @@ bootstrap_all() {
 # │ Main program │
 # └──────────────┘
 main() {
+    print_main_header "Bootstrapping packages"
     bootstrap_all
     exit 0
 }

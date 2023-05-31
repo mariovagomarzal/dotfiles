@@ -9,8 +9,12 @@
 declare -r DOTFILES="$HOME/Projects/dotfiles"
 declare -r LOG_FILE="$DOTFILES/dotfiles.log"
 
-declare -r INSTALL=()
-declare -r BOOTSTRAP=()
+declare -r INSTALL=(
+    "homebrew"
+)
+declare -r BOOTSTRAP=(
+    "homebrew"
+)
 
 declare -r SMALL_TAB="   "
 declare -r LARGE_TAB="     "
@@ -59,7 +63,7 @@ print_main_header() {
 }
 
 print_header() {
-    print_in_purple "\n${SMALL_TAB}$1\n"
+    print_in_purple "${SMALL_TAB}$1\n"
 }
 
 
@@ -120,7 +124,7 @@ run_command() {
     # Run the command in the background and store its pid.
     # Then, show a spinner while the command is running.
     eval "${command}" \
-        &''> "${LOG_FILE}" \
+        &> "${LOG_FILE}" \
         & pid=$!
 
     show_spinner "${pid}" "${message}"

@@ -2,6 +2,7 @@
 #
 # Setup a new macOS machine.
 # NOTE: Make sure you know what you are doing before running this script.
+# NOTE: You may want to run this script as sudo to avoid permission issues.
 
 
 # ┌───────────┐
@@ -57,14 +58,14 @@ load_utils() {
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 install_xcode_dev_tools() {
     if [[ ! -d "/Library/Developer/CommandLineTools" ]]; then
-        print_main_header "Installing Xcode developer line tools"
+        print_header "Installing Xcode developer line tools"
         run_command "xcode-select --install" \
             "Installing Xcode developer line tools..." \
             "Xcode developer line tools successfully installed." \
             "Xcode developer line tools failed to install."
         return $?
     else
-        print_success "Xcode developer line tools already installed"
+        print_success "Xcode developer line tools already installed."
         return 0
     fi
 }
@@ -84,14 +85,14 @@ install_xcode_dev_tools() {
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 clone_repository() {
     if [[ ! -d "${DOTFILES_TARGET}" ]]; then
-        print_main_header "Cloning dotfiles repository"
+        print_header "Cloning dotfiles repository"
         run_command "git clone ${DOTFILES_URL} ${DOTFILES_TARGET}" \
             "Cloning dotfiles repository..." \
             "Dotfiles repository successfully cloned." \
             "Dotfiles repository failed to clone."
         return $?
     else
-        print_success "Dotfiles repository already cloned"
+        print_success "Dotfiles repository already cloned."
         return 0
     fi
 }
@@ -102,6 +103,10 @@ clone_repository() {
 # └──────────────┘
 main() {
     load_utils || exit 1
+
+    print_main_header "Setting up macOS machine"
+
+    # FIXME: Constants from utils are not available and custom prints don't respect format.
     install_xcode_dev_tools || exit 1
     clone_repository || exit 1
 

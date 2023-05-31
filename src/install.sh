@@ -2,6 +2,7 @@
 #
 # Run the installers of each package.
 # NOTE: This script is meant to be run from the root of the dotfiles repo.
+# NOTE: You may want to run this script as sudo to avoid permission issues.
 
 
 # Load utils
@@ -47,8 +48,6 @@ install() {
 #   None.
 # - - - - - - - - - - - - - - - - - - - - - -
 install_all() {
-    print_main_header "Installing packages"
-
     for dir in "${INSTALL[@]}"; do
         install "${dir}"
     done
@@ -59,6 +58,7 @@ install_all() {
 # │ Main program │
 # └──────────────┘
 main () {
+    print_main_header "Installing packages"
     install_all
     exit 0
 }
