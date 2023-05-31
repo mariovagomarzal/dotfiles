@@ -37,13 +37,13 @@ install() {
     return $exit_code
 }
 
-# - -
+# - - - - - - - - - - - - - - - - - - - - - -
 # Install all dirs of the `INSTALLS` array.
 # Arguments:
 #   None.
 # Returns:
 #   None.
-# - -
+# - - - - - - - - - - - - - - - - - - - - - -
 install_all() {
     print_header "Installing packages"
 

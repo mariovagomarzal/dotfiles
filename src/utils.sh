@@ -7,7 +7,7 @@
 # │ Constants │
 # └───────────┘
 declare -r DOTFILES="$HOME/Projects/dotfiles"
-declare -r LOG_FILE="$HOME/dotfiles.log"
+declare -r LOG_FILE="$DOTFILES/dotfiles.log"
 
 declare -r INSTALLS=()
 
@@ -111,8 +111,9 @@ run_command() {
     
     # Run the command in the background and store its pid.
     # Then, show a spinner while the command is running.
-    eval "${command}" >> "${LOG_FILE}" 2>&1 &
-        pid=$!
+    eval "${command}" \
+        >> "${LOG_FILE}" \
+        & pid=$!
 
     show_spinner "${pid}" "${message}"
 
