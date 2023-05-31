@@ -1,11 +1,20 @@
 #!/bin/bash
+#
+# Some helper functions for the dotfiles.
 
-# Constants
-declare -r DOTFILES="$HOME/.dotfiles"
+
+# ┌───────────┐
+# │ Constants │
+# └───────────┘
+declare -r DOTFILES="$HOME/Projects/dotfiles"
 declare -r LOG_FILE="$HOME/dotfiles.log"
 
+declare -r INSTALLS=()
 
-# Formatted output functions
+
+# ┌────────────────────────────┐
+# │ Formatted output functions │
+# └────────────────────────────┘
 print_in_color() {
     printf "%b" \
         "$(tput setaf "$2" 2> /dev/null)" \
@@ -46,7 +55,18 @@ print_header() {
 }
 
 
-# Run a command with a spinner
+# ┌─────────────────────────────┐
+# │ Run commands with a spinner │
+# └─────────────────────────────┘
+
+# - - - - - - - - - - - - - - - - - - - - - - -
+# Show a spinner while a command is running.
+# Arguments:
+#   $1. Pid of the running command.
+#   $2. Message to display.
+# Returns:
+#   None.
+# - - - - - - - - - - - - - - - - - - - - - - -
 show_spinner() {
     local -r pid="${1}"
     local -r message="${2}"
@@ -55,7 +75,8 @@ show_spinner() {
     local i=0
     local blank=""
     
-
+    
+    # Print the message until the command completes.
     while kill -0 "${pid}" &> /dev/null; do
         printf "\r  [%c] %s" \
             "${spin:i++%${#spin}:1}" \
@@ -63,11 +84,22 @@ show_spinner() {
         sleep 0.1
     done
 
+    # Create a blank space over the spinner text.
     blank="$(printf "%*s" $(( ${#message} + 6 )))"
     printf "\r${blank}\r"
 }
 
-# Usage: run_command <COMMAND> <MESSAGE> <SUCCESS_MESSAGE> <FAILURE_MESSAGE>
+# - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Run a command and show a spinnner while it's running.
+# Then, show a success or failure message.
+# Arguments:
+#   $1. Command to run.
+#   $2. Message to display while the command is running.
+#   $3. Message to display on success.
+#   $4. Message to display on failure.
+# Returns:
+#   Exit code of the command.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - -
 run_command() {
     local -r command="${1}"
     local -r message="${2}"
@@ -77,15 +109,19 @@ run_command() {
     local pid=""
     local exit_code=0
     
-    # into log file
-    eval "${command}" &> "${LOG_FILE}" &
+    # Run the command in the background and store its pid.
+    # Then, show a spinner while the command is running.
+    eval "${command}" >> "${LOG_FILE}" 2>&1 &
         pid=$!
 
     show_spinner "${pid}" "${message}"
 
+    # Wait for the command to no longer be executing
+    # and then get its exit code.
     wait "${pid}" &> /dev/null
     exit_code=$?
 
+    # Show the success or failure message.
     if [ $exit_code -ne 0 ]; then
         print_fail "${failure_message}"
     else
