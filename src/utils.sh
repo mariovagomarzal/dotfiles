@@ -87,7 +87,6 @@ show_spinner() {
     local i=0
     local blank=""
     
-    
     # Print the message until the command completes.
     while kill -0 "${pid}" &> /dev/null; do
         printf "\r  [%c] %s" \
