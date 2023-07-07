@@ -56,17 +56,29 @@ load_utils() {
 #   1 otherwise.
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 install_xcode_dev_tools() {
+    local exit_code=0
+    local install=0
+
     if [[ ! -d "/Library/Developer/CommandLineTools" ]]; then
-        print_header "Installing Xcode developer line tools"
-        run_command "xcode-select --install" \
-            "Installing Xcode developer line tools..." \
-            "Xcode developer line tools successfully installed." \
-            "Xcode developer line tools failed to install."
-        return $?
+        print_info "Xcode developer line tools not installed."
+        ask_confirmation "Do you want to install them?"
+        install=$?
+        if [[ $install -eq 0 ]]; then
+            print_header "Installing Xcode developer line tools"
+            run_command "xcode-select --install" \
+                "Installing Xcode developer line tools..." \
+                "Xcode developer line tools successfully installed." \
+                "Xcode developer line tools failed to install."
+            exit_code=$?
+        else 
+            print_error "Xcode developer line tools not installed."
+            exit_code=1
+        fi
     else
         print_success "Xcode developer line tools already installed."
-        return 0
     fi
+
+    return $exit_code
 }
 
 
@@ -83,17 +95,29 @@ install_xcode_dev_tools() {
 #   1 otherwise.
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 clone_repository() {
+    local exit_code=0
+    local install=0
+
     if [[ ! -d "${DOTFILES_TARGET}" ]]; then
-        print_header "Cloning dotfiles repository"
-        run_command "git clone ${DOTFILES_URL} ${DOTFILES_TARGET}" \
-            "Cloning dotfiles repository..." \
-            "Dotfiles repository successfully cloned." \
-            "Dotfiles repository failed to clone."
-        return $?
+        print_info "Dotfiles repository does not exist locally at ${DOTFILES_TARGET}."
+        ask_confirmation "Do you want to clone it?"
+        install=$?
+
+        if [[ $install -eq 0 ]]; then
+            run_command "git clone ${DOTFILES_URL} ${DOTFILES_TARGET}" \
+                "Cloning dotfiles repository..." \
+                "Dotfiles repository successfully cloned." \
+                "Dotfiles repository failed to clone."
+            exit_code=$?
+        else
+            print_error "Dotfiles repository not cloned."
+            exit_code=1
+        fi
     else
         print_success "Dotfiles repository already cloned."
-        return 0
     fi
+
+    return $exit_code
 }
 
 
@@ -101,19 +125,44 @@ clone_repository() {
 # │ Main program │
 # └──────────────┘
 main() {
+    local installs=0
+    local installs_exit=1
+    local bootstraps=0
+    local bootstraps_exit=1
+
     load_utils || exit 1
 
-    print_main_header "Setting up macOS machine"
+    print_main_header "Preparing files and tools for setup"
 
-    # FIXME: Constants from utils are not available and custom prints don't respect format.
     install_xcode_dev_tools || exit 1
     clone_repository || exit 1
 
     cd "${DOTFILES_TARGET}"
-    bash src/install.sh
-    bash src/bootstrap.sh
 
-    exit 0
+    # Installations
+    printf "\n"
+    ask_confirmation "Do you want to proceed with the installations?"
+    installs=$?
+    if [[ $installs -eq 0 ]]; then
+        bash src/install.sh
+        installs_exit=$?
+    fi
+
+    # Bootstraps
+    printf "\n"
+    if [[ $installs_exit -eq 1 ]]; then
+        print_info "Installations skipped or some of them failed."
+    fi
+
+    ask_confirmation "Do you want to proceed with the bootstraps?"
+    bootstraps=$?
+    if [[ $bootstraps -eq 0 ]]; then
+        bash src/bootstrap.sh
+        bootstraps_exit=$?
+    fi
+
+    # Exit with 0 if all the installations and bootstraps were successful, 1 if any of them failed.
+    exit $((installs_exit + bootstraps_exit))
 }
 
 main

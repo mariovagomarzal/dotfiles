@@ -38,6 +38,10 @@ print_in_green() {
     print_in_color "$1\n" 2
 }
 
+print_in_blue() {
+    print_in_color "$1\n" 4
+}
+
 print_in_yellow() {
     print_in_color "$1\n" 3
 }
@@ -48,6 +52,14 @@ print_in_purple() {
 
 print_success() {
     print_in_green "${LARGE_TAB}[✔] $1"
+}
+
+print_info() {
+    print_in_blue "${LARGE_TAB}[i] $1"
+}
+
+print_question() {
+    print_in_blue "${LARGE_TAB}[?] $1"
 }
 
 print_fail() {
@@ -64,6 +76,29 @@ print_main_header() {
 
 print_header() {
     print_in_purple "${SMALL_TAB}$1\n"
+}
+
+
+# ┌────────────────┐
+# │ User prompting │
+# └────────────────┘
+
+# - - - - - - - - - - - - - - - - - - - - - - - - -
+# Ask the user for confirmation before proceeding.
+# Arguments:
+#   $1. Message to display.
+# Returns:
+#   0 if the user confirms, 1 otherwise.
+# - - - - - - - - - - - - - - - - - - - - - - - - -
+ask_confirmation() {
+    print_question "$1 [Y/n] "
+
+    read -r -n 1
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 
@@ -89,7 +124,7 @@ show_spinner() {
     
     # Print the message until the command completes.
     while kill -0 "${pid}" &> /dev/null; do
-        printf "\r  [%c] %s" \
+        printf "\r${LARGE_TAB}[%c] %s" \
             "${spin:i++%${#spin}:1}" \
             "${message}"
         sleep 0.1
