@@ -140,8 +140,9 @@ main() {
     cd "${DOTFILES_TARGET}"
 
     # Installations
-    printf "\n"
+    printf "\n\n"
     ask_confirmation "Do you want to proceed with the installations?"
+    printf "\n"
     installs=$?
     if [[ $installs -eq 0 ]]; then
         bash src/install.sh
@@ -149,12 +150,13 @@ main() {
     fi
 
     # Bootstraps
-    printf "\n"
+    printf "\n\n"
     if [[ $installs_exit -eq 1 ]]; then
         print_info "Installations skipped or some of them failed."
     fi
 
     ask_confirmation "Do you want to proceed with the bootstraps?"
+    printf "\n"
     bootstraps=$?
     if [[ $bootstraps -eq 0 ]]; then
         bash src/bootstrap.sh

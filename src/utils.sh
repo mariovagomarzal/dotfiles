@@ -31,31 +31,31 @@ print_in_color() {
 }
 
 print_in_red() {
-    print_in_color "$1\n" 1
+    print_in_color "$1" 1
 }
 
 print_in_green() {
-    print_in_color "$1\n" 2
+    print_in_color "$1" 2
 }
 
 print_in_blue() {
-    print_in_color "$1\n" 4
+    print_in_color "$1" 4
 }
 
 print_in_yellow() {
-    print_in_color "$1\n" 3
+    print_in_color "$1" 3
 }
 
 print_in_purple() {
-    print_in_color "$1\n" 5
+    print_in_color "$1" 5
 }
 
 print_success() {
-    print_in_green "${LARGE_TAB}[✔] $1"
+    print_in_green "${LARGE_TAB}[✔] $1\n"
 }
 
 print_info() {
-    print_in_blue "${LARGE_TAB}[i] $1"
+    print_in_blue "${LARGE_TAB}[i] $1\n"
 }
 
 print_question() {
@@ -63,19 +63,19 @@ print_question() {
 }
 
 print_fail() {
-    print_in_red "${LARGE_TAB}[✖] $1"
+    print_in_red "${LARGE_TAB}[✖] $1\n"
 }
 
 print_warning() {
-    print_in_yellow "${LARGE_TAB}[!] $1"
+    print_in_yellow "${LARGE_TAB}[!] $1\n"
 }
 
 print_main_header() {
-    print_in_purple "\n • $1\n"
+    print_in_purple "\n • $1\n\n"
 }
 
 print_header() {
-    print_in_purple "${SMALL_TAB}$1\n"
+    print_in_purple "${SMALL_TAB}$1\n\n"
 }
 
 
