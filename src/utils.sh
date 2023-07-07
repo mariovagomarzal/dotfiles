@@ -6,18 +6,18 @@
 # ┌───────────┐
 # │ Constants │
 # └───────────┘
-declare -r DOTFILES="$HOME/Projects/dotfiles"
-declare -r LOG_FILE="$DOTFILES/dotfiles.log"
+export DOTFILES="$HOME/Projects/dotfiles"
+export LOG_FILE="$DOTFILES/dotfiles.log"
 
-declare -r INSTALL=(
+export INSTALL=(
     "homebrew"
 )
-declare -r BOOTSTRAP=(
+export BOOTSTRAP=(
     "homebrew"
 )
 
-declare -r SMALL_TAB="   "
-declare -r LARGE_TAB="     "
+export SMALL_TAB="   "
+export LARGE_TAB="     "
 
 
 # ┌────────────────────────────┐
