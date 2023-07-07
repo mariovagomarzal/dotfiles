@@ -44,12 +44,17 @@ install() {
 # Arguments:
 #   None.
 # Returns:
-#   None.
+#   0 if all dirs were successfully installed, 1 otherwise.
 # - - - - - - - - - - - - - - - - - - - - - -
 install_all() {
+    local exit_code=0
+
     for dir in "${INSTALL[@]}"; do
         install "${dir}"
+        exit_code=$((exit_code + $?))
     done
+
+    return $exit_code
 }
 
 
@@ -59,7 +64,7 @@ install_all() {
 main () {
     print_main_header "Installing packages"
     install_all
-    exit 0
+    exit $?
 }
 
 main

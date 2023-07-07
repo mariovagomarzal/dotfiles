@@ -111,12 +111,17 @@ bootstrap() {
 # Arguments:
 #   None.
 # Returns:
-#   None.
+#   0 if all dirs were successfully bootstrapped, 1 otherwise.
 # - - - - - - - - - - - - - - - - - - - - - - -
 bootstrap_all() {
+    local exit_code=0
+
     for dir in "${BOOTSTRAP[@]}"; do
         bootstrap "${dir}"
+        exit_code=$((exit_code + $?))
     done
+
+    return $exit_code
 }
 
 
@@ -126,7 +131,7 @@ bootstrap_all() {
 main() {
     print_main_header "Bootstrapping packages"
     bootstrap_all
-    exit 0
+    exit $?
 }
 
 main
