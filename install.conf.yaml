@@ -2,6 +2,27 @@
     link:
       create: true
       force: true
+    shell:
+      stdin: true
 
 # Install Homebrew if not installed
 - install-brew: true
+
+# Install Homebrew packages
+- brew:
+  - fish
+
+# Clear broken symlinks
+- clean: [ '~' ]
+- clean:
+    ~/.config:
+      recursive: true
+
+# Symlink dotfiles
+- link:
+    # Fish
+    ~/.config/fish/config.fish: fish/config.fish
+    ~/.config/fish/functions: fish/functions
+
+# Use fish as default shell
+- shell: [chsh -s $(which fish), Making fish the default shell]

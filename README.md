@@ -10,6 +10,7 @@ My personal dotfiles for setting up a new (macOS) machine.
     - [What does the setup process do?](#what-does-the-setup-process-do)
 - [📦 Packages and configurations](#packages-and-configurations)
     - [Homebrew](#homebrew)
+    - [Fish](#fish)
 - [🏗️ Development](#development)
   - [Environment](#environment)
   - [Workflow and conventions](#workflow-and-conventions)
@@ -109,6 +110,10 @@ file (and, possibly, the _[dotbot documentation][dotbot]_).
 In general, the process does the following:
 
 1. Install the Homebrew package manager (if not installed).
+2. With Homebrew, install all the specified packages and casks.
+3. Symlink all the specified dotfiles to its corresponding location.
+4. Run some commands to finish configuring the machine. In this step, sudo
+   permissions may be required.
 
 ## Packages and configurations
 
@@ -117,6 +122,21 @@ In general, the process does the following:
 Homebrew is the package manager I use to install and manage the packages on
 my machine. Homebrew is installed and used with the
 _[dotbot-brew][dotbot-brew]_ plugin.
+
+### Fish
+
+I use the Fish shell as my main shell. The Fish shell is installed with
+Homebrew. The configuration files are the following:
+
+- `config.fish`: the main configuration file for the Fish shell.
+- `functions`: the directory containing the Fish functions.
+
+Since we want to use the Fish shell as the main shell, we run the following
+command in the setup process:
+
+```sh
+chsh -s $(which fish)
+```
 
 ## Development
 
