@@ -25,4 +25,7 @@
     ~/.config/fish/functions: fish/functions
 
 # Use fish as default shell
-- shell: [chsh -s $(which fish), Making fish the default shell]
+- shell:
+  -
+    command: chsh -s $(which fish)
+    description: Making fish the default shell
