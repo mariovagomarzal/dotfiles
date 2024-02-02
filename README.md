@@ -9,6 +9,7 @@ My personal dotfiles for setting up a new (macOS) machine.
     - [How to setup a new machine](#how-to-setup-a-new-machine)
     - [What does the setup process do?](#what-does-the-setup-process-do)
 - [📦 Packages and configurations](#packages-and-configurations)
+    - [Homebrew](#homebrew)
 - [🏗️ Development](#development)
   - [Environment](#environment)
   - [Workflow and conventions](#workflow-and-conventions)
@@ -99,11 +100,23 @@ setup process do?](#what-does-the-setup-process-do)_ section.
 
 ### What does the setup process do?
 
-> 👷 _Work in progress..._
+When running the `install` script, the _dotbot_ program is executed with
+the `install.conf.yaml` configuration file. This file contains the
+instructions for _dotbot_ to install and configure the packages. So, for a
+more detailed explanation of what this process does, you can refer this
+file (and, possibly, the _[dotbot documentation][dotbot]_).
+
+In general, the process does the following:
+
+1. Install the Homebrew package manager (if not installed).
 
 ## Packages and configurations
 
-> 👷 _Work in progress..._
+### Homebrew
+
+Homebrew is the package manager I use to install and manage the packages on
+my machine. Homebrew is installed and used with the
+_[dotbot-brew][dotbot-brew]_ plugin.
 
 ## Development
 
@@ -181,6 +194,7 @@ This repository is licensed under the [MIT License](/LICENSE) by [Mario Vago Mar
 <!-- External links -->
 [mario]: https://github.com/mariovagomarzal
 [dotbot]: https://github.com/anishathalye/dotbot
+[dotbot-brew]: https://github.com/wren/dotbot-brew
 [invoke]: https://www.pyinvoke.org/
 [pre-commit]: https://pre-commit.com/
 [feauture-branch-workflow]:
