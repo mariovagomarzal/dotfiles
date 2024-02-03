@@ -76,10 +76,10 @@ show_always = true
 # Directory module
 [directory]
 format = "[$read_only]($read_only_style)[ $path ]($style)"
-style = "bg:color2"
+style = "bg:color2 fg:black"
 truncation_symbol = "…/"
 read_only = " "
-read_only_style = "bg:color2"
+read_only_style = "bg:color2 fg:black"
 
 [directory.substitutions]
 "Documents" = "󰈙"
@@ -94,18 +94,18 @@ read_only_style = "bg:color2"
 # Git modules
 [git_branch]
 format = "[ $symbol $branch(:$remote_branch)]($style)"
-style = "bg:color3"
+style = "bg:color3 fg:black"
 symbol = ""
 
 [git_status]
 format = "[ $all_status$ahead_behind ]($style)"
-style = "bg:color3"
+style = "bg:color3 fg:black"
 
 # Python module (custom)
 [custom.python]
 description = "Python version"
 format = "[ $symbol $output ]($style)"
-style = "bg:color4"
+style = "bg:color4 fg:black"
 symbol = ""
 shell = "fish"
 when = "is_python_project"
@@ -115,20 +115,20 @@ command = "python_info"
 [julia]
 format = "[ $symbol $version ]($style)"
 version_format = "${raw}"
-style = "bg:color4"
+style = "bg:color4 fg:black"
 symbol = ""
 
 # Typst module
 [typst]
 format = "[ $symbol $version ]($style)"
 version_format = "${raw}"
-style = "bg:color4"
+style = "bg:color4 fg:black"
 symbol = "t"
 
 # Command duration module
 [cmd_duration]
 format = "[  $duration ]($style)"
-style = "bg:color5"
+style = "bg:color5 fg:black"
 min_time = 1_000 # 1 second
 
 # Character module
