@@ -11,6 +11,7 @@ My personal dotfiles for setting up a new (macOS) machine.
 - [📦 Packages and configurations](#packages-and-configurations)
     - [Homebrew](#homebrew)
     - [Fish](#fish)
+    - [Starship](#starship)
 - [🏗️ Development](#development)
   - [Environment](#environment)
   - [Workflow and conventions](#workflow-and-conventions)
@@ -137,6 +138,20 @@ command in the setup process:
 ```sh
 chsh -s $(which fish)
 ```
+
+### Starship
+
+I use the Starship to customize the prompt of the Fish shell. Starship is
+configured with the `starship.toml` file.
+
+In this file, we have defined some different color palettes. You can choose
+any of them by setting the `palette` variable in the `starship.toml` file.
+Take a look at the file to see the available palettes.
+
+> Since the default `python` module of Starship doesn't fit my needs, I use a
+> custom one that depends on two fish functions defined in the `functions`
+> directory of the Fish shell. The functions are `is_python_project` and
+> `python_info`.
 
 ## Development
 

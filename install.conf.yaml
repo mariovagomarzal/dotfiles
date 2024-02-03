@@ -11,6 +11,7 @@
 # Install Homebrew packages
 - brew:
   - fish
+  - starship
 
 # Clear broken symlinks
 - clean: [ '~' ]
@@ -23,6 +24,8 @@
     # Fish
     ~/.config/fish/config.fish: fish/config.fish
     ~/.config/fish/functions: fish/functions
+    # Starship
+    ~/.config/starship.toml: starship/starship.toml
 
 # Use fish as default shell
 - shell:
