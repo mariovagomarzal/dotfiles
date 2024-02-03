@@ -12,9 +12,15 @@ My personal dotfiles for setting up a new (macOS) machine.
     - [Homebrew](#homebrew)
     - [Fish](#fish)
     - [Starship](#starship)
+    - [Git](#git)
+      - [Delta](#delta)
+    - [Miscellaneous](#miscellaneous)
+      - [GPG](#gpg)
 - [🏗️ Development](#development)
   - [Environment](#environment)
   - [Workflow and conventions](#workflow-and-conventions)
+    - [Git workflow](#git-workflow)
+    - [Versioning](#versioning)
 - [📝 License](#license)
 
 ## About this repository
@@ -56,12 +62,17 @@ directory.
 > process does before running it.
 
 We are going to describe the steps to setup a new macOS machine using this
-repository. The steps are divided into two sections: _Prerequisites_ and
+repository. The steps are divided into two parts: _Prerequisites_ and
 _Setup_.
 
-__Prerequisites__: First, we need to clone this repository. For that, we
-need to have `git` installed. This can be done by running the following
-command in the terminal:
+__Prerequisites__: I use [SSH keys][ssh-keys] to authenticate with GitHub
+and other services. So first, we are going to restore the SSH keys safely
+from a backup to the `~/.ssh` directory. Alternatively, we can [generate a
+new SSH][generate-ssh-key] key and add it to our GitHub account.
+
+Now, we need to clone this repository. For that, we need to have `git`
+installed. This can be done by running the following command in the
+terminal:
 
 ```sh
 xcode-select --install
@@ -76,6 +87,9 @@ git config --global user.name "Your Name"
 git config --global user.email "your.name@example.com"
 ```
 
+Later on, we will be able to change the `git` configuration using the
+`.gitconfig.local` file.
+
 Once `git` is installed and configured, we can clone this repository by
 running the following command:
 
@@ -83,7 +97,7 @@ running the following command:
 git clone https://github.com/mariovagomarzal/dotfiles.git
 ```
 
-We now have to navigate to the `dotfiles` directory:
+We now have to navigate to the `dotfiles` directory we just cloned:
 
 ```sh
 cd path/to/dotfiles
@@ -152,6 +166,26 @@ Take a look at the file to see the available palettes.
 > custom one that depends on two fish functions defined in the `functions`
 > directory of the Fish shell. The functions are `is_python_project` and
 > `python_info`.
+
+### Git
+
+The Git configuration is defined in the `.gitconfig` file. The file
+contains the main configuration for Git. We include the `.gitignore_global`
+file in the configuration, which contains the global Git ignore rules.
+
+User specific configuration can be defined in the `.gitconfig.local` file.
+
+
+#### Delta
+
+I use the Delta tool as the pager for Git. Delta configuration is defined
+in the `.gitconfig` file too.
+
+### Miscellaneous
+
+#### GPG
+
+I use GPG to sign my commits and other key management tasks.
 
 ## Development
 
@@ -229,6 +263,10 @@ This repository is licensed under the [MIT License](/LICENSE) by [Mario Vago Mar
 <!-- External links -->
 [mario]: https://github.com/mariovagomarzal
 [dotbot]: https://github.com/anishathalye/dotbot
+[ssh-keys]:
+    https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
+[generate-ssh-key]:
+    https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 [dotbot-brew]: https://github.com/wren/dotbot-brew
 [invoke]: https://www.pyinvoke.org/
 [pre-commit]: https://pre-commit.com/
