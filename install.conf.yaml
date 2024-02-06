@@ -15,6 +15,16 @@
   - gpg
   - git
   - git-delta
+  - pyenv
+
+# Post-installation steps
+- shell:
+  - # Setup Python (with pyenv)
+    command: source ./pyenv/setup_python.sh
+    description: Setting up Python with pyenv
+  - # Use fish as default shell
+    command: chsh -s $(which fish)
+    description: Making fish the default shell
 
 # Clear broken symlinks
 - clean: [ '~' ]
@@ -27,15 +37,10 @@
     # Fish
     ~/.config/fish/config.fish: fish/config.fish
     ~/.config/fish/functions: fish/functions
+    ~/.config/fish/conf.d: fish/conf.d
     # Starship
     ~/.config/starship.toml: starship/starship.toml
     # Git
     ~/.gitconfig: git/.gitconfig
     ~/.gitconfig.local: git/.gitconfig.local
     ~/.gitignore_global: git/.gitignore_global
-
-# Use fish as default shell
-- shell:
-  -
-    command: chsh -s $(which fish)
-    description: Making fish the default shell

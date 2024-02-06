@@ -7,3 +7,9 @@ if status is-interactive
     # Set the fish prompt with Starship
     starship init fish | source
 end
+
+# Load variables
+source ~/.config/fish/conf.d/variables.fish
+
+# Initialize Pyenv
+pyenv init - | source

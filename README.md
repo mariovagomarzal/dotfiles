@@ -14,6 +14,7 @@ My personal dotfiles for setting up a new (macOS) machine.
     - [Starship](#starship)
     - [Git](#git)
       - [Delta](#delta)
+    - [Pyenv](#pyenv)
     - [Miscellaneous](#miscellaneous)
       - [GPG](#gpg)
 - [🏗️ Development](#development)
@@ -145,6 +146,9 @@ Homebrew. The configuration files are the following:
 
 - `config.fish`: the main configuration file for the Fish shell.
 - `functions`: the directory containing the Fish functions.
+- `conf.d`: a directory containing extra configuration files that are
+  sourced by the `config.fish` file. These files are the following:
+    - `variables.fish`: contains the environment variables.
 
 Since we want to use the Fish shell as the main shell, we run the following
 command in the setup process:
@@ -175,11 +179,17 @@ file in the configuration, which contains the global Git ignore rules.
 
 User specific configuration can be defined in the `.gitconfig.local` file.
 
-
 #### Delta
 
 I use the Delta tool as the pager for Git. Delta configuration is defined
 in the `.gitconfig` file too.
+
+### Pyenv
+
+I use Pyenv to manage Python versions. After installing Pyenv with
+Homebrew, we execute the `setup_python.sh` script to install Python 3.12.0
+and set it as the global version. Then, we install all the packages defined
+in the `requirements-sys.txt` file via `pip`.
 
 ### Miscellaneous
 
