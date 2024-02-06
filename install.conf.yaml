@@ -16,12 +16,16 @@
   - git
   - git-delta
   - pyenv
+  - juliaup
 
 # Post-installation steps
 - shell:
   - # Setup Python (with pyenv)
     command: source ./pyenv/setup_python.sh
     description: Setting up Python with pyenv
+  - # Setup Julia (with juliaup)
+    command: source ./juliaup/setup_julia.sh
+    description: Setting up Julia with juliaup
   - # Use fish as default shell
     command: chsh -s $(which fish)
     description: Making fish the default shell

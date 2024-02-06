@@ -15,6 +15,7 @@ My personal dotfiles for setting up a new (macOS) machine.
     - [Git](#git)
       - [Delta](#delta)
     - [Pyenv](#pyenv)
+    - [Juliaup](#juliaup)
     - [Miscellaneous](#miscellaneous)
       - [GPG](#gpg)
 - [🏗️ Development](#development)
@@ -190,6 +191,12 @@ I use Pyenv to manage Python versions. After installing Pyenv with
 Homebrew, we execute the `setup_python.sh` script to install Python 3.12.0
 and set it as the global version. Then, we install all the packages defined
 in the `requirements-sys.txt` file via `pip`.
+
+### Juliaup
+
+I use Juliaup to manage Julia versions. After installing Juliaup with
+Homebrew, we execute the `setup_julia.sh` script to install Julia 1.10.0
+and set it as the global version.
 
 ### Miscellaneous
 
