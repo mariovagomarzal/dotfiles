@@ -17,6 +17,7 @@ My personal dotfiles for setting up a new (macOS) machine.
     - [Pyenv](#pyenv)
     - [Juliaup](#juliaup)
     - [MacTeX](#mactex)
+    - [Typst](#typst)
     - [Miscellaneous](#miscellaneous)
       - [GPG](#gpg)
 - [🏗️ Development](#development)
@@ -202,6 +203,11 @@ and set it as the global version.
 ### MacTeX
 
 I use MacTeX as the TeX distribution. MacTeX is installed with Homebrew.
+
+### Typst
+
+I also use Typst to write many of my documents. Typst is installed with
+Homebrew.
 
 ### Miscellaneous
 
