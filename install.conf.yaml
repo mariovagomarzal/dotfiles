@@ -18,6 +18,10 @@
   - pyenv
   - juliaup
 
+# Install Homebrew casks
+- cask:
+  - mactex
+
 # Post-installation steps
 - shell:
   - # Setup Python (with pyenv)

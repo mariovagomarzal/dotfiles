@@ -16,6 +16,7 @@ My personal dotfiles for setting up a new (macOS) machine.
       - [Delta](#delta)
     - [Pyenv](#pyenv)
     - [Juliaup](#juliaup)
+    - [MacTeX](#mactex)
     - [Miscellaneous](#miscellaneous)
       - [GPG](#gpg)
 - [🏗️ Development](#development)
@@ -197,6 +198,10 @@ in the `requirements-sys.txt` file via `pip`.
 I use Juliaup to manage Julia versions. After installing Juliaup with
 Homebrew, we execute the `setup_julia.sh` script to install Julia 1.10.0
 and set it as the global version.
+
+### MacTeX
+
+I use MacTeX as the TeX distribution. MacTeX is installed with Homebrew.
 
 ### Miscellaneous
 
