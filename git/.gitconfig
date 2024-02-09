@@ -32,6 +32,10 @@
     changed = cyan bold
     untracked = red bold
 
+# Init settings
+[init]
+    defaultBranch = main
+
 # Core settings
 [core]
     excludesfile = ~/.gitignore_global
