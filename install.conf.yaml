@@ -8,6 +8,15 @@
 # Install Homebrew if not installed
 - install-brew: true
 
+# Tap Homebrew taps
+# NOTE: Due to a bug in the `dotbot-brew` plugin, the `tap` directive is
+# not working as expected. As a workaround, we tap with a `shell`
+# directive.
+- shell:
+  - # Tap `homebrew/cask-fonts`
+    command: brew tap homebrew/cask-fonts
+    description: Tapping `homebrew/cask-fonts`
+
 # Install Homebrew packages
 - brew:
   - fish
@@ -22,6 +31,8 @@
 # Install Homebrew casks
 - cask:
   - mactex
+  - alacritty
+  - font-fira-code-nerd-font
 
 # Post-installation steps
 - shell:
@@ -53,3 +64,6 @@
     ~/.gitconfig: git/.gitconfig
     ~/.gitconfig.local: git/.gitconfig.local
     ~/.gitignore_global: git/.gitignore_global
+    # Alacritty
+    ~/.config/alacritty/alacritty.toml: alacritty/alacritty.toml
+    ~/.config/alacritty/themes: alacritty/themes

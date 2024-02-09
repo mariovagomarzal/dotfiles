@@ -1,0 +1,45 @@
+# External imports
+import = [
+    "~/.config/alacritty/themes/themes/dracula.toml", # Theme
+]
+
+# Shell configuration
+[shell]
+program = "/opt/homebrew/bin/fish"
+args = ["-l"]
+
+# Window configuration
+[window]
+opacity = 0.95
+blur = true
+
+[window.dimensions]
+columns = 120
+lines = 40
+
+[window.padding]
+x = 6
+y = 6
+
+# Font configuration
+[font]
+size = 12.5
+
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Regular"
+
+[font.italic]
+style = "Light"
+
+[font.bold_italic]
+style = "Medium"
+
+# Cursor configuration
+[cursor.style]
+shape = "Beam"
+blinking = "Always"
+
+[cursor.vi_mode_style]
+shape = "Block"
+blinking = "Off"

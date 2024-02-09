@@ -14,6 +14,7 @@ My personal dotfiles for setting up a new (macOS) machine.
     - [Starship](#starship)
     - [Git](#git)
       - [Delta](#delta)
+    - [Alacritty](#alacritty)
     - [Pyenv](#pyenv)
     - [Juliaup](#juliaup)
     - [MacTeX](#mactex)
@@ -187,6 +188,12 @@ User specific configuration can be defined in the `.gitconfig.local` file.
 I use the Delta tool as the pager for Git. Delta configuration is defined
 in the `.gitconfig` file too.
 
+### Alacritty
+
+I use the Alacritty terminal emulator. The configuration file is the
+`alacritty.toml` file. We also use the themes from the [Alacritty
+themes][alacritty-themes] repository, which is included as a submodule.
+
 ### Pyenv
 
 I use Pyenv to manage Python versions. After installing Pyenv with
@@ -296,6 +303,7 @@ This repository is licensed under the [MIT License](/LICENSE) by [Mario Vago Mar
 [generate-ssh-key]:
     https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 [dotbot-brew]: https://github.com/wren/dotbot-brew
+[alacritty-themes]: https://github.com/alacritty/alacritty-theme
 [invoke]: https://www.pyinvoke.org/
 [pre-commit]: https://pre-commit.com/
 [feauture-branch-workflow]:
