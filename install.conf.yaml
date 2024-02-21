@@ -25,7 +25,7 @@
 
 # Install Homebrew casks
 - cask:
-  - mactex
+  - mactex-no-gui
   - alacritty
   - visual-studio-code
   - font-fira-code-nerd-font
