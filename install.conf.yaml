@@ -5,17 +5,12 @@
     shell:
       stdin: true
 
-# Install Homebrew if not installed
-- install-brew: true
+# With the `dotbot-brew` plugin, Homebrew is installed automatically if
+# necessary.
 
 # Tap Homebrew taps
-# NOTE: Due to a bug in the `dotbot-brew` plugin, the `tap` directive is
-# not working as expected. As a workaround, we tap with a `shell`
-# directive.
-- shell:
-  - # Tap `homebrew/cask-fonts`
-    command: brew tap homebrew/cask-fonts
-    description: Tapping `homebrew/cask-fonts`
+- tap:
+  - homebrew/cask-fonts
 
 # Install Homebrew packages
 - brew:
