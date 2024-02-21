@@ -32,6 +32,7 @@
 - cask:
   - mactex
   - alacritty
+  - visual-studio-code
   - font-fira-code-nerd-font
 
 # Post-installation steps

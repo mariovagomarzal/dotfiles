@@ -19,6 +19,7 @@ My personal dotfiles for setting up a new (macOS) machine.
     - [Juliaup](#juliaup)
     - [MacTeX](#mactex)
     - [Typst](#typst)
+    - [Visual Studio Code](#visual-studio-code)
     - [Miscellaneous](#miscellaneous)
       - [GPG](#gpg)
 - [🏗️ Development](#development)
@@ -215,6 +216,12 @@ I use MacTeX as the TeX distribution. MacTeX is installed with Homebrew.
 
 I also use Typst to write many of my documents. Typst is installed with
 Homebrew.
+
+### Visual Studio Code
+
+I use Visual Studio Code as my main code editor. For the moment, I sync the
+settings and extensions using the built-in settings sync feature with
+GitHub.
 
 ### Miscellaneous
 
