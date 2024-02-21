@@ -82,14 +82,14 @@ read_only = " "
 read_only_style = "bg:color2 fg:black"
 
 [directory.substitutions]
-"Documents" = "󰈙"
-"Downloads" = ""
-"Desktop" = ""
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Desktop" = " "
 "Music" = " "
-"Library" = "󱉟"
-"Development" = ""
-"Projects" = ""
-"Applications" = ""
+"Library" = "󱉟 "
+"Development" = " "
+"Projects" = " "
+"Applications" = " "
 
 # Git modules
 [git_branch]
