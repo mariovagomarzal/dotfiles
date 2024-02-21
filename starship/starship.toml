@@ -110,6 +110,7 @@ symbol = ""
 shell = "fish"
 when = "is_python_project"
 command = "python_info"
+ignore_timeout = true
 
 # Julia module
 [julia]
