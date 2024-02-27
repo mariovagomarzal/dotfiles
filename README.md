@@ -9,6 +9,7 @@ My personal dotfiles for setting up a new (macOS) machine.
     - [How to setup a new machine](#how-to-setup-a-new-machine)
     - [What does the setup process do?](#what-does-the-setup-process-do)
 - [📦 Packages and configurations](#packages-and-configurations)
+    - [SSH keys](#ssh-keys)
     - [Homebrew](#homebrew)
     - [Fish](#fish)
     - [Starship](#starship)
@@ -137,6 +138,18 @@ In general, the process does the following:
    permissions may be required.
 
 ## Packages and configurations
+
+### SSH keys
+
+I use SSH keys to authenticate with GitHub and other services. The SSH keys
+must be restored from a backup to the `~/.ssh` directory. The configuration
+files are the following:
+
+- `config`: the main configuration file for the SSH client.
+
+The `setup_ssh.sh` script is used to add the SSH keys to the SSH agent and
+store the passphrase in the keychain. Note that sudo permissions and the
+passphrase are required to run this script.
 
 ### Homebrew
 

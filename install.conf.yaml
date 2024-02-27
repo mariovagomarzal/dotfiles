@@ -5,6 +5,23 @@
     shell:
       stdin: true
 
+# Clear broken symlinks
+- clean: [ '~' ]
+- clean:
+    ~/.config:
+      recursive: true
+
+# System-specific setup steps
+- link:
+    # SSH
+    ~/.ssh/config: ssh/config
+
+
+- shell:
+  - # Setup SSH keys
+    command: source ./ssh/setup_ssh.sh
+    description: Setting up SSH keys
+
 # With the `dotbot-brew` plugin, Homebrew is installed automatically if
 # necessary.
 
@@ -41,12 +58,6 @@
   - # Use fish as default shell
     command: chsh -s $(which fish)
     description: Making fish the default shell
-
-# Clear broken symlinks
-- clean: [ '~' ]
-- clean:
-    ~/.config:
-      recursive: true
 
 # Symlink dotfiles
 - link:
