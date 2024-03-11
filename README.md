@@ -281,6 +281,13 @@ FiraCode Nerd Font is the main font I use in my terminal and code editor.
 **Installation and/or setup method:** FiraCode Nerd Font is installed via
 Homebrew as a cask, `font-fira-code-nerd-font`.
 
+#### Maccy
+
+Maccy is a clipboard manager for macOS.
+
+**Installation and/or setup method:** Maccy is installed via Homebrew as
+a cask.
+
 
 ## Development
 
