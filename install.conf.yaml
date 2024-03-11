@@ -16,7 +16,6 @@
     # SSH
     ~/.ssh/config: ssh/config
 
-
 - shell:
   - # Setup SSH keys
     command: source ./ssh/setup_ssh.sh
