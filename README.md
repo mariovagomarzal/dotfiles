@@ -281,6 +281,13 @@ FiraCode Nerd Font is the main font I use in my terminal and code editor.
 **Installation and/or setup method:** FiraCode Nerd Font is installed via
 Homebrew as a cask, `font-fira-code-nerd-font`.
 
+#### IINA
+
+IINA is a media player for macOS.
+
+**Installation and/or setup method:** IINA is installed via Homebrew as a
+cask.
+
 #### Maccy
 
 Maccy is a clipboard manager for macOS.
