@@ -203,6 +203,16 @@ as a cask.
 - `alacritty.toml`: The main configuration file for Alacritty.
 - `themes`: A git submodule containing the themes for Alacritty.
 
+### Visual Studio Code
+
+I use Visual Studio Code as my main code editor. For the moment,
+configurations and extensions are automatically synced between machines.
+
+**Installation and/or setup method:** Visual Studio Code is installed via
+Homebrew as a cask.
+
+**Related files:** There are no related files for Visual Studio Code.
+
 ### Python (via pyenv)
 
 I use Python as the main programming language of some projects and for
@@ -254,11 +264,6 @@ I use Typst to write many documents and reports.
 **Installation and/or setup method:** Typst is installed via Homebrew.
 
 **Related files:** There are no related files for Typst.
-
-### Visual Studio Code
-
-I use Visual Studio Code as my main code editor. For the moment,
-configurations and extensions are automatically synced between machines.
 
 ### Miscellaneous
 
