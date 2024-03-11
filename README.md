@@ -213,6 +213,18 @@ Homebrew as a cask.
 
 **Related files:** There are no related files for Visual Studio Code.
 
+### Karabiner-Elements
+
+Karabiner-Elements is the keyboard customizer I use.
+
+**Installation and/or setup method:** Karabiner-Elements is installed via
+Homebrew as a cask.
+
+**Related files:** The configuration files for Karabiner-Elements are
+stored in the `karabiner` directory of this repository. These files are:
+
+- `karabiner.json`: The main configuration file for Karabiner-Elements.
+
 ### Python (via pyenv)
 
 I use Python as the main programming language of some projects and for

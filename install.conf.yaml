@@ -43,6 +43,7 @@
 - cask:
   - mactex-no-gui
   - alacritty
+  - karabiner-elements
   - visual-studio-code
   - font-fira-code-nerd-font
   - google-drive
@@ -77,3 +78,5 @@
     # Alacritty
     ~/.config/alacritty/alacritty.toml: alacritty/alacritty.toml
     ~/.config/alacritty/themes: alacritty/themes
+    # Karabiner-Elements
+    ~/.config/karabiner/karabiner.json: karabiner/karabiner.json
