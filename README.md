@@ -270,7 +270,7 @@ GPG is the tool I use for signing commits, tags and other files.
 
 #### Delta
 
-Delta is a viewer for git and diff output.
+Delta is the pager I use for Git diffs.
 
 **Installation and/or setup method:** Delta is installed via Homebrew.
 
@@ -281,16 +281,25 @@ FiraCode Nerd Font is the main font I use in my terminal and code editor.
 **Installation and/or setup method:** FiraCode Nerd Font is installed via
 Homebrew as a cask, `font-fira-code-nerd-font`.
 
+#### Calibre
+
+Calibre is the e-book manager I use. For the moment, I recover my Calibre
+libraries from a backup into the `~/Calibre` directory. Then, I manually
+add them to the Calibre application.
+
+**Installation and/or setup method:** Calibre is installed via Homebrew as
+a cask.
+
 #### IINA
 
-IINA is a media player for macOS.
+IINA is the media player for macOS I use.
 
 **Installation and/or setup method:** IINA is installed via Homebrew as a
 cask.
 
 #### Maccy
 
-Maccy is a clipboard manager for macOS.
+Maccy is the clipboard manager I use.
 
 **Installation and/or setup method:** Maccy is installed via Homebrew as
 a cask.
