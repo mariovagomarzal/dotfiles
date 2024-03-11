@@ -281,6 +281,14 @@ FiraCode Nerd Font is the main font I use in my terminal and code editor.
 **Installation and/or setup method:** FiraCode Nerd Font is installed via
 Homebrew as a cask, `font-fira-code-nerd-font`.
 
+#### Google Drive
+
+Google Drive is the cloud storage service I use to backup and sync some
+files.
+
+**Installation and/or setup method:** Google Drive is installed via
+Homebrew as a cask.
+
 #### Calibre
 
 Calibre is the e-book manager I use. For the moment, I recover my Calibre
