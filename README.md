@@ -6,308 +6,334 @@ My personal dotfiles for setting up a new (macOS) machine.
 
 - [📖 About this repository](#about-this-repository)
 - [🚀 Setup](#setup)
-    - [How to setup a new machine](#how-to-setup-a-new-machine)
-    - [What does the setup process do?](#what-does-the-setup-process-do)
 - [📦 Packages and configurations](#packages-and-configurations)
-    - [SSH keys](#ssh-keys)
-    - [Homebrew](#homebrew)
-    - [Fish](#fish)
-    - [Starship](#starship)
-    - [Git](#git)
-      - [Delta](#delta)
-    - [Alacritty](#alacritty)
-    - [Pyenv](#pyenv)
-    - [Juliaup](#juliaup)
-    - [MacTeX](#mactex)
-    - [Typst](#typst)
-    - [Visual Studio Code](#visual-studio-code)
-    - [Miscellaneous](#miscellaneous)
-      - [GPG](#gpg)
-- [🏗️ Development](#development)
-  - [Environment](#environment)
-  - [Workflow and conventions](#workflow-and-conventions)
-    - [Git workflow](#git-workflow)
-    - [Versioning](#versioning)
+- [👨‍💻 Development](#development)
 - [📝 License](#license)
 
 ## About this repository
 
-This repository contains my _personal_ dotfiles for setting up a new macOS
-machine. It uses _[dotbot][dotbot]_ with some plugins to manage the
-installation of packages and configurations.
-
-The dotfiles related files are organized in the following way:
-
-- `install.conf.yaml`: the configuration file for dotbot.
-- `install`: the main script that runs dotbot.
-- Package directories: each directory contains the files and/or scripts
-  necessary to setup a specific package or configuration.
-
-The details steps on how to setup a new machine as well as what this
-process does are described in the _[Setup](#setup)_ section.
-
-A list of the packages and configurations that are installed and/or
-configured are listed in the _[Packages and
-configurations](#packages-and-configurations)_ section. A brief
-explaination of each package and configuration is also provided there. For
-a more detailed explanation, you can refer to the specific package
-directory.
+This repository contains my _personal_ dotfiles for setting up a new
+(macOS) machine. This includes many system settings and the installation
+and configuration of most of the tools and applications I use on a daily
+basis.
 
 > [!NOTE]
-> This repository is intended for my personal use. However, you are free
-> to use it as a reference or as a starting point for your own dotfiles.
-> Refer to the _[Development](#development)_ section for more details on
-> how to work with this repository.
+> As mentioned, these dotfiles are tailored to my personal needs and
+> preferences. Therefore, in most cases, they will not be suitable for
+> anyone else. However, feel free to use them as a starting point for your
+> own dotfiles. This guide is intended to be a reference for myself, but
+> also for anyone else who might find it useful to build their own
+> dotfiles.
+
+I use the [dotbot][dotbot] tool (with some plugins) to manage the setup
+process. The structure of this repository can be separated into the
+following sections:
+
+- The `install.conf.yaml` file, which contains the directives for the
+  dotbot tool, and the `install` script that runs it. The dotbot tool and
+  its plugins are included as submodules. For more information on what
+  these directives do and how to setup the machine, see the [Setup](#setup)
+  section.
+- The package-specific directories, which contain the configuration files
+  and scripts that may be necessary to install and configure the
+  respective packages. A detailed description of each package and
+  configuration can be found in the [Packages and
+  configurations](#packages-and-configurations) section.
+- Development related files, such as the `requirements-dev.txt`,
+  `tasks.py`, `.pre-commit-config.yaml`... For more information on how to
+  work with this repository, see the [Development](#development) section.
 
 ## Setup
 
-### How to setup a new machine
-
 > [!CAUTION]
-> The following steps will install and configure packages and
-> configurations on your machine. Make sure you understand what this
-> process does before running it.
+> The following instructions will install and configure many tools and
+> applications on your machine. Make sure to read and understand what the
+> setup process does before running it.
 
-We are going to describe the steps to setup a new macOS machine using this
-repository. The steps are divided into two parts: _Prerequisites_ and
-_Setup_.
+The setup process can be divided in two main parts: the prerequisites and
+the installation.
 
-__Prerequisites__: I use [SSH keys][ssh-keys] to authenticate with GitHub
-and other services. So first, we are going to restore the SSH keys safely
-from a backup to the `~/.ssh` directory. Alternatively, we can [generate a
-new SSH][generate-ssh-key] key and add it to our GitHub account.
+### Prerequisites
 
-Now, we need to clone this repository. For that, we need to have `git`
-installed. This can be done by running the following command in the
-terminal:
+First, we are going to need some tools such as Git or Python to be
+able to clone and run the repository. To do this, we will install the
+Xcode Command Line Tools. For that, open a terminal and run the following
+command:
 
 ```sh
 xcode-select --install
 ```
 
-This will install the Xcode Command Line Tools, which includes `git`. It
-may be necessary to configure `git` with your name and email. This can be
-done by running the following commands:
+This will open a dialog asking you to install the tools. Follow the
+instructions and wait for the installation to finish.
 
-```sh
-git config --global user.name "Your Name"
-git config --global user.email "your.name@example.com"
-```
-
-Later on, we will be able to change the `git` configuration using the
-`.gitconfig.local` file.
-
-Once `git` is installed and configured, we can clone this repository by
+Once Git is installed, we can clone the repository (and its submodules)
+to the `~/Projects` directory (or any other directory of your choice) by
 running the following command:
 
 ```sh
-git clone https://github.com/mariovagomarzal/dotfiles.git
+git clone --recurse-submodules https://github.com/mariovagomarzal/dotfiles.git ~/Projects/dotfiles
 ```
 
-We now have to navigate to the `dotfiles` directory we just cloned:
+I use [SSH keys][ssh-keys] to authenticate with GitHub and other services.
+For that reason, we will need to safely restore the SSH keys from a backup
+or [generate new ones][generate-ssh-keys] and store them in the `~/.ssh`
+directory.
+
+Whith this, we are ready to install the dotfiles.
+
+### Installation
+
+To install the dotfiles, we will first need to navigate to the
+`dotfiles` directory. In our case, this would be the `~/Projects/dotfiles`
+directory, so we can run the following command:
 
 ```sh
-cd path/to/dotfiles
+cd ~/Projects/dotfiles
 ```
 
-__Setup__: Once we have the repository cloned and we are in the
-`dotfiles` directory, we can run the `install` script to setup the machine.
-This can be done by running the following command:
+Once we are in the `dotfiles` directory, we can simply run the `install`
+script to start the installation process:
 
 ```sh
 ./install
 ```
 
-The details of what this process does are described in the _[What does the
-setup process do?](#what-does-the-setup-process-do)_ section.
+The script will start running the dotbot tool, which will install and
+configure all the packages and settings specified in the
+`install.conf.yaml` file. So, in order to understand what the setup process
+does, it is recommended to read the `install.conf.yaml` file and, possibly,
+the [dotbot documentation][dotbot] along with the documentation of the
+[dotbot-brew][dotbot-brew] plugin.
 
-### What does the setup process do?
+Besides this, the dotbot tool will also print the steps it is taking and
+notify the user of any errors that may occur. Keep in my mind that sudo
+permissions may be required for some steps, so you may be asked to enter
+your password at some point.
 
-When running the `install` script, the _dotbot_ program is executed with
-the `install.conf.yaml` configuration file. This file contains the
-instructions for _dotbot_ to install and configure the packages. So, for a
-more detailed explanation of what this process does, you can refer this
-file (and, possibly, the _[dotbot documentation][dotbot]_).
-
-In general, the process does the following:
-
-1. Install the Homebrew package manager (if not installed).
-2. With Homebrew, install all the specified packages and casks.
-3. Symlink all the specified dotfiles to its corresponding location.
-4. Run some commands to finish configuring the machine. In this step, sudo
-   permissions may be required.
+**Note:** This dotfiles are designed to be idempotent, meaning that
+consecutive runs of the `install` script should not change anything if the
+system is already configured as specified in the `install.conf.yaml` file.
+Because of this, if some steps fail, it is possible to simply run the
+`install` script again with no side effects.
 
 ## Packages and configurations
 
+In this section, we will describe the packages and configurations that are
+installed and/or configured by the dotfiles. Each main package has its own
+subsection, which contains a short description of the package, the
+installation and/or setup method and a list of related files, if any.
+
+We will also include a miscellaneous subsection for any other packages
+like fonts, media applications, etc.
+
 ### SSH keys
 
-I use SSH keys to authenticate with GitHub and other services. The SSH keys
-must be restored from a backup to the `~/.ssh` directory. The configuration
-files are the following:
+As mentioned, I use SSH keys to authenticate with GitHub and other
+services. The SSH keys should be stored in the `~/.ssh` directory, in
+particular, the `id_ed25519` and `id_ed25519.pub` files.
 
-- `config`: the main configuration file for the SSH client.
+**Installation and/or setup method:** Keys must be restored or generated
+manually. Setup is done by running the corresponding setup script.
 
-The `setup_ssh.sh` script is used to add the SSH keys to the SSH agent and
-store the passphrase in the keychain. Note that sudo permissions and the
-passphrase are required to run this script.
+**Related files:** Files related to the SSH keys are stored in the `ssh`
+directory of this repository. These files are:
+
+- `config`: The SSH configuration file that specifies the keys to use for
+  each host.
+- `setup_ssh.sh`: A script that adds the SSH keys to the SSH agent.
 
 ### Homebrew
 
-Homebrew is the package manager I use to install and manage the packages on
-my machine. Homebrew is installed and used with the
-_[dotbot-brew][dotbot-brew]_ plugin.
+Homebrew is the package manager I use to install most of the command-line
+tools and applications.
+
+**Installation and/or setup method:** The installation and setup of
+Homebrew is done by the `dotbot-brew` plugin.
+
+**Related files:** There are no related files for Homebrew.
 
 ### Fish
 
-I use the Fish shell as my main shell. The Fish shell is installed with
-Homebrew. The configuration files are the following:
+Fish is the shell I use as my default shell.
 
-- `config.fish`: the main configuration file for the Fish shell.
-- `functions`: the directory containing the Fish functions.
-- `conf.d`: a directory containing extra configuration files that are
-  sourced by the `config.fish` file. These files are the following:
-    - `variables.fish`: contains the environment variables.
+**Installation and/or setup method:** Fish is installed via Homebrew.
 
-Since we want to use the Fish shell as the main shell, we run the following
-command in the setup process:
+**Related files:** The configuration files for Fish are stored in the
+`fish` directory of this repository. These files are:
 
-```sh
-chsh -s $(which fish)
-```
+  - `config.fish`: The main configuration file for Fish.
+  - `functions`: A directory containing the custom functions for Fish.
+  - `conf.d`: A directory containing extra configuration files for Fish.
 
 ### Starship
 
-I use the Starship to customize the prompt of the Fish shell. Starship is
-configured with the `starship.toml` file.
+Starship is the prompt I use for Fish.
 
-In this file, we have defined some different color palettes. You can choose
-any of them by setting the `palette` variable in the `starship.toml` file.
-Take a look at the file to see the available palettes.
+**Installation and/or setup method:** Starship is installed via Homebrew.
 
-> Since the default `python` module of Starship doesn't fit my needs, I use a
-> custom one that depends on two fish functions defined in the `functions`
-> directory of the Fish shell. The functions are `is_python_project` and
-> `python_info`.
+**Related files:** The configuration file for Starship is stored in the
+`starship` directory of this repository. This file is:
+
+- `starship.toml`: The main configuration file for Starship.
 
 ### Git
 
-The Git configuration is defined in the `.gitconfig` file. The file
-contains the main configuration for Git. We include the `.gitignore_global`
-file in the configuration, which contains the global Git ignore rules.
+Git is the version control system I use for most of my projects.
 
-User specific configuration can be defined in the `.gitconfig.local` file.
+**Installation and/or setup method:** Git is installed via Homebrew.
 
-#### Delta
+**Related files:** The configuration files for Git are stored in the `git`
+directory of this repository. These files are:
 
-I use the Delta tool as the pager for Git. Delta configuration is defined
-in the `.gitconfig` file too.
+- `.gitconfig`: The main configuration file for Git.
+- `.gitignore_global`: The global gitignore file for Git.
+- `.gitconfig.local`: The local configuration file for Git.
 
 ### Alacritty
 
-I use the Alacritty terminal emulator. The configuration file is the
-`alacritty.toml` file. We also use the themes from the [Alacritty
-themes][alacritty-themes] repository, which is included as a submodule.
+Alacritty is the terminal emulator I use.
 
-### Pyenv
+**Installation and/or setup method:** Alacritty is installed via Homebrew
+as a cask.
 
-I use Pyenv to manage Python versions. After installing Pyenv with
-Homebrew, we execute the `setup_python.sh` script to install Python 3.12.0
-and set it as the global version. Then, we install all the packages defined
-in the `requirements-sys.txt` file via `pip`.
+**Related files:** The configuration files for Alacritty are stored in the
+`alacritty` directory of this repository. These files are:
 
-### Juliaup
+- `alacritty.toml`: The main configuration file for Alacritty.
+- `themes`: A git submodule containing the themes for Alacritty.
 
-I use Juliaup to manage Julia versions. After installing Juliaup with
-Homebrew, we execute the `setup_julia.sh` script to install Julia 1.10.0
-and set it as the global version.
+### Python (via pyenv)
 
-### MacTeX
+I use Python as the main programming language of some projects and for
+installing some tools. For that reason, I use pyenv to manage the Python
+versions.
 
-I use MacTeX as the TeX distribution. MacTeX is installed with Homebrew.
+**Installation and/or setup method:** Python is installed via pyenv, which
+is installed via Homebrew. Setup is done by running the corresponding setup
+script.
+
+**Related files:** Files related to pyenv are stored in the `pyenv`
+directory of this repository. These files are:
+
+- `setup_pyenv.sh`: A script that installs Python 3.12.0 and sets it as the
+  global version. It also installs the packages listed in the
+  `requirements-sys.txt` file.
+- `requirements-sys.txt`: A file containing the system-wide Python
+  packages to be installed.
+
+### Julia (via juliaup)
+
+I use Julia as the main programming language of some projects. For that
+reason, I use juliaup to manage the Julia versions.
+
+**Installation and/or setup method:** Julia is installed via juliaup, which
+is installed via Homebrew. Setup is done by running the corresponding setup
+script.
+
+**Related files:** Files related to juliaup are stored in the `juliaup`
+directory of this repository. These files are:
+
+- `setup_juliaup.sh`: A script that installs Julia 1.10.0 and sets it as
+  the global version.
+
+### LaTeX (via MacTeX)
+
+I use LaTeX to write many documents and reports. For that reason, I use
+MacTeX (with no GUI) to install the LaTeX distribution.
+
+**Installation and/or setup method:** MacTeX is installed via Homebrew as a
+cask, `mactex-no-gui`.
+
+**Related files:** There are no related files for MacTeX.
 
 ### Typst
 
-I also use Typst to write many of my documents. Typst is installed with
-Homebrew.
+I use Typst to write many documents and reports.
+
+**Installation and/or setup method:** Typst is installed via Homebrew.
+
+**Related files:** There are no related files for Typst.
 
 ### Visual Studio Code
 
-I use Visual Studio Code as my main code editor. For the moment, I sync the
-settings and extensions using the built-in settings sync feature with
-GitHub.
+I use Visual Studio Code as my main code editor. For the moment,
+configurations and extensions are automatically synced between machines.
 
 ### Miscellaneous
 
 #### GPG
 
-I use GPG to sign my commits and other key management tasks.
+GPG is the tool I use for signing commits, tags and other files.
+
+**Installation and/or setup method:** GPG is installed via Homebrew.
+
+#### Delta
+
+Delta is a viewer for git and diff output.
+
+**Installation and/or setup method:** Delta is installed via Homebrew.
+
+#### FiraCode Nerd Font
+
+FiraCode Nerd Font is the main font I use in my terminal and code editor.
+
+**Installation and/or setup method:** FiraCode Nerd Font is installed via
+Homebrew as a cask, `font-fira-code-nerd-font`.
+
 
 ## Development
 
-In this section, we will describe the development environment, workflow,
-and conventions used in this repository.
+In this section, we will describe how to setup the development environment,
+the workflows and the conventions used in this repository.
 
-I use this as a guide for myself. However, you are free to use it as a
-reference or as a starting point for your own dotfiles.
+### Development environment
 
-### Environment
-
-First, since I use some Python libraries to manage the development
-environment, I recommend using a Python virtual environment to work with
-this repository. This can be done by running the following commands:
-
-```sh
-python -m venv "venv"
-source venv/bin/activate # Depending on your shell
-```
-
-Once the virtual environment is activated, we can install the development
-dependencies by running the following command:
+I use some Python tools to manage the development environment, such as
+[Invoke][invoke] or [pre-commit][pre-commit]. For that reason, we will
+create a virtual environment and install the development dependencies
+specified in the `requirements-dev.txt` file by running the following
+commands:
 
 ```sh
+python -m venv .venv
+source .venv/bin/activate.fish # or .venv/bin/activate if using other shell
 pip install -r requirements-dev.txt
 ```
 
-This will install the development dependencies, wich are _[Invoke][invoke]_
-and _[pre-commit][pre-commit]_.
-
-We use _Invoke_ to manage the development tasks. The tasks are defined in
-the `tasks.py` file. You can list the available tasks by running the
-following command:
+Tasks related to the development environment are defined in the `tasks.py`
+file. To see a list of available tasks, run the following command:
 
 ```sh
-invoke --list
+inv --list
 ```
 
-The _pre-commit_ library is used to manage the pre-commit hooks. The hooks
-are defined in the `.pre-commit-config.yaml` file.
-
-Before working on the repository for the first time, run the following
-task:
+To start the development environment, run the following command:
 
 ```sh
-invoke setup
+inv setup
 ```
 
-This will install the pre-commit hooks and clone the submodules.
+This task will download the necessary submodules and install the the
+pre-commit hooks. The submodules used in this repository are listed in the
+`.gitmodules` file. On the other hand, the pre-commit configuration is
+defined in the `.pre-commit-config.yaml` file.
 
-### Workflow and conventions
+### Workflows
 
-#### Git workflow
-
-The git workflow used in this repository is based on the _[Feature branch
-workflow][feauture-branch-workflow]_. The main steps are:
+The git workflow used in this repository is based on the [Feature branch
+workflow][feauture-branch-workflow]. The main steps are:
 
 1. Create a new branch from `main` to work on an specific change.
 2. Make the changes and commit them to the branch.
 3. Push the branch to the remote repository.
 4. Merge the branch into `main` once the changes are ready.
 5. Tag the commit with the version number. See the
-   _[Versioning](#versioning)_ section for more details.
+   [Versioning](#versioning) section for more details.
 
-#### Versioning
+### Versioning
 
-The versioning of this repository is based on the _[CalVer][calver]_
+The versioning of this repository is based on the [CalVer][calver]
 convention. The version number is defined as `YYYY.MM.DD`.
 
 ## License
@@ -319,13 +345,12 @@ This repository is licensed under the [MIT License](/LICENSE) by [Mario Vago Mar
 [mario]: https://github.com/mariovagomarzal
 [dotbot]: https://github.com/anishathalye/dotbot
 [ssh-keys]:
-    https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
+  https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
 [generate-ssh-key]:
-    https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
-[dotbot-brew]: https://github.com/wren/dotbot-brew
-[alacritty-themes]: https://github.com/alacritty/alacritty-theme
+  https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+[dotbot-brew]: https://github.com/d12frosted/dotbot-brew
 [invoke]: https://www.pyinvoke.org/
 [pre-commit]: https://pre-commit.com/
 [feauture-branch-workflow]:
-    https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
+  https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
 [calver]: https://calver.org/
