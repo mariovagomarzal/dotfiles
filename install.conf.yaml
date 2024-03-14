@@ -21,8 +21,8 @@
     command: source ./ssh/setup_ssh.sh
     description: Setting up SSH keys
 
-# With the `dotbot-brew` plugin, Homebrew is installed automatically if
-# necessary.
+# Install Homebrew if necessary
+- install-brew: true
 
 # Tap Homebrew taps
 - tap:
