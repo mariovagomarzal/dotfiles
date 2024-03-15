@@ -329,7 +329,6 @@ Maccy is the clipboard manager I use.
 **Installation and/or setup method:** Maccy is installed via Homebrew as
 a cask.
 
-
 ## Development
 
 In this section, we will describe how to setup the development environment,
