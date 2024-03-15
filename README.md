@@ -396,7 +396,7 @@ This repository is licensed under the [MIT License](/LICENSE) by [Mario Vago Mar
   https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
 [generate-ssh-key]:
   https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
-[dotbot-brew]: https://github.com/d12frosted/dotbot-brew
+[dotbot-brew]: https://github.com/mariovagomarzal/dotbot-brew
 [invoke]: https://www.pyinvoke.org/
 [pre-commit]: https://pre-commit.com/
 [feauture-branch-workflow]:
