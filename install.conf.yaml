@@ -32,7 +32,7 @@
 - brew:
   - fish
   - starship
-  - gpg
+  - gnupg
   - git
   - git-delta
   - pyenv
