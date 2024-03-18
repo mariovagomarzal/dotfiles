@@ -157,11 +157,13 @@ Homebrew is done by the `dotbot-brew` plugin.
 
 Fish is the shell I use as my default shell.
 
-**Installation and/or setup method:** Fish is installed via Homebrew.
+**Installation and/or setup method:** Fish is installed via Homebrew. Setup
+is done by running the corresponding setup script.
 
 **Related files:** The configuration files for Fish are stored in the
 `fish` directory of this repository. These files are:
 
+  - `setup_fish.sh`: A script that sets Fish as the default shell.
   - `config.fish`: The main configuration file for Fish.
   - `functions`: A directory containing the custom functions for Fish.
   - `conf.d`: A directory containing extra configuration files for Fish.
