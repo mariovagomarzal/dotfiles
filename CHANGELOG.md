@@ -6,7 +6,7 @@ The format is based on [Keep a
 Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres
 to [CalVer](https://calver.org/), with the `YYYY.0M.0D` format.
 
-## [Unreleased]
+## [2024.03.19]
 
 ### Added
 
@@ -16,4 +16,6 @@ to [CalVer](https://calver.org/), with the `YYYY.0M.0D` format.
 
 <!-- External links -->
 [unreleased]:
-    https://github.com/mariovagomarzal/dotfiles/tree/dotfiles-dotbot
+  https://github.com/mariovagomarzal/dotfiles/compare/2024.03.19...HEAD
+[2024.03.19]:
+    https://github.com/mariovagomarzal/dotfiles/releases/tag/2024.03.19
