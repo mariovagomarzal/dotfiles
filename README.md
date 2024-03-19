@@ -385,6 +385,12 @@ workflow][feauture-branch-workflow]. The main steps are:
 The versioning of this repository is based on the [CalVer][calver]
 convention. The version number is defined as `YYYY.MM.DD`.
 
+### Changelog
+
+We use a [changelog file](/CHANGELOG.md) to keep track of the changes made
+to the repository. The changelog follows the [Keep a
+Changelog][keep-a-changelog] format.
+
 ## License
 
 This repository is licensed under the [MIT License](/LICENSE) by [Mario Vago Marzal][mario].
@@ -403,3 +409,4 @@ This repository is licensed under the [MIT License](/LICENSE) by [Mario Vago Mar
 [feauture-branch-workflow]:
   https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
 [calver]: https://calver.org/
+[keep-a-changelog]: https://keepachangelog.com/
