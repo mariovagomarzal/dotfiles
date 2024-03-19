@@ -1,0 +1,7 @@
+[user]
+    name = Mario Vago Marzal
+    email = mariovagomarzal@gmail.com
+    signingkey = ~/.ssh/id_ed25519
+
+[github]
+    user = mariovagomarzal

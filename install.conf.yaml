@@ -1,0 +1,88 @@
+- defaults:
+    link:
+      create: true
+      force: true
+    shell:
+      stdin: true
+      stdout: true
+      stderr: true
+
+# Clear broken symlinks
+- clean: [ '~' ]
+- clean:
+    ~/.config:
+      recursive: true
+
+# System-specific setup steps
+- link:
+    # SSH
+    ~/.ssh/config: ssh/config
+
+- shell:
+  - # Setup SSH keys
+    command: source ./ssh/setup_ssh.sh
+    description: Setting up SSH keys
+
+# Install Homebrew if necessary
+- install-brew:
+    install: true
+    # Since some setup scripts are written for bash, we need to set up bash
+    # first so it can find binaries installed by Homebrew
+    setup-bash: true
+
+# Tap Homebrew taps
+- tap:
+  - homebrew/cask-fonts
+
+# Install Homebrew packages
+- brew:
+  - fish
+  - starship
+  - gnupg
+  - git
+  - git-delta
+  - pyenv
+  - juliaup
+  - typst
+
+# Install Homebrew casks
+- cask:
+  - mactex-no-gui
+  - alacritty
+  - karabiner-elements
+  - visual-studio-code
+  - font-fira-code-nerd-font
+  - google-drive
+  - calibre
+  - iina
+  - maccy
+
+# Post-installation steps
+- shell:
+  - # Use fish as default shell
+    command: source ./fish/setup_fish.sh
+    description: Making fish the default shell
+  - # Setup Python (with pyenv)
+    command: source ./pyenv/setup_python.sh
+    description: Setting up Python with pyenv
+  - # Setup Julia (with juliaup)
+    command: source ./juliaup/setup_julia.sh
+    description: Setting up Julia with juliaup
+
+# Symlink dotfiles
+- link:
+    # Fish
+    ~/.config/fish/config.fish: fish/config.fish
+    ~/.config/fish/functions: fish/functions
+    ~/.config/fish/conf.d: fish/conf.d
+    # Starship
+    ~/.config/starship.toml: starship/starship.toml
+    # Git
+    ~/.gitconfig: git/.gitconfig
+    ~/.gitconfig.local: git/.gitconfig.local
+    ~/.gitignore_global: git/.gitignore_global
+    # Alacritty
+    ~/.config/alacritty/alacritty.toml: alacritty/alacritty.toml
+    ~/.config/alacritty/themes: alacritty/themes
+    # Karabiner-Elements
+    ~/.config/karabiner/karabiner.json: karabiner/karabiner.json

@@ -1,0 +1,79 @@
+# User specific configuration
+[include]
+    path = ~/.gitconfig.local
+
+# Key related settings
+[gpg]
+    format = ssh
+
+[credential]
+    helper = osxkeychain
+
+[tag]
+    gpgsign = true
+
+# Color settings
+[color]
+    ui = auto
+
+[color "branch"]
+    current = yellow bold
+    local = yellow
+    remote = cyan
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = green bold
+    changed = cyan bold
+    untracked = red bold
+
+# Init settings
+[init]
+    defaultBranch = main
+
+# Core settings
+[core]
+    excludesfile = ~/.gitignore_global
+    editor = code --wait
+    pager = delta
+
+# Delta settings
+[delta]
+    feautures = side-by-side line-numbers decorations
+    syntax-theme = Dracula
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+
+[delta "line-numbers"]
+    line-numbers-left-style = cyan
+    line-numbers-right-style = cyan
+    line-numbers-minus-style = 124
+    line-numbers-plus-style = 28
+
+[interactive]
+    diffFilter = delta --color-only
+
+# Diff settings
+[diff]
+    tool = code
+    colorMoved = default
+
+[difftool "code"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+
+# Merge settings
+[merge]
+    tool = code
+    log = true
+    conflictstyle = diff3
+
+[mergetool "code"]
+    cmd = code --wait $MERGED
