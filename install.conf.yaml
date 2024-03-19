@@ -24,7 +24,11 @@
     description: Setting up SSH keys
 
 # Install Homebrew if necessary
-- install-brew: true
+- install-brew:
+    install: true
+    # Since some setup scripts are written for bash, we need to set up bash
+    # first so it can find binaries installed by Homebrew
+    setup-bash: true
 
 # Tap Homebrew taps
 - tap:
