@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a
 Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres
-to [CalVer](https://calver.org/), with the `YYYY.MM.DD` format.
+to [CalVer](https://calver.org/), with the `YYYY.0M.0D` format.
 
 ## [Unreleased]
 

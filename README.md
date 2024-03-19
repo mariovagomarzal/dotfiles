@@ -383,7 +383,7 @@ workflow][feauture-branch-workflow]. The main steps are:
 ### Versioning
 
 The versioning of this repository is based on the [CalVer][calver]
-convention. The version number is defined as `YYYY.MM.DD`.
+convention. The version number is defined as `YYYY.0M.0D`.
 
 ### Changelog
 
