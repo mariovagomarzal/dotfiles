@@ -2,9 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a
-Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres
-to [CalVer](https://calver.org/), with the `YYYY.0M.0D` format.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [CalVer](https://calver.org/), with the `YYYY.0M.0D`
+format.
+
+## [Unreleased]
+
+### Removed
+
+- Support for `dotbot` tool. In particular:
+  - Removed `dotbot` and `dotbot-brew` submodules.
+  - Removed `install` script and `install.conf.yaml` file.
+  - Dotfiles that were managed by `dotbot`.
+  - Documentation in the README file related to `dotbot`.
+- Development dependecies managed with Python. In particular:
+  - Python entries in `.gitignore` file.
+  - `invoke` related files.
+  - `pre-commit` related files.
+  - Documentation in the README file related to Python dependencies.
 
 ## [2024.03.19]
 
