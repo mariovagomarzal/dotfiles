@@ -1,3 +1,6 @@
+######################################
+# Mario's MacBook Pro configuration. #
+######################################
 {inputs, ...}: let
   hostName = "Marios-MacBook-Pro";
   system = "aarch64-darwin";
