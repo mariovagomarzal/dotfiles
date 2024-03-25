@@ -17,7 +17,7 @@ in {
       ./modules/nix-core.nix
 
       # Module for the host and users configuration.
-      ./modules/host-and-users.nix
+      ./modules/host-users.nix
     ];
   };
 }
