@@ -17,7 +17,8 @@ This includes many system settings and the installation and configuration of
 most of the tools and applications I use on a daily basis on each of the
 machines handled by this repository.
 
-> [!NOTE] As mentioned, these dotfiles are tailored to my personal needs and
+> [!NOTE]
+> As mentioned, these dotfiles are tailored to my personal needs and
 > preferences. Therefore, in most cases, they will not be suitable for anyone
 > else. However, feel free to use them as a starting point for your own
 > dotfiles. This guide is intended to be a reference for myself, but also for
@@ -52,8 +53,8 @@ this repository.
 
 > [!CAUTION]
 > The following instructions will install and configure many tools and
-> applications on your machine. Make sure to read and understand what the
-> setup process does before running it.
+> applications on your machine. Make sure to read and understand what the setup
+> process does before running it.
 
 ### Mario's MacBook Pro
 
