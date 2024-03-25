@@ -12,6 +12,9 @@
 in {
   "${hostName}" = inputs.nix-darwin.lib.darwinSystem {
     inherit system specialArgs;
-    modules = [];
+    modules = [
+      # Module for the Nix configuration itself.
+      ./modules/nix-core.nix
+    ];
   };
 }
