@@ -61,7 +61,6 @@
     casks = [
       "alacritty"
       "visual-studio-code"
-      "karabiner-elements"
       "calibre"
       "google-drive"
       "iina"
