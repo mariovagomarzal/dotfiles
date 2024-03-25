@@ -4,6 +4,19 @@
 default:
     @just --list --unsorted
 
+###########################
+# Dotfiles setup recipes. #
+###########################
+
+hostname := "$(hostname)"
+
+alias dr := darwin-rebuild
+
+# Rebuild a Darwin configuration with the given hostname.
+darwin-rebuild HOSTNAME=hostname:
+    @echo "Rebuilding the Darwin configuration..."
+    sudo darwin-rebuild switch --flake ".#{{HOSTNAME}}"
+
 ########################
 # Development recipes. #
 ########################
@@ -21,6 +34,6 @@ check:
     nix {{experimental_features}} flake check
 
 # Format Nix code.
-format paths=".":
+format PATHS=".":
     @echo "Formatting Nix code..."
-    nix {{experimental_features}} fmt {{paths}}
+    nix {{experimental_features}} fmt {{PATHS}}
