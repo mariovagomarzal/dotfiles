@@ -8,11 +8,20 @@ format.
 
 ## [Unreleased]
 
+### Added
+
+- Development dependencies managed with Nix (via flakes). In particular:
+  - Development shell with [devshell](https://github.com/numtide/devshell).
+  - A `Justfile` with recipes to setup and manage the development environment.
+  - `pre-commit` hooks with
+    [pre-commit-hooks.nix](https://github.com/cachix/pre-commit-hooks.nix/tree/master)
+  - Documentation in the README file related to Nix dependencies.
+
 ### Removed
 
 - Support for `dotbot` tool. In particular:
-  - Removed `dotbot` and `dotbot-brew` submodules.
-  - Removed `install` script and `install.conf.yaml` file.
+  - `dotbot` and `dotbot-brew` submodules.
+  - `install` script and `install.conf.yaml` file.
   - Dotfiles that were managed by `dotbot`.
   - Documentation in the README file related to `dotbot`.
 - Development dependecies managed with Python. In particular:
@@ -27,7 +36,6 @@ format.
 
 - Initial version of the dotfiles repository using the
   [dotbot](https://github.com/anishathalye/dotbot) tool.
-
 
 <!-- External links -->
 [unreleased]:
