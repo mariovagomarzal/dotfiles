@@ -15,6 +15,9 @@ in {
     modules = [
       # Module for the Nix configuration itself.
       ./modules/nix-core.nix
+
+      # Module for the host and users configuration.
+      ./modules/host-and-users.nix
     ];
   };
 }
