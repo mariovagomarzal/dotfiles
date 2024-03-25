@@ -18,6 +18,9 @@ in {
 
       # Module for the host and users configuration.
       ./modules/host-users.nix
+
+      # Module with the packages to install and manage.
+      ./modules/packages.nix
     ];
   };
 }
