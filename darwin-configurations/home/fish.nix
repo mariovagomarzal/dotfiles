@@ -5,19 +5,10 @@
   programs.fish = {
     enable = true;
 
-    # Shell script code to run in login shells.
-    loginShellInit = ''
-      # Initialize Pyenv.
-      pyenv init - | source
-    '';
-
     # Shell script code to run in interactive shells.
     interactiveShellInit = ''
       # Set the fish theme.
       fish_config theme choose "ayu Mirage"
-
-      # Set the fish prompt with Starship.
-      starship init fish | source
     '';
 
     # Fish functions.
@@ -62,8 +53,5 @@
         '';
       };
     };
-
-    # Shell aliases.
-    # shellAliases = {};
   };
 }
