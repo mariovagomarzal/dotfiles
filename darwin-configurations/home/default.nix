@@ -18,5 +18,8 @@
   imports = [
     # Core packages and utilities (with no special configuration).
     ./core.nix
+
+    # SSH agent configuration.
+    ./ssh.nix
   ];
 }
