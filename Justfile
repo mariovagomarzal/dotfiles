@@ -14,7 +14,7 @@ alias dr := darwin-rebuild
 
 # Rebuild a Darwin configuration with the given hostname.
 darwin-rebuild HOSTNAME=hostname:
-    @echo "Rebuilding the Darwin configuration..."
+    @echo "Rebuilding the Darwin configuration for {{HOSTNAME}}..."
     darwin-rebuild switch --flake ".#{{HOSTNAME}}"
 
 ########################
