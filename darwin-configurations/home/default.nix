@@ -24,5 +24,8 @@
 
     # Fish shell configuration.
     ./fish.nix
+
+    # Starship prompt configuration.
+    ./starship.nix
   ];
 }
