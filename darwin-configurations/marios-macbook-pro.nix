@@ -24,6 +24,16 @@ in {
 
       # Module with the packages to install and manage.
       ./modules/packages.nix
+
+      # Home Manager module.
+      inputs.home-manager.darwinModules.home-manager
+      {
+        home-manager.backupFileExtension = "backup";
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = specialArgs;
+        home-manager.users.${userName} = import ./home;
+      }
     ];
   };
 }
