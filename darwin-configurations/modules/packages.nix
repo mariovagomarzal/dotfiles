@@ -44,7 +44,7 @@
     onActivation = {
       # Disable automatic updates and upgrades.
       autoUpdate = false;
-      autoUpgrade = false;
+      upgrade = false;
 
       # Remove all packages managed by Homebrew not listed here.
       cleanup = "zap";
