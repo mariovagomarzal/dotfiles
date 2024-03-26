@@ -11,7 +11,6 @@
   environment.systemPackages = with pkgs; [
     # Core tools.
     git
-    delta
     just
 
     # Text editors.
