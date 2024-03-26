@@ -21,5 +21,8 @@
 
     # SSH agent configuration.
     ./ssh.nix
+
+    # Fish shell configuration.
+    ./fish.nix
   ];
 }
