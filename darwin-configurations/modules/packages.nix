@@ -11,6 +11,7 @@
   environment.systemPackages = with pkgs; [
     # Core tools.
     git
+    gnupg
     just
 
     # Text editors.
