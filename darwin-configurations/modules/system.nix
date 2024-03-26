@@ -9,6 +9,9 @@
         # Automatically hide and show the Dock.
         autohide = true;
 
+        # Don't show recent applications in Dock.
+        show-recents = false;
+
         # Don't rearrange spaces based on most recent use.
         mru-spaces = false;
 
@@ -113,7 +116,7 @@
 
         "com.apple.WindowManager" = {
           # Enable click on Desktop to show the Desktop.
-          EnableStandardClickToShowDesktop = 0;
+          EnableStandardClickToShowDesktop = true;
         };
 
         # Prevent Photos from opening automatically when devices are plugged in.
