@@ -27,5 +27,8 @@
 
     # Starship prompt configuration.
     ./starship.nix
+
+    # Alacrity terminal configuration.
+    ./alacritty.nix
   ];
 }
