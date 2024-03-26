@@ -8,7 +8,7 @@
   userEmail = "mariovagomarzal@gmail.com";
   specialArgs =
     inputs
-    // {inherit hostName system userName userEmail;};
+    // {inherit hostName userName userEmail;};
 in {
   "${hostName}" = inputs.nix-darwin.lib.darwinSystem {
     inherit system specialArgs;
