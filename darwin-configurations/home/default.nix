@@ -15,5 +15,8 @@
   };
 
   # Home-manager imports.
-  imports = [];
+  imports = [
+    # Core packages and utilities (with no special configuration).
+    ./core.nix
+  ];
 }
