@@ -30,5 +30,8 @@
 
     # Alacrity terminal configuration.
     ./alacritty.nix
+
+    # Git configuration.
+    ./git.nix
   ];
 }
