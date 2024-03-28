@@ -69,6 +69,7 @@
       "google-drive"
       "iina"
       "maccy"
+      "openemu"
     ];
 
     # Applications to install from the Mac App Store.
