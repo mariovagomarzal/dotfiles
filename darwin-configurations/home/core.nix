@@ -9,6 +9,10 @@
 
     # Signing tools.
     gnupg
+
+    # Python packages.
+    poetry
+    cookiecutter
   ];
 
   # Minimal configuration-dependent packages.
