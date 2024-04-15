@@ -21,8 +21,12 @@
     python312
     pyenv
     julia-bin
+    elan
     typst
     texliveFull
+
+    # Miscellaneous.
+    aria2
   ];
 
   # Fonts.
@@ -59,10 +63,12 @@
     # Brew packages to install, i.e., `brew install <package>`.
     brews = [
       "juliaup"
+      "ghcup"
     ];
 
     # Brew casks to install, i.e., `brew install --cask <package>`.
     casks = [
+      "racket"
       "alacritty"
       "visual-studio-code"
       "calibre"
