@@ -63,18 +63,20 @@
     # Brew packages to install, i.e., `brew install <package>`.
     brews = [
       "juliaup"
-      "ghcup"
     ];
 
     # Brew casks to install, i.e., `brew install --cask <package>`.
     casks = [
-      "racket"
+      "google-chrome"
       "alacritty"
       "visual-studio-code"
+      "logi-options-plus"
+      "skim"
       "calibre"
       "google-drive"
       "iina"
       "maccy"
+      "steam"
       "openemu"
     ];
 
