@@ -33,5 +33,11 @@
 
     # Git configuration.
     ./git.nix
+
+    # Yabai window manager configuration.
+    ./yabai.nix
+
+    # Skhd hotkey daemon configuration.
+    ./skhd.nix
   ];
 }
