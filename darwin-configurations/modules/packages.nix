@@ -24,6 +24,8 @@
     elan
     typst
     texliveFull
+    rustup
+    zulu
 
     # Miscellaneous.
     aria2
@@ -62,6 +64,13 @@
     # Brew packages to install, i.e., `brew install <package>`.
     brews = [
       "juliaup"
+      "pdfpc"
+
+      # Dependencies for the Python libary `manim`.
+      "py3cairo"
+      "ffmpeg"
+      "pkg-config"
+      "scipy"
     ];
 
     # Brew casks to install, i.e., `brew install --cask <package>`.
@@ -69,7 +78,7 @@
       "google-chrome"
       "alacritty"
       "visual-studio-code"
-      "logi-options-plus"
+      "logi-options+"
       "skim"
       "calibre"
       "google-drive"
@@ -77,6 +86,7 @@
       "maccy"
       "steam"
       "openemu"
+      "godot"
     ];
 
     # Applications to install from the Mac App Store.
