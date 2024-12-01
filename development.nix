@@ -34,7 +34,7 @@
           # Enable the markdownlint pre-commit hook.
           markdownlint = {
             enable = true;
-            settings.config = {
+            settings.configuration = {
               # Allow multiple headers with the same content.
               "MD024" = false;
             };
