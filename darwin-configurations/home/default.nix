@@ -1,5 +1,5 @@
 ###########################################
-# Homa-manager configuration entry point. #
+# Home-manager configuration entry point. #
 ###########################################
 {userName, ...}: {
   # Let home-manager install and manage itself.
