@@ -26,7 +26,7 @@
     pre-commit = {
       check.enable = true;
       settings = {
-        default_stages = ["commit"];
+        default_stages = ["pre-commit"];
         hooks = {
           # Enable the Alejandra pre-commit hook.
           alejandra.enable = true;
@@ -53,6 +53,10 @@
           {reset}
           {3}[!] Don't use commands from the internal category.{reset}
           $(type -p menu &> /dev/null && menu)
+        '';
+        startup."setup-env".text = ''
+          # Install pre-commit hooks.
+          _pre-commit-install
         '';
       };
 
