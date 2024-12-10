@@ -1,5 +1,4 @@
 # Justfile for the repository.
-
 [private]
 default:
     @just --list --unsorted
@@ -7,33 +6,29 @@ default:
 ###########################
 # Dotfiles setup recipes. #
 ###########################
-
 hostname := "$(hostname)"
 
-alias dr := darwin-rebuild
-
-# Rebuild a Darwin configuration with the given hostname.
+[group("dotfiles")]
+[doc('Rebuild a Darwin configuration with the given hostname.')]
 darwin-rebuild HOSTNAME=hostname:
     @echo "Rebuilding the Darwin configuration for {{HOSTNAME}}..."
     darwin-rebuild switch --flake ".#{{HOSTNAME}}"
 
+alias dr := darwin-rebuild
+
 ########################
 # Development recipes. #
 ########################
-
 experimental_features := "--extra-experimental-features \"nix-command flakes\""
 
-# Setup the development environment (outside the devshells).
-setup-env:
-    @echo "Installing pre-commit hooks..."
-    @_pre-commit-install
-
-# Run flake checks.
+[group("development")]
+[doc("Run flake checks.")]
 check:
     @echo "Running flake checks..."
     nix {{experimental_features}} flake check
 
-# Format Nix code.
+[group("development")]
+[doc("Format Nix code.")]
 format PATHS=".":
     @echo "Formatting Nix code..."
     nix {{experimental_features}} fmt {{PATHS}}
