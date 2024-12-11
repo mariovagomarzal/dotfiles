@@ -2,37 +2,58 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [CalVer](https://calver.org/), with the `YYYY.0M.0D`
-format.
+Each stable version of the dotfiles repository is tagged with a date in the
+format `YYYY.MM.DD`, with optional patch versions separated by a dot if more
+than one version is released in the same day.
+
+Changes for each version are grouped into the following (possibly empty)
+sections:
+
+- _Codebase_: for general changes related to the dotfiles structure or
+  functionality.
+- _\<Host/User Name\>_: for changes in the dotfiles of a specific host or user.
+- _Development_: for changes in the development environment, such as
+  dependencies or tools.
+- _Documentation_: for changes in documentation-related files such as
+  `README.md` or `CHANGELOG.md`.
+- _Miscellaneous_: for changes that do not fit in any of the previous sections.
 
 ## [Unreleased]
 
-### Added
+### Codebase
 
-- Development dependencies managed with Nix (via flakes). In particular:
-  - Development shell with [devshell](https://github.com/numtide/devshell).
-  - A `Justfile` with recipes to setup and manage the development environment.
-  - `pre-commit` hooks with
-    [pre-commit-hooks.nix](https://github.com/cachix/pre-commit-hooks.nix/tree/master)
-  - Documentation in the README file related to Nix dependencies.
+- Dotfiles are now managed with Nix (via flakes).
 
-### Removed
+### Mario's MacBook Pro
 
-- Support for `dotbot` tool. In particular:
-  - `dotbot` and `dotbot-brew` submodules.
-  - `install` script and `install.conf.yaml` file.
-  - Dotfiles that were managed by `dotbot`.
-  - Documentation in the README file related to `dotbot`.
-- Development dependecies managed with Python. In particular:
-  - Python entries in `.gitignore` file.
-  - `invoke` related files.
-  - `pre-commit` related files.
-  - Documentation in the README file related to Python dependencies.
+- Most of the system configurations and packages are now managed with Nix. In
+  particular:
+  - System-wide configurations and packages are managed with
+    [nix-darwin](https://github.com/LnL7/nix-darwin).
+  - User-specific configurations and packages are managed with
+    [home-manager](https://github.com/nix-community/home-manager) as a
+    nix-darwin module.
+
+### Development
+
+- Development dependencies are now managed with Nix. In particular:
+  - A development shell has been added with
+    [devshell](https://github.com/numtide/devshell).
+  - Pre-commit hooks have been added with
+    [pre-commit-hooks.nix](https://github.com/cachix/pre-commit-hooks.nix/tree/master).
+  - A `Justfile` with recipes to format and check the code.
+
+### Documentation
+
+- The README file has been updated to reflect the changes in the codebase and
+  development environment.
+- The CHANGELOG format no longer adheres to the _Keep a Changelog_
+  specification. Instead, it follows a format where each change is grouped by
+  the affected area.
 
 ## [2024.03.19]
 
-### Added
+### Codebase
 
 - Initial version of the dotfiles repository using the
   [dotbot](https://github.com/anishathalye/dotbot) tool.
@@ -41,4 +62,4 @@ format.
 [unreleased]:
   https://github.com/mariovagomarzal/dotfiles/compare/2024.03.19...HEAD
 [2024.03.19]:
-    https://github.com/mariovagomarzal/dotfiles/releases/tag/2024.03.19
+  https://github.com/mariovagomarzal/dotfiles/releases/tag/2024.03.19
