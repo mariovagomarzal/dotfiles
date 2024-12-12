@@ -18,6 +18,14 @@ sections:
   `README.md` or `CHANGELOG.md`.
 - _Miscellaneous_: for changes that do not fit in any of the previous sections.
 
+## [Unreleased]
+
+### Documentation
+
+- Remove some comments from the code that were explaining functionality from
+  external tools that are already rightly documented in their respective
+  repositories.
+
 ## [2024.12.12]
 
 ### Codebase
@@ -59,6 +67,8 @@ sections:
   [dotbot](https://github.com/anishathalye/dotbot) tool.
 
 <!-- External links -->
+[unreleased]:
+  https://github.com/mariovagomarzal/dotfiles/compare/2024.12.12...HEAD
 [2024.12.12]:
   https://github.com/mariovagomarzal/dotfiles/releases/tag/2024.12.12
 [2024.03.19]:

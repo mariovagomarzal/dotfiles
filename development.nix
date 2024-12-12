@@ -2,8 +2,7 @@
 # Development environment tools and configurations. #
 #####################################################
 {...}: {
-  # The `systems` attribute is a list of supported systems used by the
-  # `perSystem` attribute to define system-specific attributes of the flake.
+  # Define the systems where the development environment is available.
   systems = [
     "aarch64-linux"
     "x86_64-linux"
@@ -11,9 +10,7 @@
     "x86_64-darwin"
   ];
 
-  # The `perSystem` attribute defines system-specific attributes of the flake,
-  # making the following tools and configurations available on all systems
-  # defined in the `systems` attribute.
+  # Define the development environment configurations.
   perSystem = {
     config,
     pkgs,
