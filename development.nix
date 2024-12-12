@@ -35,6 +35,8 @@
           markdownlint = {
             enable = true;
             settings.configuration = {
+              # Allow to exceed the maximum line length.
+              "MD013" = false;
               # Allow multiple headers with the same content.
               "MD024" = false;
             };
