@@ -34,7 +34,7 @@
       # The `flake` attribute specifies raw flake attributes.
       # System configurations managed with this flake are defined here by
       # importing the `system-configs.nix` module.
-      flake = import ./system-configs.nix {inherit inputs;};
+      flake = import ./system-configs.nix inputs;
 
       # The `imports` attribute specifies the flake's submodules to be included.
       imports = [
