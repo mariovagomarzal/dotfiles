@@ -25,8 +25,8 @@ args: let
   home-makers = importWithArgs ./home-makers.nix;
 in {
   /*
-  Returns an attribute set where each attribute key is a host and the value is
-  a NixOS configuration.
+  Returns an attribute set where each attribute key is a host name and the value
+  is a NixOS configuration.
 
   # Usage
   TODO: Add usage.
@@ -34,8 +34,8 @@ in {
   mkNixosConfigurations = system-makers.mkSystemMaker "nixos";
 
   /*
-  Returns an attribute set where each attribute key is host and the value is
-  a Darwin configuration.
+  Returns an attribute set where each attribute key is a host name and the value
+  is a Darwin configuration.
 
   # Usage
   TODO: Add usage.
@@ -43,7 +43,11 @@ in {
   mkDarwinConfigurations = system-makers.mkSystemMaker "darwin";
 
   /*
-  TODO: Not yet implemented.
+  Returns an attribute set where each attribute key is a user name and the value
+  is a Home-Manager configuration.
+
+  # Usage
+  TODO: Add usage.
   */
   inherit (home-makers) mkHomeConfigurations;
 }
