@@ -34,7 +34,10 @@
     args' = {userModulesDir = userName;} // args;
     mergedArgs = lib.recursiveUpdate args' userArgs;
   in {
-    configurationMaker = mergedArgs.home-manager.lib.homeManagerConfiguration;
+    configurationMaker =
+      if mergedArgs.debug
+      then (x: x)
+      else mergedArgs.home-manager.lib.homeManagerConfiguration;
     pkgs = mergedArgs.nixpkgs.legacyPackages.${mergedArgs.system};
     modules = getHomeModules mergedArgs;
     extraSpecialArgs = {inherit userName;} // mergedArgs.specialArgs;
@@ -48,7 +51,7 @@
   mkUserConfiguration = userName: userArgs: args: let
     context = mkUserContext userName userArgs args;
   in
-    context.confgiurationMaker (lib.recursiveUpdate {
+    context.configurationMaker (lib.recursiveUpdate {
         inherit
           (context)
           pkgs

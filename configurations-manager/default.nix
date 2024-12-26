@@ -6,7 +6,7 @@ args: let
   lib = args.nixpkgs-lib;
 
   # A set of utility functions for the library.
-  utils = import ./utils.nix args // {inherit lib;};
+  utils = import ./utils.nix (args // {inherit lib;});
 
   # Import a module with the given arguments, the 'nixpkgs' library and the
   # 'utils' functions.

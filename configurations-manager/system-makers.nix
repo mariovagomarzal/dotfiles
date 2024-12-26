@@ -69,7 +69,7 @@
   getHomeManagerModule = type: args: let
     homeManagerModule = perTypeInfo type "homeManagerModule";
   in
-    args.home-manager.${homeMakerFunction}.home-manager;
+    args.home-manager.${homeManagerModule}.home-manager;
 
   /*
   Returns the modules for a user configuration.
@@ -133,7 +133,7 @@
       {
         inherit hostName;
       }
-      // args.extraHomeSpecialArgs;
+      // args.homeSpecialArgs;
     extraHomeManagerArgs = args.extraHomeManagerArgs;
     users = mkUsersConfigurations args;
   };
@@ -147,14 +147,15 @@
   in [
     context.homeManagerModule
     {
-      home-manager = {
-        inherit
-          (context)
-          extraSpecialArgs
-          extraHomeManagerArgs
-          users
-          ;
-      };
+      home-manager =
+        lib.recursiveUpdate {
+          inherit
+            (context)
+            extraSpecialArgs
+            users
+            ;
+        }
+        context.extraHomeManagerArgs;
     }
   ];
 
@@ -163,7 +164,7 @@
   components to generate the configuration.
   */
   mkHostContext = type: hostName: hostArgs: args: let
-    args' = {hostConfigurationDir = hostName;} // args;
+    args' = {hostModulesDir = hostName;} // args;
     mergedArgs = lib.recursiveUpdate args' hostArgs;
   in {
     configurationMaker =
