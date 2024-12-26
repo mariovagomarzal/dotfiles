@@ -30,8 +30,8 @@
   Prepares the context for a user configuration, that is, the necessary
   components to generate the configuration.
   */
-  mkUserContext = userName: userArgs: args: let
-    args' = {userModulesDir = userName;} // args;
+  mkUserContext = username: userArgs: args: let
+    args' = {userModulesDir = username;} // args;
     mergedArgs = lib.recursiveUpdate args' userArgs;
   in {
     configurationMaker =
@@ -40,16 +40,16 @@
       else mergedArgs.home-manager.lib.homeManagerConfiguration;
     pkgs = mergedArgs.nixpkgs.legacyPackages.${mergedArgs.system};
     modules = getHomeModules mergedArgs;
-    extraSpecialArgs = {inherit userName;} // mergedArgs.specialArgs;
+    extraSpecialArgs = {inherit username;} // mergedArgs.specialArgs;
     extraArgs = mergedArgs.extraHomeManagerArgs;
   };
 
   /*
-  Given a user name, its arguments, and the global arguments, returns the
-  user configuration.
+  Given a username, its arguments, and the global arguments, returns the user
+  configuration.
   */
-  mkUserConfiguration = userName: userArgs: args: let
-    context = mkUserContext userName userArgs args;
+  mkUserConfiguration = username: userArgs: args: let
+    context = mkUserContext username userArgs args;
   in
     context.configurationMaker (lib.recursiveUpdate {
         inherit
@@ -67,7 +67,7 @@
 
   Some attributes are commented out to indicate that they are possible input
   arguments. However, their default values ​​are defined elsewhere in the code
-  so that those values ​​can be set based on the user name.
+  so that those values ​​can be set based on the username.
   */
   defaultArgs = {
     debug = false;
@@ -79,7 +79,7 @@
     sharedModulesDir = ".";
     excludedSharedModules = [];
     extraSharedModules = [];
-    # userModulesDir = userName;
+    # userModulesDir = username;
     excludedUserModules = [];
     extraUserModules = [];
     extraHomeManagerArgs = {};
@@ -90,8 +90,8 @@ in {
   */
   mkHomeConfigurations = args @ {users ? {}, ...}:
     lib.mapAttrs (
-      userName: userArgs:
-        mkUserConfiguration userName userArgs (defaultArgs // args)
+      username: userArgs:
+        mkUserConfiguration username userArgs (defaultArgs // args)
     )
     users;
 }

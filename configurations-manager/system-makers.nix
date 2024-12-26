@@ -52,14 +52,14 @@
     configurationsDirKey = perTypeInfo type "configurationsDir";
     configurationsDir = args.${configurationsDirKey};
     sharedModulesDir = configurationsDir + "/" + args.sharedModulesDir;
-    hostConfigurationDir = configurationsDir + "/" + args.hostModulesDir;
+    hostModulesDir = configurationsDir + "/" + args.hostModulesDir;
   in
     (utils.getModules
       sharedModulesDir
       args.excludedSharedModules
       args.extraSharedModules)
     ++ (utils.getModules
-      hostConfigurationDir
+      hostModulesDir
       args.excludedHostModules
       args.extraHostModules);
 
@@ -77,14 +77,14 @@
   getUserModules = args: let
     configurationsDir = args.homeConfigurationsDir;
     sharedModulesDir = configurationsDir + "/" + args.sharedModulesDir;
-    userConfigurationDir = configurationsDir + "/" + args.userConfigurationDir;
+    userModulesDir = configurationsDir + "/" + args.userModulesDir;
   in
     (utils.getModules
       sharedModulesDir
       args.excludedHomeSharedModules
       args.extraHomeSharedModules)
     ++ (utils.getModules
-      userConfigurationDir
+      userModulesDir
       args.excludedUserModules
       args.extraUserModules);
 
@@ -92,8 +92,8 @@
   Prepares the context for the user configuration, that is, the necessary
   components to generate the configuration attribute set.
   */
-  mkUserContext = userName: userArgs: args: let
-    args' = {userConfigurationDir = userName;} // args;
+  mkUserContext = username: userArgs: args: let
+    args' = {userModulesDir = username;} // args;
     mergedArgs = lib.recursiveUpdate args' userArgs;
   in {
     imports = getUserModules mergedArgs;
@@ -101,11 +101,11 @@
   };
 
   /*
-  Given a user name, its arguments, and the global arguments, returns the user
+  Given a username, its arguments, and the global arguments, returns the user
   configuration attribute set.
   */
-  mkUserConfiguration = userName: userArgs: args: let
-    context = mkUserContext userName userArgs args;
+  mkUserConfiguration = username: userArgs: args: let
+    context = mkUserContext username userArgs args;
   in
     lib.recursiveUpdate {
       inherit (context) imports;
@@ -113,13 +113,13 @@
     context.extraUserArgs;
 
   /*
-  Returns an attribute set where each key is a user name and the value is the
+  Returns an attribute set where each key is a username and the value is the
   user configuration attribute set.
   */
   mkUsersConfigurations = args @ {users, ...}:
     lib.mapAttrs (
-      userName: userArgs:
-        mkUserConfiguration userName userArgs args
+      username: userArgs:
+        mkUserConfiguration username userArgs args
     )
     users;
 
@@ -127,11 +127,12 @@
   Prepares the context for the Home-Manager module, that is, the necessary
   components to generate the module, its global options and the users options.
   */
-  mkHomeModuleContext = type: hostName: args: {
+  mkHomeModuleContext = type: hostname: args: {
     homeManagerModule = getHomeManagerModule type args;
     extraSpecialArgs =
       {
-        inherit hostName;
+        inherit hostname;
+        inherit (args) users;
       }
       // args.homeSpecialArgs;
     extraHomeManagerArgs = args.extraHomeManagerArgs;
@@ -142,8 +143,8 @@
   Returns the Home-Manager module for the given type. This includes the global
   options and the users options as an attribute set.
   */
-  mkHomeModule = type: hostName: args: let
-    context = mkHomeModuleContext type hostName args;
+  mkHomeModule = type: hostname: args: let
+    context = mkHomeModuleContext type hostname args;
   in [
     context.homeManagerModule
     {
@@ -163,8 +164,8 @@
   Prepares the context for the host configuration, that is, the necessary
   components to generate the configuration.
   */
-  mkHostContext = type: hostName: hostArgs: args: let
-    args' = {hostModulesDir = hostName;} // args;
+  mkHostContext = type: hostname: hostArgs: args: let
+    args' = {hostModulesDir = hostname;} // args;
     mergedArgs = lib.recursiveUpdate args' hostArgs;
   in {
     configurationMaker =
@@ -174,22 +175,22 @@
     system = mergedArgs.system;
     specialArgs =
       {
-        inherit hostName;
+        inherit hostname;
         inherit (mergedArgs) users;
       }
       // mergedArgs.specialArgs;
     modules =
       (getSystemModules type mergedArgs)
-      ++ (mkHomeModule type hostName mergedArgs);
+      ++ (mkHomeModule type hostname mergedArgs);
     extraArgs = mergedArgs.${perTypeInfo type "extraArgs"};
   };
 
   /*
-  Given a host name, its arguments, and the global arguments, returns the host
+  Given a hostname, its arguments, and the global arguments, returns the host
   configuration based on the given type.
   */
-  mkHostConfiguration = type: hostName: hostArgs: args: let
-    context = mkHostContext type hostName hostArgs args;
+  mkHostConfiguration = type: hostname: hostArgs: args: let
+    context = mkHostContext type hostname hostArgs args;
   in
     context.configurationMaker (lib.recursiveUpdate {
         inherit
@@ -207,7 +208,7 @@
 
   Some attributes are commented out to indicate that they are possible input
   arguments. However, their default values ​​are defined elsewhere in the code
-  so that those values ​​can be set based on the host or user name.
+  so that those values ​​can be set based on the hostname or username.
   */
   defaultArgs = {
     debug = false;
@@ -220,7 +221,7 @@
     sharedModulesDir = ".";
     excludedSharedModules = [];
     extraSharedModules = [];
-    # hostModulesDir = hostName;
+    # hostModulesDir = hostname;
     excludedHostModules = [];
     extraHostModules = [];
     extraNixosArgs = {};
@@ -231,7 +232,7 @@
     # sharedModulesDir = ".";
     excludedHomeSharedModules = [];
     extraHomeSharedModules = [];
-    # userConfigurationDir = userName;
+    # userModulesDir = username;
     excludedUserModules = [];
     extraUserModules = [];
     extraUserArgs = {};
@@ -246,8 +247,8 @@ in {
   */
   mkSystemMaker = type: args @ {hosts ? {}, ...}:
     lib.mapAttrs (
-      hostName: hostArgs:
-        mkHostConfiguration type hostName hostArgs (defaultArgs // args)
+      hostname: hostArgs:
+        mkHostConfiguration type hostname hostArgs (defaultArgs // args)
     )
     hosts;
 }
