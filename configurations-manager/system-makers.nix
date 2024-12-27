@@ -226,15 +226,16 @@
     home-manager = home-manager;
     homeConfigurationsDir = homeConfigurationsDir;
     homeSpecialArgs = {};
+    users = {};
     # sharedModulesDir = ".";
     excludedHomeSharedModules = [];
     extraHomeSharedModules = [];
     # userModulesDir = username;
     excludedUserModules = [];
     extraUserModules = [];
+    userInfo = {};
     extraUserArgs = {};
     extraHomeManagerArgs = {};
-    users = {};
   };
 in {
   /*
