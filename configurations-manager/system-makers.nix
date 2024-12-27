@@ -127,14 +127,11 @@
   Prepares the context for the Home-Manager module, that is, the necessary
   components to generate the module, its global options and the users options.
   */
-  mkHomeModuleContext = type: hostname: args: {
+  mkHomeModuleContext = type: args: let
+    usersInfo = config: args.users.${config.home.username}.userInfo;
+  in {
     homeManagerModule = getHomeManagerModule type args;
-    extraSpecialArgs =
-      {
-        inherit hostname;
-        inherit (args) users;
-      }
-      // args.homeSpecialArgs;
+    extraSpecialArgs = {inherit usersInfo;} // args.homeSpecialArgs;
     extraHomeManagerArgs = args.extraHomeManagerArgs;
     users = mkUsersConfigurations args;
   };
@@ -143,8 +140,8 @@
   Returns the Home-Manager module for the given type. This includes the global
   options and the users options as an attribute set.
   */
-  mkHomeModule = type: hostname: args: let
-    context = mkHomeModuleContext type hostname args;
+  mkHomeModule = type: args: let
+    context = mkHomeModuleContext type args;
   in [
     context.homeManagerModule
     {
@@ -181,7 +178,7 @@
       // mergedArgs.specialArgs;
     modules =
       (getSystemModules type mergedArgs)
-      ++ (mkHomeModule type hostname mergedArgs);
+      ++ (mkHomeModule type mergedArgs);
     extraArgs = mergedArgs.${perTypeInfo type "extraArgs"};
   };
 

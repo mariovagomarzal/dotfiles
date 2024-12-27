@@ -12,12 +12,14 @@
   /*
   Returns the modules for a user configuration.
   */
-  getHomeModules = args: let
+  getHomeModules = username: args: let
+    usernameModule = {...}: {home.username = username;};
     configurationsDir = args.homeConfigurationsDir;
     sharedModulesDir = configurationsDir + "/" + args.sharedModulesDir;
     userModulesDir = configurationsDir + "/" + args.userModulesDir;
   in
-    (utils.getModules
+    (lib.singleton usernameModule)
+    ++ (utils.getModules
       sharedModulesDir
       args.excludedSharedModules
       args.extraSharedModules)
@@ -39,8 +41,8 @@
       then (x: x)
       else mergedArgs.home-manager.lib.homeManagerConfiguration;
     pkgs = mergedArgs.nixpkgs.legacyPackages.${mergedArgs.system};
-    modules = getHomeModules mergedArgs;
-    extraSpecialArgs = {inherit username;} // mergedArgs.specialArgs;
+    modules = getHomeModules username mergedArgs;
+    extraSpecialArgs = {inherit usersInfo;} // mergedArgs.specialArgs;
     extraArgs = mergedArgs.extraHomeManagerArgs;
   };
 
@@ -82,6 +84,7 @@
     # userModulesDir = username;
     excludedUserModules = [];
     extraUserModules = [];
+    userInfo = {};
     extraHomeManagerArgs = {};
   };
 in {
