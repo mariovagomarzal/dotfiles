@@ -3,7 +3,7 @@
 #######################
 {
   pkgs,
-  userName,
+  config,
   ...
 }: {
   # Let home-manager install and manage itself.
@@ -11,8 +11,7 @@
 
   # User information for home-manager.
   home = {
-    username = userName;
-    homeDirectory = "/Users/${userName}";
+    homeDirectory = "/Users/${config.home.username}";
 
     # Supported version.
     stateVersion = "23.11";

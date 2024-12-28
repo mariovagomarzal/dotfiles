@@ -17,8 +17,8 @@
   # Enable the Nix garbage collector. It will run automatically every week
   # to keep disk usage in check.
   nix.gc = {
-    automatic = lib.mkDefault true;
-    options = lib.mkDefault "--delete-older-than 7d";
+    automatic = true;
+    options = "--delete-older-than 7d";
   };
 
   # Allow unfree packages from the Nixpkgs repository.

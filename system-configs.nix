@@ -2,73 +2,42 @@
 # System configurations definitions. #
 ######################################
 inputs @ {
+  nixpkgs,
   nix-darwin,
   home-manager,
   ...
-}: {
-  darwinConfigurations = {
-    # Mario's MacBook Pro configuration.
-    "Marios-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      specialArgs =
-        {
-          hostName = "Marios-MacBook-Pro";
-          userName = "mariovagomarzal";
-          userEmail = "mariovagomarzal@gmail.com";
-        }
-        // inputs;
-      modules = [
-        # Module for the Nix configuration itself.
-        ./darwin-configurations/nix-core.nix
-
-        # Module for the host and users configuration.
-        ./darwin-configurations/Marios-MacBook-Pro/host-users.nix
-
-        # Module with the system configuration.
-        ./darwin-configurations/Marios-MacBook-Pro/system.nix
-
-        # Module with the packages to install and manage.
-        ./darwin-configurations/Marios-MacBook-Pro/packages.nix
-
-        # Home Manager module.
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.backupFileExtension = "backup";
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = {
-            userName = "mariovagomarzal";
-            userEmail = "mariovagomarzal@gmail.com";
+}: let
+  configurations-manager = import ./configurations-manager {
+    nixpkgs-lib = nixpkgs.lib;
+    inherit
+      nixpkgs
+      nix-darwin
+      home-manager
+      ;
+    rootDir = ./.;
+  };
+in {
+  darwinConfigurations = configurations-manager.mkDarwinConfigurations {
+    specialArgs = inputs;
+    homeSpecialArgs = inputs;
+    extraHomeManagerArgs = {
+      backupFileExtension = "backup";
+      useGlobalPkgs = true;
+      useUserPackages = true;
+    };
+    hosts = {
+      # Mario's MacBook Pro configuration.
+      "Marios-MacBook-Pro" = {
+        system = "aarch64-darwin";
+        users = {
+          "mariovagomarzal" = {
+            userInfo = {
+              email = "mariovagomarzal@gmail.com";
+              githubUser = "mariovagomarzal";
+            };
           };
-          home-manager.users."mariovagomarzal" = {
-            imports = [
-              # Core packages and utilities (with no special configuration).
-              ./home-configurations/mariovagomarzal/core.nix
-
-              # SSH agent configuration.
-              ./home-configurations/ssh.nix
-
-              # Fish shell configuration.
-              ./home-configurations/fish.nix
-
-              # Starship prompt configuration.
-              ./home-configurations/starship.nix
-
-              # Alacrity terminal configuration.
-              ./home-configurations/alacritty.nix
-
-              # Git configuration.
-              ./home-configurations/git.nix
-
-              # Yabai window manager configuration.
-              ./home-configurations/yabai.nix
-
-              # Skhd hotkey daemon configuration.
-              ./home-configurations/skhd.nix
-            ];
-          };
-        }
-      ];
+        };
+      };
     };
   };
 }

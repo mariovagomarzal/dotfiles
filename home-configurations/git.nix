@@ -2,15 +2,18 @@
 # Git configuration. #
 ######################
 {
-  userName,
-  userEmail,
+  config,
+  usersInfo,
   ...
-}: {
+}: let
+  userInfo = usersInfo config;
+in {
   programs.git = {
     enable = true;
 
     # User name and email.
-    inherit userName userEmail;
+    userName = config.home.username;
+    userEmail = userInfo.email;
 
     # Extra configuration.
     extraConfig = {
@@ -62,7 +65,7 @@
       user.signingkey = "~/.ssh/id_ed25519";
 
       # GitHub related configuration.
-      github.user = userName;
+      github.user = userInfo.githubUser;
     };
 
     # Delta pager.

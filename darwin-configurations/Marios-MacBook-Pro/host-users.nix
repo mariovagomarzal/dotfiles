@@ -2,20 +2,25 @@
 # Host and users configuration. #
 #################################
 {
-  hostName,
-  userName,
+  lib,
+  hostname,
+  users,
   ...
 }: {
   # Host name configuration.
-  networking.hostName = hostName;
-  networking.computerName = hostName;
-  system.defaults.smb.NetBIOSName = hostName;
+  networking.hostName = hostname;
+  networking.computerName = hostname;
+  system.defaults.smb.NetBIOSName = hostname;
 
   # Users configuration.
-  users.users.${userName} = {
-    description = "User ${userName}";
-    home = "/Users/${userName}";
-  };
+  users.users =
+    lib.mapAttrs (
+      username: _: {
+        description = "User ${username}";
+        home = "/Users/${username}";
+      }
+    )
+    users;
 
-  nix.settings.trusted-users = [userName];
+  nix.settings.trusted-users = ["root"] ++ (lib.attrNames users);
 }
