@@ -18,13 +18,31 @@ sections:
   `README.md` or `CHANGELOG.md`.
 - _Miscellaneous_: for changes that do not fit in any of the previous sections.
 
-## [Unreleased]
+## [2024.12.28]
+
+### Codebase
+
+- Dotfiles have been reorganized. Now, each configuration type, i.e., NixOS,
+  Darwin and Home-Manager, has its own directory. Inside each directory, each
+  host or user has its own directory too. This structure allows for better
+  organization of the modules that make up the configurations.
+- The 'configurations-manager' library has been implemented so the system
+  configurations can be easily defined and managed according to the new
+  structure.
+
+### Development
+
+- The 'internal' category of commands of the 'devshell' tool has been removed.
+  The `_pre-commit-install` command is now executed when entering the
+  development shell.
 
 ### Documentation
 
-- Remove some comments from the code that were explaining functionality from
+- The README file has been updated to reflect the changes in the codebase and
+  development environment.
+- Some comments from the code that were explaining functionality from
   external tools that are already rightly documented in their respective
-  repositories.
+  repositories have been removed.
 
 ## [2024.12.12]
 
@@ -67,8 +85,8 @@ sections:
   [dotbot](https://github.com/anishathalye/dotbot) tool.
 
 <!-- External links -->
-[unreleased]:
-  https://github.com/mariovagomarzal/dotfiles/compare/2024.12.12...HEAD
+[2024.12.28]:
+  https://github.com/mariovagomarzal/dotfiles/releases/tag/2024.12.28
 [2024.12.12]:
   https://github.com/mariovagomarzal/dotfiles/releases/tag/2024.12.12
 [2024.03.19]:
