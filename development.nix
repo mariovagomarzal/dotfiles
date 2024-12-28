@@ -46,16 +46,15 @@
     devshells.default = {
       # Configure the shell information.
       devshell = {
-        name = "dotfiles";
+        name = "dotfiles-dev";
         motd = ''
-          {2}{bold}[i] Development shell for Mario's dotfiles repository.
+          {2}{bold}[i] Development shell for Mario's dotfiles repository.\
           {reset}
-          {3}[!] Don't use commands from the internal category.{reset}
           $(type -p menu &> /dev/null && menu)
         '';
         startup."setup-env".text = ''
           # Install pre-commit hooks.
-          _pre-commit-install
+          ${config.pre-commit.installationScript}
         '';
       };
 
@@ -65,14 +64,6 @@
         {
           package = pkgs.just;
           help = "Type `just` to see the available recipes.";
-        }
-
-        # Add an internal command to install pre-commit hooks.
-        {
-          name = "_pre-commit-install";
-          command = config.pre-commit.installationScript;
-          help = "Internal command to install pre-commit hooks.";
-          category = "internal";
         }
       ];
     };
