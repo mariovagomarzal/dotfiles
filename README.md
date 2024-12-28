@@ -5,6 +5,8 @@ My personal dotfiles for setting up a new machine.
 ## Table of contents
 
 - [📖 About this repository](#about-this-repository)
+  - [Repository structure](#repository-structure)
+  - [The 'configurations-manager' library](#the-configurations-manager-library)
 - [🚀 Setup](#setup)
   - [Mario's MacBook Pro](#marios-macbook-pro)
 - [👨‍💻 Development](#development)
@@ -26,20 +28,65 @@ machines handled by this repository.
 > dotfiles. This guide is intended to be a reference for myself, but also for
 > anyone else who might find it useful to build their own dotfiles.
 
-I use [Nix][nix] to manage the dependencies and configurations of the tools and
-applications installed by these dotfiles. This allows me to have a reproducible
-and declarative way to setup a new machine. In particular, I'm using the
-[Flakes][nix-flakes] feature of Nix so the depencies are version-pinned,
-improving the reproducibility of the setup.
+I use [Nix][nix] to manage the dependencies and configurations for the tools and
+applications included in these dotfiles. This approach provides a reproducible
+and declarative way to set up a new machine. Specifically, I leverage the
+[Flakes][nix-flakes] feature in Nix, which ensures that dependencies are
+version-pinned, further enhancing the reproducibility of the setup.
 
-In addition to this, the Flake approach allows me to define the system
-configurations, the development environment and other workflows in a centralized
-and organized way.
+### Repository structure
+
+In addition to the benefits described above, the Flake approach enables
+centralized and organized definitions for system configurations, development
+environments, and other workflows.
+
+The `flake.nix` file serves as the flake's entry point. It defines the flake's
+dependencies (inputs) and outputs, such as system configurations and development
+tools. However, these outputs are actually implemented in separate files.
+
+The development.nix file specifies tools like pre-commit and development shells,
+utilizing [flake-parts][flake-parts]. For more details, refer to the
+[Development](#development) section.
+
+System configurations are defined in the `system-configs.nix` file and managed
+using the custom 'configurations-manager' library (see
+[below](#the-configurations-manager-library)). Each type of configuration has
+its own directory:
+
+- __NixOS configurations__ are stored in `nixos-configurations/`.
+- __Darwin configurations__ are stored in `darwin-configurations/`.
+- __Home-Manager configurations__ are stored in `home-configurations/`.
+
+At the top level of each directory, shared modules for all hosts/users of that
+configuration type are defined. Within these directories, subdirectories are
+used to store host- or user-specific configurations.
+
+This structure provides a clear overview of the components comprising each
+configuration managed by these dotfiles.
+
+### The 'configurations-manager' library
+
+The 'configurations-manager' library is a custom tool designed to leverage the
+repository structure described above, making it easy to locate and manage the
+required files for each configuration.
+
+This library is implemented in the `configurations-manager/` directory. For a
+detailed explanation of its usage, refer to the
+[configurations-manager/default.nix][cm-library] file, which defines the three
+primary functions for creating configurations:
+
+- `mkNixosConfigurations`: Used to define NixOS configurations.
+- `mkDarwinConfigurations`: Used to define Darwin configurations.
+- `mkHomeConfigurations`: Used to define standalone Home-Manager configurations.
+
+An example of how to use this library can be found in the `system-configs.nix`
+file. This file also provides additional details on how the configurations in
+this repository are structured and defined.
 
 ## Setup
 
-In this section, we will describe how to setup each of the machines handled by
-this repository.
+In this section, we will describe how to setup each of the machines and/or users
+handled by this repository.
 
 > [!CAUTION]
 > The following instructions will install and configure many tools and
@@ -104,10 +151,8 @@ The `--extra-experimental-features 'nix-command flakes'` flag is only needed if
 this features are no enabled by default in your Nix installation.
 
 If the command succeeds, you will see a welcome message with a list of the
-available tools and commands. There is an special category of commands,
-`internal`, that should not be used directly. You can type `menu` to see the
-list of available commands again in any moment. Finally, you can exit the shell
-by typing `exit`.
+available tools and commands. You can type `menu` to see the list of available
+commands again in any moment. Finally, you can exit the shell by typing `exit`.
 
 In addition to that, some other basic tasks related to the development are
 defined in a `Justfile`. You can see the list of available tasks (under the
@@ -135,6 +180,8 @@ Marzal][mario].
 [mario]: https://github.com/mariovagomarzal
 [nix]: https://nixos.org/
 [nix-flakes]: https://nixos.wiki/wiki/Flakes
+[flake-parts]: https://github.com/hercules-ci/flake-parts
+[cm-library]: /configurations-manager/default.nix
 [download-nix]: https://nixos.org/download/
 [ssh-keys]:
   https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh

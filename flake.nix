@@ -32,16 +32,9 @@
   outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} {
       # The `flake` attribute specifies raw flake attributes.
-      flake = let
-        # Auxiliary function for importing configuration files.
-        importConfig = pathToConfig: (
-          import pathToConfig {inherit inputs;}
-        );
-      in {
-        darwinConfigurations =
-          # Mario's MacBook Pro configuration.
-          importConfig ./darwin-configurations/marios-macbook-pro.nix;
-      };
+      # System configurations managed with this flake are defined here by
+      # importing the `system-configs.nix` module.
+      flake = import ./system-configs.nix inputs;
 
       # The `imports` attribute specifies the flake's submodules to be included.
       imports = [
