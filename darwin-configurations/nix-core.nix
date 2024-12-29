@@ -1,32 +1,52 @@
-#################################
-# Configuration for Nix itself. #
-#################################
+##################################
+# Nix and Nixpkgs configuration. #
+##################################
 {
   pkgs,
   lib,
+  users,
   ...
 }: {
-  nix.package = pkgs.nix;
-
   # Auto upgrade Nix and the daemon service.
   services.nix-daemon.enable = true;
 
-  # Enable the "nix-command" and "flakes" experimental features.
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  # Nix settings.
+  nix.settings = {
+    # Enable the "nix-command" and "flakes" experimental features.
+    experimental-features = ["nix-command" "flakes"];
 
-  # Enable the Nix garbage collector. It will run automatically every week
-  # to keep disk usage in check.
-  nix.gc = {
-    automatic = true;
-    options = "--delete-older-than 7d";
+    # Manage the access to the Nix daemon.
+    allowed-users = ["*"];
+    trusted-users = ["root" "@admin"];
   };
 
-  # Allow unfree packages from the Nixpkgs repository.
-  nixpkgs.config.allowUnfree = true;
+  # Enable the Nix garbage collector.
+  nix.gc = {
+    automatic = true;
+    interval = [
+      {
+        Hour = 15;
+        Minute = 0;
+        Weekday = 7;
+      }
+    ];
+  };
 
-  # Disable "auto-optimise-store" because of this issue:
-  #   https://github.com/NixOS/nix/issues/7273
-  nix.settings = {
-    auto-optimise-store = false;
+  # Enable Nix store optimisation.
+  nix.optimise = {
+    enable = true;
+    interval = [
+      {
+        Hour = 15;
+        Minute = 0;
+        Weekday = 7;
+      }
+    ];
+  };
+
+  # Nixpks configuration.
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = true;
   };
 }
