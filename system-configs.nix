@@ -34,7 +34,6 @@ in {
         users = {
           "mariovagomarzal" = {
             userInfo = {
-              isAdmin = true;
               userName = "Mario Vago Marzal";
               email = "mariovagomarzal@gmail.com";
               githubUser = "mariovagomarzal";

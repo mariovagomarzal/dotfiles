@@ -34,7 +34,7 @@
 
   # Enable Nix store optimisation.
   nix.optimise = {
-    enable = true;
+    automatic = true;
     interval = [
       {
         Hour = 15;
