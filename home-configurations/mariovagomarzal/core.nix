@@ -17,6 +17,16 @@
     stateVersion = "23.11";
   };
 
+  # Global 'Catppuccin' theme options.
+  catppuccin = {
+    # Enable 'catppuccin' options for every supported program/service.
+    enable = false; # TODO: Temporarily disabled.
+
+    # Set the flavor and accent color.
+    flavor = "mocha";
+    accent = "mauve";
+  };
+
   # No-configuration packages.
   home.packages = with pkgs; [
     # Core packages.

@@ -21,6 +21,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # catppuccin, a color scheme for customizing programs.
+    catppuccin.url = "github:catppuccin/nix";
+
     # devshell, a tool for creating development environments.
     devshell.url = "github:numtide/devshell";
 

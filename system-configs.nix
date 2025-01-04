@@ -5,6 +5,7 @@ inputs @ {
   nixpkgs,
   nix-darwin,
   home-manager,
+  catppuccin,
   ...
 }: let
   # The custom 'configurations-manager' library.
@@ -22,6 +23,9 @@ in {
   darwinConfigurations = configurations-manager.mkDarwinConfigurations {
     specialArgs = inputs // {computerName = "Mario's MacBook Pro";};
     homeSpecialArgs = inputs;
+    extraHomeSharedModules = [
+      catppuccin.homeManagerModules.catppuccin
+    ];
     extraHomeManagerArgs = {
       backupFileExtension = "backup";
       useGlobalPkgs = true;
