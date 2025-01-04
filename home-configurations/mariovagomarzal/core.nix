@@ -1,6 +1,6 @@
-#######################
-# Core home packages. #
-#######################
+#########################################
+# Core home configuration and packages. #
+#########################################
 {
   pkgs,
   config,
@@ -19,24 +19,27 @@
 
   # No-configuration packages.
   home.packages = with pkgs; [
-    # Files related tools.
-    fzf
-    tree
-
-    # Signing tools.
+    # Core packages.
     gnupg
 
-    # Python packages.
+    # Programming languages (or related).
+    rustup
+    typst
+    elan
+    zulu
+
+    # Python-related packages.
+    uv
     poetry
-    cookiecutter
+
+    # Files related packages.
+    tree
+
+    # Miscellaneous.
+    cmatrix
   ];
 
-  # Minimal configuration-dependent packages.
-  programs = {
-    # Pyenv.
-    pyenv = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-  };
+  # Minimal configuration-dependent programs and/or services.
+  programs = {};
+  services = {};
 }

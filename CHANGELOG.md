@@ -24,6 +24,8 @@ sections:
 
 - The behavior of some Darwin shared modules is now more general.
 - Many system settings options have been added.
+- Packages installation options have been reorganized. Now, 'nix-darwin' manages
+  less packages in favor of 'home-manager'.
 
 ## [2024.12.28]
 
