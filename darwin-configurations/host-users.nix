@@ -12,6 +12,11 @@
   networking.hostName = hostname;
   networking.computerName = computerName;
 
+  system.defaults.smb = {
+    NetBIOSName = hostname;
+    ServerDescription = hostname;
+  };
+
   # Users configuration.
   users.users =
     lib.mapAttrs (

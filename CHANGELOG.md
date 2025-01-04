@@ -18,6 +18,13 @@ sections:
   `README.md` or `CHANGELOG.md`.
 - _Miscellaneous_: for changes that do not fit in any of the previous sections.
 
+## [Unreleased]
+
+### Mario's MacBook Pro
+
+- The behavior of some Darwin shared modules is now more general.
+- Many system settings options have been added.
+
 ## [2024.12.28]
 
 ### Codebase
@@ -85,6 +92,8 @@ sections:
   [dotbot](https://github.com/anishathalye/dotbot) tool.
 
 <!-- External links -->
+[unreleased]:
+  https://github.com/mariovagomarzal/dotfiles/compare/2024.12.28...HEAD
 [2024.12.28]:
   https://github.com/mariovagomarzal/dotfiles/releases/tag/2024.12.28
 [2024.12.12]:
