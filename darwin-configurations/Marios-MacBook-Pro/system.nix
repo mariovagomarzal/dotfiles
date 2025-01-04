@@ -123,7 +123,9 @@
 
         # Persistent items in the Dock.
         static-only = false;
-        persistent-apps = [];
+        persistent-apps = [
+          "/System/Applications/Launchpad.app"
+        ];
         persistent-others = [
           "/Users/mariovagomarzal/Downloads"
         ];
@@ -409,8 +411,8 @@
         # Show hidden files.
         AppleShowAllFiles = true;
 
-        # Don't switch spaces when opening an application.
-        AppleSpacesSwitchOnActivate = false;
+        # Switch spaces when opening an application.
+        AppleSpacesSwitchOnActivate = true;
 
         # Set the window tabbing mode to 'Manual' when opening a new tab.
         AppleWindowTabbingMode = "manual";
