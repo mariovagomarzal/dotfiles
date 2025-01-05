@@ -15,9 +15,6 @@
     uv
     poetry
 
-    # Files related packages.
-    tree
-
     # Miscellaneous.
     cmatrix
   ];
