@@ -17,6 +17,9 @@ in {
 
     # Extra configuration.
     extraConfig = {
+      # GitHub related configuration.
+      github.user = userInfo.githubUser;
+
       # Core configuration.
       core = {
         editor = "code --wait";
@@ -58,18 +61,31 @@ in {
 
       mergetool."code".cmd = "code --wait $MERGED";
 
-      # Key related configuration.
-      gpg.format = "ssh";
-      credential.helper = "osxkeychain";
+      # Signing configuration.
       tag.gpgsign = true;
-      user.signingkey = "~/.ssh/id_ed25519";
-
-      # GitHub related configuration.
-      github.user = userInfo.githubUser;
     };
 
     # Delta pager.
     delta.enable = true;
+
+    # Git aliases.
+    aliases = {
+      "a" = "add";
+      "b" = "branch";
+      "c" = "commit";
+      "cm" = "commit -m";
+      "co" = "checkout";
+      "d" = "diff";
+      "f" = "fetch";
+      "g" = "log --graph";
+      "l" = "log";
+      "m" = "merge";
+      "p" = "push";
+      "pl" = "pull";
+      "r" = "rebase";
+      "s" = "status";
+      "t" = "tag";
+    };
 
     # Global git ignores.
     ignores = [
