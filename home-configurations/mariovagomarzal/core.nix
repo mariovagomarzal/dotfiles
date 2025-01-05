@@ -1,6 +1,6 @@
-#########################################
-# Core home configuration and packages. #
-#########################################
+#######################################################
+# Core home configuration and packages for this user. #
+#######################################################
 {
   pkgs,
   config,
@@ -29,24 +29,9 @@
 
   # No-configuration packages.
   home.packages = with pkgs; [
-    # Core packages.
-    gnupg
-
     # Programming languages (or related).
-    rustup
-    typst
     elan
     zulu
-
-    # Python-related packages.
-    uv
-    poetry
-
-    # Files related packages.
-    tree
-
-    # Miscellaneous.
-    cmatrix
   ];
 
   # Minimal configuration-dependent programs and/or services.
