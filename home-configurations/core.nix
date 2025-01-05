@@ -1,6 +1,6 @@
-################################################
-# Core shared home configuration and packages. #
-################################################
+#########################################
+# Core home configuration and packages. #
+#########################################
 {pkgs, ...}: {
   # No-configuration packages.
   home.packages = with pkgs; [

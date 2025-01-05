@@ -1,6 +1,6 @@
-#########################
-# Yabai window manager. #
-#########################
+#####################################################
+# Yabai window manager configuration for this user. #
+#####################################################
 {pkgs, ...}: {
   home.packages = [pkgs.yabai];
 

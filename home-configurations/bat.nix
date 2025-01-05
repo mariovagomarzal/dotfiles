@@ -1,6 +1,6 @@
-#################################
-# Bat, an advanced 'cat' clone. #
-#################################
+######################
+# Bat configuration. #
+######################
 {pkgs, ...}: let
   # Extra shell aliases to add.
   shellAliases = {
