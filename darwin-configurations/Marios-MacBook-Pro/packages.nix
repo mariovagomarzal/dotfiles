@@ -34,16 +34,9 @@ in {
   ];
 
   # Fonts.
-  fonts = {
-    packages = with pkgs; [
-      # Nerdfonts.
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-        ];
-      })
-    ];
-  };
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+  ];
 
   # Packages managed by Homebrew.
   # Some packages are installed via Homebrew because they lack good Nix support

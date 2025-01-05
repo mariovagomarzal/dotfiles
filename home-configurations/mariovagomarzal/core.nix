@@ -14,7 +14,7 @@
     homeDirectory = "/Users/${config.home.username}";
 
     # Supported version.
-    stateVersion = "23.11";
+    stateVersion = "25.05";
   };
 
   # Global 'Catppuccin' theme options.
