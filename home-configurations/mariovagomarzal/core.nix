@@ -20,7 +20,7 @@
   # Global 'Catppuccin' theme options.
   catppuccin = {
     # Enable 'catppuccin' options for every supported program/service.
-    enable = false; # TODO: Temporarily disabled.
+    enable = true;
 
     # Set the flavor and accent color.
     flavor = "mocha";

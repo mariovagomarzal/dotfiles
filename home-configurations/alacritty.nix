@@ -1,33 +1,15 @@
 #####################################
 # Alicritty terminal configuration. #
 #####################################
-{pkgs, ...}: {
-  # Symlink the "alacritty-theme" repository.
-  home.file.alacritty-theme = {
-    source = pkgs.fetchFromGitHub {
-      owner = "alacritty";
-      repo = "alacritty-theme";
-      rev = "c2369cd";
-      sha256 = "eCJ9CpKoBTaA684vDJ6p8IB2AhvIBfrrKuyoKCr1BJs=";
-    };
-    target = ".config/alacritty/alacritty-theme";
-    recursive = true;
-  };
-
+{...}: {
   programs.alacritty = {
     enable = true;
 
     # Alacritty configuration content.
     settings = {
-      # External imports.
-      import = [
-        # Set the theme to "Dracula".
-        "~/.config/alacritty/alacritty-theme/themes/dracula.toml"
-      ];
-
       # Shell configuration.
-      shell = {
-        program = "/run/current-system/sw/bin/fish";
+      terminal.shell = {
+        program = "fish";
         args = ["-l"];
       };
 

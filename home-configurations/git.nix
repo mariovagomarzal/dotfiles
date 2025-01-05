@@ -69,24 +69,7 @@ in {
     };
 
     # Delta pager.
-    delta = {
-      enable = true;
-      options = {
-        features = "line-numbers side-by-side decorations";
-        theme = "Dracula";
-        decorations = {
-          commit-decoration-style = "bold yellow box ul";
-          file-decoration-style = "none";
-          file-style = "bold yellow ul";
-        };
-        line-numbers = {
-          line-numbers-left-style = "cyan";
-          line-numbers-right-style = "cyan";
-          line-numbers-minus-style = "124";
-          line-numbers-plus-style = "28";
-        };
-      };
-    };
+    delta.enable = true;
 
     # Global git ignores.
     ignores = [
