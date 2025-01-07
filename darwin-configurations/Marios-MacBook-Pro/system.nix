@@ -370,7 +370,7 @@
       # Other settings. Note that some of these settings may be redundant.
       ".GlobalPreferences" = {
         # Mouse tracking speed.
-        "com.apple.mouse.scaling" = 3.0;
+        "com.apple.mouse.scaling" = 2.0;
 
         # Alert sound.
         "com.apple.sound.beep.sound" = null;
@@ -487,7 +487,7 @@
         "com.apple.trackpad.forceClick" = true;
 
         # Trackpad tracking speed.
-        "com.apple.trackpad.scaling" = 3.0;
+        "com.apple.trackpad.scaling" = 2.0;
 
         # Don't make a feedback sound when changing the volume.
         "com.apple.sound.beep.feedback" = 0;
