@@ -4,7 +4,8 @@
 {
   pkgs,
   lib,
-  users,
+  nur,
+  nixpkgs-firefox-darwin,
   ...
 }: {
   # Auto upgrade Nix and the daemon service.
@@ -44,9 +45,15 @@
     ];
   };
 
-  # Nixpks configuration.
+  # Nixpkgs configuration.
   nixpkgs.config = {
     allowUnfree = true;
     allowBroken = true;
   };
+
+  # Nixpkgs overlays.
+  nixpkgs.overlays = [
+    nur.overlays.default
+    nixpkgs-firefox-darwin.overlay
+  ];
 }
