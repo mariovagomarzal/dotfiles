@@ -10,6 +10,7 @@
     # Programming languages (or related).
     rustup
     typst
+    texliveFull
 
     # Python-related packages.
     uv
