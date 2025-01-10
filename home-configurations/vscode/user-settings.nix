@@ -60,6 +60,14 @@
     "editor.tabSize" = 2;
   };
 
+  # GitHub Copilot extension settings.
+  "github.copilot.enable" = {
+    "*" = true;
+    "markdown" = true;
+    "plaintext" = false;
+    "scminput" = false;
+  };
+
   # Rewrap extension settings.
   "rewrap.autoWrap.enabled" = true;
   "rewrap.wrappingColumn" = 80;
