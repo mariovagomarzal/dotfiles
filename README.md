@@ -1,8 +1,3 @@
-<style>
-  a {color: #cba6f7}
-  a:hover {color: #b4befe}
-</style>
-
 <h3 align="center">
   <img alt="Logo" src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/.github/assets/logo.svg width="120">
   <br/>
@@ -19,10 +14,12 @@
 
 &nbsp;
 
-<details open align="center">
+<details open>
   <summary>Configurations previews</summary>
   <br/>
-  <img alt="Configurations previews (WIP)" src="">
+  <p align="center">
+    <img alt="Marios-MacBook-Pro preview (WIP)" src="">
+  </p>
 </details>
 
 &nbsp;
