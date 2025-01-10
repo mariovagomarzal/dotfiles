@@ -89,54 +89,54 @@ configuration managed by these dotfiles.
 <summary>Repository file tree</summary>
 
 ```text
- dotfiles
-├──  configurations-manager
-│   ├──  default.nix
-│   ├──  home-makers.nix
-│   ├──  system-makers.nix
-│   └──  utils.nix
-├──  darwin-configurations
-│   ├──  Marios-MacBook-Pro
-│   │   ├──  packages.nix
-│   │   └──  system.nix
-│   ├──  host-users.nix
-│   └──  nix-core.nix
-├──  home-configurations
-│   ├──  firefox
-│   │   ├──  profiles
-│   │   │   └──  default.nix
-│   │   └──  default.nix
-│   ├──  mariovagomarzal
-│   │   ├──  core.nix
-│   │   ├──  firefox.nix
-│   │   ├──  git.nix
-│   │   ├──  skhd.nix
-│   │   ├──  ssh.nix
-│   │   └──  yabai.nix
-│   ├──  vscode
-│   │   ├──  default.nix
-│   │   ├──  global-snippets.nix
-│   │   ├──  keybindings.nix
-│   │   ├──  language-snippets.nix
-│   │   ├──  user-settings.nix
-│   │   └──  user-tasks.nix
-│   ├──  alacritty.nix
-│   ├──  bat.nix
-│   ├──  core.nix
-│   ├──  fish.nix
-│   ├──  git.nix
-│   ├──  lsd.nix
-│   └──  starship.nix
-├──  nixos-configurations
-├──  .gitignore
-├──  CHANGELOG.md
-├──  development.nix
-├──  flake.lock
-├──  flake.nix
-├──  Justfile
-├──  LICENSE
-├──  README.md
-└──  system-configs.nix
+dotfiles
+├── configurations-manager
+│   ├── default.nix
+│   ├── home-makers.nix
+│   ├── system-makers.nix
+│   └── utils.nix
+├── darwin-configurations
+│   ├── Marios-MacBook-Pro
+│   │   ├── packages.nix
+│   │   └── system.nix
+│   ├── host-users.nix
+│   └── nix-core.nix
+├── home-configurations
+│   ├── firefox
+│   │   ├── profiles
+│   │   │   └── default.nix
+│   │   └── default.nix
+│   ├── mariovagomarzal
+│   │   ├── core.nix
+│   │   ├── firefox.nix
+│   │   ├── git.nix
+│   │   ├── skhd.nix
+│   │   ├── ssh.nix
+│   │   └── yabai.nix
+│   ├── vscode
+│   │   ├── default.nix
+│   │   ├── global-snippets.nix
+│   │   ├── keybindings.nix
+│   │   ├── language-snippets.nix
+│   │   ├── user-settings.nix
+│   │   └── user-tasks.nix
+│   ├── alacritty.nix
+│   ├── bat.nix
+│   ├── core.nix
+│   ├── fish.nix
+│   ├── git.nix
+│   ├── lsd.nix
+│   └── starship.nix
+├── nixos-configurations
+├── .gitignore
+├── CHANGELOG.md
+├── development.nix
+├── flake.lock
+├── flake.nix
+├── Justfile
+├── LICENSE
+├── README.md
+└── system-configs.nix
 ```
 
 </details>
