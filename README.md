@@ -1,6 +1,31 @@
-# [Mario][mario]'s dotfiles
+<style>
+  a {color: #cba6f7}
+  a:hover {color: #b4befe}
+</style>
 
-My personal dotfiles for setting up a new machine.
+<h3 align="center">
+  <img alt="Logo" src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/.github/assets/logo.svg width="120">
+  <br/>
+  <br/>
+  <a href="https://github.com/mariovagomarzal">Mario</a>'s dotfiles repository
+</h3>
+
+<p align="center">
+  <img alt="Built with Nix" src="https://img.shields.io/badge/-Built_with_Nix-_?style=for-the-badge&logo=nixos&logoColor=%2389b4fa&labelColor=%23313244&color=%2389b4fa">
+  <img alt="GitHub Tag" src="https://img.shields.io/github/v/tag/mariovagomarzal/dotfiles?sort=date&style=for-the-badge&label=Tag&labelColor=%23313244&color=%23a6e3a1">
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/mariovagomarzal/dotfiles?style=for-the-badge&labelColor=%23313244&color=%23f9e2af">
+  <img alt="GitHub License" src="https://img.shields.io/github/license/mariovagomarzal/dotfiles?style=for-the-badge&labelColor=%23313244&color=%23f38ba8">
+</p>
+
+&nbsp;
+
+<details open align="center">
+  <summary>Configurations previews</summary>
+  <br/>
+  <img alt="Configurations previews (WIP)" src="">
+</details>
+
+&nbsp;
 
 ## Table of contents
 
@@ -12,7 +37,6 @@ My personal dotfiles for setting up a new machine.
 - [👨‍💻 Development](#development)
   - [Environment](#environment)
   - [Workflow and conventions](#workflow-and-conventions)
-- [📝 License](#license)
 
 ## About this repository
 
@@ -64,6 +88,62 @@ used to store host- or user-specific configurations.
 This structure provides a clear overview of the components comprising each
 configuration managed by these dotfiles.
 
+<details>
+<summary>Repository file tree</summary>
+
+```text
+ dotfiles
+├──  configurations-manager
+│   ├──  default.nix
+│   ├──  home-makers.nix
+│   ├──  system-makers.nix
+│   └──  utils.nix
+├──  darwin-configurations
+│   ├──  Marios-MacBook-Pro
+│   │   ├──  packages.nix
+│   │   └──  system.nix
+│   ├──  host-users.nix
+│   └──  nix-core.nix
+├──  home-configurations
+│   ├──  firefox
+│   │   ├──  profiles
+│   │   │   └──  default.nix
+│   │   └──  default.nix
+│   ├──  mariovagomarzal
+│   │   ├──  core.nix
+│   │   ├──  firefox.nix
+│   │   ├──  git.nix
+│   │   ├──  skhd.nix
+│   │   ├──  ssh.nix
+│   │   └──  yabai.nix
+│   ├──  vscode
+│   │   ├──  default.nix
+│   │   ├──  global-snippets.nix
+│   │   ├──  keybindings.nix
+│   │   ├──  language-snippets.nix
+│   │   ├──  user-settings.nix
+│   │   └──  user-tasks.nix
+│   ├──  alacritty.nix
+│   ├──  bat.nix
+│   ├──  core.nix
+│   ├──  fish.nix
+│   ├──  git.nix
+│   ├──  lsd.nix
+│   └──  starship.nix
+├──  nixos-configurations
+├──  .gitignore
+├──  CHANGELOG.md
+├──  development.nix
+├──  flake.lock
+├──  flake.nix
+├──  Justfile
+├──  LICENSE
+├──  README.md
+└──  system-configs.nix
+```
+
+</details>
+
 ### The 'configurations-manager' library
 
 The 'configurations-manager' library is a custom tool designed to leverage the
@@ -95,39 +175,97 @@ handled by this repository.
 
 ### Mario's MacBook Pro
 
+<details open>
+  <summary>Configuration preview</summary>
+  <br/>
+  <p align="center">
+    <img alt="Marios-MacBook-Pro preview (WIP)" src="">
+  </p>
+</details>
+<br/>
+
 We're going to describe the setup process for my (Mario's) MacBook Pro. We will
 assume a fresh installation of macOS.
 
-In first place, install Nix following the instructions in the [official download
-page][download-nix].
+1. __Restore SSH keys__: I use [SSH keys][ssh-keys] to authenticate with GitHub
+  and other services. For that reason, we will need to safely restore the SSH
+  keys from a backup or [generate new ones][generate-ssh-keys] and store them
+  in the `~/.ssh` directory.
 
-I use [SSH keys][ssh-keys] to authenticate with GitHub and other services. For
-that reason, we will need to safely restore the SSH keys from a backup or
-[generate new ones][generate-ssh-keys] and store them in the `~/.ssh` directory.
+2. __Install Xcode Command Line Tools__: In first place, we will need to
+  install the Xcode Command Line Tools, since they may be required in some
+  of the following steps. To do so, run the following command in the terminal:
 
-Once Nix is installed and the SSH keys are in place, we can clone the repository
-with Git if installed, or by manually downloading the repository. Then, we `cd`
-into it:
+    ```console
+    xcode-select --install
+    ```
 
-```sh
-git clone https://github.com/mariovagomarzal/dotfiles.git
-cd dotfiles
-```
+3. __Install Homebrew__: Some packages are installed via [Homebrew][homebrew] by
+  nix-darwin. However, nix-darwin will not install Homebrew itself. To install
+  Homebrew follow the instructions in the [official download
+  page][download-brew] or TL;DR:
 
-If it is the first time we're setting up the machine with these dotfiles, we
-have to run the following command:
+    ```console
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
 
-```sh
-nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake '.#Marios-MacBook-Pro'
-```
+4. __Install Nix__: We will use [Nix][nix] to setup and manage the machine
+  configuration. Install Nix following the instructions in the [official
+  download page][download-nix].
+
+5. __Clone the repository__: Once Nix is installed and the SSH keys are in
+  place, we can clone the repository with Git (or by manually downloading it)
+  and `cd` into it:
+
+    ```console
+    git clone https://github.com/mariovagomarzal/dotfiles.git
+    cd dotfiles
+    ```
+
+6. __Setup the machine__: If it is the first time we're setting up the machine
+  with these dotfiles, we have to run the following command:
+
+    ```console
+    nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake '.#Marios-MacBook-Pro'
+    ```
 
 If this command succeeds, the machine should be fully configured with the
 dotfiles. From now on, we can update the machine by running the following
 _Just_ recipe:
 
-```sh
+```console
 just darwin-rebuild # or simply 'just dr'
 ```
+
+#### Extra optional manual steps
+
+Here we will describe some extra optional manual steps which are not automated
+by the dotfiles.
+
+<details>
+  <summary>Firefox</summary>
+
+- __Firefox Color theme__: The [Firefox Color][firefox-color] extension is
+  used to customize the browser's theme. We use the [Catppuccin Firefox
+  port][catppuccin-firefox] theme. To apply the theme, follow the steps
+  described in the repository's README.
+- __Stylus user styles__: The [Stylus][stylus] extension is used to apply
+  custom styles to web pages. We use a curated list of user styles from the
+  [Catppuccin community][catppuccin]. In this [website][catppuccin-styles] we
+  can select the styles (and its flavors) we want to apply to get an
+  `import.json` file. Then we have to use this file with Stylus to apply the
+  styles.
+
+</details>
+
+<details>
+  <summary>Visual Studio Code</summary>
+
+The following extensions should be installed manually:
+
+- [Reload][reload-vscode]
+
+</details>
 
 ## Development
 
@@ -143,7 +281,7 @@ shell with the necessary tools and configurations has been defined in the
 Assuming that you have Nix installed, you can enter the development shell by
 running the following command:
 
-```sh
+```console
 nix --extra-experimental-features 'nix-command flakes' develop
 ```
 
@@ -171,19 +309,29 @@ This repository follows a simple (and flexible) workflow:
 - All changes should be documented in the [`CHANGELOG.md` file](/CHANGELOG.md).
   The format of the changelog is described in the file itself.
 
-## License
+&nbsp;
 
-This repository is licensed under the [MIT License](/LICENSE) by [Mario Vago
-Marzal][mario].
+---
+
+<p align="center">
+  Copyright &copy; 2024-present Mario Vago Marzal
+</p>
 
 <!-- External links -->
-[mario]: https://github.com/mariovagomarzal
 [nix]: https://nixos.org/
 [nix-flakes]: https://nixos.wiki/wiki/Flakes
 [flake-parts]: https://github.com/hercules-ci/flake-parts
 [cm-library]: /configurations-manager/default.nix
-[download-nix]: https://nixos.org/download/
 [ssh-keys]:
   https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
 [generate-ssh-keys]:
   https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+[homebrew]: https://brew.sh
+[download-brew]: https://brew.sh
+[download-nix]: https://nixos.org/download
+[firefox-color]: https://addons.mozilla.org/en-US/firefox/addon/firefox-color
+[catppuccin-firefox]: https://github.com/catppuccin/firefox
+[stylus]: https://addons.mozilla.org/en-US/firefox/addon/styl-us
+[catppuccin]: https://catppuccin.com/
+[catppuccin-styles]: https://catppuccin-userstyles-customizer.uncenter.dev/
+[reload-vscode]: https://marketplace.visualstudio.com/items?itemName=natqe.reload
