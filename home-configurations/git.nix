@@ -82,7 +82,9 @@ in {
       "m" = "merge";
       "p" = "push";
       "pl" = "pull";
-      "r" = "rebase";
+      "r" = "restore";
+      "rs" = "restore --staged";
+      "rb" = "rebase";
       "s" = "status";
       "t" = "tag";
     };
