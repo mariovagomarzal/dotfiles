@@ -58,7 +58,7 @@
             }
             {
               name = "Max";
-              url = "https://play.hbomax.com";
+              url = "https://play.max.com";
             }
           ];
         }
