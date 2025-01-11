@@ -17,6 +17,9 @@ in {
 
     # Extra configuration.
     extraConfig = {
+      # GitHub related configuration.
+      github.user = userInfo.githubUser;
+
       # Core configuration.
       core = {
         editor = "code --wait";
@@ -58,34 +61,32 @@ in {
 
       mergetool."code".cmd = "code --wait $MERGED";
 
-      # Key related configuration.
-      gpg.format = "ssh";
-      credential.helper = "osxkeychain";
+      # Signing configuration.
       tag.gpgsign = true;
-      user.signingkey = "~/.ssh/id_ed25519";
-
-      # GitHub related configuration.
-      github.user = userInfo.githubUser;
     };
 
     # Delta pager.
-    delta = {
-      enable = true;
-      options = {
-        features = "line-numbers side-by-side decorations";
-        theme = "Dracula";
-        decorations = {
-          commit-decoration-style = "bold yellow box ul";
-          file-decoration-style = "none";
-          file-style = "bold yellow ul";
-        };
-        line-numbers = {
-          line-numbers-left-style = "cyan";
-          line-numbers-right-style = "cyan";
-          line-numbers-minus-style = "124";
-          line-numbers-plus-style = "28";
-        };
-      };
+    delta.enable = true;
+
+    # Git aliases.
+    aliases = {
+      "a" = "add";
+      "b" = "branch";
+      "c" = "commit";
+      "cm" = "commit -m";
+      "co" = "checkout";
+      "d" = "diff";
+      "f" = "fetch";
+      "g" = "log --graph";
+      "l" = "log";
+      "m" = "merge";
+      "p" = "push";
+      "pl" = "pull";
+      "r" = "restore";
+      "rs" = "restore --staged";
+      "rb" = "rebase";
+      "s" = "status";
+      "t" = "tag";
     };
 
     # Global git ignores.

@@ -1,6 +1,6 @@
-#######################
-# Core home packages. #
-#######################
+#######################################################
+# Core home configuration and packages for this user. #
+#######################################################
 {
   pkgs,
   config,
@@ -14,29 +14,27 @@
     homeDirectory = "/Users/${config.home.username}";
 
     # Supported version.
-    stateVersion = "23.11";
+    stateVersion = "25.05";
+  };
+
+  # Global 'Catppuccin' theme options.
+  catppuccin = {
+    # Enable 'catppuccin' options for every supported program/service.
+    enable = true;
+
+    # Set the flavor and accent color.
+    flavor = "mocha";
+    accent = "mauve";
   };
 
   # No-configuration packages.
   home.packages = with pkgs; [
-    # Files related tools.
-    fzf
-    tree
-
-    # Signing tools.
-    gnupg
-
-    # Python packages.
-    poetry
-    cookiecutter
+    # Programming languages (or related).
+    elan
+    zulu
   ];
 
-  # Minimal configuration-dependent packages.
-  programs = {
-    # Pyenv.
-    pyenv = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-  };
+  # Minimal configuration-dependent programs and/or services.
+  programs = {};
+  services = {};
 }

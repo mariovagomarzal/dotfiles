@@ -4,23 +4,26 @@
 {
   lib,
   hostname,
+  computerName,
   users,
   ...
 }: {
-  # Host name configuration.
+  # Host configuration.
   networking.hostName = hostname;
-  networking.computerName = hostname;
-  system.defaults.smb.NetBIOSName = hostname;
+  networking.computerName = computerName;
+
+  system.defaults.smb = {
+    NetBIOSName = hostname;
+    ServerDescription = hostname;
+  };
 
   # Users configuration.
   users.users =
     lib.mapAttrs (
       username: _: {
-        description = "User ${username}";
+        description = users.${username}.userInfo.userName;
         home = "/Users/${username}";
       }
     )
     users;
-
-  nix.settings.trusted-users = ["root"] ++ (lib.attrNames users);
 }

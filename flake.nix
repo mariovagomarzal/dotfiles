@@ -9,17 +9,29 @@
     # nixpkgs, the Nix packages collection.
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
+    # nur, the Nix User Repository.
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nix-darwin, the Nix configuration for macOS.
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # nixpkgs-firefox-darwin, the Nixpkgs overlay for Firefox on macOS.
+    nixpkgs-firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
+
     # home-manager, the Nix configuration for user environments.
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # catppuccin, a color scheme for customizing programs.
+    catppuccin.url = "github:catppuccin/nix";
 
     # devshell, a tool for creating development environments.
     devshell.url = "github:numtide/devshell";
