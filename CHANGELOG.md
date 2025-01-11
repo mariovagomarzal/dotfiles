@@ -18,7 +18,7 @@ sections:
   `README.md` or `CHANGELOG.md`.
 - _Miscellaneous_: for changes that do not fit in any of the previous sections.
 
-## [Unreleased]
+## [2025.01.11]
 
 ### Mario's MacBook Pro
 
@@ -26,6 +26,22 @@ sections:
 - Many system settings options have been added.
 - Packages installation options have been reorganized. Now, 'nix-darwin' manages
   less packages in favor of 'home-manager'.
+- Now 'home-manager' programs/services use the Catppuccin theme.
+- Added the following programs/services for 'home-manager':
+  - Bat
+  - LSD
+  - Visual Studio Code
+  - Firefox
+
+### Development
+
+- Some 'Markdownlint' rules have been disabled.
+
+### Documentation
+
+- A logo and some badges have been added to the README file.
+- The documentation of the setup process for Mario's MacBook Pro has been
+  improved.s
 
 ## [2024.12.28]
 
@@ -94,8 +110,8 @@ sections:
   [dotbot](https://github.com/anishathalye/dotbot) tool.
 
 <!-- External links -->
-[unreleased]:
-  https://github.com/mariovagomarzal/dotfiles/compare/2024.12.28...HEAD
+[2025.01.11]:
+  https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.01.11
 [2024.12.28]:
   https://github.com/mariovagomarzal/dotfiles/releases/tag/2024.12.28
 [2024.12.12]:
