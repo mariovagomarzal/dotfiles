@@ -18,6 +18,12 @@ sections:
   `README.md` or `CHANGELOG.md`.
 - _Miscellaneous_: for changes that do not fit in any of the previous sections.
 
+## [2025.01.11.1]
+
+### Documentation
+
+- The logo in the README file has been fixed.
+
 ## [2025.01.11]
 
 ### Mario's MacBook Pro
@@ -110,6 +116,8 @@ sections:
   [dotbot](https://github.com/anishathalye/dotbot) tool.
 
 <!-- External links -->
+[2025.01.11.1]:
+  https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.01.11.1
 [2025.01.11]:
   https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.01.11
 [2024.12.28]:
