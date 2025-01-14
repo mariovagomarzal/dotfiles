@@ -106,7 +106,7 @@ dotfiles
 │   │   ├── profiles
 │   │   │   └── default.nix
 │   │   └── default.nix
-│   ├── mariovagomarzal
+│   ├── mariovagomarzal@Marios-MacBook-Pro
 │   │   ├── core.nix
 │   │   ├── firefox.nix
 │   │   ├── git.nix

@@ -81,7 +81,7 @@
     sharedModulesDir = ".";
     excludedSharedModules = [];
     extraSharedModules = [];
-    # userModulesDir = username;
+    # userModulesDir = <username>;
     excludedUserModules = [];
     extraUserModules = [];
     userInfo = {};
