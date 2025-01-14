@@ -92,8 +92,8 @@
   Prepares the context for the user configuration, that is, the necessary
   components to generate the configuration attribute set.
   */
-  mkUserContext = username: userArgs: args: let
-    args' = {userModulesDir = username;} // args;
+  mkUserContext = hostname: username: userArgs: args: let
+    args' = {userModulesDir = "${username}@${hostname}";} // args;
     mergedArgs = lib.recursiveUpdate args' userArgs;
   in {
     imports = getUserModules mergedArgs;
@@ -104,8 +104,8 @@
   Given a username, its arguments, and the global arguments, returns the user
   configuration attribute set.
   */
-  mkUserConfiguration = username: userArgs: args: let
-    context = mkUserContext username userArgs args;
+  mkUserConfiguration = hostname: username: userArgs: args: let
+    context = mkUserContext hostname username userArgs args;
   in
     lib.recursiveUpdate {
       inherit (context) imports;
@@ -116,10 +116,10 @@
   Returns an attribute set where each key is a username and the value is the
   user configuration attribute set.
   */
-  mkUsersConfigurations = args @ {users, ...}:
+  mkUsersConfigurations = hostname: args @ {users, ...}:
     lib.mapAttrs (
       username: userArgs:
-        mkUserConfiguration username userArgs args
+        mkUserConfiguration hostname username userArgs args
     )
     users;
 
@@ -127,21 +127,21 @@
   Prepares the context for the Home-Manager module, that is, the necessary
   components to generate the module, its global options and the users options.
   */
-  mkHomeModuleContext = type: args: let
+  mkHomeModuleContext = type: hostname: args: let
     usersInfo = config: args.users.${config.home.username}.userInfo;
   in {
     homeManagerModule = getHomeManagerModule type args;
     extraSpecialArgs = {inherit usersInfo;} // args.homeSpecialArgs;
     extraHomeManagerArgs = args.extraHomeManagerArgs;
-    users = mkUsersConfigurations args;
+    users = mkUsersConfigurations hostname args;
   };
 
   /*
   Returns the Home-Manager module for the given type. This includes the global
   options and the users options as an attribute set.
   */
-  mkHomeModule = type: args: let
-    context = mkHomeModuleContext type args;
+  mkHomeModule = type: hostname: args: let
+    context = mkHomeModuleContext type hostname args;
   in [
     context.homeManagerModule
     {
@@ -178,7 +178,7 @@
       // mergedArgs.specialArgs;
     modules =
       (getSystemModules type mergedArgs)
-      ++ (mkHomeModule type mergedArgs);
+      ++ (mkHomeModule type hostname mergedArgs);
     extraArgs = mergedArgs.${perTypeInfo type "extraArgs"};
   };
 
@@ -218,7 +218,7 @@
     sharedModulesDir = ".";
     excludedSharedModules = [];
     extraSharedModules = [];
-    # hostModulesDir = hostname;
+    # hostModulesDir = <hostname>;
     excludedHostModules = [];
     extraHostModules = [];
     extraNixosArgs = {};
@@ -230,7 +230,7 @@
     # sharedModulesDir = ".";
     excludedHomeSharedModules = [];
     extraHomeSharedModules = [];
-    # userModulesDir = username;
+    # userModulesDir = <username@hostname>;
     excludedUserModules = [];
     extraUserModules = [];
     userInfo = {};
