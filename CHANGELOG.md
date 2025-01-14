@@ -18,6 +18,14 @@ sections:
   `README.md` or `CHANGELOG.md`.
 - _Miscellaneous_: for changes that do not fit in any of the previous sections.
 
+## [2025.01.14]
+
+### Codebase
+
+- Non-standalone user configurations directories now have the '@\<hostname\>'
+  suffix to differentiate them from standalone user configurations directories
+  and to make it easier to identify the host.
+
 ## [2025.01.11.1]
 
 ### Documentation
@@ -116,6 +124,8 @@ sections:
   [dotbot](https://github.com/anishathalye/dotbot) tool.
 
 <!-- External links -->
+[2025.01.14]:
+  https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.01.14
 [2025.01.11.1]:
   https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.01.11.1
 [2025.01.11]:
