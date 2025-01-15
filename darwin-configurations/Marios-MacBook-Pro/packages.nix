@@ -74,7 +74,6 @@ in {
     # Brew casks to install, i.e., `brew install --cask <package>`.
     casks = [
       # Terminal emulators.
-      "kitty"
       "alacritty"
 
       # Text editors (or related).
