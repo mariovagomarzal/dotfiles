@@ -1,7 +1,7 @@
 #####################################
 # Alicritty terminal configuration. #
 #####################################
-{...}: {
+{config, ...}: {
   programs.alacritty = {
     enable = true;
 
@@ -9,7 +9,7 @@
     settings = {
       # Shell configuration.
       terminal.shell = {
-        program = "fish";
+        program = "${config.programs.fish.package}/bin/fish";
         args = ["-l"];
       };
 
