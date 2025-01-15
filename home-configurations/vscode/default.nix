@@ -20,6 +20,7 @@
       julialang.language-julia
       james-yu.latex-workshop
       nvarner.typst-lsp
+      tamasfe.even-better-toml
 
       # GitHub copilot.
       github.copilot
