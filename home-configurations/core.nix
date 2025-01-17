@@ -8,6 +8,10 @@
     gnupg
 
     # Programming languages (or related).
+    (lua.withPackages (ps:
+      with ps; [
+        luarocks
+      ]))
     rustup
     typst
     texliveFull
