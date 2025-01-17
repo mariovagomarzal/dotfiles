@@ -8,10 +8,6 @@
     gnupg
 
     # Programming languages (or related).
-    (lua.withPackages (ps:
-      with ps; [
-        luarocks
-      ]))
     rustup
     typst
     texliveFull
@@ -25,6 +21,14 @@
   ];
 
   # Minimal configuration-dependent programs and/or services.
-  programs = {};
+  programs = {
+    # Lua programming language.
+    lua = {
+      enable = true;
+      extraLuaPackages = [
+        "luarocks"
+      ];
+    };
+  };
   services = {};
 }
