@@ -6,6 +6,7 @@
   lib,
   nur,
   nixpkgs-firefox-darwin,
+  overlays,
   ...
 }: {
   # Auto upgrade Nix and the daemon service.
@@ -55,5 +56,6 @@
   nixpkgs.overlays = [
     nur.overlays.default
     nixpkgs-firefox-darwin.overlay
+    overlays.lua.sbarlua
   ];
 }

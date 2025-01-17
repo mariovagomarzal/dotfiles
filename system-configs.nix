@@ -8,6 +8,9 @@ inputs @ {
   catppuccin,
   ...
 }: let
+  # My Nixpkgs overlays.
+  overlays = import ./overlays {};
+
   # The custom 'configurations-manager' library.
   configurations-manager = import ./configurations-manager {
     nixpkgs-lib = nixpkgs.lib;
@@ -21,7 +24,12 @@ inputs @ {
 in {
   # Configurations for Darwin systems.
   darwinConfigurations = configurations-manager.mkDarwinConfigurations {
-    specialArgs = inputs // {computerName = "Mario's MacBook Pro";};
+    specialArgs =
+      inputs
+      // {
+        inherit overlays;
+        computerName = "Mario's MacBook Pro";
+      };
     homeSpecialArgs = inputs;
     extraHomeSharedModules = [
       catppuccin.homeManagerModules.catppuccin
