@@ -18,7 +18,7 @@
     mkMerge
     ;
 
-  # The Lua program configuration.
+  # Lua program configuration object.
   cfg = config.programs.lua;
 in {
   # Options for the Lua program module.
@@ -71,6 +71,7 @@ in {
     };
   };
 
+  # Lua program configuration.
   config = let
     # Returns a list of packages within the given `ps` package set.
     withLuaPackages = ps: packageNames:
