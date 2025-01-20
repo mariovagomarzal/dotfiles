@@ -1,6 +1,6 @@
-#########################
-# System configuration. #
-#########################
+#######################################
+# System configuration for this host. #
+#######################################
 {...}: {
   /*
   In this file, we define almost every available option that 'nix-darwin'
