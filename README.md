@@ -184,12 +184,28 @@ handled by this repository.
 We're going to describe the setup process for my (Mario's) MacBook Pro. We will
 assume a fresh installation of macOS.
 
-1. __Restore SSH keys__: I use [SSH keys][ssh-keys] to authenticate with GitHub
+1. __Disable System Integrity Protection (SIP)__: Some configurations require
+  partially disabling SIP, e.g., the [Yabai][yabai] window manager. To do so, we
+  have to boot into recovery mode. Once in recovery mode, we have to open the
+  terminal and run the following command and then reboot:
+
+    ```console
+    csrutil enable --without fs --without debug --without nvram
+    ```
+
+    For Apple Silicon machines, we also have to enable non-Apple-signed arm64e
+    binaries. To do so, we have to run the following command and then reboot:
+
+    ```console
+    sudo nvram boot-args=-arm64e_preview_abi
+    ```
+
+2. __Restore SSH keys__: I use [SSH keys][ssh-keys] to authenticate with GitHub
   and other services. For that reason, we will need to safely restore the SSH
   keys from a backup or [generate new ones][generate-ssh-keys] and store them
   in the `~/.ssh` directory.
 
-2. __Install Xcode Command Line Tools__: In first place, we will need to
+3. __Install Xcode Command Line Tools__: In first place, we will need to
   install the Xcode Command Line Tools, since they may be required in some
   of the following steps. To do so, run the following command in the terminal:
 
@@ -197,7 +213,7 @@ assume a fresh installation of macOS.
     xcode-select --install
     ```
 
-3. __Install Homebrew__: Some packages are installed via [Homebrew][homebrew] by
+4. __Install Homebrew__: Some packages are installed via [Homebrew][homebrew] by
   nix-darwin. However, nix-darwin will not install Homebrew itself. To install
   Homebrew follow the instructions in the [official download
   page][download-brew] or TL;DR:
@@ -206,11 +222,11 @@ assume a fresh installation of macOS.
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
-4. __Install Nix__: We will use [Nix][nix] to setup and manage the machine
+5. __Install Nix__: We will use [Nix][nix] to setup and manage the machine
   configuration. Install Nix following the instructions in the [official
   download page][download-nix].
 
-5. __Clone the repository__: Once Nix is installed and the SSH keys are in
+6. __Clone the repository__: Once Nix is installed and the SSH keys are in
   place, we can clone the repository with Git (or by manually downloading it)
   and `cd` into it:
 
@@ -219,7 +235,7 @@ assume a fresh installation of macOS.
     cd dotfiles
     ```
 
-6. __Setup the machine__: If it is the first time we're setting up the machine
+7. __Setup the machine__: If it is the first time we're setting up the machine
   with these dotfiles, we have to run the following command:
 
     ```console
@@ -319,6 +335,8 @@ This repository follows a simple (and flexible) workflow:
 [nix-flakes]: https://nixos.wiki/wiki/Flakes
 [flake-parts]: https://github.com/hercules-ci/flake-parts
 [cm-library]: /configurations-manager/default.nix
+[yabai]:
+  https://github.com/koekeishiya/yabai
 [ssh-keys]:
   https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
 [generate-ssh-keys]:
