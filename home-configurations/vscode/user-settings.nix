@@ -60,11 +60,15 @@
     "editor.tabSize" = 2;
   };
 
+  "[shellscript]" = {
+    "editor.tabSize" = 2;
+  };
+
   # GitHub Copilot extension settings.
   "github.copilot.enable" = {
     "*" = true;
     "markdown" = true;
-    "plaintext" = false;
+    "plaintext" = true;
     "scminput" = false;
   };
 
