@@ -100,6 +100,7 @@ in {
           ProgramArguments = [
             "${cfg.package}/bin/skhd"
           ];
+          WorkingDirectory = "${config.home.homeDirectory}/.config/skhd";
           EnvironmentVariables = let
             totalPackages = [cfg.package] ++ cfg.extraPackages;
           in
