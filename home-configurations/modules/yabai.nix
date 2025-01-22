@@ -95,14 +95,20 @@ in {
       home.packages = [cfg.package];
 
       # Add the Yabai configuration directory or file.
-      xdg.configFile."yabai" = mkIf (lib.pathIsDirectory cfg.configSource) {
-        source = cfg.configSource;
-        recursive = false;
-      };
+      xdg.configFile."yabai" =
+        mkIf (
+          lib.pathIsDirectory cfg.configSource
+        ) {
+          source = cfg.configSource;
+          recursive = false;
+        };
 
-      xdg.configFile."yabai/yabairc" = mkIf (lib.pathIsRegularFile cfg.configSource) {
-        source = cfg.configSource;
-      };
+      xdg.configFile."yabai/yabairc" =
+        mkIf (
+          lib.pathIsRegularFile cfg.configSource
+        ) {
+          source = cfg.configSource;
+        };
 
       # Add the Yabai launchd agent.
       launchd.agents."yabai" = {
