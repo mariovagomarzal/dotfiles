@@ -8,5 +8,8 @@
 
     # Module for Yabai.
     ./yabai.nix
+
+    # Module for Skhd.
+    ./skhd.nix
   ];
 }
