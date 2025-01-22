@@ -131,6 +131,8 @@ in {
             // cfg.extraEnvironment;
           RunAtLoad = true;
           KeepAlive = true;
+          StandardOutPath = "/tmp/yabai_stdout_${config.home.username}.log";
+          StandardErrorPath = "/tmp/yabai_stderr_${config.home.username}.log";
         };
       };
     }
