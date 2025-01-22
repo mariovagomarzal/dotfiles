@@ -40,7 +40,7 @@ in {
       ProgramArguments = [
         "${jankyborders}/bin/borders"
         "style=round"
-        "width=8.0"
+        "width=4.0"
         "hidpi=off"
         "active_color=${palette.mauve}"
         "inactive_color=${palette.surface0}"
