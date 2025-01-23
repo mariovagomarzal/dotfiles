@@ -105,6 +105,7 @@ in {
             totalPackages = [cfg.package] ++ cfg.extraPackages;
           in
             {
+              SHELL = "/usr/bin/env bash";
               PATH =
                 "/usr/bin:/bin:/usr/sbin:"
                 + (lib.concatStringsSep ":" (
