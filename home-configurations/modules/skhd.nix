@@ -112,6 +112,7 @@ in {
                 ));
             }
             // cfg.extraEnvironment;
+          ProcessType = "Interactive";
           RunAtLoad = true;
           KeepAlive = true;
           StandardOutPath = "/tmp/skhd_stdout_${config.home.username}.log";
