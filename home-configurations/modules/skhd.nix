@@ -108,10 +108,10 @@ in {
           in
             {
               PATH =
-                "/usr/bin:/bin:/usr/sbin:"
-                + (lib.concatStringsSep ":" (
+                (lib.concatStringsSep ":" (
                   map (pkg: "${pkg}/bin") totalPackages
-                ));
+                ))
+                + ":/usr/bin:/bin:/usr/sbin";
             }
             // cfg.extraEnvironment;
           ProcessType = "Interactive";
