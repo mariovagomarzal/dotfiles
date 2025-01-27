@@ -14,5 +14,8 @@
 
     # Module for JankyBorders.
     ./jankyborders.nix
+
+    # Module for Skeketchybar.
+    ./sketchybar.nix
   ];
 }
