@@ -95,7 +95,9 @@ in {
       # Add the Skhd launchd agent.
       launchd.agents."skhd" = {
         enable = true;
-        config = {
+        config = let
+          username = config.home.username;
+        in {
           Label = "skhd";
           ProgramArguments = [
             "${cfg.package}/bin/skhd"
@@ -115,8 +117,8 @@ in {
           ProcessType = "Interactive";
           RunAtLoad = true;
           KeepAlive = true;
-          StandardOutPath = "/tmp/skhd_stdout_${config.home.username}.log";
-          StandardErrorPath = "/tmp/skhd_stderr_${config.home.username}.log";
+          StandardOutPath = "/tmp/skhd_stdout_${username}.log";
+          StandardErrorPath = "/tmp/skhd_stderr_${username}.log";
         };
       };
     }

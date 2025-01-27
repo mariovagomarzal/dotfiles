@@ -113,7 +113,9 @@ in {
       # Add the Yabai launchd agent.
       launchd.agents."yabai" = {
         enable = true;
-        config = {
+        config = let
+          username = config.home.username;
+        in {
           Label = "yabai";
           ProgramArguments = [
             "${cfg.package}/bin/yabai"
@@ -132,8 +134,8 @@ in {
           ProcessType = "Interactive";
           RunAtLoad = true;
           KeepAlive = true;
-          StandardOutPath = "/tmp/yabai_stdout_${config.home.username}.log";
-          StandardErrorPath = "/tmp/yabai_stderr_${config.home.username}.log";
+          StandardOutPath = "/tmp/yabai_stdout_${username}.log";
+          StandardErrorPath = "/tmp/yabai_stderr_${username}.log";
         };
       };
     }

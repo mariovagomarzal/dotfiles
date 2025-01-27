@@ -55,7 +55,9 @@ in {
       # Add the JankyBorders launchd agent.
       launchd.agents."jankyborders" = {
         enable = true;
-        config = {
+        config = let
+          username = config.home.username;
+        in {
           Label = "jankyborders";
           ProgramArguments = let
             # Convert the settings to a list of arguments.
@@ -72,8 +74,8 @@ in {
           ProcessType = "Interactive";
           RunAtLoad = true;
           KeepAlive = true;
-          StandardOutPath = "/tmp/borders_stdout_${config.home.username}.log";
-          StandardErrorPath = "/tmp/borders_stderr_${config.home.username}.log";
+          StandardOutPath = "/tmp/jankyborders_stdout_${username}.log";
+          StandardErrorPath = "/tmp/jankyborders_stderr_${username}.log";
         };
       };
     }
