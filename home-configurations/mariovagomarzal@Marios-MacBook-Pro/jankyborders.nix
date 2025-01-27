@@ -2,51 +2,36 @@
 # JankyBorders configuration for this user. #
 #############################################
 {
-  pkgs,
+  lib,
   config,
   ...
 }: let
-  # JankyBorders package to use.
-  jankyborders = pkgs.jankyborders;
+  # Catppuccin configuration.
+  catppuccin = config.catppuccin;
 
-  # Catppuccin palettes.
-  palettes = {
-    latte = {
-      mauve = "0xff8839ef";
-      surface0 = "0xffbcc0cc";
-    };
-    frappe = {
-      mauve = "0xffca9ee6";
-      surface0 = "0xff414559";
-    };
-    macchiato = {
-      mauve = "0xffc6a0f6";
-      surface0 = "0xff363a4f";
-    };
-    mocha = {
-      mauve = "0xffcba6f7";
-      surface0 = "0xff313244";
-    };
-  };
-  palette = palettes.${config.catppuccin.flavor};
+  # Import the Catppuccin palette based on the user's flavor.
+  palette =
+    (
+      lib.importJSON "${catppuccin.sources.palette}/palette.json"
+    )
+    .${catppuccin.flavor}
+    .colors;
+
+  # Function to generate a color with '0xaarrggbb' format.
+  colorWithAlpha = color: alpha: let
+    hex = lib.removePrefix "#" palette.${color}.hex;
+  in "0x${alpha}${hex}";
 in {
-  home.packages = [jankyborders];
-
-  # Add JankyBorders to the user's launchd agents.
-  launchd.agents.jankyborders = {
+  services.jankyborders = {
     enable = true;
-    config = {
-      Label = "jankyborders";
-      ProgramArguments = [
-        "${jankyborders}/bin/borders"
-        "style=round"
-        "width=4.0"
-        "hidpi=off"
-        "active_color=${palette.mauve}"
-        "inactive_color=${palette.surface0}"
-      ];
-      RunAtLoad = true;
-      KeepAlive = true;
+
+    # JankyBorders configuration content.
+    settings = {
+      "width" = "4.0";
+      "active_color" = colorWithAlpha catppuccin.accent "ff";
+      "inactive_color" = colorWithAlpha "surface0" "ff";
+      "style" = "round";
+      "hidpi" = "off";
     };
   };
 }
