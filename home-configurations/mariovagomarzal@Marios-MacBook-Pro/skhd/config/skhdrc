@@ -3,7 +3,6 @@ lalt - return : open -na "Alacritty"
 lalt - space : open -na "Firefox"
 
 # Yabai hotkeys.
-# TODO: Document function scripts.
 
 # Displays navigation hotkeys.
 lctrl + lalt - right : ./functions/focus-display.sh "next"
