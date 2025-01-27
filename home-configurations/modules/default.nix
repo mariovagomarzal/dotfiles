@@ -11,5 +11,8 @@
 
     # Module for Skhd.
     ./skhd.nix
+
+    # Module for JankyBorders.
+    ./jankyborders.nix
   ];
 }
