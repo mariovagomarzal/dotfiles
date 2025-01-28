@@ -25,8 +25,11 @@
     # Lua programming language.
     lua = {
       enable = true;
-      extraLuaPackages = [
-        "luarocks"
+      extraPackages = [
+        (ps:
+          with ps; [
+            luarocks
+          ])
       ];
     };
   };
