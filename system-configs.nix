@@ -8,9 +8,6 @@ inputs @ {
   catppuccin,
   ...
 }: let
-  # My Nixpkgs overlays.
-  overlays = import ./overlays {};
-
   # The custom 'configurations-manager' library.
   configurations-manager = import ./configurations-manager {
     nixpkgs-lib = nixpkgs.lib;
@@ -27,7 +24,6 @@ in {
     specialArgs =
       inputs
       // {
-        inherit overlays;
         computerName = "Mario's MacBook Pro";
       };
     homeSpecialArgs = inputs;
