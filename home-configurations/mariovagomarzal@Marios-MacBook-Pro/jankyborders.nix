@@ -27,11 +27,12 @@ in {
 
     # JankyBorders configuration content.
     settings = {
-      "width" = "4.0";
-      "active_color" = colorWithAlpha catppuccin.accent "ff";
-      "inactive_color" = colorWithAlpha "surface0" "ff";
+      "width" = "3.0";
+      "order" = "above";
       "style" = "round";
       "hidpi" = "off";
+      "active_color" = colorWithAlpha catppuccin.accent "ff";
+      "inactive_color" = colorWithAlpha "surface0" "ff";
     };
   };
 }
