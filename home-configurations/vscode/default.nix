@@ -21,6 +21,7 @@
       james-yu.latex-workshop
       nvarner.typst-lsp
       tamasfe.even-better-toml
+      geequlim.godot-tools
 
       # GitHub copilot.
       github.copilot
