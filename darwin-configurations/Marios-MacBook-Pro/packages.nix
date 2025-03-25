@@ -86,6 +86,7 @@ in {
 
       # Gaming.
       "steam"
+      "whisky"
       "openemu"
 
       # Miscellaneous.
