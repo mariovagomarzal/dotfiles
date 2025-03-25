@@ -31,8 +31,8 @@ in {
       "order" = "above";
       "style" = "round";
       "hidpi" = "off";
-      "active_color" = colorWithAlpha catppuccin.accent "ff";
-      "inactive_color" = colorWithAlpha "surface0" "ff";
+      "active_color" = colorWithAlpha "lavender" "ff";
+      "inactive_color" = colorWithAlpha "overlay0" "ff";
     };
   };
 }
