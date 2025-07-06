@@ -108,20 +108,20 @@
     force = true;
 
     # Default search engine.
-    default = "Google";
-    privateDefault = "Google";
+    default = "google";
+    privateDefault = "google";
 
     # Other search engines.
     engines = let
       dayInMs = 24 * 60 * 60 * 1000;
     in {
       # Default search engines.
-      "Google".metaData.alias = "@g";
-      "Wikipedia (en)".metaData.alias = "@wk";
-      "DuckDuckGo".metaData.hidden = true;
-      "Bing".metaData.hidden = true;
-      "Ecosia".metaData.hidden = true;
-      "Qwant".metaData.hidden = true;
+      "google".metaData.alias = "@g";
+      "wikipedia".metaData.alias = "@wk";
+      "duckduckgo".metaData.hidden = true;
+      "bing".metaData.hidden = true;
+      "ecosia".metaData.hidden = true;
+      "qwant".metaData.hidden = true;
       "YouTube" = {
         urls = [
           {
@@ -258,10 +258,12 @@
   };
 
   # Extensions.
-  extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-    stylus
-    firefox-color
-  ];
+  extensions = {
+    packages = with pkgs.nur.repos.rycee.firefox-addons; [
+      stylus
+      firefox-color
+    ];
+  };
 
   # Containers.
   containersForce = true;
