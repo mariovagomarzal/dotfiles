@@ -12,9 +12,6 @@
     # Module for Skhd.
     ./skhd.nix
 
-    # Module for JankyBorders.
-    ./jankyborders.nix
-
     # Module for Skeketchybar.
     ./sketchybar.nix
   ];
