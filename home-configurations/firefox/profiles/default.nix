@@ -11,94 +11,97 @@
   name = userInfo.userName;
 
   # Bookmarks.
-  bookmarks = [
-    {
-      name = "Toolbar Bookmarks";
-      toolbar = true;
-      bookmarks = [
-        {
-          name = "YouTube";
-          url = "https://www.youtube.com";
-        }
-        {
-          name = "Reddit";
-          url = "https://www.reddit.com";
-        }
-        {
-          name = "GitHub";
-          url = "https://github.com";
-        }
-        {
-          name = "Communication";
-          bookmarks = [
-            {
-              name = "WhatsApp Web";
-              url = "https://web.whatsapp.com";
-            }
-            {
-              name = "Discord";
-              url = "https://discord.com";
-            }
-          ];
-        }
-        {
-          name = "Video Streaming";
-          bookmarks = [
-            {
-              name = "Netflix";
-              url = "https://www.netflix.com";
-            }
-            {
-              name = "Prime Video";
-              url = "https://www.primevideo.com";
-            }
-            {
-              name = "Disney+";
-              url = "https://www.disneyplus.com";
-            }
-            {
-              name = "Max";
-              url = "https://play.max.com";
-            }
-          ];
-        }
-        {
-          name = "Nix Sites";
-          bookmarks = [
-            {
-              name = "NixOS Wiki";
-              url = "https://wiki.nixos.org";
-            }
-            {
-              name = "Nixpkgs Reference Manual";
-              url = "https://nixos.org/manual/nixpkgs/stable";
-            }
-            {
-              name = "Nix-Darwin Configuration Options";
-              url = "https://daiderd.com/nix-darwin/manual/index.html";
-            }
-            {
-              name = "Home-Manager Configuration Options";
-              url = "https://nix-community.github.io/home-manager/options.xhtml";
-            }
-          ];
-        }
-        {
-          name = "University";
-          bookmarks = [
-            {
-              name = "Portal UV";
-              url = "https://portal.uv.es";
-            }
-            {
-              name = "Aula Virtual UV";
-              url = "https://aulavirtual.uv.es";
-            }
-          ];
-        }
-      ];
-    }
-  ];
+  bookmarks = {
+    force = true;
+    settings = [
+      {
+        name = "Toolbar Bookmarks";
+        toolbar = true;
+        bookmarks = [
+          {
+            name = "YouTube";
+            url = "https://www.youtube.com";
+          }
+          {
+            name = "Reddit";
+            url = "https://www.reddit.com";
+          }
+          {
+            name = "GitHub";
+            url = "https://github.com";
+          }
+          {
+            name = "Communication";
+            bookmarks = [
+              {
+                name = "WhatsApp Web";
+                url = "https://web.whatsapp.com";
+              }
+              {
+                name = "Discord";
+                url = "https://discord.com";
+              }
+            ];
+          }
+          {
+            name = "Video Streaming";
+            bookmarks = [
+              {
+                name = "Netflix";
+                url = "https://www.netflix.com";
+              }
+              {
+                name = "Prime Video";
+                url = "https://www.primevideo.com";
+              }
+              {
+                name = "Disney+";
+                url = "https://www.disneyplus.com";
+              }
+              {
+                name = "Max";
+                url = "https://play.max.com";
+              }
+            ];
+          }
+          {
+            name = "Nix Sites";
+            bookmarks = [
+              {
+                name = "NixOS Wiki";
+                url = "https://wiki.nixos.org";
+              }
+              {
+                name = "Nixpkgs Reference Manual";
+                url = "https://nixos.org/manual/nixpkgs/stable";
+              }
+              {
+                name = "Nix-Darwin Configuration Options";
+                url = "https://daiderd.com/nix-darwin/manual/index.html";
+              }
+              {
+                name = "Home-Manager Configuration Options";
+                url = "https://nix-community.github.io/home-manager/options.xhtml";
+              }
+            ];
+          }
+          {
+            name = "University";
+            bookmarks = [
+              {
+                name = "Portal UV";
+                url = "https://portal.uv.es";
+              }
+              {
+                name = "Aula Virtual UV";
+                url = "https://aulavirtual.uv.es";
+              }
+            ];
+          }
+        ];
+      }
+    ];
+  };
 
   # Search settings.
   search = {
