@@ -14,7 +14,9 @@
     (
       lib.importJSON "${catppuccin.sources.palette}/palette.json"
     )
-    .${catppuccin.flavor}
+    .${
+      catppuccin.flavor
+    }
     .colors;
 
   # Function to generate a color with '0xaarrggbb' format.
