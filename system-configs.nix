@@ -28,7 +28,7 @@ in {
       };
     homeSpecialArgs = inputs;
     extraHomeSharedModules = [
-      catppuccin.homeManagerModules.catppuccin
+      catppuccin.homeModules.catppuccin
     ];
     extraHomeManagerArgs = {
       backupFileExtension = "backup";
