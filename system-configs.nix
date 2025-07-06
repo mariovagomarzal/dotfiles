@@ -45,6 +45,7 @@ in {
               userName = "Mario Vago Marzal";
               email = "mariovagomarzal@gmail.com";
               githubUser = "mariovagomarzal";
+              isPrimaryUser = true;
             };
           };
         };
