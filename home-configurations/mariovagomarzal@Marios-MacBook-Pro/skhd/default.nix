@@ -6,7 +6,7 @@
   pkgs,
   ...
 }: {
-  services.skhd = {
+  tmpServices.skhd = {
     enable = true;
 
     # Skhd configuration directory.

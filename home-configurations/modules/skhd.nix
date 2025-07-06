@@ -19,11 +19,11 @@
     ;
 
   # Skhd service configuration object.
-  cfg = config.services.skhd;
+  cfg = config.tmpServices.skhd;
 in {
   # Options for the Skhd service module.
   options = {
-    services.skhd = {
+    tmpServices.skhd = {
       enable = mkEnableOption "skhd";
 
       package = mkPackageOption pkgs "skhd" {};
