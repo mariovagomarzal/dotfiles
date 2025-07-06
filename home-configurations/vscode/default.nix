@@ -5,49 +5,50 @@
   programs.vscode = {
     enable = true;
 
-    # Disable updates notifications.
-    enableUpdateCheck = false;
-    enableExtensionUpdateCheck = false;
+    profiles.default = {
+      # Disable updates notifications.
+      enableUpdateCheck = false;
+      enableExtensionUpdateCheck = false;
 
-    # Extensions.
-    mutableExtensionsDir = true;
-    extensions = with pkgs.vscode-extensions; [
-      # Language support extensions.
-      bbenoist.nix
-      ms-python.python
-      ms-python.debugpy
-      ms-python.vscode-pylance
-      julialang.language-julia
-      james-yu.latex-workshop
-      myriad-dreamin.tinymist
-      tamasfe.even-better-toml
-      geequlim.godot-tools
+      # Extensions.
+      extensions = with pkgs.vscode-extensions; [
+        # Language support extensions.
+        bbenoist.nix
+        ms-python.python
+        ms-python.debugpy
+        ms-python.vscode-pylance
+        julialang.language-julia
+        james-yu.latex-workshop
+        myriad-dreamin.tinymist
+        tamasfe.even-better-toml
+        geequlim.godot-tools
 
-      # GitHub copilot.
-      github.copilot
-      github.copilot-chat
+        # GitHub copilot.
+        github.copilot
+        github.copilot-chat
 
-      # Themes and icons.
-      catppuccin.catppuccin-vsc
-      catppuccin.catppuccin-vsc-icons
+        # Themes and icons.
+        catppuccin.catppuccin-vsc
+        catppuccin.catppuccin-vsc-icons
 
-      # Miscellaneous.
-      adpyke.codesnap
-      codezombiech.gitignore
-      stkb.rewrap
-    ];
+        # Miscellaneous.
+        adpyke.codesnap
+        codezombiech.gitignore
+        stkb.rewrap
+      ];
 
-    # Snippets.
-    globalSnippets = import ./global-snippets.nix;
-    languageSnippets = import ./language-snippets.nix;
+      # Snippets.
+      globalSnippets = import ./global-snippets.nix;
+      languageSnippets = import ./language-snippets.nix;
 
-    # Keybindings.
-    keybindings = import ./keybindings.nix;
+      # Keybindings.
+      keybindings = import ./keybindings.nix;
 
-    # Settings.
-    userSettings = import ./user-settings.nix;
+      # Settings.
+      userSettings = import ./user-settings.nix;
 
-    # Tasks.
-    userTasks = import ./user-tasks.nix;
+      # Tasks.
+      userTasks = import ./user-tasks.nix;
+    };
   };
 }
