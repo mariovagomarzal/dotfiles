@@ -12,7 +12,7 @@ hostname := "$(hostname)"
 [doc('Rebuild a Darwin configuration with the given hostname.')]
 darwin-rebuild HOSTNAME=hostname:
     @echo "Rebuilding the Darwin configuration for {{HOSTNAME}}..."
-    darwin-rebuild switch --flake ".#{{HOSTNAME}}"
+    sudo darwin-rebuild switch --flake ".#{{HOSTNAME}}"
 
 alias dr := darwin-rebuild
 

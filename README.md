@@ -239,7 +239,7 @@ assume a fresh installation of macOS.
   with these dotfiles, we have to run the following command:
 
     ```console
-    nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake '.#Marios-MacBook-Pro'
+    sudo nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake '.#Marios-MacBook-Pro'
     ```
 
 If this command succeeds, the machine should be fully configured with the
