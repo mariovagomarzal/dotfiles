@@ -19,7 +19,7 @@
       ms-python.vscode-pylance
       julialang.language-julia
       james-yu.latex-workshop
-      nvarner.typst-lsp
+      myriad-dreamin.tinymist
       tamasfe.even-better-toml
       geequlim.godot-tools
 

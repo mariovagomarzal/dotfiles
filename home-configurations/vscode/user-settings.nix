@@ -76,8 +76,7 @@
   "rewrap.autoWrap.enabled" = true;
   "rewrap.wrappingColumn" = 80;
 
-  # Typst LSP extension settings.
-  "typst-lsp.exportPDF" = "never";
+  # Tinymist Typst extension settings.
 
   # LaTeX Workshop extension settings.
   "latex-workshop.latex.autoBuild.run" = "never";
