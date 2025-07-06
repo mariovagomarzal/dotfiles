@@ -8,8 +8,8 @@
   nixpkgs-firefox-darwin,
   ...
 }: {
-  # Auto upgrade Nix and the daemon service.
-  services.nix-daemon.enable = true;
+  # Enable the Nix package manager.
+  nix.enable = true;
 
   # Nix settings.
   nix.settings = {
