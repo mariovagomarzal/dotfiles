@@ -21,9 +21,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nixpkgs-firefox-darwin, the Nixpkgs overlay for Firefox on macOS.
-    nixpkgs-firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
-
     # home-manager, the Nix configuration for user environments.
     home-manager = {
       url = "github:nix-community/home-manager";

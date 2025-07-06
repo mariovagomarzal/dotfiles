@@ -122,7 +122,7 @@
       "bing".metaData.hidden = true;
       "ecosia".metaData.hidden = true;
       "qwant".metaData.hidden = true;
-      "YouTube" = {
+      "youtube" = {
         urls = [
           {
             template = "https://www.youtube.com/results";
@@ -135,10 +135,10 @@
           }
         ];
         definedAliases = ["@yt"];
-        iconUpdateURL = "https://www.youtube.com/favicon.ico";
+        icon = "https://www.youtube.com/favicon.ico";
         updateInterval = dayInMs;
       };
-      "Reddit" = {
+      "reddit" = {
         urls = [
           {
             template = "https://www.reddit.com/search";
@@ -151,7 +151,7 @@
           }
         ];
         definedAliases = ["@rd"];
-        iconUpdateURL = "https://www.redditstatic.com/shreddit/assets/favicon/192x192.png";
+        icon = "https://www.redditstatic.com/shreddit/assets/favicon/192x192.png";
         updateInterval = dayInMs;
       };
       "GitHub" = {
@@ -171,7 +171,7 @@
           }
         ];
         definedAliases = ["@gh"];
-        iconUpdateURL = "https://github.githubassets.com/favicons/favicon.png";
+        icon = "https://github.githubassets.com/favicons/favicon.png";
         updateInterval = dayInMs;
       };
       "Nix Packages" = {
@@ -195,7 +195,7 @@
           }
         ];
         definedAliases = ["@np"];
-        iconUpdateURL = "https://search.nixos.org/favicon.png";
+        icon = "https://search.nixos.org/favicon.png";
         updateInterval = dayInMs;
       };
       "NixOS Options" = {
@@ -219,7 +219,7 @@
           }
         ];
         definedAliases = ["@no"];
-        iconUpdateURL = "https://search.nixos.org/favicon.png";
+        icon = "https://search.nixos.org/favicon.png";
         updateInterval = dayInMs;
       };
       "Home-Manager Options" = {
@@ -239,17 +239,17 @@
           }
         ];
         definedAliases = ["@hm"];
-        iconUpdateURL = "https://home-manager-options.extranix.com/images/favicon.png";
+        icon = "https://home-manager-options.extranix.com/images/favicon.png";
         updateInterval = dayInMs;
       };
     };
 
     # Order of search engines.
     order = [
-      "Google"
-      "Wikipedia (en)"
-      "YouTube"
-      "Reddit"
+      "google"
+      "wikipedia"
+      "youtube"
+      "reddit"
       "GitHub"
       "Nix Packages"
       "NixOS Options"

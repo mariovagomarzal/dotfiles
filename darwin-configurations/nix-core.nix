@@ -5,7 +5,6 @@
   pkgs,
   lib,
   nur,
-  nixpkgs-firefox-darwin,
   ...
 }: {
   # Enable the Nix package manager.
@@ -54,6 +53,5 @@
   # Nixpkgs overlays.
   nixpkgs.overlays = [
     nur.overlays.default
-    nixpkgs-firefox-darwin.overlay
   ];
 }
