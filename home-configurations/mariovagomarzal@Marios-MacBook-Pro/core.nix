@@ -22,6 +22,9 @@
     # Programming languages (or related).
     elan
     zulu
+
+    # AI-related tools.
+    claude-code
   ];
 
   # Minimal configuration-dependent programs and/or services.

@@ -84,6 +84,10 @@ in {
       "firefox"
       "google-chrome"
 
+      # AI-related tools.
+      "chatgpt"
+      "claude"
+
       # Gaming.
       "steam"
       "whisky"
