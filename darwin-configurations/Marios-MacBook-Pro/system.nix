@@ -452,8 +452,8 @@
         # window like in Linux.
         NSWindowShouldDragOnGesture = false;
 
-        # Autohide the menu bar.
-        _HIHideMenuBar = true;
+        # Always show the menu bar.
+        _HIHideMenuBar = false;
 
         # Don't use the function keys as standard function keys.
         "com.apple.keyboard.fnState" = false;

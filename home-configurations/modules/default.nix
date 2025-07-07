@@ -11,8 +11,5 @@
 
     # Module for Skhd.
     ./skhd.nix
-
-    # Module for Skeketchybar.
-    ./sketchybar.nix
   ];
 }
