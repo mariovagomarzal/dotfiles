@@ -14,10 +14,6 @@
   "terminal.integrated.fontFamily" = "FiraCode Nerd Font";
   "terminal.integrated.fontSize" = 12;
 
-  # Theme and icons settings.
-  "workbench.colorTheme" = "Catppuccin Mocha";
-  "workbench.iconTheme" = "catppuccin-mocha";
-
   # Visual settings.
   "editor.mouseWheelZoom" = true;
 

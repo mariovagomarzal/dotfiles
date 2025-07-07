@@ -27,10 +27,6 @@
         github.copilot
         github.copilot-chat
 
-        # Themes and icons.
-        catppuccin.catppuccin-vsc
-        catppuccin.catppuccin-vsc-icons
-
         # Miscellaneous.
         adpyke.codesnap
         codezombiech.gitignore
