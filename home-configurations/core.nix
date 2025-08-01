@@ -6,6 +6,9 @@
   home.packages = with pkgs; [
     # Core packages.
     gnupg
+    git
+    just
+    devenv
 
     # Programming languages (or related).
     rustup
