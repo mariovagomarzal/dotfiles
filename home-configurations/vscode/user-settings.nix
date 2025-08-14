@@ -6,6 +6,9 @@
   "editor.acceptSuggestionOnCommitCharacter" = false;
   "editor.acceptSuggestionOnEnter" = "off";
 
+  # Terminal settings.
+  "terminal.integrated.defaultProfile.osx" = "fish";
+
   # Font settings.
   "editor.fontFamily" = "FiraCode Nerd Font";
   "editor.fontLigatures" = true;
