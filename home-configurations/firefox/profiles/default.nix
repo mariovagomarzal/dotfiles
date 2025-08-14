@@ -259,6 +259,7 @@
 
   # Extensions.
   extensions = {
+    force = true;
     packages = with pkgs.nur.repos.rycee.firefox-addons; [
       stylus
       firefox-color
