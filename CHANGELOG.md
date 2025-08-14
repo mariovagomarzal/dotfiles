@@ -18,7 +18,7 @@ sections:
   `README.md` or `CHANGELOG.md`.
 - _Miscellaneous_: for changes that do not fit in any of the previous sections.
 
-## [Unreleased]
+## [2025.08.14]
 
 ### Codebase
 
@@ -152,6 +152,8 @@ sections:
   [dotbot](https://github.com/anishathalye/dotbot) tool.
 
 <!-- External links -->
+[2025.08.14]:
+  https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.08.14
 [2025.01.14]:
   https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.01.14
 [2025.01.11.1]:
