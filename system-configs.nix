@@ -21,10 +21,14 @@ inputs @ {
 in {
   # Configurations for Darwin systems.
   darwinConfigurations = configurations-manager.mkDarwinConfigurations {
-    specialArgs = inputs // {computerName = "Mario's MacBook Pro";};
+    specialArgs =
+      inputs
+      // {
+        computerName = "Mario's MacBook Pro";
+      };
     homeSpecialArgs = inputs;
     extraHomeSharedModules = [
-      catppuccin.homeManagerModules.catppuccin
+      catppuccin.homeModules.catppuccin
     ];
     extraHomeManagerArgs = {
       backupFileExtension = "backup";
@@ -41,6 +45,7 @@ in {
               userName = "Mario Vago Marzal";
               email = "mariovagomarzal@gmail.com";
               githubUser = "mariovagomarzal";
+              isPrimaryUser = true;
             };
           };
         };

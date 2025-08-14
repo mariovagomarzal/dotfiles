@@ -1,6 +1,6 @@
-#########################
-# System configuration. #
-#########################
+#######################################
+# System configuration for this host. #
+#######################################
 {...}: {
   /*
   In this file, we define almost every available option that 'nix-darwin'
@@ -65,22 +65,6 @@
 
         # Hide Desktop Widgets in Stage Manager.
         StageManagerHideWidgets = true;
-      };
-
-      # Firewall settings.
-      alf = {
-        # Allow signed applications to receive incoming connections.
-        allowdownloadsignedenabled = 1;
-        allowsignedenabled = 1;
-
-        # Disable the firewall.
-        globalstate = 0;
-
-        # Disable firewall logging.
-        loggingenabled = 0;
-
-        # Enable stealth mode.
-        stealthenabled = 0;
       };
 
       # Control center settings.
@@ -166,8 +150,8 @@
         # Enable highlight hover effect for the grid view.
         mouse-over-hilite-stack = true;
 
-        # Don't reorder spaces based on most recent use.
-        mru-spaces = false;
+        # Reorder spaces based on most recent use.
+        mru-spaces = true;
 
         # Exposé settings.
         expose-animation-duration = 0.5;
@@ -468,8 +452,8 @@
         # window like in Linux.
         NSWindowShouldDragOnGesture = false;
 
-        # Autohide the menu bar.
-        _HIHideMenuBar = true;
+        # Always show the menu bar.
+        _HIHideMenuBar = false;
 
         # Don't use the function keys as standard function keys.
         "com.apple.keyboard.fnState" = false;
@@ -526,9 +510,23 @@
     startup.chime = false;
   };
 
+  # Firewall settings.
+  networking.applicationFirewall = {
+    # Disable the firewall.
+    enable = false;
+    blockAllIncoming = false;
+
+    # Allow signed applications to receive incoming connections.
+    allowSigned = true;
+    allowSignedApp = true;
+
+    # Enable stealth mode.
+    enableStealthMode = true;
+  };
+
   # Set the timezone to 'Europe/Madrid'.
   time.timeZone = "Europe/Madrid";
 
   # Allow TouchID to be used for sudo.
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 }

@@ -6,6 +6,10 @@
   home.packages = with pkgs; [
     # Core packages.
     gnupg
+    git
+    gh
+    just
+    devenv
 
     # Programming languages (or related).
     rustup
@@ -21,6 +25,19 @@
   ];
 
   # Minimal configuration-dependent programs and/or services.
-  programs = {};
+  programs = {
+    # Lua programming language.
+    lua = {
+      enable = true;
+      package = pkgs.lua5_4;
+      extraPackages = [
+        (ps:
+          with ps; [
+            luarocks
+          ])
+      ];
+    };
+  };
+
   services = {};
 }

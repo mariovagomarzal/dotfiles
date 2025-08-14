@@ -17,21 +17,14 @@
     stateVersion = "25.05";
   };
 
-  # Global 'Catppuccin' theme options.
-  catppuccin = {
-    # Enable 'catppuccin' options for every supported program/service.
-    enable = true;
-
-    # Set the flavor and accent color.
-    flavor = "mocha";
-    accent = "mauve";
-  };
-
   # No-configuration packages.
   home.packages = with pkgs; [
     # Programming languages (or related).
     elan
     zulu
+
+    # AI-related tools.
+    claude-code
   ];
 
   # Minimal configuration-dependent programs and/or services.

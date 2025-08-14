@@ -6,7 +6,9 @@
     enable = true;
 
     # Enable aliases for 'lsd'.
-    enableAliases = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    enableFishIntegration = true;
 
     # LSD configuration content.
     settings = {

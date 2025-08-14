@@ -5,11 +5,10 @@
   pkgs,
   lib,
   nur,
-  nixpkgs-firefox-darwin,
   ...
 }: {
-  # Auto upgrade Nix and the daemon service.
-  services.nix-daemon.enable = true;
+  # Enable the Nix package manager.
+  nix.enable = true;
 
   # Nix settings.
   nix.settings = {
@@ -54,6 +53,5 @@
   # Nixpkgs overlays.
   nixpkgs.overlays = [
     nur.overlays.default
-    nixpkgs-firefox-darwin.overlay
   ];
 }

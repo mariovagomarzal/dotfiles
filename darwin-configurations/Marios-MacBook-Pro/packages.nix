@@ -1,6 +1,6 @@
-#########################
-# System-wide packages. #
-#########################
+#######################################
+# System-wide packages for this host. #
+#######################################
 {
   pkgs,
   config,
@@ -74,7 +74,6 @@ in {
     # Brew casks to install, i.e., `brew install --cask <package>`.
     casks = [
       # Terminal emulators.
-      "kitty"
       "alacritty"
 
       # Text editors (or related).
@@ -85,8 +84,13 @@ in {
       "firefox"
       "google-chrome"
 
+      # AI-related tools.
+      "chatgpt"
+      "claude"
+
       # Gaming.
       "steam"
+      "whisky"
       "openemu"
 
       # Miscellaneous.
