@@ -7,6 +7,7 @@
     # Core packages.
     gnupg
     git
+    gh
     just
     devenv
 
