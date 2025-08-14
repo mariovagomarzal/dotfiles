@@ -150,8 +150,8 @@
         # Enable highlight hover effect for the grid view.
         mouse-over-hilite-stack = true;
 
-        # Don't reorder spaces based on most recent use.
-        mru-spaces = false;
+        # Reorder spaces based on most recent use.
+        mru-spaces = true;
 
         # Exposé settings.
         expose-animation-duration = 0.5;
