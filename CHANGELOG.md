@@ -18,6 +18,34 @@ sections:
   `README.md` or `CHANGELOG.md`.
 - _Miscellaneous_: for changes that do not fit in any of the previous sections.
 
+## [Unreleased]
+
+### Codebase
+
+- Added `modules/` directories for both Darwin and Home-Manager configurations
+  to store shared modules that define custom options for the configurations.
+- Added custom Darwin module for Yabai scripting additions.
+- Added custom Home-Manager modules for Yabai, Skhd, and Lua configuration.
+- Added `isPrimaryUser` attribute to user definitions for better user
+  management.
+- Updated flake dependencies and configurations to meet latest specifications.
+
+### Mario's MacBook Pro
+
+- Added window manager ecosystem with Yabai, Skhd, and JankyBorders.
+- Added other applications and tools both system-wide and user-specific.
+- Updated configurations options to meet the specifications of the latest
+  verions of `nix-darwin`, `home-manager` and related modules.
+
+### Development
+
+- Updated Justfile to use `sudo` for `darwin-rebuild` commands.
+
+### Documentation
+
+- Updated README to remove detailed file tree structure in favor of more
+  concise documentation.
+
 ## [2025.01.14]
 
 ### Codebase
