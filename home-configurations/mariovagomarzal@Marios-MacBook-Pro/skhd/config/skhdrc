@@ -89,7 +89,7 @@ lalt + shift - r : ./functions/move-window.sh "recent"
 
 lalt + shift - 0x1E : ./functions/move-window.sh "new"
 
-lalt - f : ./functions/fullscreen-window.sh "native"
+lalt - f : ./functions/fullscreen-window.sh "native-fullscreen"
 
 # Windows management hotkeys.
 lalt - backspace : ./functions/manage-window.sh "recent"
