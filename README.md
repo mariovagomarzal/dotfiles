@@ -18,7 +18,7 @@
   <summary>Configurations previews</summary>
   <br/>
   <p align="center">
-    <img alt="Marios-MacBook-Pro preview (WIP)" src="">
+    <img alt="Marios-MBP preview (WIP)" src="">
   </p>
 </details>
 
@@ -28,9 +28,8 @@
 
 - [📖 About this repository](#about-this-repository)
   - [Repository structure](#repository-structure)
-  - [The 'configurations-manager' library](#the-configurations-manager-library)
 - [🚀 Setup](#setup)
-  - [Mario's MacBook Pro](#marios-macbook-pro)
+  - [Mario's MacBook Pro](#marios-macbook-pro-marios-mbp)
 - [👨‍💻 Development](#development)
   - [Environment](#environment)
   - [Workflow and conventions](#workflow-and-conventions)
@@ -42,85 +41,65 @@ This includes many system settings and the installation and configuration of
 most of the tools and applications I use on a daily basis on each of the
 machines handled by this repository.
 
-> [!NOTE]
+> [!IMPORTANT]
 > As mentioned, these dotfiles are tailored to my personal needs and
 > preferences. Therefore, in most cases, they will not be suitable for anyone
 > else. However, feel free to use them as a starting point for your own
 > dotfiles. This guide is intended to be a reference for myself, but also for
 > anyone else who might find it useful to build their own dotfiles.
 
-I use [Nix][nix] to manage the dependencies and configurations for the tools and
-applications included in these dotfiles. This approach provides a reproducible
-and declarative way to set up a new machine. Specifically, I leverage the
-[Flakes][nix-flakes] feature in Nix, which ensures that dependencies are
-version-pinned, further enhancing the reproducibility of the setup.
+This dotfiles repository contains configurations for my NixOS and Darwin (macOS)
+machines. The configurations are managed with [Nix][nix], with this repository
+serving as a [Nix flake][nix-flake] whose outputs are the machine
+configurations.
 
 ### Repository structure
 
-In addition to the benefits described above, the Flake approach enables
-centralized and organized definitions for system configurations, development
-environments, and other workflows.
+This repository's flake uses [Snowfall Lib][snowfall-lib], a library that
+automatically generates flake outputs based on file organization by imposing an
+opinionated directory structure.
 
-The `flake.nix` file serves as the flake's entry point. It defines the flake's
-dependencies (inputs) and outputs, such as system configurations and development
-tools. However, these outputs are actually implemented in separate files.
+Below is a schematic overview of the repository's main directory structure. For
+comprehensive details on how Snowfall Lib works, please refer to the [official
+documentation][snowfall-lib].
 
-The development.nix file specifies tools like pre-commit and development shells,
-utilizing [flake-parts][flake-parts]. For more details, refer to the
-[Development](#development) section.
+```text
+dotfiles/
+├── flake.nix                       # Flake definition file.
+├── modules/                        # NixOS, Darwin, and Home-Manager modules.
+│   ├── nixos/                      # NixOS modules.
+│   ├── darwin/                     # Darwin (macOS) modules.
+│   └── home-manager/               # Home-Manager modules.
+├── systems/                        # System configurations.
+│   └── <system_architecture>/      # Machine architecture (e.g., x86_64-linux).
+│       └── <system_name>/          # Machine name (e.g., MyPC).
+├── homes/                          # Home-Manager configurations.
+│   └── <system_architecture>/      # Machine architecture (e.g., x86_64-linux).
+│       └── <user_name>/            # User name (e.g., johndoe).
+├── shells/                         # Development shells.
+└── checks/                         # Flake checks.
+```
 
-System configurations are defined in the `system-configs.nix` file and managed
-using the custom 'configurations-manager' library (see
-[below](#the-configurations-manager-library)). Each type of configuration has
-its own directory:
-
-- __NixOS configurations__ are stored in `nixos-configurations/`.
-- __Darwin configurations__ are stored in `darwin-configurations/`.
-- __Home-Manager configurations__ are stored in `home-configurations/`.
-
-At the top level of each directory, shared modules for all hosts/users of that
-configuration type are defined. Within these directories, subdirectories are
-used to store host- or user-specific configurations.
-
-This structure provides a clear overview of the components comprising each
-configuration managed by these dotfiles.
-
-### The 'configurations-manager' library
-
-The 'configurations-manager' library is a custom tool designed to leverage the
-repository structure described above, making it easy to locate and manage the
-required files for each configuration.
-
-This library is implemented in the `configurations-manager/` directory. For a
-detailed explanation of its usage, refer to the
-[configurations-manager/default.nix][cm-library] file, which defines the three
-primary functions for creating configurations:
-
-- `mkNixosConfigurations`: Used to define NixOS configurations.
-- `mkDarwinConfigurations`: Used to define Darwin configurations.
-- `mkHomeConfigurations`: Used to define standalone Home-Manager configurations.
-
-An example of how to use this library can be found in the `system-configs.nix`
-file. This file also provides additional details on how the configurations in
-this repository are structured and defined.
+Check the specific directories in this repository to see which modules, systems,
+and homes are currently available.
 
 ## Setup
 
-In this section, we will describe how to setup each of the machines and/or users
-handled by this repository.
+In this section, we will describe how to setup each of the machines handled by
+this repository.
 
-> [!CAUTION]
+> [!WARNING]
 > The following instructions will install and configure many tools and
 > applications on your machine. Make sure to read and understand what the setup
 > process does before running it.
 
-### Mario's MacBook Pro
+### Mario's MacBook Pro (Marios-MBP)
 
 <details open>
   <summary>Configuration preview</summary>
   <br/>
   <p align="center">
-    <img alt="Marios-MacBook-Pro preview (WIP)" src="">
+    <img alt="Marios-MBP preview (WIP)" src="">
   </p>
 </details>
 <br/>
@@ -128,19 +107,19 @@ handled by this repository.
 We're going to describe the setup process for my (Mario's) MacBook Pro. We will
 assume a fresh installation of macOS.
 
-1. __Disable System Integrity Protection (SIP)__: Some configurations require
-  partially disabling SIP, e.g., the [Yabai][yabai] window manager. To do so, we
-  have to boot into recovery mode. Once in recovery mode, we have to open the
-  terminal and run the following command and then reboot:
+1. __Disable System Integrity Protection (SIP)__: The [Yabai][yabai] window
+  manager require partially disabling System Integrity Protection (SIP). To do
+  so, we have to boot into recovery mode. Once in recovery mode, we have to open
+  the terminal and run the following command and then reboot:
 
-    ```console
+    ```bash
     csrutil enable --without fs --without debug --without nvram
     ```
 
     For Apple Silicon machines, we also have to enable non-Apple-signed arm64e
     binaries. To do so, we have to run the following command and then reboot:
 
-    ```console
+    ```bash
     sudo nvram boot-args=-arm64e_preview_abi
     ```
 
@@ -149,24 +128,24 @@ assume a fresh installation of macOS.
   keys from a backup or [generate new ones][generate-ssh-keys] and store them
   in the `~/.ssh` directory.
 
-3. __Install Xcode Command Line Tools__: In first place, we will need to
+3. __Install Xcode Command Line Tools__: For the setup process, we will need to
   install the Xcode Command Line Tools, since they may be required in some
   of the following steps. To do so, run the following command in the terminal:
 
-    ```console
+    ```bash
     xcode-select --install
     ```
 
 4. __Install Homebrew__: Some packages are installed via [Homebrew][homebrew] by
   nix-darwin. However, nix-darwin will not install Homebrew itself. To install
   Homebrew follow the instructions in the [official download
-  page][download-brew] or TL;DR:
+  page][download-brew] or TL;DR, run the following command in the terminal:
 
-    ```console
+    ```bash
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
-5. __Install Nix__: We will use [Nix][nix] to setup and manage the machine
+5. __Install Nix__: We will use Nix to setup and manage the machine
   configuration. Install Nix following the instructions in the [official
   download page][download-nix].
 
@@ -174,7 +153,7 @@ assume a fresh installation of macOS.
   place, we can clone the repository with Git (or by manually downloading it)
   and `cd` into it:
 
-    ```console
+    ```bash
     git clone https://github.com/mariovagomarzal/dotfiles.git
     cd dotfiles
     ```
@@ -182,15 +161,15 @@ assume a fresh installation of macOS.
 7. __Setup the machine__: If it is the first time we're setting up the machine
   with these dotfiles, we have to run the following command:
 
-    ```console
-    sudo nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake '.#Marios-MacBook-Pro'
+    ```bash
+    sudo nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake '.#Marios-MBP'
     ```
 
-If this command succeeds, the machine should be fully configured with the
+If the last command succeeds, the machine should be fully configured with the
 dotfiles. From now on, we can update the machine by running the following
 _Just_ recipe:
 
-```console
+```bash
 just darwin-rebuild # or simply 'just dr'
 ```
 
@@ -202,25 +181,12 @@ by the dotfiles.
 <details>
   <summary>Firefox</summary>
 
-- __Firefox Color theme__: The [Firefox Color][firefox-color] extension is
-  used to customize the browser's theme. We use the [Catppuccin Firefox
-  port][catppuccin-firefox] theme. To apply the theme, follow the steps
-  described in the repository's README.
 - __Stylus user styles__: The [Stylus][stylus] extension is used to apply
   custom styles to web pages. We use a curated list of user styles from the
   [Catppuccin community][catppuccin]. In this [website][catppuccin-styles] we
   can select the styles (and its flavors) we want to apply to get an
   `import.json` file. Then we have to use this file with Stylus to apply the
   styles.
-
-</details>
-
-<details>
-  <summary>Visual Studio Code</summary>
-
-The following extensions should be installed manually:
-
-- [Reload][reload-vscode]
 
 </details>
 
@@ -231,54 +197,131 @@ workflows and the conventions used in this repository.
 
 ### Environment
 
-To work with this repository, as we are using Nix with flakes, a development
-shell with the necessary tools and configurations has been defined in the
-`development.nix` file as a submodule of the main flake.
+The repository flake defines a development shell with all the necessary tools
+and configurations to work with the repository. Assuming that Nix is installed,
+you can enter the development shell by running the following command:
 
-Assuming that you have Nix installed, you can enter the development shell by
-running the following command:
-
-```console
+```bash
 nix --extra-experimental-features 'nix-command flakes' develop
 ```
 
-The `--extra-experimental-features 'nix-command flakes'` flag is only needed if
-this features are no enabled by default in your Nix installation.
+> [!TIP]
+> The `--extra-experimental-features 'nix-command flakes'` flag is only needed
+> if this features are no enabled by default in your Nix installation.
 
 If the command succeeds, you will see a welcome message with a list of the
 available tools and commands. You can type `menu` to see the list of available
-commands again in any moment. Finally, you can exit the shell by typing `exit`.
+commands again in any moment.
 
-In addition to that, some other basic tasks related to the development are
-defined in a `Justfile`. You can see the list of available tasks (under the
-`development` category) by simply running `just`.
+When entering the development shell, some git hooks are automatically installed
+to help with the workflow and conventions described in the next sections.
+
+However, most of the tasks related to the development are defined in the
+`Justfile` file. You can see the list of available tasks by simply running
+`just`. Development-related recipes are defined under the `development`
+category.
+
+> [!NOTE]
+> See the [Just documentation][just] for more information about how to use
+> the Just command runner. You can also check the `Justfile` file for
+> seeing how the tasks are defined.
 
 ### Workflow and conventions
 
-This repository follows a simple (and flexible) workflow:
+Next, we will describe the workflow and conventions used in this repository.
 
-- The main branch (`main`) holds the stable version of the dotfiles. These
-  versions must be tagged with a format like `YYYY.MM.DD`, with optional patch
-  versions separated by a dot if more than one version is released in the same
-  day.
-  - Small changes can be committed directly to the main branch.
-  - Larger changes are recommended to be developed in separate feature branches.
-- All changes should be documented in the [`CHANGELOG.md` file](/CHANGELOG.md).
-  The format of the changelog is described in the file itself.
+> [!NOTE]
+> Before version [2025.08.14], there were no strict rules for commit messages,
+> branching, or other aspects of the workflow. This may be reflected in the
+> commit history and other parts of the repository.
+
+#### Commit messages
+
+Commit messages follow the [Conventional Commits
+specification][conventional-commits], adapted to the context of a dotfiles
+repository. This ensures a consistent and readable commit history.
+
+The standard format remains the same:
+
+```text
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+We use the conventional commit types, where `feat` and `fix` take on meanings
+appropriate for dotfiles, like `feat` for adding new configurations, modules, or
+capabilities, and `fix` for correcting broken configurations or resolving
+issues. Other standard types (`docs`, `style`, `refactor`, `perf`, `test`,
+`build`, `ci`, `chore`) are used with their usual meanings.
+
+Scopes identify which part of the repository is affected and follow specific
+patterns depending on the part of the configuration (if any) being changed:
+
+- Module changes in the `modules/` directory use simple platform identifiers:
+  `nixos`, `darwin`, or `home`. For example: `feat(nixos): add new firewall
+  module` or `fix(home): correct git module structure`.
+
+- System configurations in the `systems/` directory use the format
+  `system/<name>`, such as `fix(system/Marios-MBP): update display settings`.
+
+- Home configurations in the `homes/` directory follow the pattern
+  `user/<name>`, like `feat(user/mariovagomarzal): add starship config`.
+
+- General changes use broader scopes:
+  - `config` for general configuration changes not specific to a module, system,
+    or home (flake-level changes, overlays, inputs, structure, etc.).
+
+Other scopes may be used as needed, but won't be parsed automatically for
+changelog generation.
+
+> [!TIP]
+> A git hook automatically validates commit messages against this specification.
+
+#### Branching
+
+There are no strict rules for branching in this repository. The `main` branch
+holds the stable version of the dotfiles. Small changes can be committed
+directly to the `main` branch, while larger changes are recommended to be
+developed in separate feature branches.
+
+Every stable version of the dotfiles must be tagged with a version tag, whose
+format is described in the next section.
+
+#### Versioning
+
+Although Conventional Commits are used for commit messages, this repository does
+not follow Semantic Versioning for versioning. Instead, each stable version of
+the dotfiles repository is tagged with a date in the format `YYYY.MM.DD(.P)`,
+where `P` is an optional patch version separated by a dot if more than one
+version is released in the same day.
+
+Use the following Just recipe to create a new version tag:
+
+```bash
+just release
+```
+
+#### Changelog
+
+All notable changes to this project will be documented in the
+[`CHANGELOG.md` file](changelog). The format of the changelog is described in
+the file itself.
 
 &nbsp;
 
 ---
 
 <p align="center">
-  Copyright &copy; 2024-present Mario Vago Marzal
+  Licensed under the <a href="/LICENSE">MIT License</a> by Mario Vago Marzal.
 </p>
 
 <!-- External links -->
 [nix]: https://nixos.org/
-[nix-flakes]: https://nixos.wiki/wiki/Flakes
-[flake-parts]: https://github.com/hercules-ci/flake-parts
-[cm-library]: /configurations-manager/default.nix
+[nix-flake]: https://nixos.wiki/wiki/Flakes
+[snowfall-lib]: https://snowfall.org/guides/lib/quickstart/
 [yabai]:
   https://github.com/koekeishiya/yabai
 [ssh-keys]:
@@ -288,9 +331,10 @@ This repository follows a simple (and flexible) workflow:
 [homebrew]: https://brew.sh
 [download-brew]: https://brew.sh
 [download-nix]: https://nixos.org/download
-[firefox-color]: https://addons.mozilla.org/en-US/firefox/addon/firefox-color
-[catppuccin-firefox]: https://github.com/catppuccin/firefox
 [stylus]: https://addons.mozilla.org/en-US/firefox/addon/styl-us
 [catppuccin]: https://catppuccin.com/
 [catppuccin-styles]: https://catppuccin-userstyles-customizer.uncenter.dev/
-[reload-vscode]: https://marketplace.visualstudio.com/items?itemName=natqe.reload
+[just]: https://just.systems/man/en/
+[2025.08.14]:
+  https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.08.14
+[conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0/

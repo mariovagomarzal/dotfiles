@@ -3,9 +3,6 @@
 
   # Dependencies for the flake.
   inputs = {
-    # flake-parts, a tool for modularizing flakes.
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
     # nixpkgs, the Nix packages collection.
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
@@ -15,8 +12,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # snowfall-lib, a library for Nix flakes.
+    snowfall-lib = {
+      url = "github:snowfallorg/lib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nix-darwin, the Nix configuration for macOS.
-    nix-darwin = {
+    darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -33,26 +36,38 @@
     # devshell, a tool for creating development environments.
     devshell.url = "github:numtide/devshell";
 
-    # pre-commit-hooks-nix, a tool for managing pre-commit hooks for Nix.
-    pre-commit-hooks-nix.url = "github:cachix/pre-commit-hooks.nix";
+    # git-hooks.nix, a tool for managing git hooks with Nix.
+    git-hooks-nix.url = "github:cachix/git-hooks.nix";
   };
 
-  # The flake's outputs (managed with flake-parts).
-  outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      # The `flake` attribute specifies raw flake attributes.
-      # System configurations managed with this flake are defined here by
-      # importing the `system-configs.nix` module.
-      flake = import ./system-configs.nix inputs;
+  # The flake's outputs (managed with snowfall-lib).
+  outputs = inputs:
+    inputs.snowfall-lib.mkFlake {
+      inherit inputs;
 
-      # The `imports` attribute specifies the flake's submodules to be included.
-      imports = [
-        # Development environment module.
-        ./development.nix
+      src = ./.;
 
-        # External modules.
-        inputs.devshell.flakeModule
-        inputs.pre-commit-hooks-nix.flakeModule
+      snowfall = {};
+
+      channels-config = {
+        allowUnfree = true;
+      };
+
+      overlays = with inputs; [
+        nur.overlays.default
+        devshell.overlays.default
       ];
+
+      homes.modules = with inputs; [
+        catppuccin.homeModules.catppuccin
+      ];
+
+      outputs-builder = channels: {
+        formatter = channels.nixpkgs.alejandra;
+      };
+
+      alias = {
+        shells.default = "development";
+      };
     };
 }

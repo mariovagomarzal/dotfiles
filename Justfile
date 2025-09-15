@@ -1,11 +1,11 @@
-# Justfile for the repository.
+################################
+# Justfile for the repository. #
+################################
 [private]
 default:
     @just --list --unsorted
 
-###########################
-# Dotfiles setup recipes. #
-###########################
+# Dotfiles setup recipes.
 hostname := "$(hostname)"
 
 [group("dotfiles")]
@@ -16,9 +16,7 @@ darwin-rebuild HOSTNAME=hostname:
 
 alias dr := darwin-rebuild
 
-########################
-# Development recipes. #
-########################
+# Development recipes.
 experimental_features := "--extra-experimental-features \"nix-command flakes\""
 
 [group("development")]
@@ -32,3 +30,12 @@ check:
 format PATHS=".":
     @echo "Formatting Nix code..."
     nix {{experimental_features}} fmt {{PATHS}}
+
+alias fmt := format
+
+[group("development")]
+[doc("Create a new release tag.")]
+[confirm]
+release:
+    @echo "Not implemented yet."
+    exit 1
