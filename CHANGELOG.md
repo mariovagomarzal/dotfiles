@@ -6,6 +6,12 @@ Each stable version of the dotfiles repository is tagged with a date in the
 format `YYYY.MM.DD(.P)`, where `P` is an optional patch version separated by a
 dot if more than one version was released in the same day.
 
+## [2025.09.17.3](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.17.3)
+
+### 🐛 Fixed
+
+- Prevent empty group sections in changelog - ([41ad41c](https://github.com/mariovagomarzal/dotfiles/commit/41ad41c4e2a1f6c5e096052a986794b98d57edf0))
+
 ## [2025.09.17.2](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.17.2)
 
 ### ⛰️ Added
@@ -14,16 +20,12 @@ dot if more than one version was released in the same day.
 ### 🐛 Fixed
 
 - Fix git-cliff recognition of update changelog commits - ([2722caf](https://github.com/mariovagomarzal/dotfiles/commit/2722caffc5af6f8d2c224eacbf6bc6c06eaf35d1))
-### 🔧 Chore
-
 
 ## [2025.09.17.1](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.17.1)
 
 ### 🐛 Fixed
 
 - Correct the commit message for updating the changelog - ([ef90d1c](https://github.com/mariovagomarzal/dotfiles/commit/ef90d1c4222a196eb197106efe1fffdad3e8fa29))
-### 🔧 Chore
-
 
 ## [2025.09.17](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.17)
 
