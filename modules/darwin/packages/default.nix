@@ -84,6 +84,10 @@ in {
       "firefox"
       "google-chrome"
 
+      # Communication tools.
+      "discord"
+      "telegram"
+
       # AI-related tools.
       "chatgpt"
       "claude"
