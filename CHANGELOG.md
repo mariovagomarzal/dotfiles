@@ -6,11 +6,20 @@ Each stable version of the dotfiles repository is tagged with a date in the
 format `YYYY.MM.DD(.P)`, where `P` is an optional patch version separated by a
 dot if more than one version was released in the same day.
 
+## [2025.09.17.2](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.17.2)
+
+### ⛰️ Added
+
+- *(darwin)* Add Discord and Telegram casks - ([922d582](https://github.com/mariovagomarzal/dotfiles/commit/922d582f06d62464ffbece9f856d0cf60c0ad3bb))
+
 ## [2025.09.17.1](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.17.1)
 
 ### 🐛 Fixed
 
 - Correct the commit message for updating the changelog - ([ef90d1c](https://github.com/mariovagomarzal/dotfiles/commit/ef90d1c4222a196eb197106efe1fffdad3e8fa29))
+### 🔧 Chore
+
+- Update the changelog - ([eebd1ba](https://github.com/mariovagomarzal/dotfiles/commit/eebd1ba6fe0655f1ad716fadf9314e85dcf78632))
 
 ## [2025.09.17](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.17)
 
