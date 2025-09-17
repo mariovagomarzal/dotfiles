@@ -302,6 +302,14 @@ following Just recipe to update the changelog:
 just changelog
 ```
 
+> [!IMPORTANT]
+> Use the following commit message when updating the changelog so that it is
+> ignored by git-cliff:
+>
+> ```text
+> chore: update changelog
+> ```
+
 #### Versioning
 
 Although Conventional Commits are used for commit messages, this repository does

@@ -44,7 +44,9 @@ body = """
   {%- else -%}
     {%- set commit_message = commit.message -%}
   {%- endif -%}
-  {{ commit_message | upper_first }}
+  {%- if commit_message != "chore: update the changelog" -%}
+    {{ commit_message | upper_first }}
+  {%- endif -%}
 {%- endmacro parse_commit -%}
 
 {%- macro print_commit(commit) -%}
