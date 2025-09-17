@@ -10,6 +10,8 @@ dot if more than one version was released in the same day.
 
 """
 body = """
+{%- set changelog_commit = "chore: update the changelog" -%}
+
 {%- macro next_version() -%}
   {%- set date = now() | date(format="%Y.%m.%d") -%}
   {%- set previous_version = previous.version | default(value="") -%}
@@ -55,27 +57,38 @@ body = """
     ({{ self::remote_url() }}/commit/{{ commit.id }}))\
 {%- endmacro print_commit -%}
 
+{%- macro has_valid_commits(commits, message) -%}
+  {%- for commit in commits -%}
+    {%- if commit.raw_message != message -%}
+      true
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endmacro has_valid_commits -%}
+
 {%- set current_version = version | default(value=self::next_version()) -%}
 ## [{{ current_version }}]({{ self::tag_url(tag=current_version) }})
 
 {% for group, commits in commits
 | filter(attribute="merge_commit", value=false)
 | group_by(attribute="group") -%}
-  ### {{ group | striptags | trim | upper_first }}
-  {% for commit in commits
-  | filter(attribute="scope")
-  | sort(attribute="scope") %}
-    {{ self::print_commit(commit=commit) }}
-  {%- endfor %}
-  {% for commit in commits %}
-    {%- if commit.raw_message == "chore: update the changelog" -%}
-      {# Skip the changelog update commit #}
-      {%- continue -%}
-    {%- endif -%}
-    {%- if not commit.scope -%}
+  {%- if self::has_valid_commits(commits=commits, message=changelog_commit) -%}
+    ### {{ group | striptags | trim | upper_first }}
+    {% for commit in commits
+    | filter(attribute="scope")
+    | sort(attribute="scope") %}
       {{ self::print_commit(commit=commit) }}
-    {% endif -%}
-  {% endfor -%}
+    {%- endfor %}
+    {% for commit in commits %}
+      {%- if commit.raw_message == changelog_commit -%}
+        {# Skip the changelog update commit #}
+        {%- continue -%}
+      {%- endif -%}
+      {%- if not commit.scope -%}
+        {{ self::print_commit(commit=commit) }}
+      {% endif -%}
+    {% endfor -%}
+  {%- endif -%}
 {% endfor %}
 
 """
