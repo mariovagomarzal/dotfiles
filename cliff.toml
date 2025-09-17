@@ -44,9 +44,7 @@ body = """
   {%- else -%}
     {%- set commit_message = commit.message -%}
   {%- endif -%}
-  {%- if commit_message != "chore: update the changelog" -%}
-    {{ commit_message | upper_first }}
-  {%- endif -%}
+  {{ commit_message | upper_first }}
 {%- endmacro parse_commit -%}
 
 {%- macro print_commit(commit) -%}
@@ -70,6 +68,10 @@ body = """
     {{ self::print_commit(commit=commit) }}
   {%- endfor %}
   {% for commit in commits %}
+    {%- if commit.raw_message == "chore: update the changelog" -%}
+      {# Skip the changelog update commit #}
+      {%- continue -%}
+    {%- endif -%}
     {%- if not commit.scope -%}
       {{ self::print_commit(commit=commit) }}
     {% endif -%}
