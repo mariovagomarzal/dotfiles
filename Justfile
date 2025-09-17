@@ -34,15 +34,22 @@ format PATHS=".":
 alias fmt := format
 
 [group("development")]
-[doc("Create a new release tag.")]
-[confirm]
-release:
-    @echo "Not implemented yet."
-    exit 1
-
-[group("development")]
 [doc("Generate the changelog.")]
 [confirm]
 changelog:
     @echo "Generating the changelog..."
     git-cliff
+
+[group("development")]
+[doc("Create a new version tag (based on the changelog content).")]
+[confirm]
+tag:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    version=$(grep -m 1 '^## \[' CHANGELOG.md | sed 's/^## \[\([^]]*\)\].*/\1/')
+    if [ -z "$version" ]; then
+        echo "Error: Could not determine the version from CHANGELOG.md"
+        exit 1
+    fi
+    echo "Creating tag for version: $version"
+    git tag -s "$version" -m "Version $version"

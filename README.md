@@ -289,20 +289,6 @@ developed in separate feature branches.
 Every stable version of the dotfiles must be tagged with a version tag, whose
 format is described in the next section.
 
-#### Versioning
-
-Although Conventional Commits are used for commit messages, this repository does
-not follow Semantic Versioning for versioning. Instead, each stable version of
-the dotfiles repository is tagged with a date in the format `YYYY.MM.DD(.P)`,
-where `P` is an optional patch version separated by a dot if more than one
-version is released in the same day.
-
-Use the following Just recipe to create a new version tag:
-
-```bash
-just release
-```
-
 #### Changelog
 
 All notable changes to this project will be documented in the
@@ -315,6 +301,24 @@ following Just recipe to update the changelog:
 ```bash
 just changelog
 ```
+
+#### Versioning
+
+Although Conventional Commits are used for commit messages, this repository does
+not follow Semantic Versioning for versioning. Instead, each stable version of
+the dotfiles repository is tagged with a date in the format `YYYY.MM.DD(.P)`,
+where `P` is an optional patch version separated by a dot if more than one
+version is released in the same day.
+
+Use the following Just recipe to create a new version tag:
+
+```bash
+just tag
+```
+
+> [!IMPORTANT]
+> The tag is obtained by reading the changelog. Thus, make sure that the
+> changelog is up to date before creating a new tag.
 
 &nbsp;
 
