@@ -11,6 +11,11 @@ dot if more than one version was released in the same day.
 ### ⛰️ Added
 
 - *(darwin)* Add Discord and Telegram casks - ([922d582](https://github.com/mariovagomarzal/dotfiles/commit/922d582f06d62464ffbece9f856d0cf60c0ad3bb))
+### 🐛 Fixed
+
+- Fix git-cliff recognition of update changelog commits - ([2722caf](https://github.com/mariovagomarzal/dotfiles/commit/2722caffc5af6f8d2c224eacbf6bc6c06eaf35d1))
+### 🔧 Chore
+
 
 ## [2025.09.17.1](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.17.1)
 
@@ -19,7 +24,6 @@ dot if more than one version was released in the same day.
 - Correct the commit message for updating the changelog - ([ef90d1c](https://github.com/mariovagomarzal/dotfiles/commit/ef90d1c4222a196eb197106efe1fffdad3e8fa29))
 ### 🔧 Chore
 
-- Update the changelog - ([eebd1ba](https://github.com/mariovagomarzal/dotfiles/commit/eebd1ba6fe0655f1ad716fadf9314e85dcf78632))
 
 ## [2025.09.17](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.17)
 
@@ -32,7 +36,6 @@ dot if more than one version was released in the same day.
 - Allow commit messages without a body - ([ec83664](https://github.com/mariovagomarzal/dotfiles/commit/ec8366480c61d43c3c6714c0ca07c0cd22780229))
 - Add a tag creation recipe to the `Justfile` - ([4ca29ea](https://github.com/mariovagomarzal/dotfiles/commit/4ca29eab3ef11f626a483f0318c6bea21cf1668b))
 - Ignore the changelog update commits for changelog generation - ([7021cd0](https://github.com/mariovagomarzal/dotfiles/commit/7021cd05d85cb030c35df224f86e031858e5bd82))
-- Update the changelog - ([2ac01e5](https://github.com/mariovagomarzal/dotfiles/commit/2ac01e56bab5be9778c9b1bfb96afe5a7e7e7b08))
 
 ## [2025.08.14](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.08.14)
 
