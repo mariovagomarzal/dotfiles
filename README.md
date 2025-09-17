@@ -307,7 +307,7 @@ just changelog
 > ignored by git-cliff:
 >
 > ```text
-> chore: update changelog
+> chore: update the changelog
 > ```
 
 #### Versioning
