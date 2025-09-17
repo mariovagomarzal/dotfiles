@@ -31,6 +31,7 @@ in
           # Allow the first line not to be a header.
           "MD041" = false;
         };
+        excludes = ["CHANGELOG.md"];
       };
 
       # Enable the Gitlint git hook.

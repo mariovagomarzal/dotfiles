@@ -39,3 +39,10 @@ alias fmt := format
 release:
     @echo "Not implemented yet."
     exit 1
+
+[group("development")]
+[doc("Generate the changelog.")]
+[confirm]
+changelog:
+    @echo "Generating the changelog..."
+    git-cliff

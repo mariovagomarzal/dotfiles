@@ -274,8 +274,7 @@ patterns depending on the part of the configuration (if any) being changed:
   - `config` for general configuration changes not specific to a module, system,
     or home (flake-level changes, overlays, inputs, structure, etc.).
 
-Other scopes may be used as needed, but won't be parsed automatically for
-changelog generation.
+Other scopes can be used as needed.
 
 > [!TIP]
 > A git hook automatically validates commit messages against this specification.
@@ -307,8 +306,15 @@ just release
 #### Changelog
 
 All notable changes to this project will be documented in the
-[`CHANGELOG.md` file](changelog). The format of the changelog is described in
+[`CHANGELOG.md` file][changelog]. The format of the changelog is described in
 the file itself.
+
+The changelog is generated automatically with [git-cliff][git-cliff]. Use the
+following Just recipe to update the changelog:
+
+```bash
+just changelog
+```
 
 &nbsp;
 
@@ -338,3 +344,5 @@ the file itself.
 [2025.08.14]:
   https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.08.14
 [conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0/
+[changelog]: /CHANGELOG.md
+[git-cliff]: https://git-cliff.org/
