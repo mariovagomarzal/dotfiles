@@ -6,6 +6,16 @@ Each stable version of the dotfiles repository is tagged with a date in the
 format `YYYY.MM.DD(.P)`, where `P` is an optional patch version separated by a
 dot if more than one version was released in the same day.
 
+## [2025.09.22](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.22)
+
+### ⛰️ Added
+
+- *(config)* Disable Yabai and Yankyborders for macOS - ([6c72266](https://github.com/mariovagomarzal/dotfiles/commit/6c722665ab592e24b2622e765a86d78a5af643f5))
+- *(darwin)* Change `Launchpad.app` to `Apps.app` - ([15e0650](https://github.com/mariovagomarzal/dotfiles/commit/15e0650d975ef1504e043730cf67ee5f8d76983a))
+### 🔧 Chore
+
+- Properly ignore the `result` Nix directory - ([d9e189a](https://github.com/mariovagomarzal/dotfiles/commit/d9e189a1974c2a9c9b83b5ca5ea4a98a83c3c711))
+
 ## [2025.09.17.3](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.17.3)
 
 ### 🐛 Fixed

@@ -105,7 +105,7 @@
         # Persistent items in the Dock.
         static-only = false;
         persistent-apps = [
-          "/System/Applications/Launchpad.app"
+          "/System/Applications/Apps.app"
         ];
         persistent-others = [
           # NOTE: Ideally, the following path should be '~/Downloads', however,
