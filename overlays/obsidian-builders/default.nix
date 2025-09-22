@@ -8,4 +8,5 @@ in {
   buildPnpmObsidianPlugin = importBuilder ./pnpm-plugin.nix {
     pnpm = final.pnpm_9;
   };
+  buildYarnObsidianPlugin = importBuilder ./yarn-plugin.nix {};
 }
