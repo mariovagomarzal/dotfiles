@@ -9,4 +9,5 @@ in {
     pnpm = final.pnpm_9;
   };
   buildYarnObsidianPlugin = importBuilder ./yarn-plugin.nix {};
+  buildObsidianTheme = importBuilder ./theme.nix {};
 }
