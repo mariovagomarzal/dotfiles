@@ -1,20 +1,9 @@
 ###################################
 # Visual Studio Code home module. #
 ###################################
-{
-  lib,
-  pkgs,
-  config,
-  ...
-}: let
+inputs: let
   # Auxiliary function to import a profile definition.
-  importProfile = file:
-    import file {
-      inherit
-        lib
-        pkgs
-        ;
-    };
+  importProfile = file: import file inputs;
 in {
   programs.vscode = {
     enable = true;
