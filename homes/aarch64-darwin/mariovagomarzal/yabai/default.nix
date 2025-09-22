@@ -3,7 +3,7 @@
 ##########################################
 {...}: {
   services.yabai = {
-    enable = true;
+    enable = false;
 
     # Yabai configuration directory.
     configSource = ./config;

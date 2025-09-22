@@ -25,7 +25,7 @@
   in "0x${alpha}${hex}";
 in {
   services.jankyborders = {
-    enable = true;
+    enable = false;
 
     # JankyBorders configuration content.
     settings = {

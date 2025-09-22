@@ -3,5 +3,5 @@
 ###########################
 {...}: {
   # Enable Yabai scripting addition.
-  yabai-sa.enable = true;
+  yabai-sa.enable = false;
 }
