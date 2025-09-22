@@ -16,13 +16,13 @@ lib.extendMkDerivation {
     version ? "",
     src ? null,
     pnpmDepsHash ? "",
+    dist ? "dist",
     pnpmDepsFetcherVersion ? 1,
     nativeBuildInputs ? [],
     buildInputs ? [],
     pnpmConfigHook ? null,
     pnpmBuildScript ? "build",
     pnpmBuildFlags ? [],
-    dist ? "dist",
     ...
   }: {
     nativeBuildInputs =

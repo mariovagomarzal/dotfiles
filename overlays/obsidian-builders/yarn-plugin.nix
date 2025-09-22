@@ -23,11 +23,11 @@ in
     extendDrvArgs = finalAttrs: {
       yarnLock ? "",
       yarnDepsHash ? "",
+      dist ? ".",
       nativeBuildInputs ? [],
       buildInputs ? [],
       yarnConfigHook ? null,
       yarnBuildHook ? null,
-      dist ? ".",
       ...
     }: {
       nativeBuildInputs =
