@@ -4,7 +4,6 @@
 {
   buildYarnObsidianPlugin,
   fetchFromGitHub,
-  runCommand,
 }:
 buildYarnObsidianPlugin (finalAttrs: {
   pname = "obsidian-style-settings";
