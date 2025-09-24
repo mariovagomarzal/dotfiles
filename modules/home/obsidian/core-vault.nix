@@ -172,7 +172,12 @@
     ];
 
     # Community plugins settings.
-    communityPlugins = [];
+    communityPlugins = [
+      {
+        pkg = pkgs.dotfiles.obsidian-style-settings;
+        settings = {};
+      }
+    ];
 
     # Hotkeys configuration.
     hotkeys = {};
