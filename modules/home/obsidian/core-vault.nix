@@ -177,6 +177,10 @@
         pkg = pkgs.dotfiles.obsidian-style-settings;
         settings = {};
       }
+      {
+        pkg = pkgs.dotfiles.obsidian-mathjax-preamble-manager;
+        settings = {};
+      }
     ];
 
     # Hotkeys configuration.
