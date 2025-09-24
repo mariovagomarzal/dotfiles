@@ -8,9 +8,22 @@
     app = {};
 
     # Themes and appearance settings.
-    themes = [];
+    themes = [
+      {
+        pkg = pkgs.dotfiles.obsidian-catppuccin;
+        enable = true;
+      }
+    ];
     cssSnippets = [];
-    appearance = {};
+    appearance = {
+      theme = "obsidian"; # Equivalent to dark mode.
+      baseFontSize = 16;
+      baseFontSizeAction = true;
+      showViewHeader = true;
+      showRibbon = true;
+      nativeMenus = false;
+      translucency = true;
+    };
 
     # Core plugins settings.
     corePlugins = [
