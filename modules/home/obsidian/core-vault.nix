@@ -5,7 +5,37 @@
   # Configuration content for the vault.
   settings = {
     # Basic vault settings.
-    app = {};
+    app = {
+      focusNewTab = true;
+      defaultViewMode = "source";
+      livePreview = false;
+      readableLineLength = true;
+      strictLineBreaks = false;
+      propertiesInDocument = "visible";
+      foldHeading = true;
+      foldIndent = true;
+      showLineNumber = false;
+      showIndentGuide = true;
+      rightToLeft = false;
+      spellcheck = true;
+      autoPairBrackets = true;
+      autoPairMarkdown = true;
+      smartIndentList = true;
+      useTab = true;
+      tabSize = 2;
+      autoConvertHtml = true;
+      vimMode = false;
+      promptDelete = false;
+      trashOption = "local";
+      alwaysUpdateLinks = false;
+      newFileLocation = "current";
+      newLinkFormat = "shortest";
+      useMarkdownLinks = false;
+      showUnsupportedFiles = true;
+      attachmentFolderPath = "/";
+      userIgnoreFilters = [];
+      uriCallbacks = false;
+    };
 
     # Themes and appearance settings.
     themes = [
