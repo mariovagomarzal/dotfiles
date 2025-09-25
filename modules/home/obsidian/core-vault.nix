@@ -178,6 +178,10 @@
         settings = {};
       }
       {
+        pkgs = pkgs.dotfiles.advanced-tables-obsidian;
+        settings = {};
+      }
+      {
         pkg = pkgs.dotfiles.obsidian-latex-suite;
         settings = {};
       }
