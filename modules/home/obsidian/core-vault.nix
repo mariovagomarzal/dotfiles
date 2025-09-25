@@ -35,6 +35,7 @@
       attachmentFolderPath = "98 - Recursos";
       userIgnoreFilters = [];
       uriCallbacks = false;
+      vimMode = true;
     };
 
     # Themes and appearance settings.
