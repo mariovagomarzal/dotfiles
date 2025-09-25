@@ -178,7 +178,7 @@
         settings = {};
       }
       {
-        pkgs = pkgs.dotfiles.advanced-tables-obsidian;
+        pkg = pkgs.dotfiles.advanced-tables-obsidian;
         settings = {};
       }
       {
