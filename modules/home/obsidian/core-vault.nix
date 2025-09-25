@@ -192,7 +192,76 @@
     ];
 
     # Hotkeys configuration.
-    hotkeys = {};
+    hotkeys = {
+      "file-explorer:new-file-in-new-pane" = [
+        {
+          modifiers = [
+            "Mod"
+            "Shift"
+          ];
+          key = "N";
+        }
+      ];
+      "workspace:close" = [
+        {
+          modifiers = [
+            "Mod"
+          ];
+          key = "W";
+        }
+      ];
+      "workspace:close-window" = [
+        {
+          modifiers = [
+            "Mod"
+            "Shift"
+          ];
+          key = "W";
+        }
+      ];
+      "command-palette:open" = [
+        {
+          modifiers = [
+            "Mod"
+            "Shift"
+          ];
+          key = "P";
+        }
+      ];
+      "editor:delete-paragraph" = [
+        {
+          modifiers = [
+            "Mod"
+          ];
+          key = "D";
+        }
+      ];
+      "app:reload" = [
+        {
+          modifiers = [
+            "Mod"
+          ];
+          key = "R";
+        }
+      ];
+      "editor:toggle-source" = [
+        {
+          modifiers = [
+            "Mod"
+          ];
+          key = "Enter";
+        }
+      ];
+      "editor:open-link-in-new-leaf" = [
+        {
+          modifiers = [
+            "Mod"
+            "Shift"
+          ];
+          key = "Enter";
+        }
+      ];
+    };
 
     # Additional files to include in the vault.
     extraFiles = {};
