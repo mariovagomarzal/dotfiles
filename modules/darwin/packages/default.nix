@@ -88,6 +88,9 @@ in {
       "discord"
       "telegram"
 
+      # Productivity.
+      "obsidian"
+
       # AI-related tools.
       "chatgpt"
       "claude"

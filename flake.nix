@@ -43,29 +43,40 @@
   # The flake's outputs (managed with snowfall-lib).
   outputs = inputs:
     inputs.snowfall-lib.mkFlake {
+      # Pass through all inputs to snowfall-lib.
       inherit inputs;
 
+      # The source directory for the flake.
       src = ./.;
 
-      snowfall = {};
+      # Snowfall-lib configuration.
+      snowfall = {
+        namespace = "dotfiles";
+      };
 
+      # Global configuration for all channels.
       channels-config = {
         allowUnfree = true;
       };
 
+      # Overlays to apply to all channels.
       overlays = with inputs; [
         nur.overlays.default
         devshell.overlays.default
       ];
 
+      # Modules to include in all home-manager configurations.
       homes.modules = with inputs; [
         catppuccin.homeModules.catppuccin
       ];
 
+      # Additional outputs to build.
       outputs-builder = channels: {
+        # Code formatter for the flake.
         formatter = channels.nixpkgs.alejandra;
       };
 
+      # Default alias definitions for the flake.
       alias = {
         shells.default = "development";
       };

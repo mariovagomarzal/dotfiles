@@ -273,6 +273,11 @@ patterns depending on the part of the configuration (if any) being changed:
 - General changes use broader scopes:
   - `config` for general configuration changes not specific to a module, system,
     or home (flake-level changes, overlays, inputs, structure, etc.).
+  - `lib` for changes related to the custom Nix library, stored in `lib/`.
+  - `overlays` for changes to package overlays, stored in `overlays/`.
+  - `packages` for changes to custom packages, stored in `packages/`.
+  - `shells` for changes to development shells, stored in `shells/`.
+  - `checks` for changes to flake checks, stored in `checks/`.
 
 Other scopes can be used as needed.
 
