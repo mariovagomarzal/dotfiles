@@ -178,6 +178,10 @@
         settings = {};
       }
       {
+        pkg = pkgs.dotfiles.obsidian-latex-suite;
+        settings = {};
+      }
+      {
         pkg = pkgs.dotfiles.obsidian-mathjax-preamble-manager;
         settings = {};
       }
