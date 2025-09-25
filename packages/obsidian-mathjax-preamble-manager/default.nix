@@ -4,7 +4,6 @@
 {
   buildNpmObsidianPlugin,
   fetchFromGitHub,
-  lib,
 }:
 buildNpmObsidianPlugin (finalAttrs: {
   pname = "obsidian-mathjax-preamble-manager";
