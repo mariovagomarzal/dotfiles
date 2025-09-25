@@ -32,7 +32,7 @@
       newLinkFormat = "shortest";
       useMarkdownLinks = false;
       showUnsupportedFiles = true;
-      attachmentFolderPath = "/";
+      attachmentFolderPath = "98 - Recursos";
       userIgnoreFilters = [];
       uriCallbacks = false;
     };
@@ -132,14 +132,14 @@
         name = "daily-notes";
         settings = {
           format = "YYYY-MM-DD";
-          folder = "";
-          template = "";
+          folder = "01 - Personal/Diario";
+          template = "99 - Meta/Plantillas/Nota diaria";
         };
       }
       {
         name = "templates";
         settings = {
-          folder = "";
+          folder = "99 - Meta/Plantillas";
           dateFormat = "YYYY-MM-DD";
           timeFormat = "HH:mm";
         };
