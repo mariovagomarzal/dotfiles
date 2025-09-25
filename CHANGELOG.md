@@ -6,6 +6,52 @@ Each stable version of the dotfiles repository is tagged with a date in the
 format `YYYY.MM.DD(.P)`, where `P` is an optional patch version separated by a
 dot if more than one version was released in the same day.
 
+## [2025.09.26](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.26)
+
+### ⛰️ Added
+
+- *(darwin)* Add the Obsidian cask - ([3729069](https://github.com/mariovagomarzal/dotfiles/commit/3729069f869bbff1cfce870cfd51278a95557e4d))
+- *(home)* Add the Obsidian home module - ([3f2c9ee](https://github.com/mariovagomarzal/dotfiles/commit/3f2c9ee461118937eb439662b2ab930b16166480))
+- *(home)* Configure core plugins for the 'Core' vault - ([832e761](https://github.com/mariovagomarzal/dotfiles/commit/832e7617c8a2536b4620c10530fc7e1166772a79))
+- *(home)* Configure appearance for the 'Core' vault - ([32ed8f1](https://github.com/mariovagomarzal/dotfiles/commit/32ed8f15ffa3070b559ac419c50b79e45c54c8d5))
+- *(home)* Configure general settings for the 'Core' vault - ([9d978fc](https://github.com/mariovagomarzal/dotfiles/commit/9d978fccddd2b3b4b4358e73fe5a90d5dc35c951))
+- *(home)* Add the Style settings plugin for the 'Core' vault - ([aeee0d7](https://github.com/mariovagomarzal/dotfiles/commit/aeee0d75b8f1f119cd00f1fa35a1fb0afb7db6eb))
+- *(home)* Add the MathJax Preamble plugin for the 'Core' vault - ([a9e846c](https://github.com/mariovagomarzal/dotfiles/commit/a9e846cf05bb47500b76b27b29632ef26b56ea23))
+- *(home)* Add the Latex Suite plugin for the 'Core' vault - ([56fb0f2](https://github.com/mariovagomarzal/dotfiles/commit/56fb0f2dcf2f96642ede7d63c9489f7dfabe90e2))
+- *(home)* Add the Advanced tables plugin for the 'Core' vault - ([308cdc6](https://github.com/mariovagomarzal/dotfiles/commit/308cdc6644df3b831ab35a552c9bdc96d1e12af4))
+- *(home)* Configure some hotkeys for the 'Core' vault - ([6ca0de3](https://github.com/mariovagomarzal/dotfiles/commit/6ca0de31ed65c896119c3a78508473bc51229fe6))
+- *(home)* Configure some paths for the 'Core' vault - ([9cdf3f4](https://github.com/mariovagomarzal/dotfiles/commit/9cdf3f436e54fe803342d6f6649c3e8e8b9ba44f))
+- *(lib)* Implement the `importBuilder` function - ([2f40375](https://github.com/mariovagomarzal/dotfiles/commit/2f4037533fb1033c4732dfcf062853f8e278b1ff))
+- *(obsidian)* Enable Vim mode in the 'Core' vault - ([09611c8](https://github.com/mariovagomarzal/dotfiles/commit/09611c81394ad9683947a4c3d3b2448282b728a7))
+- *(overlays)* Implement a builder for npm-based Obsidian plugins - ([d4ae588](https://github.com/mariovagomarzal/dotfiles/commit/d4ae5880633530daba024149461acb300363e7a4))
+- *(overlays)* Implement a builder for pnpm-based Obsidian plugins - ([9bcc4a1](https://github.com/mariovagomarzal/dotfiles/commit/9bcc4a156b70d3664a3e21a7d825dc21bef502ca))
+- *(overlays)* Implement a builder for yarn-based Obsidian plugins - ([a568e17](https://github.com/mariovagomarzal/dotfiles/commit/a568e17d74d79f1bb56deaffae762b6bb86f662c))
+- *(overlays)* Implement a generic builder for Obsidian themes - ([34fafc8](https://github.com/mariovagomarzal/dotfiles/commit/34fafc87d86b32528e458db877c09404c2579c87))
+- *(packages)* Add the Obsidian Catppuccin theme package - ([d103d0d](https://github.com/mariovagomarzal/dotfiles/commit/d103d0d24abecd50c5a2fdb4f9516b8df8a31d31))
+- *(packages)* Add the Style settings plugin for Obsidian - ([c861aff](https://github.com/mariovagomarzal/dotfiles/commit/c861aff2cbefa2cd906f23cede708356fb24f505))
+- *(packages)* Add the MathJax Preamble Manager plugin for Obsidian - ([a24f32e](https://github.com/mariovagomarzal/dotfiles/commit/a24f32e979f38e346118f6247faba05b5d7641cd))
+- *(packages)* Add the Latex Suite plugin for Obsidian - ([c21007d](https://github.com/mariovagomarzal/dotfiles/commit/c21007d05f4c07a8c7c4b094e2e21a770bc8a05b))
+- *(packages)* Use official repo for the Latex Suite Obsidian plugin - ([63c46d9](https://github.com/mariovagomarzal/dotfiles/commit/63c46d91cd92e0abc9819ed5a9ce9afae4a12a11))
+- *(packages)* Use official repo for the Style settings Obsidian plugin - ([057409e](https://github.com/mariovagomarzal/dotfiles/commit/057409ef8766aa3e7924b47b47cf8bdc81d06795))
+- *(packages)* Add the Advanced tables plugin for Obsidian - ([72e4031](https://github.com/mariovagomarzal/dotfiles/commit/72e40317c16b81db38ee9df84e8b181e00c36656))
+- Add a namespace for flake outputs - ([d883fa3](https://github.com/mariovagomarzal/dotfiles/commit/d883fa3ecd41240940ade3673c27423c2ca04732))
+### 🐛 Fixed
+
+- *(home)* Fix a typo in the Obsidian home module - ([f68c91f](https://github.com/mariovagomarzal/dotfiles/commit/f68c91f8c471b6d414c3bf0a87d049fa5f787c67))
+- *(home)* Remove a duplicate entry in the Obsidian home module - ([ac87a23](https://github.com/mariovagomarzal/dotfiles/commit/ac87a23b8adb29b3554ef2b9c3e35cc0f48c6056))
+- *(packages)* Remove unnecessary `lib` input - ([abc984d](https://github.com/mariovagomarzal/dotfiles/commit/abc984dbb7d80971a114aef9bbd097c3111e20e5))
+- *(packages)* Remove unnecessary `runCommand` input - ([441bbeb](https://github.com/mariovagomarzal/dotfiles/commit/441bbebae603c5a60017a47950e1058389ee6ff0))
+- *(packages)* Remove unnecessary `lib` input - ([6b66a96](https://github.com/mariovagomarzal/dotfiles/commit/6b66a968d58030cdf2292c4222bd8c21ea543814))
+### 🛠️ Refactored
+
+- *(home)* Update how inputs are passed to imported profiles - ([4c7af9a](https://github.com/mariovagomarzal/dotfiles/commit/4c7af9a563bd80a47cbecfed76ea74a84af1e58b))
+### 🎨 Style
+
+- *(overlays)* Reorder input arguments for some Obsidian builders - ([7955861](https://github.com/mariovagomarzal/dotfiles/commit/79558616010cce263592bfc72f84e7a7f4ce1d33))
+### 📚 Documentation
+
+- Document more commit scopes in the README - ([4c959e0](https://github.com/mariovagomarzal/dotfiles/commit/4c959e0f0b19be7454820a6d656ed818cfad438c))
+
 ## [2025.09.22](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.22)
 
 ### ⛰️ Added
