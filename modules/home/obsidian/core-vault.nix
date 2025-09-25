@@ -24,7 +24,7 @@
       useTab = true;
       tabSize = 2;
       autoConvertHtml = true;
-      vimMode = false;
+      vimMode = true;
       promptDelete = false;
       trashOption = "local";
       alwaysUpdateLinks = false;
@@ -35,7 +35,6 @@
       attachmentFolderPath = "98 - Recursos";
       userIgnoreFilters = [];
       uriCallbacks = false;
-      vimMode = true;
     };
 
     # Themes and appearance settings.
