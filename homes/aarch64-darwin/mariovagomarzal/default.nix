@@ -16,5 +16,6 @@
     ./ssh.nix
     ./git.nix
     ./firefox.nix
+    ./aerospace.nix
   ];
 }
