@@ -6,6 +6,22 @@ Each stable version of the dotfiles repository is tagged with a date in the
 format `YYYY.MM.DD(.P)`, where `P` is an optional patch version separated by a
 dot if more than one version was released in the same day.
 
+## [2025.09.28](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.28)
+
+### ⛰️ Added
+
+- *(config)* Remove yabai, skhd and jankyborders from the configuration - ([b15fbb6](https://github.com/mariovagomarzal/dotfiles/commit/b15fbb63a22bc7f16bc882c04db8cbdf82032625))
+- *(darwin)* Add the AeroSpace and SwipeAeroSpace casks - ([45e158b](https://github.com/mariovagomarzal/dotfiles/commit/45e158b8ef2c4d54263e900d22ca8b8d3d85fb38))
+- *(darwin)* Disable 'Spaces have separate Spaces' option - ([c1913de](https://github.com/mariovagomarzal/dotfiles/commit/c1913de32bfb64c05413134dbc7edf0fc8bc5d19))
+- *(home)* Extend the AeroSpace home module - ([237c7f3](https://github.com/mariovagomarzal/dotfiles/commit/237c7f36884bf6bb21e96c16cd52820f2ea13059))
+- *(packages)* Add the SwipeAeroSpace package with Nix - ([0d63716](https://github.com/mariovagomarzal/dotfiles/commit/0d63716b109548589c391f4371980509f150edc3))
+- *(user/mariovagomarzal)* Add the AeroSpace home module - ([70fabf3](https://github.com/mariovagomarzal/dotfiles/commit/70fabf3c675bf8addbaad4b02eba7a47dcfca7c7))
+- *(user/mariovagomarzal)* Configure the AeroSpace home module - ([784fd2d](https://github.com/mariovagomarzal/dotfiles/commit/784fd2d414e012b9075726590fa2cbd25f8729ae))
+### 📚 Documentation
+
+- Remove the 'Disable SIP' setup step for Darwin machines - ([309c26c](https://github.com/mariovagomarzal/dotfiles/commit/309c26c163e2376eac033848a2256abec72c68d2))
+- Document how to configure SwipeAeroSpace - ([19129a4](https://github.com/mariovagomarzal/dotfiles/commit/19129a48170e84064c9ea1675d2cbe8f9f1a3622))
+
 ## [2025.09.26](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.26)
 
 ### ⛰️ Added
