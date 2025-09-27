@@ -107,28 +107,12 @@ this repository.
 We're going to describe the setup process for my (Mario's) MacBook Pro. We will
 assume a fresh installation of macOS.
 
-1. __Disable System Integrity Protection (SIP)__: The [Yabai][yabai] window
-  manager require partially disabling System Integrity Protection (SIP). To do
-  so, we have to boot into recovery mode. Once in recovery mode, we have to open
-  the terminal and run the following command and then reboot:
-
-    ```bash
-    csrutil enable --without fs --without debug --without nvram
-    ```
-
-    For Apple Silicon machines, we also have to enable non-Apple-signed arm64e
-    binaries. To do so, we have to run the following command and then reboot:
-
-    ```bash
-    sudo nvram boot-args=-arm64e_preview_abi
-    ```
-
-2. __Restore SSH keys__: I use [SSH keys][ssh-keys] to authenticate with GitHub
+1. __Restore SSH keys__: I use [SSH keys][ssh-keys] to authenticate with GitHub
   and other services. For that reason, we will need to safely restore the SSH
   keys from a backup or [generate new ones][generate-ssh-keys] and store them
   in the `~/.ssh` directory.
 
-3. __Install Xcode Command Line Tools__: For the setup process, we will need to
+2. __Install Xcode Command Line Tools__: For the setup process, we will need to
   install the Xcode Command Line Tools, since they may be required in some
   of the following steps. To do so, run the following command in the terminal:
 
@@ -136,7 +120,7 @@ assume a fresh installation of macOS.
     xcode-select --install
     ```
 
-4. __Install Homebrew__: Some packages are installed via [Homebrew][homebrew] by
+3. __Install Homebrew__: Some packages are installed via [Homebrew][homebrew] by
   nix-darwin. However, nix-darwin will not install Homebrew itself. To install
   Homebrew follow the instructions in the [official download
   page][download-brew] or TL;DR, run the following command in the terminal:
@@ -145,11 +129,11 @@ assume a fresh installation of macOS.
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
-5. __Install Nix__: We will use Nix to setup and manage the machine
+4. __Install Nix__: We will use Nix to setup and manage the machine
   configuration. Install Nix following the instructions in the [official
   download page][download-nix].
 
-6. __Clone the repository__: Once Nix is installed and the SSH keys are in
+5. __Clone the repository__: Once Nix is installed and the SSH keys are in
   place, we can clone the repository with Git (or by manually downloading it)
   and `cd` into it:
 
@@ -158,7 +142,7 @@ assume a fresh installation of macOS.
     cd dotfiles
     ```
 
-7. __Setup the machine__: If it is the first time we're setting up the machine
+6. __Setup the machine__: If it is the first time we're setting up the machine
   with these dotfiles, we have to run the following command:
 
     ```bash
@@ -187,6 +171,28 @@ by the dotfiles.
   can select the styles (and its flavors) we want to apply to get an
   `import.json` file. Then we have to use this file with Stylus to apply the
   styles.
+
+</details>
+
+<details>
+  <summary>SwipeAeroSpace</summary>
+
+SwipeAeroSpace is a utility for allowing using swipe gestures on the touchpad to
+switch between AeroSpace workspaces. The dotfiles install the application and
+setup the launchd agent. However, since there isn't an official way to configure
+the application via a configuration file or command line, we have to
+manually configure through its configuration menu.
+
+To do so, click on the SwipeAeroSpace icon in the menu bar (three dashes) and
+select "Settings". In the settings window, configure the following:
+
+- __Swipe Threshold__: 0.3.
+- __Number of Fingers__: Four.
+- __Wrap Workspace__: Enabled.
+- __Natural Swipe__: Enabled.
+- __Skip Empty Workspace__: Enabled.
+- __Launch at Login__: Disabled (since the launchd agent is already setup by
+  the dotfiles).
 
 </details>
 
@@ -345,8 +351,6 @@ just tag
 [nix]: https://nixos.org/
 [nix-flake]: https://nixos.wiki/wiki/Flakes
 [snowfall-lib]: https://snowfall.org/guides/lib/quickstart/
-[yabai]:
-  https://github.com/koekeishiya/yabai
 [ssh-keys]:
   https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
 [generate-ssh-keys]:

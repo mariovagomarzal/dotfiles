@@ -16,8 +16,6 @@
     ./ssh.nix
     ./git.nix
     ./firefox.nix
-    ./yabai
-    ./skhd
-    ./jankyborders.nix
+    ./aerospace.nix
   ];
 }

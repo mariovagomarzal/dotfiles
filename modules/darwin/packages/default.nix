@@ -54,7 +54,10 @@ in {
     };
 
     # Brew taps to add.
-    taps = [];
+    taps = [
+      "nikitabobko/tap"
+      "mediosz/tap"
+    ];
 
     # Brew packages to install, i.e., `brew install <package>`.
     brews = [
@@ -79,6 +82,10 @@ in {
       # Text editors (or related).
       "visual-studio-code"
       "godot"
+
+      # Window management.
+      "aerospace"
+      "swipeaerospace"
 
       # Web browsers.
       "firefox"
