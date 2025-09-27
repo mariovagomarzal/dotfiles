@@ -174,6 +174,28 @@ by the dotfiles.
 
 </details>
 
+<details>
+  <summary>SwipeAeroSpace</summary>
+
+SwipeAeroSpace is a utility for allowing using swipe gestures on the touchpad to
+switch between AeroSpace workspaces. The dotfiles install the application and
+setup the launchd agent. However, since there isn't an official way to configure
+the application via a configuration file or command line, we have to
+manually configure through its configuration menu.
+
+To do so, click on the SwipeAeroSpace icon in the menu bar (three dashes) and
+select "Settings". In the settings window, configure the following:
+
+- __Swipe Threshold__: 0.3.
+- __Number of Fingers__: Four.
+- __Wrap Workspace__: Enabled.
+- __Natural Swipe__: Enabled.
+- __Skip Empty Workspace__: Enabled.
+- __Launch at Login__: Disabled (since the launchd agent is already setup by
+  the dotfiles).
+
+</details>
+
 ## Development
 
 In this section, we will describe how to setup the development environment, the
