@@ -308,7 +308,7 @@
       };
 
       # Displays have separate spaces.
-      spaces.spans-displays = false;
+      spaces.spans-displays = true;
 
       # Trackpad settings.
       trackpad = {
