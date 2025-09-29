@@ -6,6 +6,12 @@ Each stable version of the dotfiles repository is tagged with a date in the
 format `YYYY.MM.DD(.P)`, where `P` is an optional patch version separated by a
 dot if more than one version was released in the same day.
 
+## [2025.09.29](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.29)
+
+### ⛰️ Added
+
+- *(user/mariovagomarzal)* Improve some workspace-related keybindings - ([b84cf2a](https://github.com/mariovagomarzal/dotfiles/commit/b84cf2ac9f03d9aa8eb0afece4da80eb6a253b54))
+
 ## [2025.09.28](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.28)
 
 ### ⛰️ Added
