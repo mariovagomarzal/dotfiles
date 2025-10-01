@@ -36,6 +36,7 @@ in {
   # Fonts.
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
+    newcomputermodern
   ];
 
   # Packages managed by Homebrew.
