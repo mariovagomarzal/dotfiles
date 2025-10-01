@@ -7,7 +7,7 @@
     # Basic vault settings.
     app = {
       focusNewTab = true;
-      defaultViewMode = "source";
+      defaultViewMode = "preview";
       livePreview = false;
       readableLineLength = true;
       strictLineBreaks = false;
@@ -24,7 +24,7 @@
       useTab = true;
       tabSize = 2;
       autoConvertHtml = true;
-      vimMode = true;
+      vimMode = false;
       promptDelete = false;
       trashOption = "local";
       alwaysUpdateLinks = false;
