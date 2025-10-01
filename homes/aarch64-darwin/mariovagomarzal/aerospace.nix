@@ -168,7 +168,7 @@
 
     # Enable the SwipeAeroSpace launchd agent.
     swipeaerospace = {
-      enable = true;
+      enable = false;
       keepAlive = true;
     };
   };
