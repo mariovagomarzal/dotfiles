@@ -6,6 +6,15 @@ Each stable version of the dotfiles repository is tagged with a date in the
 format `YYYY.MM.DD(.P)`, where `P` is an optional patch version separated by a
 dot if more than one version was released in the same day.
 
+## [2025.10.01](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.10.01)
+
+### ⛰️ Added
+
+- *(darwin)* Add New Computer Modern fonts - ([19f8d94](https://github.com/mariovagomarzal/dotfiles/commit/19f8d940f98e1c13fbb2296f189e79194b42d750))
+- *(home)* Change fonts for the 'Core' vault - ([2d35c60](https://github.com/mariovagomarzal/dotfiles/commit/2d35c60bf5d8a4ce6812b38ec247e89150f920a2))
+- *(home)* Update some settings for the 'Core' vault - ([6bfb7ad](https://github.com/mariovagomarzal/dotfiles/commit/6bfb7ad63a56c3da650f6f2f3aad34cdffd3f27d))
+- *(user/mariovagomarzal)* Disable SwipeAeroSpace - ([c8d3049](https://github.com/mariovagomarzal/dotfiles/commit/c8d30499d351ed827a701efe37a42215e13d2ee6))
+
 ## [2025.09.29](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.09.29)
 
 ### ⛰️ Added
