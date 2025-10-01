@@ -49,6 +49,8 @@
       theme = "obsidian"; # Equivalent to dark mode.
       baseFontSize = 16;
       baseFontSizeAction = true;
+      textFontFamily = "NewComputerModern10";
+      monospaceFontFamily = "FiraCode Nerd Font Mono";
       showViewHeader = true;
       showRibbon = true;
       nativeMenus = false;
