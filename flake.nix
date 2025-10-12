@@ -61,6 +61,7 @@
       nixpkgs.overlays = with inputs; [
         nur.overlays.default
         devshell.overlays.default
+        (import ./overlays/obsidian-builders)
       ];
     };
 }
