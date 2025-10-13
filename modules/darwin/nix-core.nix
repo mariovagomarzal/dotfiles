@@ -43,4 +43,14 @@
       }
     ];
   };
+
+  # Nixpkgs configuration.
+  # NOTE: This configuration should be inherited from the Blueprint
+  # configuration of Nixpkgs, set in the `flake.nix` file. However, due to an
+  # unknow issue, 'Darwin' and 'NixOS' systems do not inherit this. For more
+  # details, see:
+  #   https://github.com/numtide/blueprint/issues/115
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 }
