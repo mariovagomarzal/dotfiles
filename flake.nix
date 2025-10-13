@@ -19,7 +19,7 @@
     };
 
     # nix-darwin, the Nix configuration for macOS.
-    darwin = {
+    nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
