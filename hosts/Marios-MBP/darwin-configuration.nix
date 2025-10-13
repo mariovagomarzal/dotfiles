@@ -11,13 +11,21 @@ in {
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  # Specific host information.
+  # Host information.
   host = {
     hostname = "Marios-MBP";
     computername = "Mario's MacBook Pro";
   };
 
-  # Specific users information.
+  # Users information.
+  users.users = {
+    "mariovagomarzal" = {
+      home = "/Users/mariovagomarzal";
+      description = "Mario Vago Marzal";
+    };
+  };
+
+  # Set the primary user of the system.
   system.primaryUser = "mariovagomarzal";
 
   imports = darwinModulesWithout [];
