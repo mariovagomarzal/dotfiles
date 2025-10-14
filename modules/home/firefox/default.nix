@@ -1,7 +1,7 @@
 ########################
 # Firefox home module. #
 ########################
-{pkgs, ...}: {
+{...}: {
   programs.firefox = {
     enable = true;
 
@@ -12,16 +12,12 @@
     ];
 
     # Policies.
-    # NOTE: Policies are not working with `nixpkgs-firefox-darwin`. See:
-    #   https://github.com/bandithedoge/nixpkgs-firefox-darwin/issues/7
+    # TODO: Check if policies are already working on Darwin.
     policies = {};
-
-    # Profiles.
-    profiles = {
-      # Default profile.
-      default = import ./default-profile.nix {
-        inherit pkgs;
-      };
-    };
   };
+
+  # Imports for profile definitions.
+  imports = [
+    ./default-profile.nix
+  ];
 }

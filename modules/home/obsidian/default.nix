@@ -1,12 +1,7 @@
 #########################
 # Obsidian home module. #
 #########################
-{perSystem, ...}: let
-  # Auxiliary function to import a vault definition.
-  importVault = name: file: args:
-    {target = "Obsidian/${name}";}
-    // (import file args);
-in {
+{...}: {
   programs.obsidian = {
     enable = true;
 
@@ -14,13 +9,10 @@ in {
     # definition.
     defaultSettings = {
     };
-
-    # Vaults.
-    vaults = {
-      # Core vault.
-      core = importVault "Core" ./core-vault.nix {
-        inherit perSystem;
-      };
-    };
   };
+
+  # Imports for vault definitions.
+  imports = [
+    ./core-vault.nix
+  ];
 }
