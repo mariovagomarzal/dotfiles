@@ -4,20 +4,13 @@
 {flake, ...}: let
   inherit
     (flake.lib.modules)
-    homeModulesWithout
-    typeModulesWithout
+    modulesWithout
     ;
 in {
   home.stateVersion = "25.05";
 
-  # No-configuration packages.
-  home.packages = [];
-
-  # Minimal configuration-dependent programs and/or services.
-  programs = {};
-  services = {};
-
-  imports =
-    (homeModulesWithout [])
-    ++ (typeModulesWithout "home-darwin" []);
+  imports = modulesWithout {
+    "home" = [];
+    "home-darwin" = [];
+  };
 }

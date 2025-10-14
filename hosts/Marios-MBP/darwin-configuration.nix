@@ -4,8 +4,7 @@
 {flake, ...}: let
   inherit
     (flake.lib.modules)
-    darwinModulesWithout
-    typeModulesWithout
+    modulesWithout
     ;
 in {
   system.stateVersion = 6;
@@ -29,7 +28,8 @@ in {
   # Set the primary user of the system.
   system.primaryUser = "mariovagomarzal";
 
-  imports =
-    (darwinModulesWithout [])
-    ++ (typeModulesWithout "shared" []);
+  imports = modulesWithout {
+    "darwin" = [];
+    "shared" = [];
+  };
 }
