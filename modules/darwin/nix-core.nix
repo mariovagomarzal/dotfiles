@@ -1,12 +1,7 @@
 ####################################
 # Nix core settings Darwin module. #
 ####################################
-{
-  pkgs,
-  lib,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   # Enable the Nix package manager.
   nix.enable = true;
 
@@ -53,4 +48,10 @@
   nixpkgs.config = {
     allowUnfree = true;
   };
+
+  # Nixpkgs overlays.
+  # NOTE: Same as above.
+  nixpkgs.overlays = with inputs; [
+    nur.overlays.default
+  ];
 }
