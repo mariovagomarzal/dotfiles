@@ -1,5 +1,5 @@
 ####################################
-# Nix core settings Darwin module. #
+# Nix core settings shared module. #
 ####################################
 {inputs, ...}: {
   # Enable the Nix package manager.

@@ -5,11 +5,20 @@
   programs.git = {
     enable = true;
 
-    # User name.
-    userName = config.home.username;
+    # User name and email.
+    userName = "mariovagomarzal";
+    userEmail = "mariovagomarzal@gmail.com";
 
     # Extra configuration.
     extraConfig = {
+      # GitHub related configuration.
+      github.user = "mariovagomarzal";
+
+      # Key related configuration.
+      gpg.format = "ssh";
+      credential.helper = "osxkeychain";
+      user.signingkey = "~/.ssh/id_ed25519";
+
       # Core configuration.
       core = {
         editor = "code --wait";

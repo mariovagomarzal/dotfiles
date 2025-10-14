@@ -16,12 +16,5 @@ in {
   programs = {};
   services = {};
 
-  imports =
-    (homeModulesWithout [])
-    ++ [
-      ./ssh.nix
-      ./git.nix
-      ./firefox.nix
-      ./aerospace.nix
-    ];
+  imports = homeModulesWithout [];
 }

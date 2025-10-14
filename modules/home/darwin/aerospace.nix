@@ -1,6 +1,6 @@
-#########################################
-# AeroSpace module for mariovagomarzal. #
-#########################################
+#####################################
+# AeroSpace home module for Darwin. #
+#####################################
 {...}: {
   programs.aerospace = {
     enable = true;

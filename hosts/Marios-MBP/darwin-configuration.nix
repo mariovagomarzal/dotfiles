@@ -28,5 +28,7 @@ in {
   # Set the primary user of the system.
   system.primaryUser = "mariovagomarzal";
 
-  imports = darwinModulesWithout [];
+  imports =
+    (darwinModulesWithout [])
+    ++ [flake.nixosModules.shared];
 }
