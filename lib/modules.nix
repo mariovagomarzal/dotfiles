@@ -8,8 +8,8 @@
 
   # Core module names that should be included by default when available.
   coreModulesNames = [
+    "core"
     "options"
-    "shared"
   ];
 
   # Extract core modules from a module attribute se.t

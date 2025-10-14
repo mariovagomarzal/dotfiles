@@ -5,6 +5,7 @@
   inherit
     (flake.lib.modules)
     homeModulesWithout
+    typeModulesWithout
     ;
 in {
   home.stateVersion = "25.05";
@@ -16,5 +17,7 @@ in {
   programs = {};
   services = {};
 
-  imports = homeModulesWithout [];
+  imports =
+    (homeModulesWithout [])
+    ++ (typeModulesWithout "home-darwin" []);
 }
