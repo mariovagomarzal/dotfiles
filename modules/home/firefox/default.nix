@@ -1,10 +1,7 @@
 ########################
 # Firefox home module. #
 ########################
-inputs: let
-  # Auxiliary function to import a profile definition.
-  importProfile = file: import file inputs;
-in {
+{pkgs, ...}: {
   programs.firefox = {
     enable = true;
 
@@ -22,7 +19,9 @@ in {
     # Profiles.
     profiles = {
       # Default profile.
-      default = importProfile ./default-profile.nix;
+      default = import ./default-profile.nix {
+        inherit pkgs;
+      };
     };
   };
 }

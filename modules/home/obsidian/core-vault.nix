@@ -1,7 +1,7 @@
 ############################################
 # Core vault for the Obsidian home module. #
 ############################################
-{pkgs, ...}: {
+{perSystem, ...}: {
   # Configuration content for the vault.
   settings = {
     # Basic vault settings.
@@ -40,7 +40,7 @@
     # Themes and appearance settings.
     themes = [
       {
-        pkg = pkgs.dotfiles.obsidian-catppuccin;
+        pkg = perSystem.self.obsidian-catppuccin;
         enable = true;
       }
     ];
@@ -176,19 +176,19 @@
     # Community plugins settings.
     communityPlugins = [
       {
-        pkg = pkgs.dotfiles.obsidian-style-settings;
+        pkg = perSystem.self.obsidian-style-settings;
         settings = {};
       }
       {
-        pkg = pkgs.dotfiles.advanced-tables-obsidian;
+        pkg = perSystem.self.advanced-tables-obsidian;
         settings = {};
       }
       {
-        pkg = pkgs.dotfiles.obsidian-latex-suite;
+        pkg = perSystem.self.obsidian-latex-suite;
         settings = {};
       }
       {
-        pkg = pkgs.dotfiles.obsidian-mathjax-preamble-manager;
+        pkg = perSystem.self.obsidian-mathjax-preamble-manager;
         settings = {};
       }
     ];
