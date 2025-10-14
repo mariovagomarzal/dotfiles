@@ -5,6 +5,7 @@
   inherit
     (flake.lib.modules)
     darwinModulesWithout
+    typeModulesWithout
     ;
 in {
   system.stateVersion = 6;
@@ -30,5 +31,5 @@ in {
 
   imports =
     (darwinModulesWithout [])
-    ++ [flake.nixosModules.shared];
+    ++ (typeModulesWithout "shared" []);
 }

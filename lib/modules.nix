@@ -4,7 +4,7 @@
 {flake, ...}: let
   # Get modules of a specific type from the flake, defaulting to empty set if
   # not found.
-  typeModules = type: flake.${type} or {};
+  typeModules = type: flake.modules.${type} or {};
 
   # Core module names that should be included by default when available.
   coreModulesNames = [
@@ -23,9 +23,9 @@
     coreModulesNames;
 
   # Module type names for consistent reference.
-  nixosModulesName = "nixosModules";
-  darwinModulesName = "darwinModules";
-  homeModulesName = "homeModules";
+  nixosModulesName = "nixos";
+  darwinModulesName = "darwin";
+  homeModulesName = "home";
 in rec {
   # Get all modules of a type except the specified ones.
   # Returns a list of modules.
