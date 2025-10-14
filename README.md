@@ -55,33 +55,15 @@ configurations.
 
 ### Repository structure
 
-This repository's flake uses [Snowfall Lib][snowfall-lib], a library that
-automatically generates flake outputs based on file organization by imposing an
-opinionated directory structure.
+This repository's flake uses [Blueprint][blueprint], a library that maps a
+standard folder structure to flake outputs with an opinionated approach
+that keeps things simple and predictable.
 
-Below is a schematic overview of the repository's main directory structure. For
-comprehensive details on how Snowfall Lib works, please refer to the [official
-documentation][snowfall-lib].
+For comprehensive details on how Blueprint works, please refer to the [official
+documentation][blueprint].
 
-```text
-dotfiles/
-├── flake.nix                       # Flake definition file.
-├── modules/                        # NixOS, Darwin, and Home-Manager modules.
-│   ├── nixos/                      # NixOS modules.
-│   ├── darwin/                     # Darwin (macOS) modules.
-│   └── home-manager/               # Home-Manager modules.
-├── systems/                        # System configurations.
-│   └── <system_architecture>/      # Machine architecture (e.g., x86_64-linux).
-│       └── <system_name>/          # Machine name (e.g., MyPC).
-├── homes/                          # Home-Manager configurations.
-│   └── <system_architecture>/      # Machine architecture (e.g., x86_64-linux).
-│       └── <user_name>/            # User name (e.g., johndoe).
-├── shells/                         # Development shells.
-└── checks/                         # Flake checks.
-```
-
-Check the specific directories in this repository to see which modules, systems,
-and homes are currently available.
+Check the specific directories in this repository to see which modules, hosts,
+and configurations are currently available.
 
 ## Setup
 
@@ -248,11 +230,11 @@ patterns depending on the part of the configuration (if any) being changed:
   `nixos`, `darwin`, or `home`. For example: `feat(nixos): add new firewall
   module` or `fix(home): correct git module structure`.
 
-- System configurations in the `systems/` directory use the format
-  `system/<name>`, such as `fix(system/Marios-MBP): update display settings`.
+- Host configurations in the `hosts/` directory use the host name directly,
+  such as `fix(Marios-MBP): update display settings`.
 
-- Home configurations in the `homes/` directory follow the pattern
-  `user/<name>`, like `feat(user/mariovagomarzal): add starship config`.
+- User configurations in the `hosts/<host_name>/users/` directories follow the pattern
+  `<host_name>/<user_name>`, like `feat(Marios-MBP/mariovagomarzal): add starship config`.
 
 - General changes use broader scopes:
   - `config` for general configuration changes not specific to a module, system,
@@ -328,7 +310,7 @@ just tag
 <!-- External links -->
 [nix]: https://nixos.org/
 [nix-flake]: https://nixos.wiki/wiki/Flakes
-[snowfall-lib]: https://snowfall.org/guides/lib/quickstart/
+[blueprint]: https://numtide.github.io/blueprint/
 [ssh-keys]:
   https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
 [generate-ssh-keys]:
