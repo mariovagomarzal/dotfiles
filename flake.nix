@@ -12,14 +12,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # snowfall-lib, a library for Nix flakes.
-    snowfall-lib = {
-      url = "github:snowfallorg/lib";
+    # blueprint, a library for Nix flakes.
+    blueprint = {
+      url = "github:numtide/blueprint";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # nix-darwin, the Nix configuration for macOS.
-    darwin = {
+    nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -34,51 +34,31 @@
     catppuccin.url = "github:catppuccin/nix";
 
     # devshell, a tool for creating development environments.
-    devshell.url = "github:numtide/devshell";
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # git-hooks.nix, a tool for managing git hooks with Nix.
-    git-hooks-nix.url = "github:cachix/git-hooks.nix";
+    git-hooks-nix = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  # The flake's outputs (managed with snowfall-lib).
+  # The flake's outputs (managed by blueprint).
   outputs = inputs:
-    inputs.snowfall-lib.mkFlake {
-      # Pass through all inputs to snowfall-lib.
+    inputs.blueprint {
       inherit inputs;
 
-      # The source directory for the flake.
-      src = ./.;
-
-      # Snowfall-lib configuration.
-      snowfall = {
-        namespace = "dotfiles";
-      };
-
-      # Global configuration for all channels.
-      channels-config = {
+      nixpkgs.config = {
         allowUnfree = true;
       };
 
-      # Overlays to apply to all channels.
-      overlays = with inputs; [
+      nixpkgs.overlays = with inputs; [
         nur.overlays.default
         devshell.overlays.default
+        (import ./overlays/obsidian-builders)
       ];
-
-      # Modules to include in all home-manager configurations.
-      homes.modules = with inputs; [
-        catppuccin.homeModules.catppuccin
-      ];
-
-      # Additional outputs to build.
-      outputs-builder = channels: {
-        # Code formatter for the flake.
-        formatter = channels.nixpkgs.alejandra;
-      };
-
-      # Default alias definitions for the flake.
-      alias = {
-        shells.default = "development";
-      };
     };
 }

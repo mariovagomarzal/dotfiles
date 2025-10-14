@@ -1,15 +1,12 @@
 ###################################
 # Obsidian Style Settings plugin. #
 ###################################
-{
-  buildYarnObsidianPlugin,
-  fetchFromGitHub,
-}:
-buildYarnObsidianPlugin (finalAttrs: {
+{pkgs, ...}:
+pkgs.buildYarnObsidianPlugin (finalAttrs: {
   pname = "obsidian-style-settings";
   version = "1.0.9";
 
-  src = fetchFromGitHub {
+  src = pkgs.fetchFromGitHub {
     owner = "mgmeyers";
     repo = "obsidian-style-settings";
     rev = finalAttrs.version;

@@ -1,10 +1,7 @@
 ########################
 # Firefox home module. #
 ########################
-inputs: let
-  # Auxiliary function to import a profile definition.
-  importProfile = file: import file inputs;
-in {
+{...}: {
   programs.firefox = {
     enable = true;
 
@@ -15,14 +12,12 @@ in {
     ];
 
     # Policies.
-    # NOTE: Policies are not working with `nixpkgs-firefox-darwin`. See:
-    #   https://github.com/bandithedoge/nixpkgs-firefox-darwin/issues/7
+    # TODO: Check if policies are already working on Darwin.
     policies = {};
-
-    # Profiles.
-    profiles = {
-      # Default profile.
-      default = importProfile ./default-profile.nix;
-    };
   };
+
+  # Imports for profile definitions.
+  imports = [
+    ./default-profile.nix
+  ];
 }

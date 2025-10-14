@@ -6,6 +6,37 @@ Each stable version of the dotfiles repository is tagged with a date in the
 format `YYYY.MM.DD(.P)`, where `P` is an optional patch version separated by a
 dot if more than one version was released in the same day.
 
+## [2025.10.14](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.10.14)
+
+### ⛰️ Added
+
+- *(config)* [**breaking**] Prepate the flake for start using Blueprint - ([68aced1](https://github.com/mariovagomarzal/dotfiles/commit/68aced17feff087f651e8f8ae101473a0c99ab30))
+- *(config)* Reimplement systems and homes for Blueprint - ([8c703d4](https://github.com/mariovagomarzal/dotfiles/commit/8c703d48b61c159dd1e251ed69856ad348ace938))
+- *(config)* Restructure modules, hosts and users - ([37f34a7](https://github.com/mariovagomarzal/dotfiles/commit/37f34a7984cdcf9318a18d23af8d54cfaed2ace8))
+- *(config)* Add some placeholder modules for consistency - ([771dabc](https://github.com/mariovagomarzal/dotfiles/commit/771dabc21b404b6a488fdaa664ddbcc33d60c606))
+- *(config)* Split shared NixOS and Darwin modules into its own folder - ([f72b498](https://github.com/mariovagomarzal/dotfiles/commit/f72b498d66c796fba3272479173038e8b1943a40))
+- *(config)* Add a placeholder shared options module for consistency - ([542c2e1](https://github.com/mariovagomarzal/dotfiles/commit/542c2e104e6ab6f069d0b191d1a7507bd7d1cff3))
+- *(config)* Create system-specific home modules directories - ([defc707](https://github.com/mariovagomarzal/dotfiles/commit/defc707c2325421faf91e1955c6f19b237bad97f))
+- *(config)* Use the new modules library for importing modules - ([14ceb3f](https://github.com/mariovagomarzal/dotfiles/commit/14ceb3f0da959e91e1e003d6bf86e89988e5c4de))
+- *(darwin)* Reimplement the Darwin modules for Blueprint - ([3f4d47a](https://github.com/mariovagomarzal/dotfiles/commit/3f4d47a478d27f3dabda560fa16d45b198aa5b95))
+- *(home)* Reimplement the Home-Manager modules for Blueprint - ([d6e46ce](https://github.com/mariovagomarzal/dotfiles/commit/d6e46ce81f4a29ab417d1e84813b4dd05de79d64))
+- *(home)* Reimplement profile management for profile-based programs - ([0948b69](https://github.com/mariovagomarzal/dotfiles/commit/0948b69d342f8afc52889bdeb2b086dba66b7fae))
+- *(lib)* Add a custom library for importing flake modules - ([b397376](https://github.com/mariovagomarzal/dotfiles/commit/b397376733bdee7330b50ad0e926d7930e150c58))
+- *(lib)* Refactor the modules library for improved type flexibility - ([2afc1d1](https://github.com/mariovagomarzal/dotfiles/commit/2afc1d1f31e18b9623929de2d1ab186af5d60fa5))
+- *(overlays)* Reimplement the custom overlays for Blueprint - ([f31ce57](https://github.com/mariovagomarzal/dotfiles/commit/f31ce57b0492f6aca90574f88a07d92420f8cb69))
+- *(packages)* Reimplement the custom packages for Blueprint - ([9ded3b1](https://github.com/mariovagomarzal/dotfiles/commit/9ded3b1bd780b890fc190d08fa15687e40069a35))
+- *(system/Marios-MBP)* Configure users - ([5128084](https://github.com/mariovagomarzal/dotfiles/commit/512808430d52f473e7ca8a0c075881ecd5a1bec8))
+- Reimplement the development environment for Blueprint - ([f9b7206](https://github.com/mariovagomarzal/dotfiles/commit/f9b720683bc7949ee45379db8201613428c7f58c))
+### 🐛 Fixed
+
+- *(config)* Make Catppuccin input use its own nixpkgs - ([58ec284](https://github.com/mariovagomarzal/dotfiles/commit/58ec284ad22e607c3d44631bd2d4466c8d551031))
+- *(darwin)* Configure nixpkgs for Darwin systems - ([aad44e3](https://github.com/mariovagomarzal/dotfiles/commit/aad44e38b4c4062c4af52d256e6775366a793d44))
+- *(darwin)* Configure nixpkgs overlays for Darwin systems - ([80f6247](https://github.com/mariovagomarzal/dotfiles/commit/80f62474e87e3b7ba2d691a9965a20c5acb0c291))
+- *(home)* Update how profiles for some modules are imported - ([281803a](https://github.com/mariovagomarzal/dotfiles/commit/281803aa82e4dc29aa1de9eda83f0bfe389aa497))
+### 📚 Documentation
+
+- Document the new project structure in the README - ([6de35c3](https://github.com/mariovagomarzal/dotfiles/commit/6de35c30d8900b73f3ba01b6c01395e1bb2430a7))
+
 ## [2025.10.01](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.10.01)
 
 ### ⛰️ Added

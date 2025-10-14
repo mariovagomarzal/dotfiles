@@ -1,8 +1,8 @@
 ##############################
 # Obsidian builders overlay. #
 ##############################
-{lib, ...}: final: prev: let
-  importBuilder = lib.dotfiles.importBuilder final;
+final: _: let
+  importBuilder = file: overrides: final.callPackage file overrides;
 in {
   buildNpmObsidianPlugin = importBuilder ./npm-plugin.nix {};
   buildPnpmObsidianPlugin = importBuilder ./pnpm-plugin.nix {

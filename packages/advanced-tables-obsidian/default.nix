@@ -1,15 +1,12 @@
 ####################################
 # Obsidian Advanced tables plugin. #
 ####################################
-{
-  buildNpmObsidianPlugin,
-  fetchFromGitHub,
-}:
-buildNpmObsidianPlugin (finalAttrs: {
+{pkgs, ...}:
+pkgs.buildNpmObsidianPlugin (finalAttrs: {
   pname = "advanced-tables-obsidian";
   version = "0.22.1";
 
-  src = fetchFromGitHub {
+  src = pkgs.fetchFromGitHub {
     owner = "tgrosinger";
     repo = "advanced-tables-obsidian";
     rev = finalAttrs.version;

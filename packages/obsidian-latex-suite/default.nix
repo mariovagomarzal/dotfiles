@@ -1,15 +1,12 @@
 ################################
 # Obsidian LaTeX Suite plugin. #
 ################################
-{
-  buildNpmObsidianPlugin,
-  fetchFromGitHub,
-}:
-buildNpmObsidianPlugin (finalAttrs: {
+{pkgs, ...}:
+pkgs.buildNpmObsidianPlugin (finalAttrs: {
   pname = "obsidian-latex-suite";
   version = "1.9.8";
 
-  src = fetchFromGitHub {
+  src = pkgs.fetchFromGitHub {
     owner = "artisticat1";
     repo = "obsidian-latex-suite";
     rev = finalAttrs.version;
