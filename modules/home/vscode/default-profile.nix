@@ -20,10 +20,6 @@
       tamasfe.even-better-toml
       geequlim.godot-tools
 
-      # GitHub copilot.
-      github.copilot
-      github.copilot-chat
-
       # Miscellaneous.
       natqe.reload
       adpyke.codesnap
@@ -82,6 +78,7 @@
       "[latex]" = {
         "editor.tabSize" = 2;
       };
+
       "[tex]" = {
         "editor.tabSize" = 2;
       };
@@ -92,14 +89,6 @@
 
       "[shellscript]" = {
         "editor.tabSize" = 2;
-      };
-
-      # GitHub Copilot extension settings.
-      "github.copilot.enable" = {
-        "*" = true;
-        "markdown" = true;
-        "plaintext" = true;
-        "scminput" = false;
       };
 
       # Rewrap extension settings.
