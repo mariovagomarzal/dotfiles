@@ -5,12 +5,14 @@
   programs.git = {
     enable = true;
 
-    # User name and email.
-    userName = "mariovagomarzal";
-    userEmail = "mariovagomarzal@gmail.com";
-
     # Extra configuration.
-    extraConfig = {
+    settings = {
+      # User information.
+      user = {
+        name = "mariovagomarzal";
+        email = "mariovagomarzal@gmail.com";
+      };
+
       # GitHub related configuration.
       github.user = "mariovagomarzal";
 
@@ -62,30 +64,27 @@
 
       # Signing configuration.
       tag.gpgsign = true;
-    };
 
-    # Delta pager.
-    delta.enable = true;
-
-    # Git aliases.
-    aliases = {
-      "a" = "add";
-      "b" = "branch";
-      "c" = "commit";
-      "cm" = "commit -m";
-      "co" = "checkout";
-      "d" = "diff";
-      "f" = "fetch";
-      "g" = "log --graph";
-      "l" = "log";
-      "m" = "merge";
-      "p" = "push";
-      "pl" = "pull";
-      "r" = "restore";
-      "rs" = "restore --staged";
-      "rb" = "rebase";
-      "s" = "status";
-      "t" = "tag";
+      # Aliases.
+      alias = {
+        "a" = "add";
+        "b" = "branch";
+        "c" = "commit";
+        "cm" = "commit -m";
+        "co" = "checkout";
+        "d" = "diff";
+        "f" = "fetch";
+        "g" = "log --graph";
+        "l" = "log";
+        "m" = "merge";
+        "p" = "push";
+        "pl" = "pull";
+        "r" = "restore";
+        "rs" = "restore --staged";
+        "rb" = "rebase";
+        "s" = "status";
+        "t" = "tag";
+      };
     };
 
     # Global git ignores.
