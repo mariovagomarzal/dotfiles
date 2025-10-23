@@ -233,8 +233,9 @@ patterns depending on the part of the configuration (if any) being changed:
 - Host configurations in the `hosts/` directory use the host name directly,
   such as `fix(Marios-MBP): update display settings`.
 
-- User configurations in the `hosts/<host_name>/users/` directories follow the pattern
-  `<host_name>/<user_name>`, like `feat(Marios-MBP/mariovagomarzal): add starship config`.
+- User configurations in the `hosts/<host_name>/users/` directories follow the
+  pattern `<host_name>/<user_name>`, like `feat(Marios-MBP/mariovagomarzal): add
+  starship config`.
 
 - General changes use broader scopes:
   - `config` for general configuration changes not specific to a module, system,
