@@ -1,6 +1,10 @@
 ##############################
 # Firefox module for Darwin. #
 ##############################
-{pkgs, ...}: {
-  programs.firefox.package = pkgs.firefox-bin;
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  programs.firefox.package = lib.makeOverridable ({...}: pkgs.firefox-bin) {};
 }
