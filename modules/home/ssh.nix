@@ -4,14 +4,14 @@
 {...}: {
   programs.ssh = {
     enable = true;
-
-    # Configuration for all hosts.
-    addKeysToAgent = "yes";
-    extraConfig = ''
-      AddKeysToAgent yes
-    '';
+    enableDefaultConfig = false;
 
     matchBlocks = {
+      # Configuration for all hosts.
+      "*" = {
+        addKeysToAgent = "yes";
+      };
+
       # GitHub host.
       "github.com" = {
         identityFile = "~/.ssh/id_ed25519";
