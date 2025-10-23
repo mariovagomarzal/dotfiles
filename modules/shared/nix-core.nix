@@ -53,5 +53,6 @@
   # NOTE: Same as above.
   nixpkgs.overlays = with inputs; [
     nur.overlays.default
+    nixpkgs-firefox-darwin.overlay
   ];
 }

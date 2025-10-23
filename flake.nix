@@ -31,7 +31,10 @@
     };
 
     # catppuccin, a color scheme for customizing programs.
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # devshell, a tool for creating development environments.
     devshell = {
@@ -42,6 +45,12 @@
     # git-hooks.nix, a tool for managing git hooks with Nix.
     git-hooks-nix = {
       url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # nixpkgs-firefox-darwin, a Nixpkgs overlay for Firefox on macOS.
+    nixpkgs-firefox-darwin = {
+      url = "github:bandithedoge/nixpkgs-firefox-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -57,6 +66,7 @@
 
       nixpkgs.overlays = with inputs; [
         nur.overlays.default
+        nixpkgs-firefox-darwin.overlay
         devshell.overlays.default
         (import ./overlays/obsidian-builders)
       ];

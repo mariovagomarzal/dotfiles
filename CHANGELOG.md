@@ -6,6 +6,22 @@ Each stable version of the dotfiles repository is tagged with a date in the
 format `YYYY.MM.DD(.P)`, where `P` is an optional patch version separated by a
 dot if more than one version was released in the same day.
 
+## [2025.10.23](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.10.23)
+
+### ⛰️ Added
+
+- *(config)* Update dependencies - ([811c7a3](https://github.com/mariovagomarzal/dotfiles/commit/811c7a32314f80d8de2ab85c02fc392f309d036a))
+- *(home)* Remove GitHub copilot extension since it is now built-in - ([0e8e4cc](https://github.com/mariovagomarzal/dotfiles/commit/0e8e4cc2664f4ec14222bdf752f4cfb9c8ccf832))
+- *(home)* Update Git home module options - ([4f45114](https://github.com/mariovagomarzal/dotfiles/commit/4f45114d69ea7024265b87449f44c0f9500520a5))
+- *(home)* Update SSH home module options - ([82aab70](https://github.com/mariovagomarzal/dotfiles/commit/82aab708d2087dd7324f4aa975fda20d59fac4de))
+### 🐛 Fixed
+
+- *(home)* Make the Firefox Darwin package overridable - ([8de4f66](https://github.com/mariovagomarzal/dotfiles/commit/8de4f66ab3f99d33ee320468aa7d6a0f66e6f325))
+- *(packages)* Update the path to the `yarn.lock` patch file - ([3a89e63](https://github.com/mariovagomarzal/dotfiles/commit/3a89e63b1232d771050a3fff97fe989929f45aa5))
+### 📚 Documentation
+
+- Improve some line breaks in the README - ([6e928e1](https://github.com/mariovagomarzal/dotfiles/commit/6e928e1c460a56814a4d52a0c7e32b2cb41d1a16))
+
 ## [2025.10.14](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.10.14)
 
 ### ⛰️ Added
