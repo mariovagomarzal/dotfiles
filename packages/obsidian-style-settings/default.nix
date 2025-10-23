@@ -18,6 +18,6 @@ pkgs.buildYarnObsidianPlugin (finalAttrs: {
     cp ${./patches/yarn.lock} yarn.lock
   '';
 
-  yarnLock = finalAttrs.src + "/yarn.lock";
+  yarnLock = ./patches/yarn.lock;
   yarnDepsHash = "sha256-tqX09XWI3ZL9bXVdjgsAEuvfCAjnyWj5uSWGFbNApds=";
 })
