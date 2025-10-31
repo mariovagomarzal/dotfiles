@@ -9,6 +9,14 @@ default:
 hostname := "$(hostname)"
 
 [group("dotfiles")]
+[doc('Rebuild a NixOS configuration with the given hostname.')]
+nixos-rebuild HOSTNAME=hostname:
+    @echo "Rebuilding the NixOS configuration for {{HOSTNAME}}..."
+    sudo nixos-rebuild switch --flake ".#{{HOSTNAME}}"
+
+alias nr := nixos-rebuild
+
+[group("dotfiles")]
 [doc('Rebuild a Darwin configuration with the given hostname.')]
 darwin-rebuild HOSTNAME=hostname:
     @echo "Rebuilding the Darwin configuration for {{HOSTNAME}}..."
