@@ -2,11 +2,16 @@
 # Core NixOS module. #
 ######################
 {
+  inputs,
   config,
   pkgs,
   flake,
   ...
 }: {
+  imports = [
+    inputs.catppuccin.nixosModules.catppuccin
+  ];
+
   # Bootloader.
   boot.loader = {
     efi.canTouchEfiVariables = true;
