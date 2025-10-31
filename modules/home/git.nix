@@ -18,7 +18,6 @@
 
       # Key related configuration.
       gpg.format = "ssh";
-      credential.helper = "osxkeychain";
       user.signingkey = "~/.ssh/id_ed25519";
 
       # Core configuration.
