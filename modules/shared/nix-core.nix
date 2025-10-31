@@ -15,30 +15,6 @@
     trusted-users = ["root" "@admin"];
   };
 
-  # Enable the Nix garbage collector.
-  nix.gc = {
-    automatic = true;
-    interval = [
-      {
-        Hour = 15;
-        Minute = 0;
-        Weekday = 7;
-      }
-    ];
-  };
-
-  # Enable Nix store optimisation.
-  nix.optimise = {
-    automatic = true;
-    interval = [
-      {
-        Hour = 15;
-        Minute = 0;
-        Weekday = 7;
-      }
-    ];
-  };
-
   # Nixpkgs configuration.
   # NOTE: This configuration should be inherited from the Blueprint
   # configuration of Nixpkgs, set in the `flake.nix` file. However, due to an
