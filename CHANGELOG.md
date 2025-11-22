@@ -6,6 +6,12 @@ Each stable version of the dotfiles repository is tagged with a date in the
 format `YYYY.MM.DD(.P)`, where `P` is an optional patch version separated by a
 dot if more than one version was released in the same day.
 
+## [2025.11.22](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.11.22)
+
+### ⛰️ Added
+
+- *(config)* Update dependencies - ([8a2d4f6](https://github.com/mariovagomarzal/dotfiles/commit/8a2d4f63a177e5e592fcadd1bd1ca72aa4c7ef41))
+
 ## [2025.10.23](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.10.23)
 
 ### ⛰️ Added
