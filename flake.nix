@@ -36,6 +36,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # nixvim, a Neovim configuration framework.
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # devshell, a tool for creating development environments.
     devshell = {
       url = "github:numtide/devshell";
