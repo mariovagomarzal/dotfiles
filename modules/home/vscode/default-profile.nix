@@ -20,6 +20,10 @@
       tamasfe.even-better-toml
       geequlim.godot-tools
 
+      # AI extensions.
+      anthropic.claude-code
+      Google.gemini-cli-vscode-ide-companion
+
       # Miscellaneous.
       natqe.reload
       adpyke.codesnap
