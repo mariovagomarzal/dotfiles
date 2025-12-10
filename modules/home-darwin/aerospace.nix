@@ -116,8 +116,9 @@
 
         ctrl-tab = "workspace-back-and-forth";
 
-        alt-enter = "exec-and-forget open -na Alacritty";
+        alt-enter = "exec-and-forget open -na 'Alacritty'";
         alt-space = "exec-and-forget open -na 'Firefox'";
+        alt-e = "exec-and-forget open ~";
 
         cmd-shift-2 = "exec-and-forget screencapture -i -c";
 
