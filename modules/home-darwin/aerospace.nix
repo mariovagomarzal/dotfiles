@@ -68,6 +68,10 @@
       # Keybindings by mode.
       # Main mode keybindings.
       mode.main.binding = {
+        # Disable macOS hide application shortcuts.
+        cmd-h = [];
+        cmd-alt-h = [];
+
         alt-period = "layout tiles horizontal vertical";
         alt-comma = "layout accordion horizontal vertical";
 
