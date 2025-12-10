@@ -61,9 +61,6 @@
       backup = false;
       undofile = true;
 
-      # Completion.
-      completeopt = "menu,menuone,noselect";
-
       # Timing.
       timeoutlen = 300;
     };
