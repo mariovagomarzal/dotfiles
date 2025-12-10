@@ -13,6 +13,7 @@
 
     # Programming languages (or related).
     rustup
+    nodejs
     typst
     elan
     texliveFull
