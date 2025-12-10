@@ -69,5 +69,7 @@
     };
   };
 
-  imports = [];
+  imports = [
+    ./keymaps.nix
+  ];
 }
