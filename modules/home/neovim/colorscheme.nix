@@ -8,7 +8,9 @@
       enable = true;
       settings = {
         transparent_background = true;
-        integrations = {};
+        integrations = {
+          which_key = true;
+        };
       };
     };
   };

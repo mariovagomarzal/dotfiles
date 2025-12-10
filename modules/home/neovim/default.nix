@@ -71,6 +71,7 @@
 
   imports = [
     ./keymaps.nix
+    ./ui.nix
     ./colorscheme.nix
   ];
 }
