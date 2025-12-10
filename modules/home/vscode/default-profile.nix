@@ -39,6 +39,8 @@
 
       # Terminal settings.
       "terminal.integrated.defaultProfile.osx" = "fish";
+      "terminal.integrated.stickyScroll.enabled" = false;
+      "terminal.integrated.suggest.enabled" = false;
 
       # Font settings.
       "editor.fontFamily" = "FiraCode Nerd Font";
