@@ -9,7 +9,9 @@
     vimAlias = true;
 
     # Dependencies.
-    dependencies = {};
+    dependencies = {
+      ripgrep.enable = true;
+    };
 
     # Clipboard integration.
     clipboard.register = "unnamedplus";

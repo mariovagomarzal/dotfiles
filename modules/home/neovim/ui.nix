@@ -4,7 +4,13 @@
 {...}: {
   programs.nixvim = {
     plugins = {
-      # WhichKey.
+      # Icon support with mini.icons.
+      mini-icons = {
+        enable = true;
+        mockDevIcons = true;
+      };
+
+      # Which-Key.
       which-key = {
         enable = true;
         settings = {
