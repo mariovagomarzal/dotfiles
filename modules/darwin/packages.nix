@@ -79,7 +79,6 @@
       "iina"
       "maccy"
       "google-drive"
-      "logi-options+"
     ];
 
     # Applications to install from the Mac App Store.
