@@ -1,6 +1,6 @@
-###############################
-# Neovim keymaps home module. #
-###############################
+#####################################
+# Neovim general keymaps submodule. #
+#####################################
 {...}: {
   programs.nixvim = {
     # Leader keys.

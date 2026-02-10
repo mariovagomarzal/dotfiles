@@ -1,15 +1,9 @@
-##################################
-# Neovim UI plugins home module. #
-##################################
+######################################
+# Neovim Which-Key plugin submodule. #
+######################################
 {...}: {
   programs.nixvim = {
     plugins = {
-      # Icon support with mini.icons.
-      mini-icons = {
-        enable = true;
-        mockDevIcons = true;
-      };
-
       # Which-Key.
       which-key = {
         enable = true;
