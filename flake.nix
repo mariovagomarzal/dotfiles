@@ -74,7 +74,6 @@
         nur.overlays.default
         nixpkgs-firefox-darwin.overlay
         devshell.overlays.default
-        (import ./overlays/obsidian-builders)
       ];
     };
 }

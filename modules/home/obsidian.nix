@@ -7,12 +7,6 @@
 
     # Default settings applied to all vaults if not overridden in the vault
     # definition.
-    defaultSettings = {
-    };
+    defaultSettings = {};
   };
-
-  # Imports for vault definitions.
-  imports = [
-    ./core-vault.nix
-  ];
 }
