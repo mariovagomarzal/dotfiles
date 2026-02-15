@@ -12,7 +12,7 @@
     };
 
     # AeroSpace configuration content.
-    userSettings = {
+    settings = {
       # Disable automatic start at login since we use a launchd agent.
       start-at-login = false;
       after-startup-command = [];
