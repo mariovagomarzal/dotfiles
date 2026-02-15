@@ -22,6 +22,9 @@
     uv
     poetry
 
+    # Utilities.
+    cookiecutter
+
     # AI-related tools.
     claude-code
     gemini-cli
