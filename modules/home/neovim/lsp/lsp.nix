@@ -49,7 +49,7 @@
           lspBufAction = "code_action";
         }
         {
-          key = "<leader>f";
+          key = "<leader>cf";
           lspBufAction = "format";
         }
         {
