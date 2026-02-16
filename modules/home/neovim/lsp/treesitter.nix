@@ -24,6 +24,15 @@
           };
           indent.enable = true;
           folding.enable = true;
+          incremental_selection = {
+            enable = true;
+            keymaps = {
+              init_selection = "<C-space>";
+              node_incremental = "<C-space>";
+              node_decremental = "<BS>";
+              scope_incremental = false;
+            };
+          };
         };
       };
     };

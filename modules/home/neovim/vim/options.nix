@@ -53,6 +53,12 @@
       backup = false;
       undofile = true;
 
+      # Folding (treesitter-based).
+      foldmethod = "expr";
+      foldexpr = "v:lua.vim.treesitter.foldexpr()";
+      foldlevel = 99;
+      foldlevelstart = 99;
+
       # Timing.
       timeoutlen = 300;
     };
