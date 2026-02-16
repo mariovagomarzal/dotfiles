@@ -36,19 +36,19 @@
                 action = "Telescope find_files";
               }
               {
-                desc = " Recent Files";
+                desc = "󰅐 Recent Files";
                 group = "@function";
                 key = "r";
                 action = "Telescope oldfiles";
               }
               {
-                desc = " Live Grep";
+                desc = "󰍉 Live Grep";
                 group = "@string";
                 key = "g";
                 action = "Telescope live_grep";
               }
               {
-                desc = " Dotfiles";
+                desc = "󰏗 Dotfiles";
                 group = "@constant";
                 key = "c";
                 action = "Telescope find_files cwd=~/Projects/dotfiles";
