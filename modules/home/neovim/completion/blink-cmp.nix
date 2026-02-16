@@ -26,7 +26,22 @@
           sources = {
             default = ["lsp" "path" "buffer"];
           };
+          signature = {
+            enabled = true;
+            window = {
+              border = "rounded";
+            };
+          };
           completion = {
+            ghost_text = {
+              enabled = true;
+            };
+            list = {
+              selection = {
+                preselect = false;
+                auto_insert = false;
+              };
+            };
             menu = {
               border = "rounded";
             };
