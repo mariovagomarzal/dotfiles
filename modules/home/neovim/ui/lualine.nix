@@ -8,6 +8,7 @@
       lualine = {
         enable = true;
         settings = {
+          # General options.
           options = {
             globalstatus = true;
             component_separators = {
@@ -20,6 +21,8 @@
             };
             disabled_filetypes.statusline = ["dashboard"];
           };
+
+          # Active sections.
           sections = {
             lualine_a = ["mode"];
             lualine_b = ["branch" "diff" "diagnostics"];
@@ -33,10 +36,14 @@
             lualine_y = ["progress"];
             lualine_z = ["location"];
           };
+
+          # Inactive sections.
           inactive_sections = {
             lualine_c = ["filename"];
             lualine_x = ["location"];
           };
+
+          # Extensions.
           extensions = ["neo-tree"];
         };
       };

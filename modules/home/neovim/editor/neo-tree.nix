@@ -8,15 +8,20 @@
       neo-tree = {
         enable = true;
         settings = {
+          # General settings.
           close_if_last_window = false;
           popup_border_style = "rounded";
           open_files_do_not_replace_types = ["terminal" "trouble" "qf"];
           enable_git_status = true;
           enable_diagnostics = true;
+
+          # Window.
           window = {
             position = "left";
             width = 30;
           };
+
+          # Filesystem.
           filesystem = {
             follow_current_file = {
               enabled = true;

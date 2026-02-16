@@ -11,6 +11,7 @@
           fzf-native.enable = true;
         };
         keymaps = {
+          # File finding.
           "<leader>ff" = {
             action = "find_files";
             options.desc = "Find files";
@@ -19,10 +20,14 @@
             action = "live_grep";
             options.desc = "Live grep";
           };
+
+          # Buffers.
           "<leader>fb" = {
             action = "buffers";
             options.desc = "Find buffers";
           };
+
+          # LSP navigation.
           "<leader>fs" = {
             action = "lsp_document_symbols";
             options.desc = "LSP document symbols";

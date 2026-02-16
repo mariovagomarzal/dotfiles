@@ -8,6 +8,7 @@
       blink-cmp = {
         enable = true;
         settings = {
+          # Keymaps.
           keymap = {
             preset = "default";
             "<Tab>" = [
@@ -23,15 +24,21 @@
               "fallback"
             ];
           };
+
+          # Sources.
           sources = {
             default = ["lsp" "path" "buffer"];
           };
+
+          # Signature help.
           signature = {
             enabled = true;
             window = {
               border = "rounded";
             };
           };
+
+          # Completion behavior.
           completion = {
             ghost_text = {
               enabled = true;

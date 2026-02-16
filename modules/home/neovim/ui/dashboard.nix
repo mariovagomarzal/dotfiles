@@ -10,6 +10,7 @@
         settings = {
           theme = "hyper";
           config = {
+            # Header banner.
             header = [
               ""
               ""
@@ -28,6 +29,8 @@
               ""
               ""
             ];
+
+            # Shortcuts.
             shortcut = [
               {
                 desc = "󰈞 Find File";
@@ -60,15 +63,23 @@
                 action = "qa";
               }
             ];
+
+            # Recent files.
             mru = {
               limit = 10;
             };
+
+            # Projects.
             project = {
               enable = true;
               limit = 5;
               action = "Telescope find_files cwd=";
             };
+
+            # Packages (disabled).
             packages.enable = false;
+
+            # Footer.
             footer.__raw = ''
               function()
                 local v = vim.version()
