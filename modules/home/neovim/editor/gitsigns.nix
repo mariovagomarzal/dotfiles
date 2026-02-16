@@ -15,7 +15,14 @@
             topdelete = {text = "‾";};
             changedelete = {text = "~";};
           };
-          current_line_blame = true;
+          signs_staged = {
+            add = {text = "┃";};
+            change = {text = "┃";};
+            delete = {text = "_";};
+            topdelete = {text = "‾";};
+            changedelete = {text = "┃";};
+          };
+          current_line_blame = false;
           current_line_blame_opts = {
             virt_text = true;
             virt_text_pos = "eol";
@@ -72,6 +79,15 @@
         action = "<cmd>Gitsigns reset_hunk<CR>";
         options = {
           desc = "Reset git hunk";
+          silent = true;
+        };
+      }
+      {
+        mode = "n";
+        key = "<leader>gb";
+        action = "<cmd>Gitsigns toggle_current_line_blame<CR>";
+        options = {
+          desc = "Toggle git blame";
           silent = true;
         };
       }
