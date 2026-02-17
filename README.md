@@ -1,5 +1,5 @@
 <h3 align="center">
-  <img alt="Logo" src="https://raw.githubusercontent.com/mariovagomarzal/dotfiles/main/.github/assets/logo.svg" width="150">
+  <img alt="Logo" src=".github/assets/logo.svg" width="150">
   <br/>
   <br/>
   <a href="https://github.com/mariovagomarzal">Mario</a>'s dotfiles repository
