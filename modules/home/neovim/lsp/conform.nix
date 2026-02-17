@@ -16,17 +16,14 @@
           formatters = let
             exe = name: lib.getExe pkgs.${name};
           in {
-            alejandra.command = exe "alejandra";
             stylua.command = exe "stylua";
             shfmt.command = exe "shfmt";
             prettier.command = exe "prettier";
             ruff_format.command = exe "ruff";
-            typststyle.command = exe "typstyle";
           };
 
           # Formatters by filetype.
           formatters_by_ft = {
-            nix = ["alejandra"];
             lua = ["stylua"];
             sh = ["shfmt"];
             bash = ["shfmt"];
@@ -34,9 +31,7 @@
             typescript = ["prettier"];
             json = ["prettier"];
             yaml = ["prettier"];
-            markdown = ["prettier"];
             python = ["ruff_format"];
-            typst = ["typststyle"];
           };
         };
       };
