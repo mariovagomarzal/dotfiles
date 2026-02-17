@@ -6,6 +6,55 @@ Each stable version of the dotfiles repository is tagged with a date in the
 format `YYYY.MM.DD(.P)`, where `P` is an optional patch version separated by a
 dot if more than one version was released in the same day.
 
+## [2026.02.17](https://github.com/mariovagomarzal/dotfiles/releases/tag/2026.02.17)
+
+### ⛰️ Added
+
+- *(config)* Add the Nixvim input - ([d68e07e](https://github.com/mariovagomarzal/dotfiles/commit/d68e07e913cfcde72c4c8bac015b7306871784eb))
+- *(config)* Remove Obsidian per-vault configuration - ([b7e9514](https://github.com/mariovagomarzal/dotfiles/commit/b7e9514e16a67d415545f7452a3ce2938624ec5b))
+- *(config)* Update dependencies - ([3db3376](https://github.com/mariovagomarzal/dotfiles/commit/3db3376c7f4c63769a8940ce12f0c01ff275a985))
+- *(config)* Update dependencies - ([019d392](https://github.com/mariovagomarzal/dotfiles/commit/019d392b204aabaa8bd87f0f5c1b8297e510a60f))
+- *(darwin)* Remove the 'logi-options+' brew cask - ([892603d](https://github.com/mariovagomarzal/dotfiles/commit/892603d2bef5afb5456ff6ebb183c4f3b47e9e92))
+- *(home)* Add AI-related packages and extensions - ([d2e3f30](https://github.com/mariovagomarzal/dotfiles/commit/d2e3f3082fce809db3ca4f1c4a974af8f102727c))
+- *(home)* Add the Node.js package - ([9a38e3f](https://github.com/mariovagomarzal/dotfiles/commit/9a38e3f0712295d6f912a6cde84f02d4b5e5334e))
+- *(home)* Disable some VSCode integrated terminal features - ([98c183b](https://github.com/mariovagomarzal/dotfiles/commit/98c183b26d74bba11bb5ae9da10c5390415ce059))
+- *(home)* Add an AeroSpace keybinding for opening a Finder window - ([92e710c](https://github.com/mariovagomarzal/dotfiles/commit/92e710ccb8bd0a4fa195fc4548153a7ad3a6ccc7))
+- *(home)* Add a Neovim module with some basic options - ([de9197b](https://github.com/mariovagomarzal/dotfiles/commit/de9197bdc40eb40f6f0fba16ae5376e7326a7c64))
+- *(home)* Disable macOS hide application shortcuts with AeroSpace - ([f5e2acf](https://github.com/mariovagomarzal/dotfiles/commit/f5e2acf7284158b380d3ca890d4753cd0005c71f))
+- *(home)* Add some basic Neovim keymaps - ([34e3a78](https://github.com/mariovagomarzal/dotfiles/commit/34e3a78bbc4d59b3a279ee0c41e6032a97e1ecb5))
+- *(home)* Configure the Catppuccin colorscheme for Neovim - ([a820e89](https://github.com/mariovagomarzal/dotfiles/commit/a820e897b96801345f4b7011b7b1e6ca3ab1bc52))
+- *(home)* Add the 'which-key' plugin for Neovim - ([8f3d452](https://github.com/mariovagomarzal/dotfiles/commit/8f3d45240d927f0b4964a0d387485cb97da6ab3a))
+- *(home)* Temporary remove Neovim completion options - ([c5507c9](https://github.com/mariovagomarzal/dotfiles/commit/c5507c97ceef98d904e8c0ced1e0afbf71bd9d50))
+- *(home)* Enhance icon support and add dependecies for Neovim - ([edd3982](https://github.com/mariovagomarzal/dotfiles/commit/edd398227ccc0c2c54099c984c1b36b8519b46cc))
+- *(home)* Refactor the neovim module and add new plugins - ([e9c2e37](https://github.com/mariovagomarzal/dotfiles/commit/e9c2e37e8b03a1c013347f12ae10c10ab65a5c70))
+- *(home)* Add the cookiecutter package - ([03a7795](https://github.com/mariovagomarzal/dotfiles/commit/03a7795aed011de46188d86003783ad7695d3533))
+- *(home)* Configure the neovim dashboard plugin - ([fab09cf](https://github.com/mariovagomarzal/dotfiles/commit/fab09cf0cae46f02a02a771e78d866436968fd75))
+- *(home)* Add the neovim lualine plugin - ([1f07d20](https://github.com/mariovagomarzal/dotfiles/commit/1f07d203512dcb786e6815bac5111256c85e1761))
+- *(home)* Use treesitter folding in Neovim - ([c55073b](https://github.com/mariovagomarzal/dotfiles/commit/c55073b21ee2b8147c5bdcc34ae3395926ce69db))
+- *(home)* Improve neo-tree and gitsigns plugin configurations - ([59f8252](https://github.com/mariovagomarzal/dotfiles/commit/59f8252883fa771cbeb5db50810f4ad0b23393a2))
+- *(home)* Improve blink.cmp plugin configuration - ([b510f56](https://github.com/mariovagomarzal/dotfiles/commit/b510f56eee52a95d0fa620b25b42ff68249e9d0c))
+- *(home)* Improve icon usage in the dashboard plugin - ([e17bff9](https://github.com/mariovagomarzal/dotfiles/commit/e17bff93265ba6aa474f6907880037f76e94d470))
+- *(home)* Add custom groups in the which-key plugin - ([dedb7a8](https://github.com/mariovagomarzal/dotfiles/commit/dedb7a89754a939227d74ba8cb3c6ed938d9f969))
+- *(home)* Add the fastfetch program - ([dc7590f](https://github.com/mariovagomarzal/dotfiles/commit/dc7590fd26ad9365cac6340e6575d5be06ef9c2c))
+- *(home)* Add the toggleterm Neovim plugin - ([75b9e7f](https://github.com/mariovagomarzal/dotfiles/commit/75b9e7f6a3fd78a31d9fd1f603d3d4180dbe115e))
+- *(home)* Add the autopairs, comment and surround Neovim plugins - ([8ca4a42](https://github.com/mariovagomarzal/dotfiles/commit/8ca4a42e6f9a4e0a311efd688eacc162b6f29fd1))
+- *(home)* Add the conform Neovim plugin - ([205ea6a](https://github.com/mariovagomarzal/dotfiles/commit/205ea6a2632b1cabde9f21f68d4166c05390e129))
+- *(home)* Change some Neovim dashboard actions - ([591bd91](https://github.com/mariovagomarzal/dotfiles/commit/591bd910e91aa02344158231069eeae691cfaa81))
+- *(home)* Add the project Neovim plugin - ([352780d](https://github.com/mariovagomarzal/dotfiles/commit/352780dedbe06c0d91a67acacd38984f5c37d03e))
+- *(home)* Set Neovim as the default edtitor - ([035a002](https://github.com/mariovagomarzal/dotfiles/commit/035a0026f8c21356ab97914ef8e5f7c6c1db23fc))
+### 🐛 Fixed
+
+- *(home)* Remove an unneeded module - ([946ff02](https://github.com/mariovagomarzal/dotfiles/commit/946ff02176dc7e3d2fd3ffb22ecf1c4e2a7ca4db))
+- *(home)* Add a missing argument in the Lua module - ([a346208](https://github.com/mariovagomarzal/dotfiles/commit/a3462082c33f3dad23be98d26486faac43a3d6ac))
+### 🛠️ Refactored
+
+- *(home)* Move the Lua configuration to its own module - ([65373c5](https://github.com/mariovagomarzal/dotfiles/commit/65373c51a0351217c5d28640e77d0aecbcca7b16))
+### 🎨 Style
+
+- *(darwin)* Change a comment style - ([01b3dfa](https://github.com/mariovagomarzal/dotfiles/commit/01b3dfa9ad927f1093e408c451f63b47b4dbf43c))
+- *(home)* Add missing comments and improve spacing - ([9985511](https://github.com/mariovagomarzal/dotfiles/commit/99855112a098cf56f4174dd0284a36fd124f136f))
+- *(home)* Fix a wrong comment header - ([b6fd3b0](https://github.com/mariovagomarzal/dotfiles/commit/b6fd3b08e571cb93ce365ae58c7f63fed4ad4725))
+
 ## [2025.11.26](https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.11.26)
 
 ### ⛰️ Added
