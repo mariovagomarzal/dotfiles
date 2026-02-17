@@ -3,9 +3,11 @@
 ###########################
 {...}: {
   # Packages managed by Homebrew.
-  # Some packages are installed via Homebrew because they lack good Nix support
-  # on macOS. Specifically, GUI applications should be installed this way to
-  # ensure they appear in the Launchpad and are indexed by Spotlight.
+  /*
+  Some packages are installed via Homebrew because they lack good Nix support on
+  macOS. Specifically, GUI applications should be installed this way to ensure
+  they appear in the Launchpad and are indexed by Spotlight.
+  */
   homebrew = {
     enable = true;
     onActivation = {
@@ -77,7 +79,6 @@
       "iina"
       "maccy"
       "google-drive"
-      "logi-options+"
     ];
 
     # Applications to install from the Mac App Store.

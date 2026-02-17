@@ -13,6 +13,7 @@
 
     # Programming languages (or related).
     rustup
+    nodejs
     typst
     elan
     texliveFull
@@ -21,8 +22,12 @@
     uv
     poetry
 
+    # Utilities.
+    cookiecutter
+
     # AI-related tools.
     claude-code
+    gemini-cli
 
     # Miscellaneous.
     cmatrix
@@ -32,18 +37,6 @@
   programs = {
     # Home Manager.
     home-manager.enable = true;
-
-    # Lua programming language.
-    lua = {
-      enable = true;
-      package = pkgs.lua5_4;
-      extraPackages = [
-        (ps:
-          with ps; [
-            luarocks
-          ])
-      ];
-    };
   };
 
   services = {};

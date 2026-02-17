@@ -12,7 +12,7 @@
     };
 
     # AeroSpace configuration content.
-    userSettings = {
+    settings = {
       # Disable automatic start at login since we use a launchd agent.
       start-at-login = false;
       after-startup-command = [];
@@ -68,6 +68,10 @@
       # Keybindings by mode.
       # Main mode keybindings.
       mode.main.binding = {
+        # Disable macOS hide application shortcuts.
+        cmd-h = [];
+        cmd-alt-h = [];
+
         alt-period = "layout tiles horizontal vertical";
         alt-comma = "layout accordion horizontal vertical";
 
@@ -116,8 +120,9 @@
 
         ctrl-tab = "workspace-back-and-forth";
 
-        alt-enter = "exec-and-forget open -na Alacritty";
+        alt-enter = "exec-and-forget open -na 'Alacritty'";
         alt-space = "exec-and-forget open -na 'Firefox'";
+        alt-e = "exec-and-forget open ~";
 
         cmd-shift-2 = "exec-and-forget screencapture -i -c";
 

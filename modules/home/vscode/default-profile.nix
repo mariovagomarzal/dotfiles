@@ -20,6 +20,10 @@
       tamasfe.even-better-toml
       geequlim.godot-tools
 
+      # AI extensions.
+      anthropic.claude-code
+      Google.gemini-cli-vscode-ide-companion
+
       # Miscellaneous.
       natqe.reload
       adpyke.codesnap
@@ -35,6 +39,8 @@
 
       # Terminal settings.
       "terminal.integrated.defaultProfile.osx" = "fish";
+      "terminal.integrated.stickyScroll.enabled" = false;
+      "terminal.integrated.suggest.enabled" = false;
 
       # Font settings.
       "editor.fontFamily" = "FiraCode Nerd Font";

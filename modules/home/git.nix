@@ -1,7 +1,7 @@
 ####################
 # Git home module. #
 ####################
-{config, ...}: {
+{...}: {
   programs.git = {
     enable = true;
 
@@ -23,7 +23,7 @@
 
       # Core configuration.
       core = {
-        editor = "code --wait";
+        editor = "nvim";
       };
 
       # Init configuration.
@@ -48,19 +48,15 @@
 
       # Diff configuration.
       diff = {
-        tool = "code";
+        tool = "nvimdiff";
       };
-
-      difftool."code".cmd = "code --wait --diff $LOCAL $REMOTE";
 
       # Merge configuration.
       merge = {
-        tool = "code";
+        tool = "nvimdiff";
         log = true;
         conflictstyle = "diff3";
       };
-
-      mergetool."code".cmd = "code --wait $MERGED";
 
       # Signing configuration.
       tag.gpgsign = true;
