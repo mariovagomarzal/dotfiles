@@ -6,5 +6,6 @@
     ./lsp.nix
     ./fidget.nix
     ./treesitter.nix
+    ./conform.nix
   ];
 }

@@ -49,10 +49,6 @@
           lspBufAction = "code_action";
         }
         {
-          key = "<leader>cf";
-          lspBufAction = "format";
-        }
-        {
           key = "[d";
           action = "<CMD>lua vim.diagnostic.goto_prev()<Enter>";
         }
