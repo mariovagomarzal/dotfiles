@@ -1,7 +1,19 @@
 ######################################
 # Neovim dashboard plugin submodule. #
 ######################################
-{...}: {
+{...}: let
+  # Returns a raw Lua action that changes the working directory to the given
+  # Lua path expression and opens Neo-tree there.
+  neotreeAction = luaPathExpr: {
+    __raw = ''
+      function(path)
+        local target = ${luaPathExpr}
+        vim.cmd("cd " .. target)
+        vim.cmd("Neotree focus filesystem dir=" .. target)
+      end
+    '';
+  };
+in {
   programs.nixvim = {
     plugins = {
       # Dashboard.
@@ -54,7 +66,7 @@
                 desc = "󰏗 Dotfiles";
                 group = "@constant";
                 key = "c";
-                action = "Telescope find_files cwd=~/Projects/dotfiles";
+                action = neotreeAction ''vim.fn.expand("~/Projects/dotfiles")'';
               }
               {
                 desc = "󰈆 Quit";
@@ -73,7 +85,7 @@
             project = {
               enable = true;
               limit = 5;
-              action = "Telescope find_files cwd=";
+              action = neotreeAction "path";
             };
 
             # Packages (disabled).
