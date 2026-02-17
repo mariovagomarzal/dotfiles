@@ -6,5 +6,6 @@
     ./telescope.nix
     ./neo-tree.nix
     ./gitsigns.nix
+    ./toggleterm.nix
   ];
 }
