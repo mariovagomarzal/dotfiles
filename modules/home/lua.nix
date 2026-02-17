@@ -1,7 +1,7 @@
 ####################
 # Lua home module. #
 ####################
-{...}: {
+{pkgs, ...}: {
   # Lua programming language.
   programs.lua = {
     enable = true;
