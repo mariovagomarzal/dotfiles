@@ -7,5 +7,6 @@
     ./fidget.nix
     ./treesitter.nix
     ./conform.nix
+    ./nix.nix
   ];
 }
