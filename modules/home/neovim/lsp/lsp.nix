@@ -13,9 +13,9 @@
         lua_ls.enable = true;
         marksman.enable = true;
         nil_ls.enable = true;
-        typos_lsp.enable = true;
         vtsls.enable = true;
         yamlls.enable = true;
+        ty.enable = true;
       };
 
       # LSP keybindings.
