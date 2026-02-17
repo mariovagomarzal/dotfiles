@@ -37,18 +37,6 @@
   programs = {
     # Home Manager.
     home-manager.enable = true;
-
-    # Lua programming language.
-    lua = {
-      enable = true;
-      package = pkgs.lua5_4;
-      extraPackages = [
-        (ps:
-          with ps; [
-            luarocks
-          ])
-      ];
-    };
   };
 
   services = {};
