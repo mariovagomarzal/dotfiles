@@ -11,6 +11,7 @@
       # Conform.
       conform-nvim = {
         enable = true;
+
         settings = {
           # Formatter commands.
           formatters = let

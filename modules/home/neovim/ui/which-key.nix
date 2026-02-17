@@ -7,6 +7,7 @@
       # Which-Key.
       which-key = {
         enable = true;
+
         settings = {
           # Display timeout.
           delay = 300;

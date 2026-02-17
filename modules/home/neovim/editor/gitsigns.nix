@@ -7,7 +7,9 @@
       # Gitsigns.
       gitsigns = {
         enable = true;
+
         settings = {
+          # Signs.
           signs = {
             add = {text = "+";};
             change = {text = "~";};
@@ -15,6 +17,8 @@
             topdelete = {text = "‾";};
             changedelete = {text = "~";};
           };
+
+          # Staged signs.
           signs_staged = {
             add = {text = "┃";};
             change = {text = "┃";};
@@ -22,6 +26,8 @@
             topdelete = {text = "‾";};
             changedelete = {text = "┃";};
           };
+
+          # Line blame.
           current_line_blame = false;
           current_line_blame_opts = {
             virt_text = true;

@@ -3,10 +3,11 @@
 ####################################
 {...}: {
   programs.nixvim = {
-    # Lualine.
     plugins = {
+      # Lualine.
       lualine = {
         enable = true;
+
         settings = {
           # General options.
           options = {

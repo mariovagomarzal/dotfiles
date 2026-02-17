@@ -7,6 +7,7 @@
       # Neo-tree.
       neo-tree = {
         enable = true;
+
         settings = {
           # General settings.
           close_if_last_window = false;

@@ -19,6 +19,7 @@ in {
       # Dashboard.
       dashboard = {
         enable = true;
+
         settings = {
           theme = "hyper";
           config = {

@@ -7,6 +7,7 @@
       # Comment.
       comment = {
         enable = true;
+
         settings = {
           # Padding around comment delimiters.
           padding = true;

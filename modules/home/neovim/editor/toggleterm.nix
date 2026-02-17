@@ -7,6 +7,7 @@
       # Toggleterm.
       toggleterm = {
         enable = true;
+
         settings = {
           # General settings.
           hide_numbers = true;

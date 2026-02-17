@@ -7,6 +7,7 @@
       # Blink Completion.
       blink-cmp = {
         enable = true;
+
         settings = {
           # Keymaps.
           keymap = {
