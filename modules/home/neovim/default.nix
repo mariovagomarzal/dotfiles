@@ -4,7 +4,7 @@
 {...}: {
   programs.nixvim = {
     enable = true;
-    defaultEditor = false; # TODO: Use as default editor when ready.
+    defaultEditor = true;
     viAlias = true;
     vimAlias = true;
 

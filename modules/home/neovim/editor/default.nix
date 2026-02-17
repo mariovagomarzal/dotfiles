@@ -6,6 +6,7 @@
     ./telescope.nix
     ./neo-tree.nix
     ./gitsigns.nix
+    ./diffview.nix
     ./toggleterm.nix
     ./autopairs.nix
     ./surround.nix
