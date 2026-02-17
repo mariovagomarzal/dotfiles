@@ -9,5 +9,6 @@
     ./conform.nix
     ./nix.nix
     ./markdown.nix
+    ./typst.nix
   ];
 }

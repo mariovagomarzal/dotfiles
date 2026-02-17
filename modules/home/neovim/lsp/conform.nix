@@ -21,6 +21,7 @@
             shfmt.command = exe "shfmt";
             prettier.command = exe "prettier";
             ruff_format.command = exe "ruff";
+            typststyle.command = exe "typstyle";
           };
 
           # Formatters by filetype.
@@ -35,6 +36,7 @@
             yaml = ["prettier"];
             markdown = ["prettier"];
             python = ["ruff_format"];
+            typst = ["typststyle"];
           };
         };
       };
