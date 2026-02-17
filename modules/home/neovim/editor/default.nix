@@ -10,5 +10,6 @@
     ./autopairs.nix
     ./surround.nix
     ./comment.nix
+    ./project.nix
   ];
 }
