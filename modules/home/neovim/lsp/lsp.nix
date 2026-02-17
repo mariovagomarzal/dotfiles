@@ -11,7 +11,6 @@
         jsonls.enable = true;
         just.enable = true;
         lua_ls.enable = true;
-        marksman.enable = true;
         vtsls.enable = true;
         yamlls.enable = true;
         ty.enable = true;

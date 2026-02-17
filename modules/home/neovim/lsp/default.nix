@@ -8,5 +8,6 @@
     ./treesitter.nix
     ./conform.nix
     ./nix.nix
+    ./markdown.nix
   ];
 }
