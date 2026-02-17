@@ -18,7 +18,7 @@
   <summary>Configurations previews</summary>
   <br/>
   <p align="center">
-    <img alt="Marios-MBP preview (WIP)" src="">
+    <img alt="Marios-MBP preview" src=".github/assets/Marios-MBP-2026-02-17.png" width="600">
   </p>
 </details>
 
@@ -76,15 +76,6 @@ this repository.
 > process does before running it.
 
 ### Mario's MacBook Pro (Marios-MBP)
-
-<details open>
-  <summary>Configuration preview</summary>
-  <br/>
-  <p align="center">
-    <img alt="Marios-MBP preview (WIP)" src="">
-  </p>
-</details>
-<br/>
 
 We're going to describe the setup process for my (Mario's) MacBook Pro. We will
 assume a fresh installation of macOS.
