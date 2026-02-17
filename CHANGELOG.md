@@ -6,6 +6,13 @@ Each stable version of the dotfiles repository is tagged with a date in the
 format `YYYY.MM.DD(.P)`, where `P` is an optional patch version separated by a
 dot if more than one version was released in the same day.
 
+## [2026.02.17.1](https://github.com/mariovagomarzal/dotfiles/releases/tag/2026.02.17.1)
+
+### 📚 Documentation
+
+- Add a preview image for the Marios-MBP configuration - ([456c94f](https://github.com/mariovagomarzal/dotfiles/commit/456c94f75bcdb50c05e099f794a967af9ec3f7c8))
+- Use relative path for the logo image - ([3f3d0f0](https://github.com/mariovagomarzal/dotfiles/commit/3f3d0f0c353c3e9fd644a95121c6828373b93f35))
+
 ## [2026.02.17](https://github.com/mariovagomarzal/dotfiles/releases/tag/2026.02.17)
 
 ### ⛰️ Added
