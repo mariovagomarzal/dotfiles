@@ -8,6 +8,10 @@
     viAlias = true;
     vimAlias = true;
 
+    nixpkgs.config = {
+      allowUnfree = true;
+    };
+
     # Dependencies.
     dependencies = {
       tree-sitter.enable = true;
