@@ -9,23 +9,6 @@
         enable = true;
 
         settings = {
-          # Keymaps.
-          keymap = {
-            preset = "default";
-            "<Tab>" = [
-              "select_next"
-              "fallback"
-            ];
-            "<S-Tab>" = [
-              "select_prev"
-              "fallback"
-            ];
-            "<CR>" = [
-              "accept"
-              "fallback"
-            ];
-          };
-
           # Sources.
           sources = {
             default = ["lsp" "path" "buffer"];
@@ -41,25 +24,30 @@
 
           # Completion behavior.
           completion = {
-            ghost_text = {
-              enabled = true;
-            };
-            list = {
-              selection = {
-                preselect = false;
-                auto_insert = false;
-              };
-            };
-            menu = {
-              border = "rounded";
-            };
             documentation = {
               auto_show = true;
               auto_show_delay_ms = 200;
-              window = {
-                border = "rounded";
-              };
+              window.border = "rounded";
             };
+            menu = {
+              auto_show = true;
+              border = "rounded";
+            };
+            ghost_text.enabled = true;
+            list.selection = {
+              preselect = true;
+              auto_insert = false;
+            };
+          };
+
+          # Keymaps.
+          keymap = {
+            preset = "none";
+            "<S-CR>" = ["accept" "fallback"];
+            "<C-CR>" = ["show"];
+            "<Tab>" = ["select_next" "fallback"];
+            "<S-Tab>" = ["select_prev" "fallback"];
+            "<Esc>" = ["hide" "fallback"];
           };
         };
       };
