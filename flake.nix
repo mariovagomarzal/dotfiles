@@ -37,10 +37,7 @@
     };
 
     # nixvim, a Neovim configuration framework.
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:nix-community/nixvim";
 
     # devshell, a tool for creating development environments.
     devshell = {
