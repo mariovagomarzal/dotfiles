@@ -31,6 +31,12 @@
           :with_pair(function(opts)
             local pair = opts.line:sub(opts.col - 1, opts.col)
             return pair == "$$"
+          end)
+          :with_del(function()
+            local line = vim.api.nvim_get_current_line()
+            local col = vim.api.nvim_win_get_cursor(0)[2]
+            return line:sub(col - 1, col - 1) == "$"
+               and line:sub(col + 2, col + 2) == "$"
           end),
       })
     '';
