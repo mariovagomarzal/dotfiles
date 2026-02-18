@@ -8,7 +8,6 @@
     ./gitsigns.nix
     ./diffview.nix
     ./toggleterm.nix
-    ./autopairs.nix
     ./surround.nix
     ./comment.nix
     ./project.nix
