@@ -20,6 +20,7 @@
             enabled = true;
             transparent = false;
           };
+          blink_pairs = true;
         };
       };
     };

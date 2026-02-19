@@ -4,7 +4,7 @@
 {...}: {
   imports = [
     ./blink-cmp.nix
-    ./autopairs.nix
+    ./blink-pairs.nix
     ./copilot.nix
   ];
 }
