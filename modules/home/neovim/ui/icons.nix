@@ -3,12 +3,10 @@
 ###########################
 {...}: {
   programs.nixvim = {
-    plugins = {
-      # Icon support with mini.icons.
-      mini-icons = {
-        enable = true;
-        mockDevIcons = true;
-      };
+    # Icon support with mini.icons.
+    plugins.mini-icons = {
+      enable = true;
+      mockDevIcons = true;
     };
   };
 }

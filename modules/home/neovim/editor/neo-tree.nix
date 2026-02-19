@@ -3,41 +3,39 @@
 #####################################
 {...}: {
   programs.nixvim = {
-    plugins = {
-      # Neo-tree.
-      neo-tree = {
-        enable = true;
+    # Neo-tree.
+    plugins.neo-tree = {
+      enable = true;
 
-        settings = {
-          # General settings.
-          close_if_last_window = false;
-          popup_border_style = "rounded";
-          open_files_do_not_replace_types = ["terminal" "trouble" "qf"];
-          enable_git_status = true;
-          enable_diagnostics = true;
+      settings = {
+        # General settings.
+        close_if_last_window = false;
+        popup_border_style = "rounded";
+        open_files_do_not_replace_types = ["terminal" "trouble" "qf"];
+        enable_git_status = true;
+        enable_diagnostics = true;
 
-          # Window.
-          window = {
-            position = "left";
-            width = 30;
+        # Window.
+        window = {
+          position = "left";
+          width = 30;
+        };
+
+        # Filesystem.
+        filesystem = {
+          follow_current_file = {
+            enabled = true;
           };
-
-          # Filesystem.
-          filesystem = {
-            follow_current_file = {
-              enabled = true;
-            };
-            use_libuv_file_watcher = true;
-            filtered_items = {
-              visible = false;
-              hide_dotfiles = false;
-              hide_gitignored = true;
-              hide_by_name = [
-                ".git"
-                ".DS_Store"
-                "__pycache__"
-              ];
-            };
+          use_libuv_file_watcher = true;
+          filtered_items = {
+            visible = false;
+            hide_dotfiles = false;
+            hide_gitignored = true;
+            hide_by_name = [
+              ".git"
+              ".DS_Store"
+              "__pycache__"
+            ];
           };
         };
       };

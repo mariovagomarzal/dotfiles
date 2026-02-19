@@ -3,14 +3,12 @@
 ###################################
 {...}: {
   programs.nixvim = {
-    plugins = {
-      # Fidget.
-      fidget = {
-        enable = true;
+    # Fidget.
+    plugins.fidget = {
+      enable = true;
 
-        settings = {
-          notification.window.winblend = 0;
-        };
+      settings = {
+        notification.window.winblend = 0;
       };
     };
   };

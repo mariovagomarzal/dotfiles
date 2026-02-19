@@ -63,9 +63,7 @@
       };
     };
 
-    plugins = {
-      # Use lspconfig for default LSP configurations.
-      lspconfig.enable = true;
-    };
+    # Use lspconfig for default LSP configurations.
+    plugins.lspconfig.enable = true;
   };
 }

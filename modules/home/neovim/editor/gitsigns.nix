@@ -3,37 +3,35 @@
 #####################################
 {...}: {
   programs.nixvim = {
-    plugins = {
-      # Gitsigns.
-      gitsigns = {
-        enable = true;
+    # Gitsigns.
+    plugins.gitsigns = {
+      enable = true;
 
-        settings = {
-          # Signs.
-          signs = {
-            add = {text = "+";};
-            change = {text = "~";};
-            delete = {text = "_";};
-            topdelete = {text = "‾";};
-            changedelete = {text = "~";};
-          };
+      settings = {
+        # Signs.
+        signs = {
+          add = {text = "+";};
+          change = {text = "~";};
+          delete = {text = "_";};
+          topdelete = {text = "‾";};
+          changedelete = {text = "~";};
+        };
 
-          # Staged signs.
-          signs_staged = {
-            add = {text = "┃";};
-            change = {text = "┃";};
-            delete = {text = "_";};
-            topdelete = {text = "‾";};
-            changedelete = {text = "┃";};
-          };
+        # Staged signs.
+        signs_staged = {
+          add = {text = "┃";};
+          change = {text = "┃";};
+          delete = {text = "_";};
+          topdelete = {text = "‾";};
+          changedelete = {text = "┃";};
+        };
 
-          # Line blame.
-          current_line_blame = false;
-          current_line_blame_opts = {
-            virt_text = true;
-            virt_text_pos = "eol";
-            delay = 300;
-          };
+        # Line blame.
+        current_line_blame = false;
+        current_line_blame_opts = {
+          virt_text = true;
+          virt_text_pos = "eol";
+          delay = 300;
         };
       };
     };

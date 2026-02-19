@@ -7,16 +7,14 @@
   ...
 }: {
   programs.nixvim = {
-    plugins = {
-      # Conform.
-      conform-nvim = {
-        enable = true;
+    # Conform.
+    plugins.conform-nvim = {
+      enable = true;
 
-        settings = {
-          # Shared formatter commands.
-          formatters = {
-            prettier.command = lib.getExe pkgs.prettier;
-          };
+      settings = {
+        # Shared formatter commands.
+        formatters = {
+          prettier.command = lib.getExe pkgs.prettier;
         };
       };
     };

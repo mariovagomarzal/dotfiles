@@ -22,36 +22,34 @@
     10;
 in {
   programs.nixvim = {
-    plugins = {
-      # Toggleterm.
-      toggleterm = {
-        enable = true;
+    # Toggleterm.
+    plugins.toggleterm = {
+      enable = true;
 
-        settings = {
-          # General settings.
-          hide_numbers = true;
-          start_in_insert = false;
-          close_on_exit = true;
-          auto_scroll = true;
+      settings = {
+        # General settings.
+        hide_numbers = true;
+        start_in_insert = false;
+        close_on_exit = true;
+        auto_scroll = true;
 
-          # Size for non-float directions.
-          size.__raw = ''
-            function(term)
-              if term.direction == "vertical" then
-                return math.floor(vim.o.columns * 0.4)
-              else
-                return math.floor(vim.o.lines * 0.3)
-              end
+        # Size for non-float directions.
+        size.__raw = ''
+          function(term)
+            if term.direction == "vertical" then
+              return math.floor(vim.o.columns * 0.4)
+            else
+              return math.floor(vim.o.lines * 0.3)
             end
-          '';
+          end
+        '';
 
-          # Default direction.
-          direction = "float";
+        # Default direction.
+        direction = "float";
 
-          # Float options.
-          float_opts = {
-            border = "rounded";
-          };
+        # Float options.
+        float_opts = {
+          border = "rounded";
         };
       };
     };

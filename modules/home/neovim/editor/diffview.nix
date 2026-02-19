@@ -3,11 +3,9 @@
 #######################################
 {...}: {
   programs.nixvim = {
-    plugins = {
-      # Diffview.
-      diffview = {
-        enable = true;
-      };
+    # Diffview.
+    plugins.diffview = {
+      enable = true;
     };
 
     # Diffview keymaps.
