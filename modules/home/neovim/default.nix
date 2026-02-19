@@ -22,7 +22,7 @@
 
   imports = [
     ./vim
-    ./lsp
+    ./languages
     ./completion
     ./editor
     ./ui

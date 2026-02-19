@@ -5,17 +5,6 @@
   programs.nixvim = {
     # LSP configuration.
     lsp = {
-      # LSP servers with default configurations.
-      servers = {
-        bashls.enable = true;
-        jsonls.enable = true;
-        just.enable = true;
-        lua_ls.enable = true;
-        vtsls.enable = true;
-        yamlls.enable = true;
-        ty.enable = true;
-      };
-
       # LSP keybindings.
       keymaps = [
         {

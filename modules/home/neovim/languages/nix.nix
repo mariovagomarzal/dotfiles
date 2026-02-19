@@ -1,6 +1,6 @@
-######################
-# Nix LSP submodule. #
-######################
+#########################################
+# Nix language support submodule. #
+#########################################
 {
   pkgs,
   lib,
@@ -15,6 +15,11 @@
       formatters.alejandra.command = lib.getExe pkgs.alejandra;
       formatters_by_ft.nix = ["alejandra"];
     };
+
+    # Treesitter grammar.
+    plugins.treesitter.grammarPackages = [
+      pkgs.vimPlugins.nvim-treesitter.builtGrammars.nix
+    ];
 
     # Filetype settings.
     files."ftplugin/nix.lua" = {

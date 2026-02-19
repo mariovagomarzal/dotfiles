@@ -1,7 +1,7 @@
-###########################
-# Markdown LSP submodule. #
-###########################
-{...}: {
+##############################################
+# Markdown language support submodule. #
+##############################################
+{pkgs, ...}: {
   programs.nixvim = {
     # Marksman server.
     lsp.servers.marksman.enable = true;
@@ -11,6 +11,11 @@
       formatters_by_ft.markdown = ["prettier"];
       # Prettier command is defined in `conform.nix`, the shared formatters file.
     };
+
+    # Treesitter grammar.
+    plugins.treesitter.grammarPackages = [
+      pkgs.vimPlugins.nvim-treesitter.builtGrammars.markdown
+    ];
 
     # Filetype settings.
     files."ftplugin/markdown.lua" = {
