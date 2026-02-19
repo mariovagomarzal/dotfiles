@@ -4,7 +4,7 @@
 {...}: {
   programs.nixvim = {
     # Which-Key.
-    plugins.whick-key = {
+    plugins.which-key = {
       enable = true;
 
       settings = {
@@ -77,10 +77,6 @@
           {
             __unkeyed-1 = "<leader>t";
             group = "Terminal";
-            # icon = {
-            #   icon = " ";
-            #   color = "red";
-            # };
           }
         ];
       };
