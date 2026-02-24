@@ -28,35 +28,19 @@
         spec = [
           {
             __unkeyed-1 = "<leader>b";
-            group = "Buffers";
-            icon = {
-              icon = " ";
-              color = "blue";
-            };
+            group = "Buffer";
           }
           {
             __unkeyed-1 = "<leader>c";
             group = "Code";
-            icon = {
-              icon = " ";
-              color = "orange";
-            };
           }
           {
             __unkeyed-1 = "<leader>f";
             group = "Find";
-            icon = {
-              icon = " ";
-              color = "green";
-            };
           }
           {
             __unkeyed-1 = "<leader>g";
             group = "Git";
-            icon = {
-              cat = "filetype";
-              name = "git";
-            };
           }
           {
             __unkeyed-1 = "<leader>r";
