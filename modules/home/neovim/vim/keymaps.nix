@@ -88,7 +88,7 @@
       }
       {
         mode = "n";
-        key = "<C-h>";
+        key = "<A-h>";
         action = "<C-w>h";
         options = {
           desc = "Move to left window";
@@ -97,7 +97,7 @@
       }
       {
         mode = "n";
-        key = "<C-j>";
+        key = "<A-j>";
         action = "<C-w>j";
         options = {
           desc = "Move to window below";
@@ -106,7 +106,7 @@
       }
       {
         mode = "n";
-        key = "<C-k>";
+        key = "<A-k>";
         action = "<C-w>k";
         options = {
           desc = "Move to window above";
@@ -115,7 +115,44 @@
       }
       {
         mode = "n";
-        key = "<C-l>";
+        key = "<A-l>";
+        action = "<C-w>l";
+        options = {
+          desc = "Move to right window";
+          silent = true;
+        };
+      }
+
+      {
+        mode = "n";
+        key = "<A-Left>";
+        action = "<C-w>h";
+        options = {
+          desc = "Move to left window";
+          silent = true;
+        };
+      }
+      {
+        mode = "n";
+        key = "<A-Down>";
+        action = "<C-w>j";
+        options = {
+          desc = "Move to window below";
+          silent = true;
+        };
+      }
+      {
+        mode = "n";
+        key = "<A-Up>";
+        action = "<C-w>k";
+        options = {
+          desc = "Move to window above";
+          silent = true;
+        };
+      }
+      {
+        mode = "n";
+        key = "<A-Right>";
         action = "<C-w>l";
         options = {
           desc = "Move to right window";
