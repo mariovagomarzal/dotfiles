@@ -26,5 +26,6 @@
     ./completion
     ./editor
     ./ui
+    ./snacks.nix
   ];
 }
