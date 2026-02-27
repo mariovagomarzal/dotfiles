@@ -1,7 +1,7 @@
 #################################
 # Neovim colorscheme submodule. #
 #################################
-{...}: {
+{config, ...}: {
   programs.nixvim = {
     # Catppuccin colorscheme configuration.
     colorschemes.catppuccin = {
@@ -10,6 +10,10 @@
       settings = {
         transparent_background = true;
         integrations = {
+          snacks = {
+            enabled = true;
+            indent_scope_color = config.catppuccin.accent;
+          };
           which_key = true;
           dashboard = true;
           fidget = true;
