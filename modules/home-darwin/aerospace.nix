@@ -75,15 +75,15 @@
         alt-period = "layout tiles horizontal vertical";
         alt-comma = "layout accordion horizontal vertical";
 
-        ctrl-alt-h = "focus left";
-        ctrl-alt-j = "focus down";
-        ctrl-alt-k = "focus up";
-        ctrl-alt-l = "focus right";
+        alt-shift-h = "focus left";
+        alt-shift-j = "focus down";
+        alt-shift-k = "focus up";
+        alt-shift-l = "focus right";
 
-        ctrl-alt-left = "focus left";
-        ctrl-alt-down = "focus down";
-        ctrl-alt-up = "focus up";
-        ctrl-alt-right = "focus right";
+        alt-shift-left = "focus left";
+        alt-shift-down = "focus down";
+        alt-shift-up = "focus up";
+        alt-shift-right = "focus right";
 
         ctrl-alt-shift-h = "move left";
         ctrl-alt-shift-j = "move down";
