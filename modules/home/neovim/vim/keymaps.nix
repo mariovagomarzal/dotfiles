@@ -179,15 +179,6 @@
           silent = true;
         };
       }
-      {
-        mode = "n";
-        key = "<leader>bd";
-        action = "<cmd>bdelete<CR>";
-        options = {
-          desc = "Close the current buffer";
-          silent = true;
-        };
-      }
 
       # Search.
       {

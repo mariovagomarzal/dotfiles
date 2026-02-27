@@ -3,6 +3,7 @@
 ############################
 {...}: {
   imports = [
+    ./snacks-bufdelete.nix
     ./telescope.nix
     ./neo-tree.nix
     ./gitsigns.nix
