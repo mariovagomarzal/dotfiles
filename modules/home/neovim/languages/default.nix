@@ -7,6 +7,7 @@
     ./fidget.nix
     ./treesitter.nix
     ./conform.nix
+    ./snacks-bigfile.nix
     ./bash.nix
     ./json.nix
     ./just.nix
