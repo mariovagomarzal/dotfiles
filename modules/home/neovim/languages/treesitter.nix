@@ -31,5 +31,13 @@
         };
       };
     };
+
+    # Folding with Treesitter.
+    opts = {
+      foldmethod = "expr";
+      foldexpr = "v:lua.vim.treesitter.foldexpr()";
+      foldlevel = 99;
+      foldlevelstart = 99;
+    };
   };
 }
