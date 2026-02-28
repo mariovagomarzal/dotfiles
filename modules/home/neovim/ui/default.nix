@@ -7,6 +7,6 @@
     ./icons.nix
     ./lualine.nix
     ./which-key.nix
-    ./dashboard.nix
+    ./snacks-dashboard.nix
   ];
 }
