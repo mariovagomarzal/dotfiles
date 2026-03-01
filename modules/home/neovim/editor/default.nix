@@ -17,6 +17,5 @@
     ./toggleterm.nix
     ./surround.nix
     ./comment.nix
-    ./project.nix
   ];
 }
