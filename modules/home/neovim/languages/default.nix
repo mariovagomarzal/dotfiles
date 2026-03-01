@@ -5,7 +5,6 @@
   imports = [
     ./lsp.nix
     ./snacks-words.nix
-    ./fidget.nix
     ./treesitter.nix
     ./conform.nix
     ./snacks-bigfile.nix
