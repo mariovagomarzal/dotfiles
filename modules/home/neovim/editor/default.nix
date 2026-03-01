@@ -11,6 +11,7 @@
     ./snacks-quickfile.nix
     ./snacks-lazygit.nix
     ./snacks-scope.nix
+    ./snacks-scratch.nix
     ./gitsigns.nix
     ./diffview.nix
     ./toggleterm.nix
