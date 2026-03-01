@@ -6,6 +6,7 @@
     ./snacks-picker.nix
     ./snacks-explorer.nix
     ./snacks-bufdelete.nix
+    ./snacks-image.nix
     ./gitsigns.nix
     ./diffview.nix
     ./toggleterm.nix

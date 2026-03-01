@@ -1,9 +1,9 @@
-################################################
-# JavaScript language support submodule. #
-################################################
+##########################################
+# Web language support submodule.   #
+##########################################
 {pkgs, ...}: {
   programs.nixvim = {
-    # VtsLS server (JavaScript/TypeScript).
+    # VtsLS server (JavaScript/TypeScript/TSX/JSX).
     lsp.servers.vtsls.enable = true;
 
     # Conform formatter.
@@ -12,6 +12,13 @@
       formatters_by_ft = {
         javascript = ["prettier"];
         typescript = ["prettier"];
+        css = ["prettier"];
+        html = ["prettier"];
+        scss = ["prettier"];
+        svelte = ["prettier"];
+        vue = ["prettier"];
+        typescriptreact = ["prettier"]; # for .tsx files
+        javascriptreact = ["prettier"]; # for .jsx files
       };
     };
 
@@ -19,6 +26,12 @@
     plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
       javascript
       typescript
+      tsx
+      css
+      html
+      scss
+      svelte
+      vue
     ];
   };
 }

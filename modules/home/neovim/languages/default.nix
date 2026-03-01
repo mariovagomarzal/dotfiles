@@ -12,7 +12,8 @@
     ./json.nix
     ./just.nix
     ./lua.nix
-    ./javascript.nix
+    ./latex.nix
+    ./web.nix
     ./yaml.nix
     ./python.nix
     ./toml.nix

@@ -17,6 +17,7 @@
       tree-sitter.enable = true;
       ripgrep.enable = true;
       fd.enable = true;
+      imagemagick.enable = true;
     };
   };
 

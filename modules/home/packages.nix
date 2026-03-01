@@ -30,6 +30,8 @@
     gemini-cli
 
     # Miscellaneous.
+    ghostscript
+    mermaid-cli
     cmatrix
   ];
 
