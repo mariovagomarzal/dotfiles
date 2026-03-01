@@ -8,5 +8,6 @@
     ./lualine.nix
     ./which-key.nix
     ./snacks-dashboard.nix
+    ./snacks-input.nix
   ];
 }
