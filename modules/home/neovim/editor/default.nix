@@ -3,9 +3,9 @@
 ############################
 {...}: {
   imports = [
+    ./snacks-picker.nix
+    ./snacks-explorer.nix
     ./snacks-bufdelete.nix
-    ./telescope.nix
-    ./neo-tree.nix
     ./gitsigns.nix
     ./diffview.nix
     ./toggleterm.nix

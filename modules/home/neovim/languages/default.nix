@@ -19,5 +19,6 @@
     ./nix.nix
     ./markdown.nix
     ./typst.nix
+    ./regex.nix
   ];
 }

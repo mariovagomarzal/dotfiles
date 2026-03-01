@@ -124,15 +124,20 @@
 
         # Git project sections.
         {
+          enabled.__raw = is_git_project true;
+          icon = " ";
+          desc = "Open file explorer";
+          padding = 1;
+          key = "e";
+          action = ":lua Snacks.explorer()";
+        }
+        {
+          enabled.__raw = is_git_project true;
           icon = " ";
           desc = "Browse repository";
           padding = 1;
           key = "b";
-          action.__raw = ''
-            function()
-              Snacks.gitbrowse()
-            end
-          '';
+          action = ":lua Snacks.gitbrowse()";
         }
         {
           enabled.__raw = is_git_project true;

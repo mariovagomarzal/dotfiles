@@ -61,7 +61,7 @@
       # Hunk actions.
       {
         mode = "n";
-        key = "<leader>gp";
+        key = "<leader>gv";
         action = "<cmd>Gitsigns preview_hunk<CR>";
         options = {
           desc = "Preview git hunk";
