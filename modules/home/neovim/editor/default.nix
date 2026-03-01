@@ -10,6 +10,7 @@
     ./snacks-indent.nix
     ./snacks-quickfile.nix
     ./snacks-lazygit.nix
+    ./snacks-scope.nix
     ./gitsigns.nix
     ./diffview.nix
     ./toggleterm.nix
