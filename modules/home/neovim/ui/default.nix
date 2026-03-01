@@ -10,5 +10,6 @@
     ./snacks-dashboard.nix
     ./snacks-notifier.nix
     ./snacks-input.nix
+    ./snacks-scroll.nix
   ];
 }
