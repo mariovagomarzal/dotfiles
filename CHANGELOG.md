@@ -6,6 +6,62 @@ Each stable version of the dotfiles repository is tagged with a date in the
 format `YYYY.MM.DD(.P)`, where `P` is an optional patch version separated by a
 dot if more than one version was released in the same day.
 
+## [2026.03.03](https://github.com/mariovagomarzal/dotfiles/releases/tag/2026.03.03)
+
+### ⛰️ Added
+
+- *(config)* Update dependencies - ([345451e](https://github.com/mariovagomarzal/dotfiles/commit/345451e4424d5c55fcd1707c061705c95ebb1d63))
+- *(darwin)* Handle Homebrew installation with nix-homebrew - ([269a638](https://github.com/mariovagomarzal/dotfiles/commit/269a63825bd91247f3c59b1b7fc635364a2d16cc))
+- *(home)* Modify Neovim LSP servers - ([419d499](https://github.com/mariovagomarzal/dotfiles/commit/419d4997eb7f178d0a79b1c5fe4e2d778480539e))
+- *(home)* Add a Nix LSP submodule - ([1a641ba](https://github.com/mariovagomarzal/dotfiles/commit/1a641baa5fcd9617314d43487a199176b24d33f2))
+- *(home)* Add a Markdown LSP submodule - ([e448a15](https://github.com/mariovagomarzal/dotfiles/commit/e448a150e14dc6d6f3fb6d0db1e208c75dc1f5c4))
+- *(home)* Add a Typst LSP submodule - ([790bf9a](https://github.com/mariovagomarzal/dotfiles/commit/790bf9a8b6bc73e8e915074c59c3e935c1ac0a74))
+- *(home)* Add smart autopairs for dollar signs in Typst - ([3202c6c](https://github.com/mariovagomarzal/dotfiles/commit/3202c6c6dfa099510352b805b9f8b80f435f5ac3))
+- *(home)* Allow unfree packages in Nixvim - ([18cd1e5](https://github.com/mariovagomarzal/dotfiles/commit/18cd1e56059fa99a91d1a33153601a66970ee369))
+- *(home)* Add GitHub copilot support for Neovim - ([91d2ee8](https://github.com/mariovagomarzal/dotfiles/commit/91d2ee8f49bd3a93e8534a3c4b02deb1cbf9c9d9))
+- *(home)* Enhance terminal management in Neovim - ([cc25eb4](https://github.com/mariovagomarzal/dotfiles/commit/cc25eb4083b5f1c2c6f1e1d480be4e00f7e9571d))
+- *(home)* Use blink.pairs instead of autopairs in Neovim - ([a84c08b](https://github.com/mariovagomarzal/dotfiles/commit/a84c08b7e4537eaeea5e98595f5b0ed8851da23b))
+- *(home)* Add the core Snacks plugin module for Neovim - ([561ab12](https://github.com/mariovagomarzal/dotfiles/commit/561ab12fe974d3615a7dfed3f1e436a25b9dce81))
+- *(home)* Enable the Catppuccin implementation of Snacks - ([1faa9d6](https://github.com/mariovagomarzal/dotfiles/commit/1faa9d6b7b2487f2e95a307dc3fb6824d44dbee5))
+- *(home)* Add the Snacks bigfile plugin for Neovim - ([97348e0](https://github.com/mariovagomarzal/dotfiles/commit/97348e01d380595560272e6c1be30f8a493f6735))
+- *(home)* Add Snacks bufdelete plugin for Neovim - ([032cc51](https://github.com/mariovagomarzal/dotfiles/commit/032cc51aee0cfb5bfc064a12c0657e5ed95800f9))
+- *(home)* Add Snacks dashboard plugin for Neovim - ([888369a](https://github.com/mariovagomarzal/dotfiles/commit/888369a3be2b7d5ca360d79e8d1689d40f69d742))
+- *(home)* Move folding options to the treesitter submodule - ([8b6b478](https://github.com/mariovagomarzal/dotfiles/commit/8b6b4782d3efe7d839100399e7c46ee29ce01ef4))
+- *(home)* Replace Telescope and Neo-tree with Snacks picker and explorer - ([b93666a](https://github.com/mariovagomarzal/dotfiles/commit/b93666a70d02adb77e5a09ce5f0e57b46b7cd853))
+- *(home)* Add Snacks image plugin for Neovim - ([8ecb31a](https://github.com/mariovagomarzal/dotfiles/commit/8ecb31a8e35f76ccb40c9bfab5c170f7fac4ea51))
+- *(home)* Add Snacks indent plugin for Neovim - ([6f87d7a](https://github.com/mariovagomarzal/dotfiles/commit/6f87d7ac4ea9a3b840d6404e62467d35ec799c1c))
+- *(home)* Add Snacks input plugin for Neovim - ([8c64f8b](https://github.com/mariovagomarzal/dotfiles/commit/8c64f8b55352fa0b8637a2d2f4e0724086911d30))
+- *(home)* Add Snacks notifier plugin for Neovim - ([1de3a55](https://github.com/mariovagomarzal/dotfiles/commit/1de3a558f9bdc2eb8d8581c2b188dce341495748))
+- *(home)* Add Snacks quickfile plugin for Neovim - ([568f992](https://github.com/mariovagomarzal/dotfiles/commit/568f9925dcc98808997792a3f3232e2d0ed733fb))
+- *(home)* Add the Lazygit home module with its Snacks plugin - ([94b1ef7](https://github.com/mariovagomarzal/dotfiles/commit/94b1ef746e324972bd5dc5ac30242b91c6943f64))
+- *(home)* Add Snacks scope plugin for Neovim - ([4a7af36](https://github.com/mariovagomarzal/dotfiles/commit/4a7af36b7bc955806799d0b5df23b182e4a1c4da))
+- *(home)* Add Snacks scratch plugin for Neovim - ([81ea732](https://github.com/mariovagomarzal/dotfiles/commit/81ea732527379570807592f35501ef491d6da0ba))
+- *(home)* Add Snacks scroll plugin for Neovim - ([4b4e23d](https://github.com/mariovagomarzal/dotfiles/commit/4b4e23dff0caecdf58c841e9e39a356c6611c2f4))
+- *(home)* Add Snacks statuscolumn plugin for Neovim - ([4869abb](https://github.com/mariovagomarzal/dotfiles/commit/4869abbbc1c543744b4d87649f7454c51476139f))
+- *(home)* Add Snacks words plugin for Neovim - ([989453a](https://github.com/mariovagomarzal/dotfiles/commit/989453a78651fd0487fd4082ac256f6c275e3e6a))
+- *(home)* Add Snacks zen plugin for Neovim - ([954d1fe](https://github.com/mariovagomarzal/dotfiles/commit/954d1fe62ea82c75842a4c4b54bdd5dc1b8ec5af))
+- *(home)* Replace Fidget with Snacks notifier for LSP progress - ([3fc7ef0](https://github.com/mariovagomarzal/dotfiles/commit/3fc7ef038177f4d6ac7ce729c3d3af345fc1d511))
+- *(home-darwin)* Simplify window navigation keybindings - ([925ac4a](https://github.com/mariovagomarzal/dotfiles/commit/925ac4a830c75bba85e71259412f9a7748f360a8))
+- *(home-darwin, home)* Reorganize window navigation keybindings - ([4a7ab94](https://github.com/mariovagomarzal/dotfiles/commit/4a7ab94f8b67f245c503c59a72b65f9f082a1bc7))
+### 🐛 Fixed
+
+- *(config)* Make Nixvim follow its own Nixpkgs version - ([32c73e8](https://github.com/mariovagomarzal/dotfiles/commit/32c73e83ab7ca010fc5c3a615923bb28f145087e))
+- *(home)* Fix a wrong behavior in the smart Typst dollar signs - ([6c525bf](https://github.com/mariovagomarzal/dotfiles/commit/6c525bf38743be74383ea19ac785d412b5941a89))
+- *(home)* Fix a typo in the which-key Neovim plugin - ([0bbc42f](https://github.com/mariovagomarzal/dotfiles/commit/0bbc42fa7f94c9f2753d2116e8a7ee64c9dd058c))
+- *(home)* Fix terminal switching and layout in Neovim toggleterm - ([feeab30](https://github.com/mariovagomarzal/dotfiles/commit/feeab3075c9298261c1a98131e51b49840013b69))
+- *(home)* Remove unnecessary which-key icon configuration - ([75f5cc4](https://github.com/mariovagomarzal/dotfiles/commit/75f5cc402a6edcf0ba190df5ee740fb6d6fa0590))
+### 🛠️ Refactored
+
+- *(home)* Move formatters configurations to its own submodules - ([2d15672](https://github.com/mariovagomarzal/dotfiles/commit/2d156728b916013658790b3f49be76650124f750))
+- *(home)* Move the autopairs plugin to the completion directory - ([1ebf8ee](https://github.com/mariovagomarzal/dotfiles/commit/1ebf8ee4a1754fba264fb29c99b1d6b9435691d9))
+- *(home)* Restructure Neovim LSP directory into per-language modules - ([ba58f7d](https://github.com/mariovagomarzal/dotfiles/commit/ba58f7d1d0d473d69413634512aeafc022a5656e))
+- *(home)* Move Snacks scope plugin to languages module - ([f740f21](https://github.com/mariovagomarzal/dotfiles/commit/f740f216c7640168f739d6b7b625412590fa1b9e))
+- *(home)* Remove project.nvim plugin - ([dfcb865](https://github.com/mariovagomarzal/dotfiles/commit/dfcb865dff6eb6d41605e427262a177c806199d5))
+### 🎨 Style
+
+- *(home)* Improve comments and spacing across the Neovim configuration - ([f1791c0](https://github.com/mariovagomarzal/dotfiles/commit/f1791c070a5d7db9db041fff3e6f22e170f08253))
+- *(home)* Use compact notation for Neovim plugins - ([7a7b759](https://github.com/mariovagomarzal/dotfiles/commit/7a7b759cb5699e481cd9ace73cc06ab589b2afd9))
+
 ## [2026.02.17.1](https://github.com/mariovagomarzal/dotfiles/releases/tag/2026.02.17.1)
 
 ### 📚 Documentation
