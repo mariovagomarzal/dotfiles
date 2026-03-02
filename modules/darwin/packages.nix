@@ -1,13 +1,33 @@
 ###########################
 # Packages Darwin module. #
 ###########################
-{...}: {
-  # Packages managed by Homebrew.
+{
+  inputs,
+  config,
+  ...
+}: {
+  # Homebrew configuration.
   /*
   Some packages are installed via Homebrew because they lack good Nix support on
   macOS. Specifically, GUI applications should be installed this way to ensure
   they appear in the Launchpad and are indexed by Spotlight.
   */
+  nix-homebrew = {
+    # Install Homebrew under the default prefix and the Intel prefix for Rosetta.
+    enable = true;
+    enableRosetta = true;
+
+    # User owning the Homebrew prefix.
+    user = config.system.primaryUser;
+
+    # Handle taps declaratively only.
+    mutableTaps = false;
+    taps = with inputs; {
+      "homebrew/homebrew-core" = homebrew-core;
+      "homebrew/homebrew-cask" = homebrew-cask;
+    };
+  };
+
   homebrew = {
     enable = true;
     onActivation = {
@@ -20,10 +40,7 @@
     };
 
     # Brew taps to add.
-    taps = [
-      "nikitabobko/tap"
-      "mediosz/tap"
-    ];
+    taps = builtins.attrNames config.nix-homebrew.taps;
 
     # Brew packages to install, i.e., `brew install <package>`.
     brews = [

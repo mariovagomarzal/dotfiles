@@ -93,20 +93,11 @@ assume a fresh installation of macOS.
     xcode-select --install
     ```
 
-3. __Install Homebrew__: Some packages are installed via [Homebrew][homebrew] by
-  nix-darwin. However, nix-darwin will not install Homebrew itself. To install
-  Homebrew follow the instructions in the [official download
-  page][download-brew] or TL;DR, run the following command in the terminal:
-
-    ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    ```
-
-4. __Install Nix__: We will use Nix to setup and manage the machine
+3. __Install Nix__: We will use Nix to setup and manage the machine
   configuration. Install Nix following the instructions in the [official
   download page][download-nix].
 
-5. __Clone the repository__: Once Nix is installed and the SSH keys are in
+4. __Clone the repository__: Once Nix is installed and the SSH keys are in
   place, we can clone the repository with Git (or by manually downloading it)
   and `cd` into it:
 
@@ -115,12 +106,16 @@ assume a fresh installation of macOS.
     cd dotfiles
     ```
 
-6. __Setup the machine__: If it is the first time we're setting up the machine
+5. __Setup the machine__: If it is the first time we're setting up the machine
   with these dotfiles, we have to run the following command:
 
     ```bash
     sudo nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake '.#Marios-MBP'
     ```
+
+    > [!NOTE]
+    > Homebrew will be automatically installed and managed by nix-homebrew during
+    > the setup process. No manual installation is required.
 
 If the last command succeeds, the machine should be fully configured with the
 dotfiles. From now on, we can update the machine by running the following
@@ -307,8 +302,6 @@ just tag
   https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
 [generate-ssh-keys]:
   https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
-[homebrew]: https://brew.sh
-[download-brew]: https://brew.sh
 [download-nix]: https://nixos.org/download
 [stylus]: https://addons.mozilla.org/en-US/firefox/addon/styl-us
 [catppuccin]: https://catppuccin.com/
