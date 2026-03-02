@@ -24,6 +24,25 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # nix-homebrew, a Homebrew installation tool for Nix.
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    # Official Homebrew taps.
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
+    # nixpkgs-firefox-darwin, a Nixpkgs overlay for Firefox on macOS.
+    nixpkgs-firefox-darwin = {
+      url = "github:bandithedoge/nixpkgs-firefox-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # home-manager, the Nix configuration for user environments.
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -37,10 +56,7 @@
     };
 
     # nixvim, a Neovim configuration framework.
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:nix-community/nixvim";
 
     # devshell, a tool for creating development environments.
     devshell = {
@@ -51,12 +67,6 @@
     # git-hooks.nix, a tool for managing git hooks with Nix.
     git-hooks-nix = {
       url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # nixpkgs-firefox-darwin, a Nixpkgs overlay for Firefox on macOS.
-    nixpkgs-firefox-darwin = {
-      url = "github:bandithedoge/nixpkgs-firefox-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

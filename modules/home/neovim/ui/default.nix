@@ -7,6 +7,10 @@
     ./icons.nix
     ./lualine.nix
     ./which-key.nix
-    ./dashboard.nix
+    ./snacks-dashboard.nix
+    ./snacks-notifier.nix
+    ./snacks-input.nix
+    ./snacks-scroll.nix
+    ./snacks-statuscolumn.nix
   ];
 }

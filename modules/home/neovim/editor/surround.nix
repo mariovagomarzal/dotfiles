@@ -3,9 +3,7 @@
 #####################################
 {...}: {
   programs.nixvim = {
-    plugins = {
-      # Surround.
-      nvim-surround.enable = true;
-    };
+    # Surround.
+    plugins.nvim-surround.enable = true;
   };
 }

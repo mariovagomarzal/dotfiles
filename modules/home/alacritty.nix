@@ -15,6 +15,7 @@
 
       # Window configuration.
       window = {
+        option_as_alt = "OnlyLeft";
         opacity = 0.95;
         blur = true;
 

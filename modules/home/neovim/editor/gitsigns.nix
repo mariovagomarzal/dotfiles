@@ -3,31 +3,35 @@
 #####################################
 {...}: {
   programs.nixvim = {
-    plugins = {
-      # Gitsigns.
-      gitsigns = {
-        enable = true;
-        settings = {
-          signs = {
-            add = {text = "+";};
-            change = {text = "~";};
-            delete = {text = "_";};
-            topdelete = {text = "‾";};
-            changedelete = {text = "~";};
-          };
-          signs_staged = {
-            add = {text = "┃";};
-            change = {text = "┃";};
-            delete = {text = "_";};
-            topdelete = {text = "‾";};
-            changedelete = {text = "┃";};
-          };
-          current_line_blame = false;
-          current_line_blame_opts = {
-            virt_text = true;
-            virt_text_pos = "eol";
-            delay = 300;
-          };
+    # Gitsigns.
+    plugins.gitsigns = {
+      enable = true;
+
+      settings = {
+        # Signs.
+        signs = {
+          add = {text = "+";};
+          change = {text = "~";};
+          delete = {text = "_";};
+          topdelete = {text = "‾";};
+          changedelete = {text = "~";};
+        };
+
+        # Staged signs.
+        signs_staged = {
+          add = {text = "┃";};
+          change = {text = "┃";};
+          delete = {text = "_";};
+          topdelete = {text = "‾";};
+          changedelete = {text = "┃";};
+        };
+
+        # Line blame.
+        current_line_blame = false;
+        current_line_blame_opts = {
+          virt_text = true;
+          virt_text_pos = "eol";
+          delay = 300;
         };
       };
     };
@@ -57,7 +61,7 @@
       # Hunk actions.
       {
         mode = "n";
-        key = "<leader>gp";
+        key = "<leader>gv";
         action = "<cmd>Gitsigns preview_hunk<CR>";
         options = {
           desc = "Preview git hunk";

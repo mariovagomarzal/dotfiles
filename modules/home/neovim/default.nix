@@ -8,19 +8,25 @@
     viAlias = true;
     vimAlias = true;
 
+    nixpkgs.config = {
+      allowUnfree = true;
+    };
+
     # Dependencies.
     dependencies = {
       tree-sitter.enable = true;
       ripgrep.enable = true;
       fd.enable = true;
+      imagemagick.enable = true;
     };
   };
 
   imports = [
     ./vim
-    ./lsp
+    ./languages
     ./completion
     ./editor
     ./ui
+    ./snacks.nix
   ];
 }
