@@ -26,7 +26,6 @@
     cookiecutter
 
     # AI-related tools.
-    claude-code
     gemini-cli
 
     # Miscellaneous.

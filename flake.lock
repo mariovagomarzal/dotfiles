@@ -231,6 +231,22 @@
         "type": "github"
       }
     },
+    "marios-claude": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774377977,
+        "narHash": "sha256-PXmm7gNXLgi0wzloONkY5GikDFlnIvgkhCEHuplZ5G0=",
+        "owner": "mariovagomarzal",
+        "repo": "marios-claude",
+        "rev": "06fb7a372e06fe6b62cb7824363bff3318f73889",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mariovagomarzal",
+        "repo": "marios-claude",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -371,6 +387,7 @@
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "marios-claude": "marios-claude",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
