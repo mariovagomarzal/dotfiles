@@ -58,12 +58,6 @@
     # nixvim, a Neovim configuration framework.
     nixvim.url = "github:nix-community/nixvim";
 
-    # marios-claude, my personal Claude customizations.
-    marios-claude = {
-      url = "github:mariovagomarzal/marios-claude";
-      flake = false;
-    };
-
     # devshell, a tool for creating development environments.
     devshell = {
       url = "github:numtide/devshell";
