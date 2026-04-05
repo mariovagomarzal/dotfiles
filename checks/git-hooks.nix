@@ -29,7 +29,7 @@ inputs.git-hooks-nix.lib.${system}.run {
         # Allow the first line not to be a header.
         "MD041" = false;
       };
-      excludes = ["CHANGELOG.md"];
+      excludes = ["CHANGELOG.md" "^modules/.*\\.md$"];
     };
 
     # Enable the Gitlint git hook.
