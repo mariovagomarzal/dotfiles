@@ -159,9 +159,6 @@ def git_info(cwd: str) -> tuple[str | None, bool]:
 
 # Segment builders.
 
-SEGMENT_SEPARATOR = "  │  "
-
-
 @dataclass
 class Segment:
     """Base class for status line segments."""
@@ -169,7 +166,7 @@ class Segment:
     icon: str
     color: str
 
-    def parse_data(self, data: dict) -> str:
+    def parse_data(self, data: dict) -> str | None:
         raise NotImplementedError
 
     def display(self, data: dict) -> str:
@@ -223,6 +220,7 @@ DEFAULT_PCT_COLOR_MAP = PctColorMap(
 )
 
 DEFAULT_PROGRESS_BAR = ProgressBar(width=10, color_map=DEFAULT_PCT_COLOR_MAP)
+SMALL_PROGRESS_BAR = ProgressBar(width=5, color_map=DEFAULT_PCT_COLOR_MAP)
 
 CONTEXT_PROGRESS_BAR = ProgressBar(
     width=5,
@@ -233,8 +231,6 @@ CONTEXT_PROGRESS_BAR = ProgressBar(
     after="",
     spacing=" ",
 )
-
-WEEKLY_PROGRESS_BAR = ProgressBar(width=5, color_map=DEFAULT_PCT_COLOR_MAP)
 
 
 class ContextSegment(Segment):
@@ -256,7 +252,7 @@ class WeeklyRateLimitSegment(Segment):
         pct = data.get("rate_limits", {}).get("seven_day", {}).get("used_percentage")
         if pct is None:
             return None
-        return WEEKLY_PROGRESS_BAR(pct)
+        return SMALL_PROGRESS_BAR(pct)
 
 
 # Main entry point.
@@ -277,11 +273,8 @@ def main() -> None:
         WeeklyRateLimitSegment("󰃭", "salmon"),
     ]
 
-    line = SEGMENT_SEPARATOR.join(
-        seg for s in segments if (seg := s.display(data))
-    )
-
-    print(line)
+    separator = " │ "
+    print(separator.join(seg for s in segments if (seg := s.display(data))))
 
 
 if __name__ == "__main__":
