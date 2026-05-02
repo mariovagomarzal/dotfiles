@@ -4,10 +4,13 @@
 {
   inputs,
   system,
+  pkgs,
   ...
 }:
 inputs.git-hooks-nix.lib.${system}.run {
   src = ./..;
+
+  package = pkgs.prek;
 
   hooks = {
     # Enable the Alejandra git hook.
