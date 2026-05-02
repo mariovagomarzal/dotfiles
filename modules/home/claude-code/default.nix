@@ -28,7 +28,7 @@ in {
 
       # Model configuration.
       model = "opus";
-      alwaysThinkEnabled = true;
+      thinking.type = "adaptive";
 
       # Commit message attributions.
       attribution = {

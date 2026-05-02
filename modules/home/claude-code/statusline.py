@@ -178,11 +178,11 @@ class Segment:
 
 class ModelSegment(Segment):
     def parse_data(self, data: dict) -> str:
-        return (
-            data.get("model", {}).get("display_name")
-            or data.get("model", {}).get("id")
+        model = data.get("model", {}).get("display_name") \
+            or data.get("model", {}).get("id") \
             or "unknown"
-        )
+        effort = data.get("effort", {}).get("level", "unknown")
+        return f"{model} ({effort})"
 
 
 class ProjectSegment(Segment):
