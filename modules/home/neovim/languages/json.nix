@@ -1,7 +1,7 @@
 ##########################################
 # JSON language support submodule. #
 ##########################################
-{pkgs, ...}: {
+{config, ...}: {
   programs.nixvim = {
     # JSON Language Server.
     lsp.servers.jsonls.enable = true;
@@ -14,7 +14,7 @@
 
     # Treesitter grammar.
     plugins.treesitter.grammarPackages = [
-      pkgs.vimPlugins.nvim-treesitter.builtGrammars.json
+      config.programs.nixvim.plugins.treesitter.package.builtGrammars.json
     ];
   };
 }

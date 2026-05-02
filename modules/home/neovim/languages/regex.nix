@@ -1,11 +1,11 @@
 #####################################
 # Regex language support submodule. #
 #####################################
-{pkgs, ...}: {
+{config, ...}: {
   programs.nixvim = {
     # Treesitter grammar.
     plugins.treesitter.grammarPackages = [
-      pkgs.vimPlugins.nvim-treesitter.builtGrammars.regex
+      config.programs.nixvim.plugins.treesitter.package.builtGrammars.regex
     ];
   };
 }

@@ -2,6 +2,7 @@
 # Bash language support submodule. #
 ##########################################
 {
+  config,
   pkgs,
   lib,
   ...
@@ -21,7 +22,7 @@
 
     # Treesitter grammar.
     plugins.treesitter.grammarPackages = [
-      pkgs.vimPlugins.nvim-treesitter.builtGrammars.bash
+      config.programs.nixvim.plugins.treesitter.package.builtGrammars.bash
     ];
   };
 }

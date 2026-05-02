@@ -2,6 +2,7 @@
 # Typst language support submodule. #
 ###########################################
 {
+  config,
   pkgs,
   lib,
   ...
@@ -18,7 +19,7 @@
 
     # Treesitter grammar.
     plugins.treesitter.grammarPackages = [
-      pkgs.vimPlugins.nvim-treesitter.builtGrammars.typst
+      config.programs.nixvim.plugins.treesitter.package.builtGrammars.typst
     ];
   };
 }

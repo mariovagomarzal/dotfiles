@@ -1,7 +1,7 @@
 ##############################################
 # Markdown language support submodule. #
 ##############################################
-{pkgs, ...}: {
+{config, ...}: {
   programs.nixvim = {
     # Marksman server.
     lsp.servers.marksman.enable = true;
@@ -14,7 +14,7 @@
 
     # Treesitter grammar.
     plugins.treesitter.grammarPackages = [
-      pkgs.vimPlugins.nvim-treesitter.builtGrammars.markdown
+      config.programs.nixvim.plugins.treesitter.package.builtGrammars.markdown
     ];
 
     # Filetype settings.
