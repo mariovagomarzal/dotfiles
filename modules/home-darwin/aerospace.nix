@@ -1,7 +1,11 @@
 #####################################
 # AeroSpace home module for Darwin. #
 #####################################
-{...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   programs.aerospace = {
     enable = true;
 
@@ -131,6 +135,9 @@
         ctrl-tab = "workspace-back-and-forth";
 
         alt-enter = "exec-and-forget open -na 'Alacritty'";
+        alt-z = let
+          zed = lib.getExe config.programs.zed-editor.package;
+        in "exec-and-forget ${zed} --classic";
         alt-space = "exec-and-forget open -na 'Firefox'";
         alt-e = "exec-and-forget open ~";
 
