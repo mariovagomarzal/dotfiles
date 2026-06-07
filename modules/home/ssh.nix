@@ -6,7 +6,7 @@
     enable = true;
     enableDefaultConfig = false;
 
-    matchBlocks = {
+    settings = {
       # Configuration for all hosts.
       "*" = {
         addKeysToAgent = "yes";
