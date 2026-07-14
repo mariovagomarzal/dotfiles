@@ -31,9 +31,13 @@
   homebrew = {
     enable = true;
     onActivation = {
-      # Disable automatic updates and upgrades.
+      /*
+      Disable `brew update` since taps are immutable and pinned by the flake
+      lock, but upgrade installed packages on activation so they follow the
+      versions declared by the locked taps.
+      */
       autoUpdate = false;
-      upgrade = false;
+      upgrade = true;
 
       # Remove all packages managed by Homebrew not listed here.
       cleanup = "zap";
