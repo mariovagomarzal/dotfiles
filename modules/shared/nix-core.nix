@@ -18,6 +18,7 @@
   # Enable the Nix garbage collector.
   nix.gc = {
     automatic = true;
+    options = "--delete-older-than 30d";
     interval = [
       {
         Hour = 15;
