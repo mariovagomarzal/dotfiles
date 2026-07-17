@@ -1,11 +1,7 @@
 #####################################
 # AeroSpace home module for Darwin. #
 #####################################
-{
-  lib,
-  config,
-  ...
-}: {
+{config, ...}: {
   programs.aerospace = {
     enable = true;
 
@@ -17,6 +13,8 @@
 
     # AeroSpace configuration content.
     settings = {
+      config-version = 2;
+
       # Disable automatic start at login since we use a launchd agent.
       start-at-login = false;
       after-startup-command = [];
@@ -136,8 +134,8 @@
 
         alt-enter = "exec-and-forget open -na 'Alacritty'";
         alt-z = let
-          zed = lib.getExe config.programs.zed-editor.package;
-        in "exec-and-forget ${zed} --classic";
+          zed = "${config.home.profileDirectory}/bin/zeditor";
+        in "exec-and-forget ${zed} --new";
         alt-space = "exec-and-forget open -na 'Firefox'";
         alt-e = "exec-and-forget open ~";
 

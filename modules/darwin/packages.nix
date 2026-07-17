@@ -68,7 +68,6 @@
 
       # Text editors (or related).
       "visual-studio-code"
-      "zed"
       "godot"
 
       # Window management.
