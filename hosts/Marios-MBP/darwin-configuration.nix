@@ -20,6 +20,7 @@ in {
   # Users information.
   users.users = {
     "mariovagomarzal" = {
+      uid = 501;
       home = "/Users/mariovagomarzal";
       description = "Mario Vago Marzal";
     };

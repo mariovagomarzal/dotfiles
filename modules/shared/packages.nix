@@ -10,11 +10,11 @@
   fish = config.programs.fish.package;
 in {
   # Shell configuration.
-  # Enable the fish shell and add it to the list of available shells. Also, set
-  # the default shell to fish by setting the `SHELL` environment variable.
   programs.fish.enable = true;
   environment.shells = [fish];
   environment.variables.SHELL = "/run/current-system/sw${fish.shellPath}";
+  users.knownUsers = [config.system.primaryUser];
+  users.users.${config.system.primaryUser}.shell = fish;
 
   # Other packages that should be available system-wide.
   environment.systemPackages = with pkgs; [
