@@ -26,7 +26,7 @@
     cookiecutter
 
     # AI-related tools.
-    gemini-cli
+    antigravity-cli
 
     # Miscellaneous.
     ghostscript
