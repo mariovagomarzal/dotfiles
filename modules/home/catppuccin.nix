@@ -4,7 +4,9 @@
 {config, ...}: {
   # Global Catppuccin theme options.
   catppuccin = {
-    # Enable 'catppuccin' options for every supported program/service.
+    # Auto-enroll every supported program/service ('autoEnable' will control
+    # this once the upcoming behavior lands; 'enable' becomes a global toggle).
+    autoEnable = true;
     enable = true;
 
     # Set the flavor and accent color.

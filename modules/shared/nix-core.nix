@@ -18,6 +18,7 @@
   # Enable the Nix garbage collector.
   nix.gc = {
     automatic = true;
+    options = "--delete-older-than 30d";
     interval = [
       {
         Hour = 15;
@@ -38,21 +39,4 @@
       }
     ];
   };
-
-  # Nixpkgs configuration.
-  # NOTE: This configuration should be inherited from the Blueprint
-  # configuration of Nixpkgs, set in the `flake.nix` file. However, due to an
-  # unknow issue, 'Darwin' and 'NixOS' systems do not inherit this. For more
-  # details, see:
-  #   https://github.com/numtide/blueprint/issues/115
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
-  # Nixpkgs overlays.
-  # NOTE: Same as above.
-  nixpkgs.overlays = with inputs; [
-    nur.overlays.default
-    nixpkgs-firefox-darwin.overlay
-  ];
 }

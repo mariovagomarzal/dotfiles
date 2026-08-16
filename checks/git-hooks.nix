@@ -4,10 +4,13 @@
 {
   inputs,
   system,
+  pkgs,
   ...
 }:
 inputs.git-hooks-nix.lib.${system}.run {
   src = ./..;
+
+  package = pkgs.prek;
 
   hooks = {
     # Enable the Alejandra git hook.
@@ -29,7 +32,7 @@ inputs.git-hooks-nix.lib.${system}.run {
         # Allow the first line not to be a header.
         "MD041" = false;
       };
-      excludes = ["CHANGELOG.md"];
+      excludes = ["CHANGELOG.md" "^modules/.*\\.md$"];
     };
 
     # Enable the Gitlint git hook.

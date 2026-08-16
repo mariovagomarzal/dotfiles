@@ -1,7 +1,7 @@
 ##########################################
 # Web language support submodule.   #
 ##########################################
-{pkgs, ...}: {
+{config, ...}: {
   programs.nixvim = {
     # VtsLS server (JavaScript/TypeScript/TSX/JSX).
     lsp.servers.vtsls.enable = true;
@@ -23,7 +23,7 @@
     };
 
     # Treesitter grammars.
-    plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+    plugins.treesitter.grammarPackages = with config.programs.nixvim.plugins.treesitter.package.builtGrammars; [
       javascript
       typescript
       tsx

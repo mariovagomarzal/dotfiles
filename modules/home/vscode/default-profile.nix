@@ -22,7 +22,6 @@
 
       # AI extensions.
       anthropic.claude-code
-      Google.gemini-cli-vscode-ide-companion
 
       # Miscellaneous.
       natqe.reload

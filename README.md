@@ -113,9 +113,9 @@ assume a fresh installation of macOS.
     sudo nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake '.#Marios-MBP'
     ```
 
-    > [!NOTE]
-    > Homebrew will be automatically installed and managed by nix-homebrew during
-    > the setup process. No manual installation is required.
+> [!NOTE]
+> Homebrew will be automatically installed and managed by nix-homebrew during
+> the setup process. No manual installation is required.
 
 If the last command succeeds, the machine should be fully configured with the
 dotfiles. From now on, we can update the machine by running the following
