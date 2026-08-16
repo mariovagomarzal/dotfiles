@@ -6,6 +6,49 @@ Each stable version of the dotfiles repository is tagged with a date in the
 format `YYYY.MM.DD(.P)`, where `P` is an optional patch version separated by a
 dot if more than one version was released in the same day.
 
+## [2026.08.16](https://github.com/mariovagomarzal/dotfiles/releases/tag/2026.08.16)
+
+### ⛰️ Added
+
+- *(config)* Update dependencies - ([6d619ab](https://github.com/mariovagomarzal/dotfiles/commit/6d619ab277cfa9fb005fd85ef0ba7ba3e2c027f3))
+- *(config)* Update dependencies - ([324d0fa](https://github.com/mariovagomarzal/dotfiles/commit/324d0faf6b0dbd03aa8b907b64b1aeeddc70262b))
+- *(config)* Update dependencies - ([c6598ea](https://github.com/mariovagomarzal/dotfiles/commit/c6598ea0d1b3bee82ab87558ff4a8746db03b73a))
+- *(config)* Update dependencies - ([cf5a617](https://github.com/mariovagomarzal/dotfiles/commit/cf5a617b2973ba602b7b3a44003d53c1b4a29ea2))
+- *(config)* Update dependencies - ([ea604c8](https://github.com/mariovagomarzal/dotfiles/commit/ea604c89d65f99ff709a779cbd317ea4b3ca06e5))
+- *(config)* Update dependencies - ([5d61b20](https://github.com/mariovagomarzal/dotfiles/commit/5d61b20a6ed4720c0bcaeb212639ca232a6ef928))
+- *(config)* Update dependencies - ([7319eff](https://github.com/mariovagomarzal/dotfiles/commit/7319eff217134c6982e6862e5bb0c2ce9a093254))
+- *(config)* Update dependencies - ([10d4087](https://github.com/mariovagomarzal/dotfiles/commit/10d40872c0b6ba53d14a3b5e9849b49ea183cddb))
+- *(darwin)* Bind `alt-z` in AeroSpace to launch Zed - ([d6ab1ed](https://github.com/mariovagomarzal/dotfiles/commit/d6ab1ed4070a61d91141bfce530bc4e27b59f18d))
+- *(darwin)* Upgrade Homebrew packages on activation - ([5604601](https://github.com/mariovagomarzal/dotfiles/commit/5604601bbbef93d470833901dd95a7afd5ebbc5a))
+- *(darwin)* Manage Zed through home-manager instead of Homebrew - ([2c10de9](https://github.com/mariovagomarzal/dotfiles/commit/2c10de9a03ffadec8745c57c947ec95faf764cbf))
+- *(home)* Add Claude Code home module with personal customizations - ([7a1cf3d](https://github.com/mariovagomarzal/dotfiles/commit/7a1cf3dda752311635367e6da2d83b96621cd414))
+- *(home)* Show effort level in Claude Code status line - ([e34645f](https://github.com/mariovagomarzal/dotfiles/commit/e34645f562af7af60dd679e51ad926f922133837))
+- *(home)* Add a basic Zed configuration - ([7ff4c28](https://github.com/mariovagomarzal/dotfiles/commit/7ff4c28ab2a473d50b959343802ed1fbd0afec3a))
+- *(home)* Add a basic Jujutsu configuration - ([2f5468e](https://github.com/mariovagomarzal/dotfiles/commit/2f5468ecb6fd91e19cb0b9ac296f43559ebdba5a))
+- *(home)* Configure Zed with settings, extensions, and language tools - ([0765955](https://github.com/mariovagomarzal/dotfiles/commit/076595562259db8d345f542ef4489ba5819bd1a9))
+- *(home)* Replace gemini-cli with antigravity-cli - ([0a1dd13](https://github.com/mariovagomarzal/dotfiles/commit/0a1dd13259159d0f0795e0fac43878c3f4470874))
+- *(shared)* Delete generations older than 30 days on GC - ([91ae41d](https://github.com/mariovagomarzal/dotfiles/commit/91ae41d94d70c779e4b2342dd5fd9fbe6802a14e))
+- *(shared)* Back up files clobbered on activation - ([eb951b6](https://github.com/mariovagomarzal/dotfiles/commit/eb951b69c040bb2d8a284b2e156651ae2d9a3acb))
+- *(shared)* Set fish as the login shell - ([687b701](https://github.com/mariovagomarzal/dotfiles/commit/687b701b809d12926d03600080bd2c882de3e949))
+### 🐛 Fixed
+
+- *(home)* Use nixvim treesitter package for language grammars - ([df1c8ea](https://github.com/mariovagomarzal/dotfiles/commit/df1c8ea273da420bc16d9c1ed6e251c23699b17a))
+- *(home)* Adapt SSH and Catppuccin options to updated dependencies - ([bd9eda2](https://github.com/mariovagomarzal/dotfiles/commit/bd9eda269490868842b0038803bc947380a5ef3a))
+- *(shared)* Remove nixpkgs config workarounds from nix-core - ([545b45b](https://github.com/mariovagomarzal/dotfiles/commit/545b45b3e4199eeb24044f61c22c26cfc1e8cc13))
+### 🛠️ Refactored
+
+- *(home)* Inline Claude Code customizations into the dotfiles repo - ([a9cb19b](https://github.com/mariovagomarzal/dotfiles/commit/a9cb19ba0a1528ca86ea2e4852e215209bb983ef))
+- *(home)* Simplify Claude Code status line layout - ([81222ff](https://github.com/mariovagomarzal/dotfiles/commit/81222ff279a2a9825648c26026190cb2d69c5ef9))
+### 📚 Documentation
+
+- Fix indentation of note callout in README - ([d9c9be2](https://github.com/mariovagomarzal/dotfiles/commit/d9c9be216674329996d807fe3ac7f0ccd463398d))
+### 🔧 Chore
+
+- *(checks)* Exclude modules markdown from markdownlint - ([e75b8b5](https://github.com/mariovagomarzal/dotfiles/commit/e75b8b5fc85400ba02a1251778c5ffd13af47971))
+### 🏗️ Build
+
+- *(checks)* Use prek for git hooks - ([bf7e3e6](https://github.com/mariovagomarzal/dotfiles/commit/bf7e3e6b1293210fd1e87d527522e4fbfb27aed6))
+
 ## [2026.03.03](https://github.com/mariovagomarzal/dotfiles/releases/tag/2026.03.03)
 
 ### ⛰️ Added
