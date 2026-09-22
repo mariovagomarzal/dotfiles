@@ -75,6 +75,7 @@
   outputs = inputs:
     inputs.blueprint {
       inherit inputs;
+      prefix = "nix/";
 
       nixpkgs.config = {
         allowUnfree = true;

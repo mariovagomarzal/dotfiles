@@ -8,7 +8,7 @@
   ...
 }:
 inputs.git-hooks-nix.lib.${system}.run {
-  src = ./..;
+  src = ../..;
 
   package = pkgs.prek;
 
@@ -32,7 +32,7 @@ inputs.git-hooks-nix.lib.${system}.run {
         # Allow the first line not to be a header.
         "MD041" = false;
       };
-      excludes = ["CHANGELOG.md" "^modules/.*\\.md$"];
+      excludes = ["CHANGELOG.md" "^nix/modules/.*\\.md$"];
     };
 
     # Enable the Gitlint git hook.

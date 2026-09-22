@@ -59,10 +59,15 @@ This repository's flake uses [Blueprint][blueprint], a library that maps a
 standard folder structure to flake outputs with an opinionated approach
 that keeps things simple and predictable.
 
+The `flake.nix` and `flake.lock` files remain at the repository root. Blueprint
+loads the Nix configuration from `nix/`, including the `checks/`, `hosts/`,
+`lib/`, `modules/`, and `packages/` directories and the development shell and
+formatter definitions. Repository tasks and documentation remain at the root.
+
 For comprehensive details on how Blueprint works, please refer to the [official
 documentation][blueprint].
 
-Check the specific directories in this repository to see which modules, hosts,
+Check the specific directories under `nix/` to see which modules, hosts,
 and configurations are currently available.
 
 ## Setup
@@ -212,25 +217,25 @@ issues. Other standard types (`docs`, `style`, `refactor`, `perf`, `test`,
 Scopes identify which part of the repository is affected and follow specific
 patterns depending on the part of the configuration (if any) being changed:
 
-- Module changes in the `modules/` directory use simple platform identifiers:
+- Module changes in the `nix/modules/` directory use simple platform identifiers:
   `nixos`, `darwin`, or `home`. For example: `feat(nixos): add new firewall
   module` or `fix(home): correct git module structure`.
 
-- Host configurations in the `hosts/` directory use the host name directly,
+- Host configurations in the `nix/hosts/` directory use the host name directly,
   such as `fix(Marios-MBP): update display settings`.
 
-- User configurations in the `hosts/<host_name>/users/` directories follow the
+- User configurations in the `nix/hosts/<host_name>/users/` directories follow the
   pattern `<host_name>/<user_name>`, like `feat(Marios-MBP/mariovagomarzal): add
   starship config`.
 
 - General changes use broader scopes:
   - `config` for general configuration changes not specific to a module, system,
     or home (flake-level changes, overlays, inputs, structure, etc.).
-  - `lib` for changes related to the custom Nix library, stored in `lib/`.
+  - `lib` for changes related to the custom Nix library, stored in `nix/lib/`.
   - `overlays` for changes to package overlays, stored in `overlays/`.
-  - `packages` for changes to custom packages, stored in `packages/`.
+  - `packages` for changes to custom packages, stored in `nix/packages/`.
   - `shells` for changes to development shells, stored in `shells/`.
-  - `checks` for changes to flake checks, stored in `checks/`.
+  - `checks` for changes to flake checks, stored in `nix/checks/`.
 
 Other scopes can be used as needed.
 
