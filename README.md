@@ -14,16 +14,6 @@
 
 &nbsp;
 
-<details open>
-  <summary>Configurations previews</summary>
-  <br/>
-  <p align="center">
-    <img alt="Marios-MBP preview" src=".github/assets/Marios-MBP-2026-02-17.png" width="600">
-  </p>
-</details>
-
-&nbsp;
-
 ## Table of contents
 
 - [📖 About this repository](#about-this-repository)
