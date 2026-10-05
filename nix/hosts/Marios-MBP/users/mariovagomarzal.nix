@@ -13,6 +13,7 @@
     fish.home
     git.home
     jujutsu.home
+    keepassxc.home
     lazygit.home
     lsd.home
     lua.home
