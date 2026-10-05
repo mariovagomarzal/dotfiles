@@ -19,7 +19,6 @@
   system.primaryUser = "mariovagomarzal";
 
   imports = with flake.modules; [
-    core.darwin
     options.darwin
     homebrew.darwin
     macos.darwin

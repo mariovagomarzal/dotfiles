@@ -6,7 +6,6 @@
     bat.home
     catppuccin.home
     claude-code.home
-    core.home
     delta.home
     direnv.home
     fastfetch.home
@@ -27,7 +26,6 @@
     zed.home
     zoxide.home
     aerospace.home-darwin
-    core.home-darwin
     firefox.home-darwin
     options.home-darwin
     zed.home-darwin

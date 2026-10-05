@@ -1,4 +1,10 @@
-{config, ...}: {
+{
+  inputs,
+  config,
+  ...
+}: {
+  imports = [inputs.catppuccin.homeModules.catppuccin];
+
   catppuccin = {
     # Auto-enroll every supported program/service ('autoEnable' will control
     # this once the upcoming behavior lands; 'enable' becomes a global toggle).

@@ -3,6 +3,8 @@
   config,
   ...
 }: {
+  imports = [inputs.nix-homebrew.darwinModules.nix-homebrew];
+
   /*
   Some packages are installed via Homebrew because they lack good Nix support on
   macOS. Specifically, GUI applications should be installed this way to ensure

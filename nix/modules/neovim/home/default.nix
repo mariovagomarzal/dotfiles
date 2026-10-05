@@ -1,4 +1,4 @@
-{...}: {
+{inputs, ...}: {
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
@@ -18,6 +18,7 @@
   };
 
   imports = [
+    inputs.nixvim.homeModules.nixvim
     ./vim
     ./languages
     ./completion
