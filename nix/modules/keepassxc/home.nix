@@ -29,11 +29,14 @@ for it at startup; preferences are changed here, not in its settings window.
     };
   };
 
-  # Opened rather than run, so it is the same app bundle the Dock and Spotlight know.
+  # Run through the linked app rather than with `open`, which resolves the link: macOS does not show the menu bar
+  # icon of an app running from /nix/store.
   launchd.agents.keepassxc = {
     enable = true;
     config = {
-      ProgramArguments = ["/usr/bin/open" "-a" "${config.home.homeDirectory}/Applications/Home Manager Apps/KeePassXC.app"];
+      ProgramArguments = [
+        "${config.home.homeDirectory}/${config.targets.darwin.linkApps.directory}/KeePassXC.app/Contents/MacOS/KeePassXC"
+      ];
       RunAtLoad = true;
     };
   };
