@@ -1,7 +1,7 @@
 #############################
 # Neovim options submodule. #
 #############################
-{...}: {
+_: {
   programs.nixvim = {
     # Clipboard integration.
     clipboard.register = "unnamedplus";

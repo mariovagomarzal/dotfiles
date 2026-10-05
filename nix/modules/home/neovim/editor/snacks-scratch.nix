@@ -1,7 +1,7 @@
 ####################################
 # Snacks scratch plugin submodule. #
 ####################################
-{...}: {
+_: {
   programs.nixvim = {
     # Snacks scratch.
     plugins.snacks.settings.scratch = {

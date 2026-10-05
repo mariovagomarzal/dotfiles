@@ -1,7 +1,7 @@
 ##################################
 # Snacks words plugin submodule. #
 ##################################
-{...}: {
+_: {
   programs.nixvim = {
     # Snacks words.
     plugins.snacks.settings.words = {

@@ -6,5 +6,5 @@
   lib,
   ...
 }: {
-  programs.firefox.package = lib.makeOverridable ({...}: pkgs.firefox-bin) {};
+  programs.firefox.package = lib.makeOverridable (_: pkgs.firefox-bin) {};
 }

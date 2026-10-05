@@ -1,7 +1,7 @@
 #######################################
 # Neovim Diffview plugin submodule. #
 #######################################
-{...}: {
+_: {
   programs.nixvim = {
     # Diffview.
     plugins.diffview = {

@@ -1,7 +1,7 @@
 #####################################
 # Neovim general keymaps submodule. #
 #####################################
-{...}: {
+_: {
   programs.nixvim = {
     # Leader keys.
     globals = {

@@ -1,7 +1,7 @@
 #############################################
 # Neovim Blink Completion plugin submodule. #
 #############################################
-{...}: {
+_: {
   programs.nixvim = {
     # Blink Completion.
     plugins.blink-cmp = {

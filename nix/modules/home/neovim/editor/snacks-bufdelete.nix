@@ -1,7 +1,7 @@
 ######################################
 # Snacks bufdelete plugin submodule. #
 ######################################
-{...}: {
+_: {
   programs.nixvim = {
     # Snacks bufdelete.
     plugins.snacks.settings.bufdelete = {

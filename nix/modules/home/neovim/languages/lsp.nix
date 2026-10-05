@@ -1,7 +1,7 @@
 ############################################
 # Neovim core LSP configuration submodule. #
 ############################################
-{...}: {
+_: {
   programs.nixvim = {
     # LSP configuration.
     lsp = {

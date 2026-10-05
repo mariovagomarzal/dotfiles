@@ -1,7 +1,7 @@
 ######################################
 # Neovim Which-Key plugin submodule. #
 ######################################
-{...}: {
+_: {
   programs.nixvim = {
     # Which-Key.
     plugins.which-key = {

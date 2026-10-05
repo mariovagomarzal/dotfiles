@@ -1,7 +1,7 @@
 ####################################
 # Nix core settings shared module. #
 ####################################
-{inputs, ...}: {
+_: {
   # Enable the Nix package manager.
   nix.enable = true;
 

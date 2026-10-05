@@ -1,7 +1,7 @@
 ########################
 # Lazygit home module. #
 ########################
-{...}: {
+_: {
   programs.lazygit = {
     enable = true;
 

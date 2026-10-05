@@ -1,7 +1,7 @@
 #######################################
 # Neovim Toggleterm plugin submodule. #
 #######################################
-{...}: {
+_: {
   programs.nixvim = {
     # Toggleterm.
     plugins.toggleterm = {

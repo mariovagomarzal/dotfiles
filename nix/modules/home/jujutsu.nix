@@ -1,7 +1,7 @@
 ########################
 # Jujutsu home module. #
 ########################
-{...}: {
+_: {
   programs.jujutsu = {
     enable = true;
 

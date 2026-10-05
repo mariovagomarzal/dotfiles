@@ -1,7 +1,7 @@
 #########################################
 # Snacks statuscolumn plugin submodule. #
 #########################################
-{...}: {
+_: {
   programs.nixvim = {
     # Snacks statuscolumn.
     plugins.snacks.settings.statuscolumn = {

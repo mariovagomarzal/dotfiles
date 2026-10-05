@@ -1,7 +1,7 @@
 ####################################
 # Snacks lazygit plugin submodule. #
 ####################################
-{...}: {
+_: {
   programs.nixvim = {
     # Snacks lazygit.
     plugins.snacks.settings.lazygit = {

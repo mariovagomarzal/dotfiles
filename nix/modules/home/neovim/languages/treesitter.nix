@@ -1,7 +1,7 @@
 #######################################
 # Neovim Treesitter plugin submodule. #
 #######################################
-{...}: {
+_: {
   programs.nixvim = {
     # Treesitter.
     plugins.treesitter = {

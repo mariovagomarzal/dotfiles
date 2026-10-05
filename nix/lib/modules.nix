@@ -18,7 +18,7 @@
   # Convert nested module attrsets to a flat list of modules.
   flattenModulesToList = modules:
     lib.concatMap
-    (lib.attrValues)
+    lib.attrValues
     (lib.attrValues modules);
 
   # Get all modules of a specific type (e.g., "nixos", "darwin").

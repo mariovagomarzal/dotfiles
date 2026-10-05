@@ -1,7 +1,7 @@
 #########################
 # Obsidian home module. #
 #########################
-{...}: {
+_: {
   programs.obsidian = {
     enable = true;
 

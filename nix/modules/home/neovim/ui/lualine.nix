@@ -1,7 +1,7 @@
 ####################################
 # Neovim lualine plugin submodule. #
 ####################################
-{...}: {
+_: {
   programs.nixvim = {
     # Lualine.
     plugins.lualine = {

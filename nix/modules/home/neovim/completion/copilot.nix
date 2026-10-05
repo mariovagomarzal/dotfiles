@@ -1,7 +1,7 @@
 ####################################
 # GitHub Copilot plugin submodule. #
 ####################################
-{...}: {
+_: {
   programs.nixvim = {
     lsp.servers.copilot.enable = true;
 

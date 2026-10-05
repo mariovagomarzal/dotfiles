@@ -1,7 +1,7 @@
 #####################################
 # Snacks explorer plugin submodule. #
 #####################################
-{...}: {
+_: {
   programs.nixvim = {
     # Snacks explorer.
     plugins.snacks.settings.explorer = {

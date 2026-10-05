@@ -1,7 +1,7 @@
 ####################
 # Git home module. #
 ####################
-{...}: {
+_: {
   programs.git = {
     enable = true;
 

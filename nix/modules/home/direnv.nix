@@ -1,7 +1,7 @@
 #######################
 # Direnv home module. #
 #######################
-{...}: {
+_: {
   programs.direnv = {
     enable = true;
 

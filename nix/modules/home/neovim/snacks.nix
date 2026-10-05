@@ -1,7 +1,7 @@
 ########################################
 # Neovim Snacks core plugin submodule. #
 ########################################
-{...}: {
+_: {
   programs.nixvim = {
     # Snacks.
     # Since Snacks is a colection of various utilities, this module is reserved

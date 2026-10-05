@@ -1,7 +1,7 @@
 #####################################
 # Snacks notifier plugin submodule. #
 #####################################
-{...}: {
+_: {
   programs.nixvim = {
     # Snacks notifier.
     plugins.snacks.settings.notifier = {

@@ -1,7 +1,7 @@
 #####################
 # Fish home module. #
 #####################
-{...}: {
+_: {
   programs.fish = {
     enable = true;
 

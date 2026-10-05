@@ -1,7 +1,7 @@
 ####################################
 # Neovim Comment plugin submodule. #
 ####################################
-{...}: {
+_: {
   programs.nixvim = {
     # Comment.
     plugins.comment = {

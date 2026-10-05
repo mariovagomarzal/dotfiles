@@ -1,7 +1,7 @@
 ##################################
 # SSH configuration home module. #
 ##################################
-{...}: {
+_: {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;

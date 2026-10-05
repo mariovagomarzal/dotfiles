@@ -1,7 +1,7 @@
 ####################
 # Lsd home module. #
 ####################
-{...}: {
+_: {
   programs.lsd = {
     enable = true;
 

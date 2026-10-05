@@ -1,7 +1,7 @@
 #####################################
 # Neovim Gitsigns plugin submodule. #
 #####################################
-{...}: {
+_: {
   programs.nixvim = {
     # Gitsigns.
     plugins.gitsigns = {

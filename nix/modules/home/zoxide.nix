@@ -1,7 +1,7 @@
 #######################
 # Zoxide home module. #
 #######################
-{...}: {
+_: {
   programs.zoxide = {
     enable = true;
 

@@ -1,7 +1,7 @@
 ####################################
 # Snacks bigfile plugin submodule. #
 ####################################
-{...}: {
+_: {
   programs.nixvim = {
     # Snacks bigfile.
     plugins.snacks.settings.bigfile = {

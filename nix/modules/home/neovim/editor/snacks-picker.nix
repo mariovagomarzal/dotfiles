@@ -1,7 +1,7 @@
 ###################################
 # Snacks picker plugin submodule. #
 ###################################
-{...}: {
+_: {
   programs.nixvim = {
     # Snacks picker.
     plugins.snacks.settings.picker = {
