@@ -1,8 +1,5 @@
 {flake, ...}: let
-  inherit
-    (flake.lib.modules)
-    modulesWithout
-    ;
+  inherit (flake.modules) darwin shared;
 in {
   system.stateVersion = 6;
 
@@ -23,8 +20,14 @@ in {
 
   system.primaryUser = "mariovagomarzal";
 
-  imports = modulesWithout {
-    "darwin" = [];
-    "shared" = [];
-  };
+  imports = [
+    darwin.core
+    darwin.options
+    darwin.packages
+    darwin.system
+    shared.core
+    shared.nix-core
+    shared.options
+    shared.packages
+  ];
 }
