@@ -18,4 +18,6 @@ pkgs.stdenv.mkDerivation (finalAttrs: {
 
     runHook postInstall
   '';
+
+  meta.platforms = pkgs.lib.platforms.darwin;
 })
