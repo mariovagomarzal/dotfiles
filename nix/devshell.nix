@@ -26,9 +26,5 @@ in
         package = pkgs.just;
         help = "Type 'just' to see the available tasks.";
       }
-      {
-        package = pkgs.git-cliff;
-        help = "Use 'git-cliff' to generate changelogs from git metadata.";
-      }
     ];
   }
