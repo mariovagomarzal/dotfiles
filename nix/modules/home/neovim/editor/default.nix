@@ -1,6 +1,3 @@
-############################
-# Neovim editor submodule. #
-############################
 {...}: {
   imports = [
     ./snacks-picker.nix

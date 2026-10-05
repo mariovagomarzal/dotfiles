@@ -1,14 +1,9 @@
-########################################
-# Neovim Blink Pairs plugin submodule. #
-########################################
 _: {
   programs.nixvim = {
-    # Blink Pairs.
     plugins.blink-pairs = {
       enable = true;
 
       settings = {
-        # Highlight settings.
         highlights = {
           enabled = true;
           cmdline = true;

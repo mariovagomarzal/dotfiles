@@ -1,12 +1,8 @@
-######################################
-# Custom host Darwin options module. #
-######################################
 {
   config,
   lib,
   ...
 }: let
-  # Options related functions.
   inherit
     (lib)
     mkOption
@@ -15,10 +11,8 @@
     mkMerge
     ;
 
-  # Host configuration object.
   cfg = config.host;
 in {
-  # Options for the host module.
   options.host = {
     hostname = mkOption {
       type = types.str;
@@ -32,7 +26,6 @@ in {
     };
   };
 
-  # Host configuration.
   config = mkMerge [
     (
       mkIf (cfg.hostname != "") {

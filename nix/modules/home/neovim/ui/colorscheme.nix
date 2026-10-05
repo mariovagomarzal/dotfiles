@@ -1,9 +1,5 @@
-#################################
-# Neovim colorscheme submodule. #
-#################################
 {config, ...}: {
   programs.nixvim = {
-    # Catppuccin colorscheme configuration.
     colorschemes.catppuccin = {
       enable = true;
 

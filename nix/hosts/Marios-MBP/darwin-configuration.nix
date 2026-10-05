@@ -1,6 +1,3 @@
-###################################################
-# Mario's MacBook Pro (Marios-MBP) Darwin system. #
-###################################################
 {flake, ...}: let
   inherit
     (flake.lib.modules)
@@ -11,13 +8,11 @@ in {
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  # Host information.
   host = {
     hostname = "Marios-MBP";
     computername = "Mario's MacBook Pro";
   };
 
-  # Users information.
   users.users = {
     "mariovagomarzal" = {
       uid = 501;
@@ -26,7 +21,6 @@ in {
     };
   };
 
-  # Set the primary user of the system.
   system.primaryUser = "mariovagomarzal";
 
   imports = modulesWithout {

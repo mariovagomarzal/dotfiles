@@ -1,11 +1,6 @@
-############################################
-# Neovim core LSP configuration submodule. #
-############################################
 _: {
   programs.nixvim = {
-    # LSP configuration.
     lsp = {
-      # LSP keybindings.
       keymaps = [
         {
           key = "K";
@@ -22,10 +17,8 @@ _: {
       ];
     };
 
-    # Use lspconfig for default LSP configurations.
     plugins.lspconfig.enable = true;
 
-    # Diagnostics configuration.
     diagnostic.settings = {
       virtual_text = true;
       signs = true;
@@ -38,7 +31,6 @@ _: {
       };
     };
 
-    # LSP progress notifications.
     extraConfigLuaPre = ''
       -- Track LSP progress per client
       local progress = vim.defaulttable and vim.defaulttable() or setmetatable({}, {
@@ -50,7 +42,6 @@ _: {
       })
     '';
 
-    # Show LSP progress with animated spinner using Snacks notifier.
     autoCmd = [
       {
         event = "LspProgress";
@@ -97,7 +88,6 @@ _: {
       }
     ];
 
-    # Diagnostics keymaps.
     keymaps = [
       {
         mode = "n";

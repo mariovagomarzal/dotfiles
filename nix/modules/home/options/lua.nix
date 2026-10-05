@@ -1,13 +1,9 @@
-###########################
-# Custom Lua home module. #
-###########################
 {
   config,
   lib,
   pkgs,
   ...
 }: let
-  # Options related functions.
   inherit
     (lib)
     mkEnableOption
@@ -18,10 +14,8 @@
     mkMerge
     ;
 
-  # Lua program configuration object.
   cfg = config.programs.lua;
 in {
-  # Options for the Lua program module.
   options = {
     programs.lua = {
       enable = mkEnableOption "lua";
@@ -54,16 +48,13 @@ in {
     };
   };
 
-  # Lua program configuration.
   config = mkIf cfg.enable (mkMerge [
     {
-      # Wrap the Lua package with the extra packages.
       programs.lua.finalPackage = cfg.package.withPackages (
         ps:
           lib.concatLists (map (f: f ps) cfg.extraPackages)
       );
 
-      # Add the final package to the list of packages to install.
       home.packages = [cfg.finalPackage];
     }
   ]);

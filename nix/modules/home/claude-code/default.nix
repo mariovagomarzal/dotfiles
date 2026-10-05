@@ -1,13 +1,9 @@
-############################
-# Claude Code home module. #
-############################
 {pkgs, ...}: let
   inherit (pkgs) fetchFromGitHub;
 in {
   programs.claude-code = {
     enable = true;
 
-    # Extra marketplaces.
     marketplaces = {
       "leanprover" = fetchFromGitHub {
         owner = "leanprover";
@@ -17,32 +13,26 @@ in {
       };
     };
 
-    # Claude Code configuration content.
     settings = {
-      # Status line configuration.
       statusLine = {
         command = ./statusline.py;
         type = "command";
         padding = 0;
       };
 
-      # Model configuration.
       model = "opus";
       thinking.type = "adaptive";
 
-      # Commit message attributions.
       attribution = {
         commit = "";
         pr = "";
       };
 
-      # Enabled plugins.
       enabledPlugins = {
         "lean@leanprover" = true;
       };
     };
 
-    # The directory where custom commands are stores.
     commandsDir = ./commands;
   };
 }

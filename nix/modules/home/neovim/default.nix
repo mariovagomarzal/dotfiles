@@ -1,6 +1,3 @@
-#######################
-# Neovim home module. #
-#######################
 {...}: {
   programs.nixvim = {
     enable = true;
@@ -12,7 +9,6 @@
       allowUnfree = true;
     };
 
-    # Dependencies.
     dependencies = {
       tree-sitter.enable = true;
       ripgrep.enable = true;

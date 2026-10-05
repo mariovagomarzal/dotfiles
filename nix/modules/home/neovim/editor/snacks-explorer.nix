@@ -1,19 +1,13 @@
-#####################################
-# Snacks explorer plugin submodule. #
-#####################################
 _: {
   programs.nixvim = {
-    # Snacks explorer.
     plugins.snacks.settings.explorer = {
       replace_netrw = true;
       trash = true;
     };
 
-    # Explorer picker settings.
     plugins.snacks.settings.picker.sources.explorer = {
     };
 
-    # Explorer keymaps.
     keymaps = [
       {
         mode = "n";

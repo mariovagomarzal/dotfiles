@@ -1,13 +1,9 @@
-#################################
-# Custom AeroSpace home module. #
-#################################
 {
   config,
   lib,
   pkgs,
   ...
 }: let
-  # Options related functions.
   inherit
     (lib)
     mkEnableOption
@@ -18,10 +14,8 @@
     mkMerge
     ;
 
-  # AeroSpace program configuration object.
   cfg = config.programs.aerospace;
 in {
-  # Extended options for the AeroSpace program module.
   options = {
     programs.aerospace.swipeaerospace = {
       enable = mkEnableOption "swipeaerospace";
@@ -38,13 +32,10 @@ in {
     };
   };
 
-  # Extended AeroSpace program configuration.
   config = mkIf (cfg.enable && cfg.swipeaerospace.enable) (mkMerge [
     {
-      # Add the SwipeAeroSpace package to the list of packages to install.
       home.packages = [cfg.swipeaerospace.package];
 
-      # Configure the launchd service for SwipeAeroSpace.
       launchd.agents.swipeaerospace = {
         enable = true;
         config = {

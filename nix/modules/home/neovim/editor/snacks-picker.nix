@@ -1,17 +1,11 @@
-###################################
-# Snacks picker plugin submodule. #
-###################################
 _: {
   programs.nixvim = {
-    # Snacks picker.
     plugins.snacks.settings.picker = {
       enabled = true;
       ui_select = true;
     };
 
-    # Picker keymaps.
     keymaps = [
-      # File searching.
       {
         mode = "n";
         key = "<leader>f<space>";
@@ -49,7 +43,6 @@ _: {
         options.desc = "Find notifications";
       }
 
-      # Git and GitHub.
       {
         mode = "n";
         key = "<leader>gL";
@@ -99,7 +92,6 @@ _: {
         options.desc = "Find all pull requests";
       }
 
-      # LSP navigation.
       {
         mode = "n";
         key = "gd";

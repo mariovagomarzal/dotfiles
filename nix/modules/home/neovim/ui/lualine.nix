@@ -1,14 +1,9 @@
-####################################
-# Neovim lualine plugin submodule. #
-####################################
 _: {
   programs.nixvim = {
-    # Lualine.
     plugins.lualine = {
       enable = true;
 
       settings = {
-        # General options.
         options = {
           globalstatus = true;
           component_separators = {
@@ -22,12 +17,10 @@ _: {
           disabled_filetypes.statusline = ["dashboard"];
         };
 
-        # Active sections.
         sections = {
           lualine_a = ["mode"];
           lualine_b = ["branch" "diff" "diagnostics"];
           lualine_c = [
-            # Toggleterm: terminal number ([N]) with bold mauve accent.
             {
               __unkeyed-1.__raw = ''
                 function()
@@ -42,7 +35,6 @@ _: {
               '';
               color = {gui = "bold";};
             }
-            # Toggleterm: terminal info (Running <cmd> at <cwd>).
             {
               __unkeyed-1.__raw = ''
                 function()
@@ -60,7 +52,6 @@ _: {
                 end
               '';
             }
-            # Regular buffers: filename with relative path.
             {
               __unkeyed-1 = "filename";
               path = 1;
@@ -76,13 +67,11 @@ _: {
           lualine_z = ["location"];
         };
 
-        # Inactive sections.
         inactive_sections = {
           lualine_c = ["filename"];
           lualine_x = ["location"];
         };
 
-        # Extensions.
         extensions = ["neo-tree"];
       };
     };

@@ -1,17 +1,12 @@
-#####################################
-# AeroSpace home module for Darwin. #
-#####################################
 {config, ...}: {
   programs.aerospace = {
     enable = true;
 
-    # Enable the launchd agent for AeroSpace.
     launchd = {
       enable = true;
       keepAlive = true;
     };
 
-    # AeroSpace configuration content.
     settings = {
       config-version = 2;
 
@@ -19,7 +14,6 @@
       start-at-login = false;
       after-startup-command = [];
 
-      # Exec environment variables.
       exec = {
         inherit-env-vars = true;
         env-vars = {};
@@ -28,18 +22,14 @@
       # Allow macOS 'Hide application' (cmd-h) action.
       automatically-unhide-macos-hidden-apps = false;
 
-      # Monitor assignments.
       workspace-to-monitor-force-assignment = {};
 
-      # Normalizations.
       enable-normalization-flatten-containers = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;
 
-      # Layout settings.
       default-root-container-layout = "tiles";
       default-root-container-orientation = "auto";
 
-      # Window paddings.
       accordion-padding = 30;
       gaps = let
         defaultGap = 20;
@@ -52,7 +42,6 @@
         outer.right = defaultGap;
       };
 
-      # Automation hooks.
       exec-on-workspace-change = [];
       on-focus-changed = [];
       on-focused-monitor-changed = [];
@@ -64,11 +53,8 @@
         }
       ];
 
-      # Key mapping preset.
       key-mapping.preset = "qwerty";
 
-      # Keybindings by mode.
-      # Main mode keybindings.
       mode.main.binding = {
         # Disable macOS hide application shortcuts.
         cmd-h = [];
@@ -145,7 +131,6 @@
         alt-r = "mode resize";
       };
 
-      # Service mode keybindings.
       mode.service.binding = {
         esc = ["reload-config" "mode main"];
 
@@ -161,7 +146,6 @@
         shift-down = ["volume set 0" "mode main"];
       };
 
-      # Resize mode keybindings.
       mode.resize.binding = let
         normalStep = "50";
         smallStep = "10";
@@ -186,7 +170,6 @@
       };
     };
 
-    # Enable the SwipeAeroSpace launchd agent.
     swipeaerospace = {
       enable = false;
       keepAlive = true;

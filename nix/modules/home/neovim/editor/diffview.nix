@@ -1,14 +1,9 @@
-#######################################
-# Neovim Diffview plugin submodule. #
-#######################################
 _: {
   programs.nixvim = {
-    # Diffview.
     plugins.diffview = {
       enable = true;
     };
 
-    # Diffview keymaps.
     keymaps = [
       {
         mode = "n";

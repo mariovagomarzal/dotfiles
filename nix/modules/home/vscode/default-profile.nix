@@ -1,15 +1,9 @@
-###########################################################
-# Default profile for the Visual Studio Code home module. #
-###########################################################
 {pkgs, ...}: {
   programs.vscode.profiles.default = {
-    # Disable updates notifications.
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
 
-    # Extensions.
     extensions = with pkgs.vscode-extensions; [
-      # Language support extensions.
       bbenoist.nix
       ms-python.python
       ms-python.debugpy
@@ -20,28 +14,22 @@
       tamasfe.even-better-toml
       geequlim.godot-tools
 
-      # AI extensions.
       anthropic.claude-code
 
-      # Miscellaneous.
       natqe.reload
       adpyke.codesnap
       codezombiech.gitignore
       stkb.rewrap
     ];
 
-    # Settings.
     userSettings = {
-      # Suggestions settings.
       "editor.acceptSuggestionOnCommitCharacter" = false;
       "editor.acceptSuggestionOnEnter" = "off";
 
-      # Terminal settings.
       "terminal.integrated.defaultProfile.osx" = "fish";
       "terminal.integrated.stickyScroll.enabled" = false;
       "terminal.integrated.suggest.enabled" = false;
 
-      # Font settings.
       "editor.fontFamily" = "FiraCode Nerd Font";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 14;
@@ -49,7 +37,6 @@
       "terminal.integrated.fontFamily" = "FiraCode Nerd Font";
       "terminal.integrated.fontSize" = 12;
 
-      # Visual settings.
       "editor.mouseWheelZoom" = true;
 
       "editor.rulers" = [80 100 120];
@@ -65,13 +52,10 @@
       "workbench.editor.pinnedTabsOnSeparateRow" = true;
       "workbench.editor.tabSizing" = "shrink";
 
-      # File fomatting settings.
       "files.insertFinalNewline" = true;
 
-      # Extension settings.
       "extensions.autoUpdate" = false;
 
-      # Per-language settings.
       "[markdown]" = {
         "editor.tabSize" = 2;
       };
@@ -96,43 +80,33 @@
         "editor.tabSize" = 2;
       };
 
-      # Rewrap extension settings.
       "rewrap.autoWrap.enabled" = true;
       "rewrap.wrappingColumn" = 80;
 
-      # Tinymist Typst extension settings.
-
-      # LaTeX Workshop extension settings.
       "latex-workshop.latex.autoBuild.run" = "never";
     };
 
-    # Snippets.
     globalSnippets = {};
     languageSnippets = {};
 
-    # Keybindings.
     keybindings = [
-      # Accept suggestion with 'shift+enter'.
       {
         key = "shift+enter";
         command = "acceptSelectedSuggestion";
         when = "suggestWidgetVisible";
       }
 
-      # Select next suggestion with 'tab'.
       {
         key = "tab";
         command = "selectNextSuggestion";
         when = "suggestWidgetVisible && suggestWidgetMultipleSuggestions";
       }
 
-      # Disable 'tab' key for accepting suggestion.
       {
         key = "tab";
         command = "-acceptSelectedSuggestion";
       }
 
-      # Accept GitHub copilot suggestion with 'shift+enter'.
       {
         key = "shift+enter";
         command = "editor.action.inlineSuggest.commit";
@@ -144,14 +118,12 @@
           + "!editorTabMovesFocus";
       }
 
-      # Disable 'tab' key for accepting GitHub copilot suggestion.
       {
         key = "tab";
         command = "-editor.action.inlineSuggest.commit";
       }
     ];
 
-    # Tasks.
     userTasks = {};
   };
 }

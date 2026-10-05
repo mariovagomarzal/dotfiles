@@ -1,13 +1,8 @@
-################################
-# Snacks zen plugin submodule. #
-################################
 _: {
   programs.nixvim = {
-    # Snacks zen.
     plugins.snacks.settings.zen = {
     };
 
-    # Zen keymaps.
     keymaps = [
       {
         mode = "n";

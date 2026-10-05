@@ -1,19 +1,13 @@
-##########################
-# Alacritty home module. #
-##########################
 {config, ...}: {
   programs.alacritty = {
     enable = true;
 
-    # Alacritty configuration content.
     settings = {
-      # Shell configuration.
       terminal.shell = {
         program = "${config.programs.fish.package}/bin/fish";
         args = ["-l"];
       };
 
-      # Window configuration.
       window = {
         option_as_alt = "OnlyLeft";
         opacity = 0.95;
@@ -30,7 +24,6 @@
         };
       };
 
-      # Font configuration.
       font = {
         size = 12.5;
 
@@ -48,7 +41,6 @@
         };
       };
 
-      # Cursor configuration.
       cursor = {
         style = {
           shape = "Beam";

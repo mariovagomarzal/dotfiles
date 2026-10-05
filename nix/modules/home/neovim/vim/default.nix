@@ -1,6 +1,3 @@
-###################################
-# Neovim core settings submodule. #
-###################################
 {...}: {
   imports = [
     ./keymaps.nix

@@ -1,14 +1,9 @@
-#####################################
-# Neovim Gitsigns plugin submodule. #
-#####################################
 _: {
   programs.nixvim = {
-    # Gitsigns.
     plugins.gitsigns = {
       enable = true;
 
       settings = {
-        # Signs.
         signs = {
           add = {text = "+";};
           change = {text = "~";};
@@ -17,7 +12,6 @@ _: {
           changedelete = {text = "~";};
         };
 
-        # Staged signs.
         signs_staged = {
           add = {text = "┃";};
           change = {text = "┃";};
@@ -26,7 +20,6 @@ _: {
           changedelete = {text = "┃";};
         };
 
-        # Line blame.
         current_line_blame = false;
         current_line_blame_opts = {
           virt_text = true;
@@ -36,9 +29,7 @@ _: {
       };
     };
 
-    # Gitsigns keymaps.
     keymaps = [
-      # Hunk navigation.
       {
         mode = "n";
         key = "[h";
@@ -58,7 +49,6 @@ _: {
         };
       }
 
-      # Hunk actions.
       {
         mode = "n";
         key = "<leader>gv";

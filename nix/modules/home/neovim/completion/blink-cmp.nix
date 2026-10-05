@@ -1,19 +1,13 @@
-#############################################
-# Neovim Blink Completion plugin submodule. #
-#############################################
 _: {
   programs.nixvim = {
-    # Blink Completion.
     plugins.blink-cmp = {
       enable = true;
 
       settings = {
-        # Sources.
         sources = {
           default = ["lsp" "path" "buffer"];
         };
 
-        # Signature help.
         signature = {
           enabled = true;
           window = {
@@ -21,7 +15,6 @@ _: {
           };
         };
 
-        # Completion behavior.
         completion = {
           documentation = {
             auto_show = true;
@@ -39,7 +32,6 @@ _: {
           };
         };
 
-        # Keymaps.
         keymap = {
           preset = "none";
           "<S-CR>" = ["accept" "fallback"];

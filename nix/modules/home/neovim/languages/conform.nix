@@ -1,27 +1,20 @@
-####################################
-# Neovim Conform plugin submodule. #
-####################################
 {
   pkgs,
   lib,
   ...
 }: {
   programs.nixvim = {
-    # Conform.
     plugins.conform-nvim = {
       enable = true;
 
       settings = {
-        # Shared formatter commands.
         formatters = {
           prettier.command = lib.getExe pkgs.prettier;
         };
       };
     };
 
-    # Conform keymaps.
     keymaps = [
-      # Format buffer.
       {
         mode = "n";
         key = "<leader>cf";

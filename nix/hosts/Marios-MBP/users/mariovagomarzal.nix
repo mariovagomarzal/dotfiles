@@ -1,6 +1,3 @@
-################################################################################
-# Mario Vago Marzal's (mariovagomarzal) home configuration for aarch64-darwin. #
-################################################################################
 {flake, ...}: let
   inherit
     (flake.lib.modules)

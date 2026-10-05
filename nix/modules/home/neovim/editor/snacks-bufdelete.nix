@@ -1,14 +1,9 @@
-######################################
-# Snacks bufdelete plugin submodule. #
-######################################
 _: {
   programs.nixvim = {
-    # Snacks bufdelete.
     plugins.snacks.settings.bufdelete = {
       enabled = true;
     };
 
-    # Buffer delete keymaps.
     keymaps = [
       {
         mode = "n";

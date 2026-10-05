@@ -1,14 +1,9 @@
-##################################
-# Snacks words plugin submodule. #
-##################################
 _: {
   programs.nixvim = {
-    # Snacks words.
     plugins.snacks.settings.words = {
       enabled = true;
     };
 
-    # Words jumping keymaps.
     keymaps = [
       {
         mode = "n";

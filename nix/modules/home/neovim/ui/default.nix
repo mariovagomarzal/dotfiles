@@ -1,6 +1,3 @@
-########################
-# Neovim UI submodule. #
-########################
 {...}: {
   imports = [
     ./colorscheme.nix

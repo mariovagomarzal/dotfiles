@@ -1,17 +1,11 @@
-#####################################
-# Neovim general keymaps submodule. #
-#####################################
 _: {
   programs.nixvim = {
-    # Leader keys.
     globals = {
       mapleader = " ";
       maplocalleader = ",";
     };
 
-    # Keymaps.
     keymaps = [
-      # Save and quit.
       {
         mode = "n";
         key = "<leader>w";
@@ -58,7 +52,6 @@ _: {
         };
       }
 
-      # Window management and navigation.
       {
         mode = "n";
         key = "<leader>sv";
@@ -160,7 +153,6 @@ _: {
         };
       }
 
-      # Buffer navigation.
       {
         mode = "n";
         key = "<S-l>";
@@ -180,7 +172,6 @@ _: {
         };
       }
 
-      # Search.
       {
         mode = "n";
         key = "<Esc>";
@@ -191,7 +182,6 @@ _: {
         };
       }
 
-      # Visual mode indenting and lining.
       {
         mode = "v";
         key = ">";

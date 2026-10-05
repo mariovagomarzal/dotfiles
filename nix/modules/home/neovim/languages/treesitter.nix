@@ -1,25 +1,17 @@
-#######################################
-# Neovim Treesitter plugin submodule. #
-#######################################
 _: {
   programs.nixvim = {
-    # Treesitter.
     plugins.treesitter = {
       enable = true;
       settings = {
-        # Syntax highlighting.
         highlight = {
           enable = true;
           additional_vim_regex_highlighting = false;
         };
 
-        # Indentation.
         indent.enable = true;
 
-        # Folding.
         folding.enable = true;
 
-        # Incremental selection.
         incremental_selection = {
           enable = true;
           keymaps = {
@@ -32,7 +24,6 @@ _: {
       };
     };
 
-    # Folding with Treesitter.
     opts = {
       foldmethod = "expr";
       foldexpr = "v:lua.vim.treesitter.foldexpr()";

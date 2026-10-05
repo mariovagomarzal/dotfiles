@@ -1,13 +1,8 @@
-####################################
-# Snacks scratch plugin submodule. #
-####################################
 _: {
   programs.nixvim = {
-    # Snacks scratch.
     plugins.snacks.settings.scratch = {
     };
 
-    # Scratch keymaps.
     keymaps = [
       {
         mode = "n";

@@ -1,13 +1,9 @@
-################################################
-# Default profile for the Firefox home module. #
-################################################
 {pkgs, ...}: {
   programs.firefox.profiles.default = {
-    # Profile id and name. Id set to 0 to set it as the default profile.
+    # Id 0 makes this the default profile.
     id = 0;
     name = "Default";
 
-    # Bookmarks.
     bookmarks = {
       force = true;
       settings = [
@@ -100,19 +96,15 @@
       ];
     };
 
-    # Search settings.
     search = {
       force = true;
 
-      # Default search engine.
       default = "google";
       privateDefault = "google";
 
-      # Other search engines.
       engines = let
         dayInMs = 24 * 60 * 60 * 1000;
       in {
-        # Default search engines.
         "google".metaData.alias = "@g";
         "wikipedia".metaData.alias = "@wk";
         "duckduckgo".metaData.hidden = true;
@@ -241,7 +233,6 @@
         };
       };
 
-      # Order of search engines.
       order = [
         "google"
         "wikipedia"
@@ -254,7 +245,6 @@
       ];
     };
 
-    # Extensions.
     extensions = {
       force = true;
       packages = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -263,39 +253,30 @@
       ];
     };
 
-    # Containers.
     containersForce = true;
     containers = {};
 
-    # Profile settings.
     settings = {
-      # Automatically enable extensions.
       "extensions.autoDisableScopes" = 0;
 
-      # Disable translation features.
       "browser.translations.enable" = false;
 
-      # Startup settings.
       "browser.startup.page" = 3; # Open the last session.
       "browser.shell.checkDefaultBrowser" = false;
 
-      # Home page and bookmarks settings.
       "browser.startup.homepage" = "about:home";
       "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
       "browser.toolbars.bookmarks.visibility" = "always";
 
-      # Sync settings.
       "services.sync.engine.passwords" = true;
       "services.sync.engine.tabs" = true;
       "services.sync.engine.history" = true;
 
-      # Don't warn on quitting the browser.
       "browser.warnOnQuit" = false;
       "browser.warnOnQuitShortcut" = false;
     };
     extraConfig = "";
 
-    # User Chrome and content CSS.
     userChrome = "";
     userContent = "";
   };

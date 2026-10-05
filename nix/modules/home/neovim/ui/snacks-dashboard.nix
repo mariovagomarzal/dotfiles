@@ -1,14 +1,9 @@
-######################################
-# Neovim dashboard plugin submodule. #
-######################################
 {lib, ...}: {
   programs.nixvim = {
-    # Dashboard.
     plugins.snacks.settings.dashboard = {
       enabled = true;
 
       preset = {
-        # Dashboard header string.
         header = let
           header_strings = [
             "        ▒█▒              █                   ░▓   ██████         ███████   █   "
@@ -27,7 +22,6 @@
         in
           builtins.concatStringsSep "\n" header_strings;
 
-        # Key actions to show in the keys section.
         keys = [
           {
             icon = " ";
@@ -70,7 +64,6 @@
       };
 
       sections = let
-        # Horizontal centered line item.
         h_line = {
           text = {
             __unkeyed = lib.strings.replicate 40 "─";
@@ -80,7 +73,6 @@
           padding = 1;
         };
 
-        # Lua function to check if current directory is a git repository.
         is_git_project = enable: let
           comparision =
             if enable
@@ -92,7 +84,6 @@
           end
         '';
       in [
-        # Header and keys sections.
         {
           section = "header";
           padding = 3;
@@ -104,7 +95,6 @@
         }
         h_line
 
-        # Projects and recent files sections.
         {
           enabled.__raw = is_git_project false;
           icon = " ";
@@ -122,7 +112,6 @@
           padding = 1;
         }
 
-        # Git project sections.
         {
           enabled.__raw = is_git_project true;
           icon = " ";
@@ -150,7 +139,6 @@
           padding = 1;
         }
 
-        # Footer.
         {
           text = {
             __unkeyed.__raw = ''

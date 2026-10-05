@@ -1,37 +1,27 @@
-####################
-# Git home module. #
-####################
 _: {
   programs.git = {
     enable = true;
 
-    # Extra configuration.
     settings = {
-      # User information.
       user = {
         name = "mariovagomarzal";
         email = "mariovagomarzal@gmail.com";
       };
 
-      # GitHub related configuration.
       github.user = "mariovagomarzal";
 
-      # Key related configuration.
       gpg.format = "ssh";
       credential.helper = "osxkeychain";
       user.signingkey = "~/.ssh/id_ed25519";
 
-      # Core configuration.
       core = {
         editor = "nvim";
       };
 
-      # Init configuration.
       init = {
         defaultBranch = "main";
       };
 
-      # Color configuration.
       color = {
         ui = "auto";
         branch = {
@@ -46,22 +36,18 @@ _: {
         };
       };
 
-      # Diff configuration.
       diff = {
         tool = "nvimdiff";
       };
 
-      # Merge configuration.
       merge = {
         tool = "nvimdiff";
         log = true;
         conflictstyle = "diff3";
       };
 
-      # Signing configuration.
       tag.gpgsign = true;
 
-      # Aliases.
       alias = {
         "a" = "add";
         "b" = "branch";
@@ -83,9 +69,7 @@ _: {
       };
     };
 
-    # Global git ignores.
     ignores = [
-      # macOS related files.
       ".DS_Store"
       ".AppleDouble"
       ".LSOverride"
@@ -93,10 +77,8 @@ _: {
       # Icon must end with two \r
       "Icon"
 
-      # Thumbnails
       "._*"
 
-      # Files that might appear in the root of a volume
       ".DocumentRevisions-V100"
       ".fseventsd"
       ".Spotlight-V100"
@@ -105,14 +87,12 @@ _: {
       ".VolumeIcon.icns"
       ".com.apple.timemachine.donotpresent"
 
-      # Directories potentially created on remote AFP share
       ".AppleDB"
       ".AppleDesktop"
       "Network Trash Folder"
       "Temporary Items"
       ".apdisk"
 
-      # iCloud generated files
       "*.icloud"
     ];
   };

@@ -1,30 +1,22 @@
-######################################
-# Neovim Which-Key plugin submodule. #
-######################################
 _: {
   programs.nixvim = {
-    # Which-Key.
     plugins.which-key = {
       enable = true;
 
       settings = {
-        # Display timeout.
         delay = 300;
 
-        # Icons.
         icons = {
           breadcrumb = "»";
           separator = "➜";
           group = "+";
         };
 
-        # Window appearance.
         win = {
           border = "rounded";
           padding = [1 1];
         };
 
-        # Group labels.
         spec = [
           {
             __unkeyed-1 = "<leader>b";

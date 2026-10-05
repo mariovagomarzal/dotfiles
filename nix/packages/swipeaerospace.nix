@@ -1,6 +1,3 @@
-###########################
-# SwipeAeroSpace package. #
-###########################
 {pkgs, ...}:
 pkgs.stdenv.mkDerivation (finalAttrs: {
   pname = "SwipeAeroSpace";

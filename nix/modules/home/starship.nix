@@ -1,12 +1,8 @@
-#########################
-# Starship home module. #
-#########################
 {lib, ...}: {
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
 
-    # Starship configuration content.
     settings = {
       format = lib.concatStrings [
         "[](fg:mauve)"
@@ -26,7 +22,6 @@
         "$character "
       ];
 
-      # OS module.
       os = {
         format = "[ $symbol]($style)";
         style = "bg:mauve fg:base";
@@ -37,7 +32,6 @@
         };
       };
 
-      # Username module.
       username = {
         format = "[ $user ]($style)";
         style_root = "bg:mauve fg:base";
@@ -45,7 +39,6 @@
         show_always = true;
       };
 
-      # Directory module.
       directory = {
         format = "[( $read_only)]($read_only_style)[ $path ]($style)";
         style = "bg:prev_bg fg:base";
@@ -65,7 +58,6 @@
         };
       };
 
-      # Git modules.
       git_branch = {
         format = "[ $symbol $branch(:$remote_branch)]($style)";
         style = "bg:prev_bg fg:base";
@@ -77,7 +69,6 @@
         style = "bg:prev_bg fg:base";
       };
 
-      # Python module (custom).
       python = {
         format = "[ $symbol $version( \\($virtualenv\\)) ]($style)";
         style = "bg:prev_bg fg:base";
@@ -85,7 +76,6 @@
         version_format = "v\${raw}";
       };
 
-      # Julia module.
       julia = {
         format = "[ $symbol $version ]($style)";
         version_format = "\${raw}";
@@ -93,7 +83,6 @@
         symbol = "";
       };
 
-      # Typst module.
       typst = {
         format = "[ $symbol $version ]($style)";
         version_format = "\${raw}";
@@ -101,14 +90,12 @@
         symbol = "t";
       };
 
-      # Command duration module.
       cmd_duration = {
         format = "[  $duration ]($style)";
         style = "bg:blue fg:base";
         min_time = 1000; # 1 second
       };
 
-      # Character module.
       character = {
         format = "$symbol";
         success_symbol = "[](fg:prev_bg bg:green)[](fg:prev_bg)";

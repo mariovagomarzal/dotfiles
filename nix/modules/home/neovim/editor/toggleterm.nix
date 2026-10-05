@@ -1,20 +1,14 @@
-#######################################
-# Neovim Toggleterm plugin submodule. #
-#######################################
 _: {
   programs.nixvim = {
-    # Toggleterm.
     plugins.toggleterm = {
       enable = true;
 
       settings = {
-        # General settings.
         hide_numbers = true;
         start_in_insert = false;
         close_on_exit = true;
         auto_scroll = true;
 
-        # Size for non-float directions.
         size.__raw = ''
           function(term)
             if term.direction == "vertical" then
@@ -25,7 +19,6 @@ _: {
           end
         '';
 
-        # Default direction.
         direction = "horizontal";
 
         # Ensure horizontal terminals span the full width.
@@ -37,14 +30,12 @@ _: {
           end
         '';
 
-        # Float options.
         float_opts = {
           border = "rounded";
         };
       };
     };
 
-    # Lua helpers for terminal session management.
     extraConfigLua = ''
       local function in_terminal()
         return vim.bo.filetype == "toggleterm"
@@ -105,9 +96,7 @@ _: {
       end
     '';
 
-    # Toggleterm keymaps.
     keymaps = let
-      # Generate terminal switch keymaps for <leader>t<0-9>.
       terminalSwitchKeymaps =
         builtins.genList (i: let
           n = i + 1;
@@ -127,7 +116,6 @@ _: {
         10;
     in
       [
-        # Terminal toggles (uses last used terminal).
         {
           mode = "n";
           key = "<leader>tt";
@@ -165,7 +153,6 @@ _: {
           };
         }
 
-        # Terminal mode escape.
         {
           mode = "t";
           key = "<esc><esc>";
