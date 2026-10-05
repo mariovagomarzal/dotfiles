@@ -1,6 +1,4 @@
 {config, ...}: {
-  imports = [./swipeaerospace.nix];
-
   programs.aerospace = {
     enable = true;
 
@@ -170,11 +168,6 @@
         shift-j = "resize height -${smallStep}";
         shift-k = "resize height +${smallStep}";
       };
-    };
-
-    swipeaerospace = {
-      enable = false;
-      keepAlive = true;
     };
   };
 }
