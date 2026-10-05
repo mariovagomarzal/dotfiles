@@ -1,6 +1,4 @@
-{...}: {
-  imports = [];
-
+_: {
   home-manager = {
     backupFileExtension = "backup";
     overwriteBackup = true;

@@ -26,8 +26,10 @@
   imports = with flake.modules; [
     homebrew.darwin
     macos.darwin
-    home-manager.shared
-    nix-settings.shared
-    packages.shared
+    home-manager.darwin
+    nix-settings.darwin
+    fish.darwin
+    fonts.darwin
+    packages.darwin
   ];
 }
