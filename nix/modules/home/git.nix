@@ -75,7 +75,7 @@ _: {
       ".LSOverride"
 
       # Icon must end with two \r
-      "Icon"
+      "Icon\r\r"
 
       "._*"
 
