@@ -9,6 +9,9 @@
     git
     gh
     just
+    # Fallback used by git hooks from git-hooks.nix once their store path is
+    # garbage-collected.
+    prek
     devenv
 
     # Programming languages (or related).
