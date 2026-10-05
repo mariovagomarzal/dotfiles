@@ -1,6 +1,4 @@
-{flake, ...}: let
-  inherit (flake.modules) darwin shared;
-in {
+{flake, ...}: {
   system.stateVersion = 6;
 
   nixpkgs.hostPlatform = "aarch64-darwin";
@@ -20,14 +18,14 @@ in {
 
   system.primaryUser = "mariovagomarzal";
 
-  imports = [
-    darwin.core
-    darwin.options
-    darwin.packages
-    darwin.system
-    shared.core
-    shared.nix-core
-    shared.options
-    shared.packages
+  imports = with flake.modules; [
+    core.darwin
+    options.darwin
+    homebrew.darwin
+    macos.darwin
+    home-manager.shared
+    nix-settings.shared
+    options.shared
+    packages.shared
   ];
 }
