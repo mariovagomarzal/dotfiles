@@ -16,6 +16,6 @@ inputs.git-hooks-nix.lib.${system}.run {
       package = flake.formatter.${system};
     };
 
-    gitlint.enable = true;
+    convco.enable = true;
   };
 }
