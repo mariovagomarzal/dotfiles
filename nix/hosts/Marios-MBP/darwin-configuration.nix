@@ -30,6 +30,7 @@
     nix-settings.darwin
     fish.darwin
     keepassxc.darwin
+    sops.darwin
     fonts.darwin
     packages.darwin
   ];
