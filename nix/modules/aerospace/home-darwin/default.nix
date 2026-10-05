@@ -1,4 +1,6 @@
 {config, ...}: {
+  imports = [./swipeaerospace.nix];
+
   programs.aerospace = {
     enable = true;
 

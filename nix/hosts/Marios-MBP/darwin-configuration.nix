@@ -3,9 +3,14 @@
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  host = {
-    hostname = "Marios-MBP";
-    computername = "Mario's MacBook Pro";
+  networking = {
+    hostName = "Marios-MBP";
+    computerName = "Mario's MacBook Pro";
+  };
+
+  system.defaults.smb = {
+    NetBIOSName = "Marios-MBP";
+    ServerDescription = "Marios-MBP";
   };
 
   users.users = {
@@ -19,12 +24,10 @@
   system.primaryUser = "mariovagomarzal";
 
   imports = with flake.modules; [
-    options.darwin
     homebrew.darwin
     macos.darwin
     home-manager.shared
     nix-settings.shared
-    options.shared
     packages.shared
   ];
 }

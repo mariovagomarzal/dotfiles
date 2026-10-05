@@ -1,13 +1,5 @@
 {pkgs, ...}: {
-  programs.lua = {
-    enable = true;
-    package = pkgs.lua5_4;
-
-    extraPackages = [
-      (ps:
-        with ps; [
-          luarocks
-        ])
-    ];
-  };
+  home.packages = [
+    (pkgs.lua5_4.withPackages (ps: [ps.luarocks]))
+  ];
 }

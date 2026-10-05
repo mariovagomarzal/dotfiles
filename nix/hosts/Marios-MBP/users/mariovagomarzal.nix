@@ -18,7 +18,6 @@
     lua.home
     neovim.home
     obsidian.home
-    options.home
     packages.home
     ssh.home
     starship.home
@@ -27,7 +26,6 @@
     zoxide.home
     aerospace.home-darwin
     firefox.home-darwin
-    options.home-darwin
     zed.home-darwin
   ];
 }
