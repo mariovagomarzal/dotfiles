@@ -1,3 +1,7 @@
+/**
+Git with SSH-signed tags, nvimdiff as diff and merge tool, short aliases and
+global ignores for macOS and iCloud files.
+*/
 _: {
   programs.git = {
     enable = true;

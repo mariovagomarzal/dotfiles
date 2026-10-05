@@ -1,3 +1,10 @@
+/**
+Homebrew, installed by nix-homebrew from taps pinned in the flake lock, with
+the casks, brews and App Store apps that Nix does not cover well.
+
+GUI applications in particular go through Homebrew so that they appear in
+Launchpad and are indexed by Spotlight.
+*/
 {
   inputs,
   config,
@@ -5,11 +12,6 @@
 }: {
   imports = [inputs.nix-homebrew.darwinModules.nix-homebrew];
 
-  /*
-  Some packages are installed via Homebrew because they lack good Nix support on
-  macOS. Specifically, GUI applications should be installed this way to ensure
-  they appear in the Launchpad and are indexed by Spotlight.
-  */
   nix-homebrew = {
     enable = true;
     enableRosetta = true;

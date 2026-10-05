@@ -1,4 +1,9 @@
+/**
+Puts Zed's language servers on the user's PATH.
+
+On macOS, Zed resolves language servers from the login shell rather than
+from its wrapper's PATH.
+*/
 {config, ...}: {
-  # On macOS, Zed resolves LSPs from the login shell, not the wrapper's PATH.
   home.packages = config.programs.zed-editor.extraPackages;
 }

@@ -1,3 +1,7 @@
+/**
+Catppuccin Mocha with the mauve accent, applied to every program that
+supports it.
+*/
 {
   inputs,
   config,

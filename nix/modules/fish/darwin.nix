@@ -1,3 +1,9 @@
+/**
+Fish as the login shell of the primary user.
+
+nix-darwin only changes the shell of users it manages, hence
+`users.knownUsers`.
+*/
 {config, ...}: let
   fish = config.programs.fish.package;
 in {

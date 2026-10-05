@@ -1,3 +1,6 @@
+/**
+Fish as the interactive shell, with a custom greeting.
+*/
 _: {
   programs.fish = {
     enable = true;

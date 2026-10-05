@@ -1,11 +1,11 @@
-{config, ...}: {
-  /*
-  In this file, we define almost every available option that 'nix-darwin'
-  provides to configure system-wide settings/preferences.
+/**
+macOS system preferences.
 
-  This file is also intended to be used as a reference and/or template for
-  other Darwin configurations.
-  */
+Nearly every system-wide preference nix-darwin offers is set here, even when
+it matches the default, so the file doubles as a reference for other Darwin
+configurations.
+*/
+{config, ...}: {
   system = {
     defaults = {
       ActivityMonitor = {

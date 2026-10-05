@@ -1,3 +1,6 @@
+/**
+direnv with nix-direnv for per-project Nix environments.
+*/
 _: {
   programs.direnv = {
     enable = true;

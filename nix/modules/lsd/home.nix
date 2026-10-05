@@ -1,3 +1,6 @@
+/**
+lsd as a replacement for `ls`, in grid layout with directories listed first.
+*/
 _: {
   programs.lsd = {
     enable = true;

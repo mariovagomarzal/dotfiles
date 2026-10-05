@@ -1,3 +1,7 @@
+/**
+Starship prompt with a powerline layout in Catppuccin colors, showing the OS,
+user, directory, Git status, language versions and command duration.
+*/
 {lib, ...}: {
   programs.starship = {
     enable = true;

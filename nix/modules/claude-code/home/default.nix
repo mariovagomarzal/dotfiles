@@ -1,3 +1,7 @@
+/**
+Claude Code with a custom status line, personal slash commands and the Lean
+plugin from the leanprover marketplace.
+*/
 {pkgs, ...}: let
   inherit (pkgs) fetchFromGitHub;
 in {

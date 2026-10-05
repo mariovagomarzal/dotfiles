@@ -1,3 +1,7 @@
+/**
+User packages that need no configuration: development tools, language
+toolchains and utilities.
+*/
 {pkgs, ...}: {
   home.packages = with pkgs; [
     gnupg

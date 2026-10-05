@@ -1,3 +1,7 @@
+/**
+Zed in Vim mode, with extensions for Nix, Lean 4, Typst and LaTeX and the
+Nix language servers.
+*/
 {pkgs, ...}: {
   programs.zed-editor = {
     enable = true;

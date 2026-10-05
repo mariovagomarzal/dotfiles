@@ -1,3 +1,7 @@
+/**
+Neovim as the default editor, configured through nixvim and split into
+submodules for Vim options, languages, completion, editing and interface.
+*/
 {inputs, ...}: {
   programs.nixvim = {
     enable = true;

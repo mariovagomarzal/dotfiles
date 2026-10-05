@@ -1,3 +1,6 @@
+/**
+System-wide packages, with Vim as the system's default editor.
+*/
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     git

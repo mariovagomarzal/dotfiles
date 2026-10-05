@@ -1,3 +1,7 @@
+/**
+AeroSpace as the tiling window manager, run as a launchd agent, with
+Vim-style bindings and modes for service actions and resizing.
+*/
 {config, ...}: {
   programs.aerospace = {
     enable = true;

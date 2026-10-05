@@ -1,3 +1,7 @@
+/**
+Firefox with English and Spanish language packs and a default profile with
+bookmarks, search engines, extensions and containers.
+*/
 {...}: {
   programs.firefox = {
     enable = true;

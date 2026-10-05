@@ -1,3 +1,7 @@
+/**
+Nix settings: flakes, trusted users, and weekly garbage collection and store
+optimisation on Sundays at 15:00.
+*/
 _: {
   nix.enable = true;
 

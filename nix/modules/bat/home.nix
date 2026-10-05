@@ -1,3 +1,7 @@
+/**
+bat as a replacement for `cat`, with `batman` for man pages and shell aliases
+for both.
+*/
 {pkgs, ...}: let
   shellAliases = {
     cat = "bat";
