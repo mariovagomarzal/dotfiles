@@ -13,7 +13,7 @@ const holdsHere = (items: { href: string }[]) => items.some((item) => isHere(her
   <nav aria-label="Documentation">
     {
       sections.map((s, i) => (
-        <details open={i === 0 || holdsHere(s.items)}>
+        <details data-section={s.title} data-here={holdsHere(s.items) || undefined} open={i === 0 || holdsHere(s.items)}>
           <summary>{s.title}</summary>
           <ul>
             {s.items.map((item) => (
@@ -30,6 +30,28 @@ const holdsHere = (items: { href: string }[]) => items.some((item) => isHere(her
   </nav>
 </aside>
 <div class="backdrop" data-nav-close></div>
+
+<script is:inline>
+  // Sections keep whatever state the reader left them in across pages, except that the one holding the current page
+  // always shows it. Restored inline, before the sidebar is painted, so nothing jumps.
+  (() => {
+    let state = {};
+    try {
+      state = JSON.parse(localStorage.getItem("sidebar") ?? "{}");
+    } catch {}
+    document.querySelectorAll("#sidebar details[data-section]").forEach((d) => {
+      const saved = state[d.dataset.section];
+      if (saved === "open") d.open = true;
+      else if (saved === "closed" && !d.hasAttribute("data-here")) d.open = false;
+      d.addEventListener("toggle", () => {
+        state[d.dataset.section] = d.open ? "open" : "closed";
+        try {
+          localStorage.setItem("sidebar", JSON.stringify(state));
+        } catch {}
+      });
+    });
+  })();
+</script>
 
 <style>
   aside {
