@@ -1,0 +1,79 @@
+---
+import Docs from "../../layouts/Docs.astro";
+import Timeline from "../../components/Timeline.astro";
+import { type Host, hostHistory, hosts, modules } from "../../lib/repo";
+import { path } from "../../paths";
+
+export function getStaticPaths() {
+  return hosts.map((host) => ({ params: { name: host.name }, props: { host } }));
+}
+
+const { host } = Astro.props as { host: Host };
+
+const summaryOf = (id: string) => modules.find((m) => m.name === id.split("/")[0])?.summary;
+
+const groups = [
+  { title: "System", slug: "system", note: "nix-darwin modules imported by the system configuration.", ids: host.modules },
+  ...host.users.map((u) => ({
+    title: u.name,
+    slug: `user-${u.name}`,
+    note: `home-manager modules imported for ${u.name}.`,
+    ids: u.modules,
+  })),
+];
+---
+
+<Docs
+  title={host.name}
+  description={`What ${host.name} imports.`}
+  trail={[{ label: "hosts" }, { label: host.name }]}
+  headings={[
+    ...groups.map((g) => ({ depth: 2, slug: g.slug, text: g.title })),
+    { depth: 2, slug: "history", text: "History" },
+  ]}
+>
+  <h1>{host.name}</h1>
+  <p class="lead">Configuration for the <code>{host.name}</code> host (<code>{host.platform}</code>).</p>
+
+  {
+    groups.map((g) => (
+      <>
+        <h2 id={g.slug}>{g.title}</h2>
+        <p class="muted">
+          {g.ids.length} {g.note}
+        </p>
+        <div class="scroll">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>module</th>
+                <th>class</th>
+                <th>summary</th>
+              </tr>
+            </thead>
+            <tbody>
+              {g.ids.map((id) => {
+                const [name, cls] = id.split("/");
+                const summary = summaryOf(id);
+                return (
+                  <tr>
+                    <td>
+                      <a href={path(`/modules/${name}`)}>{name}</a>
+                    </td>
+                    <td>
+                      <span class="tag">{cls}</span>
+                    </td>
+                    <td>{summary ?? <span class="missing">No description.</span>}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </>
+    ))
+  }
+
+  <h2 id="history">History</h2>
+  <Timeline commits={hostHistory(host.name)} />
+</Docs>

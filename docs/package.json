@@ -1,0 +1,23 @@
+{
+  "name": "docs",
+  "description": "Documentation site for Mario's dotfiles",
+  "author": "Mario Vago Marzal",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@mariovagomarzal/lattice": "^0.2.0",
+    "astro": "^7.1.6",
+    "marked": "^16.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^5.9.3"
+  }
+}

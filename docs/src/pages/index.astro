@@ -1,0 +1,113 @@
+---
+import ModuleTable from "../components/ModuleTable.astro";
+import Snippet from "../components/Snippet.astro";
+import Docs from "../layouts/Docs.astro";
+import { hosts, modules, releases } from "../lib/repo";
+import { path } from "../paths";
+
+const documented = modules.filter((m) => m.summary).length;
+const latest = releases().find((r) => r.title);
+
+const headings = [
+  { depth: 2, slug: "at-a-glance", text: "At a glance" },
+  { depth: 2, slug: "getting-started", text: "Getting started" },
+  { depth: 2, slug: "hosts", text: "Hosts" },
+  { depth: 2, slug: "modules", text: "Modules" },
+];
+---
+
+<Docs title="dotfiles" description="Nix configuration for Mario's machines." headings={headings}>
+  <h1>dotfiles</h1>
+  <p class="lead">
+    Nix configuration for Mario's machines, built with nix-darwin, home-manager and Blueprint. This site documents
+    each host and module, and the history of changes.
+  </p>
+
+  <h2 id="at-a-glance">At a glance</h2>
+  <dl class="glance">
+    <div><dt>hosts</dt><dd>{hosts.length}</dd></div>
+    <div><dt>modules</dt><dd>{modules.length}</dd></div>
+    <div><dt>documented</dt><dd>{documented} of {modules.length}</dd></div>
+    {
+      latest && (
+        <div>
+          <dt>latest release</dt>
+          <dd>
+            <a href={path("/changelog")}>{latest.title}</a> <span class="muted">· {latest.date}</span>
+          </dd>
+        </div>
+      )
+    }
+  </dl>
+
+  <h2 id="getting-started">Getting started</h2>
+  <p>To apply a host's configuration, run the following from the repository root:</p>
+  <Snippet code="sudo darwin-rebuild switch --flake .#Marios-MBP" />
+  <p>To build this documentation locally, or serve it with live reload:</p>
+  <Snippet code={"nix run .#dotfiles-docs -- build\nnix run .#dotfiles-docs -- dev"} />
+
+  <h2 id="hosts">Hosts</h2>
+  <div class="scroll">
+    <table class="table">
+      <thead>
+        <tr><th>host</th><th>platform</th><th>modules</th></tr>
+      </thead>
+      <tbody>
+        {
+          hosts.map((h) => (
+            <tr>
+              <td>
+                <a href={path(`/hosts/${h.name}`)}>{h.name}</a>
+              </td>
+              <td>
+                <span class="tag">{h.platform}</span>
+              </td>
+              <td>
+                {h.modules.length} system, {h.users.map((u) => `${u.modules.length} for ${u.name}`).join(", ")}
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="modules">Modules</h2>
+  <p>See the <a href={path("/spec/modules")}>module spec</a> for how modules are organized.</p>
+  <ModuleTable modules={modules} />
+</Docs>
+
+<style>
+  .glance {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 1rem;
+  }
+
+  .glance div {
+    padding: 0.75rem 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+  }
+
+  .glance div:last-child {
+    grid-column: 1 / -1;
+  }
+
+  dt {
+    font-family: var(--font-mono);
+    font-size: var(--size-xs);
+    color: var(--color-muted);
+  }
+
+  dd {
+    margin: 0;
+    font-size: var(--size-lg);
+    font-weight: 500;
+  }
+
+  .glance div:last-child dd {
+    font-size: var(--size-base);
+  }
+</style>

@@ -1,0 +1,64 @@
+---
+// Each icon shows the current theme, like a switch.
+const icon = {
+  viewBox: "0 0 24 24",
+  width: 22,
+  height: 22,
+  fill: "none",
+  stroke: "currentColor",
+  "stroke-width": 1.6,
+  "stroke-linecap": "round" as const,
+  "stroke-linejoin": "round" as const,
+  "aria-hidden": true,
+};
+---
+
+<button class="control" type="button" data-theme-toggle aria-label="Switch polarity">
+  <svg class="sun" {...icon}>
+    <circle cx="12" cy="12" r="5"></circle>
+    <path d="M12 1v2M12 21v2M1 12h2M21 12h2"></path>
+    <path d="M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+  </svg>
+  <svg class="moon" {...icon}>
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+  </svg>
+</button>
+
+<script>
+  const button = document.querySelector("[data-theme-toggle]");
+
+  button?.addEventListener("click", () => {
+    const root = document.documentElement;
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+
+    root.dataset.swapping = "";
+    root.dataset.theme = next;
+
+    // Read a themed value back, so the new colors settle while transitions are still off.
+    getComputedStyle(root).getPropertyValue("--color-base");
+    delete root.dataset.swapping;
+
+    localStorage.setItem("theme", next);
+  });
+</script>
+
+<style>
+  /* Square whichever icon is showing, since the two differ in width. */
+  button {
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+  }
+
+  .moon {
+    display: none;
+  }
+
+  :global(:root[data-theme="dark"]) .moon {
+    display: block;
+  }
+
+  :global(:root[data-theme="dark"]) .sun {
+    display: none;
+  }
+</style>

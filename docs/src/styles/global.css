@@ -1,0 +1,265 @@
+@import "@mariovagomarzal/lattice/lattice.css";
+
+:root {
+  /* Semantic roles on top of the palette. */
+  --color-accent: var(--color-orange);
+  --color-on-accent: var(--color-base);
+
+  /* Type scale. */
+  --size-xs: 0.75rem;
+  --size-sm: 0.875rem;
+  --size-base: 1rem;
+  --size-lg: 1.2rem;
+  --size-xl: 1.5rem;
+  --size-2xl: 2rem;
+
+  /* Layout: a fixed sidebar and table of contents around a column sized for reading. */
+  --bar: 3.25rem;
+  --sidebar: 16rem;
+  --toc: 14rem;
+  --measure: 46rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--bar) + 1.5rem);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--size-base);
+  line-height: 1.65;
+  color: var(--color-text);
+  background: var(--color-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-color: var(--color-accent);
+}
+
+/* Documentation headings stay in the sans; the mono is kept for code, paths and labels. */
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--size-2xl);
+}
+
+h2 {
+  font-size: var(--size-xl);
+}
+
+h3 {
+  font-size: var(--size-lg);
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+:not(pre) > code {
+  padding: 0.05em 0.3em;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+/* Running text in an article: rhythm between blocks, and a little more before a new section. */
+.doc > * + * {
+  margin-top: 1rem;
+}
+
+.doc > * + h2 {
+  margin-top: 2.75rem;
+}
+
+.doc > * + h3 {
+  margin-top: 2rem;
+}
+
+.doc h2 {
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.doc ul,
+.doc ol {
+  padding-left: 1.25rem;
+}
+
+.doc li + li {
+  margin-top: 0.25rem;
+}
+
+/* The paragraph under a page's title. */
+.lead {
+  font-size: var(--size-lg);
+  color: var(--color-muted);
+}
+
+.muted {
+  color: var(--color-muted);
+}
+
+/* A gap in the documentation, shown rather than hidden. */
+.missing {
+  font-style: italic;
+  color: var(--color-muted);
+}
+
+/* Small mono labels: a module's classes, a commit's type. */
+.tag {
+  display: inline-block;
+  padding: 0 0.35rem;
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: var(--size-xs);
+  line-height: 1.6;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+/* Reference tables: modules, hosts, facts. */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--size-sm);
+}
+
+.table th,
+.table td {
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table thead th {
+  font-family: var(--font-mono);
+  font-size: var(--size-xs);
+  font-weight: 400;
+  color: var(--color-muted);
+  background: var(--color-surface);
+}
+
+.table tbody tr:hover {
+  background: color-mix(in srgb, var(--color-surface) 50%, transparent);
+}
+
+.table td:first-child a {
+  font-family: var(--font-mono);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.table td:first-child a:hover {
+  text-decoration: underline;
+}
+
+.scroll {
+  overflow-x: auto;
+}
+
+/* Solid paper box for interface controls. */
+.control {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  padding: 0.25rem 0.5rem;
+  background: var(--color-base);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  font: inherit;
+  font-size: var(--size-sm);
+  color: var(--color-muted);
+  cursor: pointer;
+  transition:
+    background 250ms,
+    color 250ms,
+    border-color 250ms;
+}
+
+.control:hover,
+.control:focus-visible {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-accent);
+}
+
+/* The theme lands at once, rather than every themed transition running its own course. */
+:root[data-swapping],
+:root[data-swapping] *,
+:root[data-swapping] *::before,
+:root[data-swapping] *::after {
+  transition: none !important;
+}
+
+/* Shiki emits both polarities as custom properties, and the theme picks one. */
+.astro-code,
+.astro-code span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+:root[data-theme="dark"] .astro-code,
+:root[data-theme="dark"] .astro-code span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+.astro-code {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  overflow-x: auto;
+  font-size: var(--size-sm);
+  line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

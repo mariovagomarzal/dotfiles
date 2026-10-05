@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from "astro:content";
+import Docs from "../../layouts/Docs.astro";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("spec");
+  return pages.map((page) => ({ params: { slug: page.id }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const { Content, headings } = await render(page);
+---
+
+<Docs
+  title={page.data.title}
+  description={page.data.description}
+  trail={[{ label: "spec" }, { label: page.data.title.toLowerCase() }]}
+  headings={headings}
+>
+  <h1>{page.data.title}</h1>
+  <p class="lead">{page.data.description}</p>
+  <Content />
+</Docs>
+
+<style>
+  /* Markdown tables from the spec take the same look as the site's reference tables. */
+  :global(.doc table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--size-sm);
+  }
+
+  :global(.doc th),
+  :global(.doc td) {
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  :global(.doc thead th) {
+    font-family: var(--font-mono);
+    font-size: var(--size-xs);
+    font-weight: 400;
+    color: var(--color-muted);
+    background: var(--color-surface);
+  }
+</style>

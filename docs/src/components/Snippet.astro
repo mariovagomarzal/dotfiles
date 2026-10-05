@@ -1,0 +1,18 @@
+---
+import { Code } from "astro:components";
+import { shikiThemes } from "@mariovagomarzal/lattice/palette/shiki";
+
+interface Props {
+  code: string;
+  lang?: "bash" | "nix" | "ts";
+}
+
+const { code, lang = "bash" } = Astro.props;
+---
+
+<Code
+  code={code.trim()}
+  lang={lang}
+  themes={{ light: shikiThemes.light, dark: shikiThemes.dark }}
+  defaultColor={false}
+/>

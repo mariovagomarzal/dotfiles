@@ -1,0 +1,14 @@
+---
+import ModuleTable from "../../components/ModuleTable.astro";
+import Docs from "../../layouts/Docs.astro";
+import { modules } from "../../lib/repo";
+---
+
+<Docs title="Modules" description="Every module, one directory per feature." trail={[{ label: "modules" }]}>
+  <h1>Modules</h1>
+  <p class="lead">
+    Each module is a directory in <code>nix/modules</code> with one file per class: <code>home</code> for
+    home-manager, <code>darwin</code> for nix-darwin and <code>home-darwin</code> for home-manager on macOS.
+  </p>
+  <ModuleTable modules={modules} />
+</Docs>
