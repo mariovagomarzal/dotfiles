@@ -11,13 +11,14 @@ interface Props {
 const { commits, dated = true } = Astro.props;
 ---
 
+<!-- Cells are separated by spaces so that indexed text reads as words. -->
 <ol class="history">
   {
     commits.map((c) => {
       const row = (
         <>
-          {dated && <time>{c.date}</time>}
-          <span class="kind">{c.type && <span class="tag">{c.type}</span>}</span>
+          {dated && <time>{c.date}</time>}{" "}
+          <span class="kind">{c.type && <span class="tag">{c.type}</span>}</span>{" "}
           <span class="subject">
             {c.scope &&
               (moduleNames.has(c.scope) ? (
@@ -26,10 +27,10 @@ const { commits, dated = true } = Astro.props;
                 </a>
               ) : (
                 <span class="scope other">{c.scope}</span>
-              ))}
+              ))}{" "}
             {c.description}
-          </span>
-          <a class="hash" href={commitUrl(c.hash)}>
+          </span>{" "}
+          <a class="hash" data-pagefind-ignore href={commitUrl(c.hash)}>
             {c.hash.slice(0, 7)}
           </a>
         </>

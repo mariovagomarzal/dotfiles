@@ -12,7 +12,7 @@ const [latest] = commits;
 
 {
   latest ? (
-    <details class="timeline">
+    <details class="timeline" data-pagefind-ignore>
       <summary>
         <span class="count">
           {commits.length} {commits.length === 1 ? "commit" : "commits"}

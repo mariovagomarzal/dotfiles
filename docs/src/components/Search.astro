@@ -1,0 +1,279 @@
+---
+import { path } from "../paths";
+
+// Pagefind writes its index and client next to the built pages, so the client is only loaded when search opens.
+const client = path("/pagefind/pagefind.js");
+---
+
+<button class="control open" type="button" data-search-open aria-label="Search">
+  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <circle cx="11" cy="11" r="7"></circle>
+    <path d="m20 20-3.5-3.5"></path>
+  </svg>
+  <span class="label">Search</span>
+  <kbd>⌘K</kbd>
+</button>
+
+<dialog class="search" data-search data-client={client} aria-label="Search the documentation">
+  <div class="panel">
+    <div class="field">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="m20 20-3.5-3.5"></path>
+      </svg>
+      <input type="search" placeholder="Search modules, hosts, packages, commits…" autocomplete="off" spellcheck="false" />
+      <kbd>esc</kbd>
+    </div>
+    <p class="status" aria-live="polite"></p>
+    <ol class="results"></ol>
+  </div>
+</dialog>
+
+<script>
+  interface SubResult {
+    title: string;
+    url: string;
+    excerpt: string;
+  }
+
+  interface ResultData {
+    url: string;
+    excerpt: string;
+    meta: { title?: string };
+    sub_results: SubResult[];
+  }
+
+  interface Pagefind {
+    debouncedSearch: (term: string) => Promise<{ results: { data: () => Promise<ResultData> }[] } | null>;
+  }
+
+  const dialog = document.querySelector<HTMLDialogElement>("[data-search]")!;
+  const input = dialog.querySelector("input")!;
+  const status = dialog.querySelector(".status")!;
+  const list = dialog.querySelector(".results")!;
+
+  let pagefind: Pagefind | undefined;
+
+  // Vite wraps any dynamic import in a preload helper whose placeholder is never filled in an inlined script, so the
+  // client is imported through a function Vite cannot see into.
+  const importUrl = new Function("url", "return import(url)") as (url: string) => Promise<Pagefind>;
+  let selected = 0;
+
+  // Built with `astro build` and indexed by Pagefind; under `astro dev` there is no index to load. A failed load is
+  // tried again on the next search rather than remembered.
+  async function load(): Promise<Pagefind | undefined> {
+    if (!pagefind) {
+      try {
+        pagefind = await importUrl(dialog.dataset.client!);
+      } catch {
+        return undefined;
+      }
+    }
+    return pagefind;
+  }
+
+  function open() {
+    dialog.showModal();
+    input.select();
+    load();
+  }
+
+  function links() {
+    return [...list.querySelectorAll<HTMLAnchorElement>("a")];
+  }
+
+  function select(i: number) {
+    const all = links();
+    if (!all.length) return;
+    selected = (i + all.length) % all.length;
+    all.forEach((a, j) => a.toggleAttribute("data-selected", j === selected));
+    all[selected].scrollIntoView({ block: "nearest" });
+  }
+
+  // A page, and the sections inside it that matched, each linking to its heading.
+  function render(results: ResultData[]) {
+    list.innerHTML = results
+      .map((r) => {
+        const subs = r.sub_results.filter((s) => s.url !== r.url).slice(0, 3);
+        return `<li>
+          <a href="${r.url}"><strong>${r.meta.title ?? r.url}</strong><span>${r.excerpt}</span></a>
+          ${subs.map((s) => `<a class="sub" href="${s.url}"><strong>${s.title}</strong><span>${s.excerpt}</span></a>`).join("")}
+        </li>`;
+      })
+      .join("");
+    select(0);
+  }
+
+  async function search() {
+    const term = input.value.trim();
+    if (!term) {
+      list.innerHTML = "";
+      status.textContent = "";
+      return;
+    }
+    const client = await load();
+    if (!client) {
+      status.textContent = "Search is available in the built site.";
+      return;
+    }
+    const found = await client.debouncedSearch(term);
+    if (!found) return;
+    const results = await Promise.all(found.results.slice(0, 8).map((r) => r.data()));
+    status.textContent = results.length ? "" : `No results for “${term}”.`;
+    render(results);
+  }
+
+  document.querySelector("[data-search-open]")?.addEventListener("click", open);
+  input.addEventListener("input", search);
+
+  addEventListener("keydown", (e) => {
+    const typing = e.target instanceof HTMLElement && e.target.matches("input, textarea");
+    if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || (e.key === "/" && !typing && !dialog.open)) {
+      e.preventDefault();
+      open();
+    }
+  });
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown") (e.preventDefault(), select(selected + 1));
+    if (e.key === "ArrowUp") (e.preventDefault(), select(selected - 1));
+    if (e.key === "Enter") links()[selected]?.click();
+  });
+
+  // A click on the backdrop lands on the dialog itself rather than on the panel inside it.
+  dialog.addEventListener("click", (e) => e.target === dialog && dialog.close());
+  list.addEventListener("click", (e) => (e.target as HTMLElement).closest("a") && dialog.close());
+</script>
+
+<style>
+  .open {
+    gap: 0.5rem;
+    height: 2rem;
+    font-family: var(--font-mono);
+    font-size: var(--size-xs);
+  }
+
+  kbd {
+    padding: 0 0.3rem;
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 40rem) {
+    .open .label,
+    .open kbd {
+      display: none;
+    }
+  }
+
+  dialog {
+    width: min(40rem, calc(100vw - 2rem));
+    max-height: min(32rem, calc(100vh - 6rem));
+    margin: 5rem auto auto;
+    padding: 0;
+    color: var(--color-text);
+    background: var(--color-base);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 0.25);
+  }
+
+  dialog::backdrop {
+    background: rgb(0 0 0 / 0.4);
+  }
+
+  .panel {
+    display: flex;
+    flex-direction: column;
+    max-height: inherit;
+  }
+
+  .field {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1rem;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: none;
+    font: inherit;
+    color: var(--color-text);
+  }
+
+  input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  .status:empty {
+    display: none;
+  }
+
+  .status {
+    padding: 1rem;
+    font-size: var(--size-sm);
+    color: var(--color-muted);
+  }
+
+  .results {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem;
+    overflow-y: auto;
+  }
+
+  .results:empty {
+    display: none;
+  }
+
+  .results :global(li + li) {
+    margin-top: 0.25rem;
+    padding-top: 0.25rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .results :global(a) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: 3px;
+    border-left: 2px solid transparent;
+    text-decoration: none;
+    font-size: var(--size-sm);
+  }
+
+  .results :global(a.sub) {
+    margin-left: 1rem;
+  }
+
+  .results :global(a[data-selected]),
+  .results :global(a:hover) {
+    background: var(--color-surface);
+    border-left-color: var(--color-accent);
+  }
+
+  .results :global(strong) {
+    font-weight: 500;
+  }
+
+  .results :global(span) {
+    color: var(--color-muted);
+  }
+
+  .results :global(mark) {
+    color: var(--color-accent);
+    background: none;
+    font-weight: 500;
+  }
+</style>

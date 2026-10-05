@@ -27,7 +27,9 @@ const { modules } = Astro.props;
             </td>
             <td class="classes">
               {m.classes.map((c) => (
-                <span class="tag">{c.name}</span>
+                <>
+                  <span class="tag">{c.name}</span>{" "}
+                </>
               ))}
             </td>
             <td>{m.summary ?? <span class="missing">No description.</span>}</td>
@@ -43,7 +45,7 @@ const { modules } = Astro.props;
     white-space: nowrap;
   }
 
-  .classes .tag + .tag {
-    margin-left: 0.25rem;
+  .classes .tag {
+    margin-right: 0.25rem;
   }
 </style>

@@ -2,6 +2,7 @@
 import { Font } from "astro:assets";
 import { logoPresets, logoSvg } from "@mariovagomarzal/lattice/logo";
 import Pager from "../components/Pager.astro";
+import Search from "../components/Search.astro";
 import Sidebar from "../components/Sidebar.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import Toc, { type Heading } from "../components/Toc.astro";
@@ -50,6 +51,7 @@ const mark = logoSvg({ ...logoPresets.inline, ink: "currentColor" });
         <span>dotfiles</span>
       </a>
       <span class="spacer"></span>
+      <Search />
       <a class="control" href={github}>github</a>
       <ThemeToggle />
     </header>
@@ -69,7 +71,7 @@ const mark = logoSvg({ ...logoPresets.inline, ink: "currentColor" });
             </nav>
           )
         }
-        <article class="doc">
+        <article class="doc" data-pagefind-body>
           <slot />
         </article>
         <Pager />

@@ -25,7 +25,7 @@ const rows = labels.filter(([k]) => facts[k]?.length);
   rows.length > 0 && (
     <div class="scroll">
       <table class="table facts">
-        <thead>
+        <thead data-pagefind-ignore>
           <tr>
             <th>provides</th>
             <th />
@@ -38,7 +38,9 @@ const rows = labels.filter(([k]) => facts[k]?.length);
               <td>
                 <span class="items">
                   {facts[k]!.map((item) => (
-                    <code>{item}</code>
+                    <>
+                      <code>{item}</code>{" "}
+                    </>
                   ))}
                 </span>
               </td>
