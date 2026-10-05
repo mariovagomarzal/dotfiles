@@ -1,8 +1,6 @@
-#####################
-# Git-hooks checks. #
-#####################
 {
   inputs,
+  flake,
   system,
   pkgs,
   ...
@@ -13,29 +11,11 @@ inputs.git-hooks-nix.lib.${system}.run {
   package = pkgs.prek;
 
   hooks = {
-    # Enable the Alejandra git hook.
-    alejandra.enable = true;
-
-    # Enable the markdownlint git hook.
-    markdownlint = {
+    treefmt = {
       enable = true;
-      settings.configuration = {
-        # Allow to exceed the maximum line length.
-        "MD013" = false;
-
-        # Allow multiple headers with the same content.
-        "MD024" = false;
-
-        # Allow HTML in markdown files.
-        "MD033" = false;
-
-        # Allow the first line not to be a header.
-        "MD041" = false;
-      };
-      excludes = ["CHANGELOG.md" "^nix/modules/.*\\.md$"];
+      package = flake.formatter.${system};
     };
 
-    # Enable the Gitlint git hook.
     gitlint.enable = true;
   };
 }
