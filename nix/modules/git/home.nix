@@ -1,8 +1,14 @@
 /**
 Git with SSH-signed tags, nvimdiff as diff and merge tool, short aliases and
 global ignores for macOS and iCloud files.
+
+Signing uses the public key from the `ssh` module, with the private key
+served by KeePassXC's agent, and my own GitHub repositories are reached over SSH
+rather than HTTPS.
 */
-_: {
+{config, ...}: let
+  publicKey = config.home.file.".ssh/mariovagomarzal.pub".text;
+in {
   programs.git = {
     enable = true;
 
@@ -15,8 +21,12 @@ _: {
       github.user = "mariovagomarzal";
 
       gpg.format = "ssh";
+      gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
       credential.helper = "osxkeychain";
-      user.signingkey = "~/.ssh/id_ed25519";
+      user.signingkey = "~/.ssh/mariovagomarzal.pub";
+
+      # Only my own repositories: cloning anyone else's stays anonymous over HTTPS and needs no unlocked agent.
+      url."git@github.com:mariovagomarzal/".insteadOf = "https://github.com/mariovagomarzal/";
 
       core = {
         editor = "nvim";
@@ -100,4 +110,7 @@ _: {
       "*.icloud"
     ];
   };
+
+  # Lets `git verify-tag` and `git log --show-signature` check signatures locally.
+  xdg.configFile."git/allowed_signers".text = "mariovagomarzal@gmail.com namespaces=\"git\" ${publicKey}";
 }
