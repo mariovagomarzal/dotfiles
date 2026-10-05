@@ -6,6 +6,7 @@ specified in the argument.
 **Argument:** $ARGUMENTS
 
 The argument may refer to one or more of the following:
+
 - A Lean file path (e.g., `MyProject/Foo/Bar.lean`)
 - A Lean declaration name or namespace (e.g., `MyProject.Foo.Bar`)
 - A module name (e.g., `Foo.Bar`)

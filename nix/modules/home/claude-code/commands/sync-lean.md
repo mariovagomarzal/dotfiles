@@ -6,6 +6,7 @@ argument.
 **Argument:** $ARGUMENTS
 
 The argument may refer to one or more of the following:
+
 - A chapter or section name within the blueprint
 - One or more blueprint labels (e.g., `def:Foo`, `thm:Bar`)
 - A `.tex` file path within the blueprint source directory
@@ -88,6 +89,7 @@ Infer all conventions from the existing codebase. In particular:
 ## Blueprint annotation rules
 
 When a Lean declaration is implemented:
+
 - Ensure `\lean{Fully.Qualified.DeclName}` is present in the blueprint
   environment.
 - Add `\leanok` to mark the environment as formalised.

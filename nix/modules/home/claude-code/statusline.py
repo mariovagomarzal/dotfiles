@@ -23,7 +23,6 @@ import subprocess
 import sys
 from dataclasses import dataclass
 
-# ANSI helpers.
 
 RESET: str = "\x1b[0m"
 COLORS: dict[str, int] = {
@@ -48,9 +47,6 @@ def color_fg(text: str, color: str) -> str:
     """Wrap `text` in a 256-color ANSI foreground escape."""
     color_code: int = COLORS.get(color, COLORS["grey"])
     return f"\x1b[38;5;{color_code}m{text}{RESET}"
-
-
-# Percentage color mapping and progress bar helpers.
 
 
 @dataclass
@@ -95,12 +91,8 @@ class ProgressBar:
         empty = self.width - filled
 
         color = self.color_map(pct)
-        filled_body = color_fg(
-            self.spacing.join(self.fill_char * filled), color
-        )
-        empty_body = color_fg(
-            self.spacing.join(self.empty_char * empty), "grey"
-        )
+        filled_body = color_fg(self.spacing.join(self.fill_char * filled), color)
+        empty_body = color_fg(self.spacing.join(self.empty_char * empty), "grey")
 
         sep = self.spacing if filled and empty else ""
         return f"{self.before}{filled_body}{sep}{empty_body}{self.after}"
@@ -115,8 +107,6 @@ class ProgressBar:
     def __call__(self, pct: float | None) -> str:
         return f"{self.display_bar(pct)} {self.display_number(pct)}"
 
-
-# Git helpers.
 
 def git_info(cwd: str) -> tuple[str | None, bool]:
     """
@@ -137,7 +127,6 @@ def git_info(cwd: str) -> tuple[str | None, bool]:
         )
 
     try:
-        # Branch name.
         result = run(["git", "rev-parse", "--abbrev-ref", "HEAD"])
         if result.returncode != 0:
             return None, False
@@ -147,17 +136,13 @@ def git_info(cwd: str) -> tuple[str | None, bool]:
             sha_result = run(["git", "rev-parse", "--short", "HEAD"])
             branch = sha_result.stdout.strip() if sha_result.returncode == 0 else "HEAD"
 
-        # Dirty check (staged + unstaged changes; ignores untracked files).
         status_result = run(["git", "status", "--porcelain"])
         is_dirty = bool(status_result.returncode == 0 and status_result.stdout.strip())
 
         return branch, is_dirty
     except FileNotFoundError:
-        # Git not found on PATH.
         return None, False
 
-
-# Segment builders.
 
 @dataclass
 class Segment:
@@ -178,9 +163,11 @@ class Segment:
 
 class ModelSegment(Segment):
     def parse_data(self, data: dict) -> str:
-        model = data.get("model", {}).get("display_name") \
-            or data.get("model", {}).get("id") \
+        model = (
+            data.get("model", {}).get("display_name")
+            or data.get("model", {}).get("id")
             or "unknown"
+        )
         effort = data.get("effort", {}).get("level", "unknown")
         return f"{model} ({effort})"
 
@@ -205,7 +192,9 @@ class GitSegment(Segment):
         branch, is_dirty = git_info(cwd)
         if branch is None:
             return None
-        dirty_marker = f" {color_fg('●', 'orange')}" if is_dirty else f" {color_fg('●', 'green')}"
+        dirty_marker = (
+            f" {color_fg('●', 'orange')}" if is_dirty else f" {color_fg('●', 'green')}"
+        )
         return f"{branch}{dirty_marker}"
 
 
@@ -254,8 +243,6 @@ class WeeklyRateLimitSegment(Segment):
             return None
         return SMALL_PROGRESS_BAR(pct)
 
-
-# Main entry point.
 
 def main() -> None:
     try:

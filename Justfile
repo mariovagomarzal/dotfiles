@@ -1,48 +1,43 @@
-################################
-# Justfile for the repository. #
-################################
 [private]
 default:
     @just --list --unsorted
 
-# Dotfiles setup recipes.
 hostname := "$(hostname)"
 
-[group("dotfiles")]
 [doc('Rebuild a Darwin configuration with the given hostname.')]
+[group("dotfiles")]
 darwin-rebuild HOSTNAME=hostname:
-    @echo "Rebuilding the Darwin configuration for {{HOSTNAME}}..."
-    sudo darwin-rebuild switch --flake ".#{{HOSTNAME}}"
+    @echo "Rebuilding the Darwin configuration for {{ HOSTNAME }}..."
+    sudo darwin-rebuild switch --flake ".#{{ HOSTNAME }}"
 
 alias dr := darwin-rebuild
 
-# Development recipes.
 experimental_features := "--extra-experimental-features \"nix-command flakes\""
 
-[group("development")]
 [doc("Run flake checks.")]
+[group("development")]
 check:
     @echo "Running flake checks..."
-    nix {{experimental_features}} flake check
+    nix {{ experimental_features }} flake check
 
-[group("development")]
 [doc("Format Nix code.")]
+[group("development")]
 format PATHS=".":
     @echo "Formatting Nix code..."
-    nix {{experimental_features}} fmt {{PATHS}}
+    nix {{ experimental_features }} fmt {{ PATHS }}
 
 alias fmt := format
 
-[group("development")]
-[doc("Generate the changelog.")]
 [confirm]
+[doc("Generate the changelog.")]
+[group("development")]
 changelog:
     @echo "Generating the changelog..."
     git-cliff
 
-[group("development")]
-[doc("Create a new version tag (based on the changelog content).")]
 [confirm]
+[doc("Create a new version tag (based on the changelog content).")]
+[group("development")]
 tag:
     #!/usr/bin/env bash
     set -euo pipefail

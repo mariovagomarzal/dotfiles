@@ -289,21 +289,20 @@ just tag
   Licensed under the <a href="/LICENSE">MIT License</a> by Mario Vago Marzal.
 </p>
 
-<!-- External links -->
 [nix]: https://nixos.org/
 [nix-flake]: https://nixos.wiki/wiki/Flakes
 [blueprint]: https://numtide.github.io/blueprint/
 [ssh-keys]:
-  https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
+  <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh>
 [generate-ssh-keys]:
-  https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+  <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>
 [download-nix]: https://nixos.org/download
 [stylus]: https://addons.mozilla.org/en-US/firefox/addon/styl-us
 [catppuccin]: https://catppuccin.com/
 [catppuccin-styles]: https://catppuccin-userstyles-customizer.uncenter.dev/
 [just]: https://just.systems/man/en/
 [2025.08.14]:
-  https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.08.14
+  <https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.08.14>
 [conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0/
 [changelog]: /CHANGELOG.md
 [git-cliff]: https://git-cliff.org/

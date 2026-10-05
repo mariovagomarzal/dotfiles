@@ -6,6 +6,7 @@ commit style already established in the repository.
 **Argument:** $ARGUMENTS
 
 The argument is optional and may refer to one or more of the following:
+
 - Specific file paths to commit (e.g., `src/foo.py src/bar.py`)
 - A description of the changes to commit (e.g., "the refactoring of the parser")
 
@@ -49,12 +50,14 @@ If no argument is provided, consider all uncommitted changes.
    - Write the commit message in the style learned in step 1. Focus on *why*
      the change was made, not just *what* changed.
    - Always pass the message via a HEREDOC:
-     ```
+
+     ```text
      git commit -m "$(cat <<'EOF'
      commit message here
      EOF
      )"
      ```
+
    - Run `git status` after committing to verify success.
 
 ---
