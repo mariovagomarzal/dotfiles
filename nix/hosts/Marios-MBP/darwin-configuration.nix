@@ -29,6 +29,7 @@
     home-manager.darwin
     nix-settings.darwin
     fish.darwin
+    keepassxc.darwin
     fonts.darwin
     packages.darwin
   ];

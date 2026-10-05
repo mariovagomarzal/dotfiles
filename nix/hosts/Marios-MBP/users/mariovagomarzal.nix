@@ -28,5 +28,6 @@
     aerospace.home-darwin
     firefox.home-darwin
     zed.home-darwin
+    keepassxc.home-darwin
   ];
 }
