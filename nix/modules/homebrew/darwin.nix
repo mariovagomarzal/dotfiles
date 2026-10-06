@@ -1,9 +1,11 @@
 /**
 Homebrew, installed by nix-homebrew from taps pinned in the flake lock, with
-the casks, brews and App Store apps that Nix does not cover well.
+the casks, brews and App Store apps that need no configuration.
 
-GUI applications in particular go through Homebrew so that they appear in
-Launchpad and are indexed by Spotlight.
+Desktop apps that integrate with macOS (keychain, Touch ID, permissions, menu
+bar, login items) come from Homebrew, signed by their developers, rather than
+from Nix. An app with configuration of its own is installed by its module's
+`darwin.nix`; the casks listed here have none.
 */
 {
   inputs,
@@ -27,6 +29,7 @@ Launchpad and are indexed by Spotlight.
 
   homebrew = {
     enable = true;
+    caskArgs.appdir = "/Applications";
     onActivation = {
       /*
       Disable `brew update` since taps are immutable and pinned by the flake
@@ -55,21 +58,14 @@ Launchpad and are indexed by Spotlight.
     ];
 
     casks = [
-      "alacritty"
-
-      "visual-studio-code"
       "godot"
 
-      "aerospace"
       "swipeaerospace"
 
-      "firefox"
       "google-chrome"
 
       "discord"
       "telegram"
-
-      "obsidian"
 
       "chatgpt"
       "claude"

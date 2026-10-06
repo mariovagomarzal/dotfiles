@@ -30,11 +30,6 @@
       flake = false;
     };
 
-    nixpkgs-firefox-darwin = {
-      url = "github:bandithedoge/nixpkgs-firefox-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -79,7 +74,6 @@
 
       nixpkgs.overlays = with inputs; [
         nur.overlays.default
-        nixpkgs-firefox-darwin.overlay
         devshell.overlays.default
       ];
     };

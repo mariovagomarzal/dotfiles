@@ -26,6 +26,9 @@
     zed.home
     zoxide.home
     aerospace.home-darwin
+    alacritty.home-darwin
+    home-manager.home-darwin
+    obsidian.home-darwin
     firefox.home-darwin
     zed.home-darwin
     keepassxc.home-darwin

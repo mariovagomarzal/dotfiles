@@ -25,6 +25,9 @@
 
   imports = with flake.modules; [
     homebrew.darwin
+    alacritty.darwin
+    firefox.darwin
+    obsidian.darwin
     macos.darwin
     home-manager.darwin
     nix-settings.darwin

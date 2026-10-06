@@ -1,13 +1,9 @@
 /**
-Uses the prebuilt Firefox binary on macOS.
+Uses the Firefox app from Homebrew on macOS, so home-manager only manages the
+profile.
 
-`firefox-bin` comes from the nixpkgs-firefox-darwin overlay. It is wrapped in
-`makeOverridable` because the home-manager module overrides the package.
+Policies still apply, through the macOS defaults domain of Firefox.
 */
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  programs.firefox.package = lib.makeOverridable (_: pkgs.firefox-bin) {};
+_: {
+  programs.firefox.package = null;
 }

@@ -6,13 +6,13 @@ access that Touch ID quick unlock needs, and hides its menu bar icon when it
 runs from /nix/store. The official app is signed and notarized, and installs
 its own Firefox native messaging manifest.
 */
-_: {
+{osConfig, ...}: {
   programs.keepassxc.package = null;
 
   launchd.agents.keepassxc = {
     enable = true;
     config = {
-      ProgramArguments = ["/Applications/KeePassXC.app/Contents/MacOS/KeePassXC"];
+      ProgramArguments = ["${osConfig.homebrew.caskArgs.appdir}/KeePassXC.app/Contents/MacOS/KeePassXC"];
       RunAtLoad = true;
     };
   };
