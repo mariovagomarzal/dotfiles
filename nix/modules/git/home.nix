@@ -22,7 +22,9 @@ in {
 
       gpg.format = "ssh";
       gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
-      credential.helper = "osxkeychain";
+      # Empty resets the helper list, including the osxkeychain helper that nixpkgs' git sets system-wide: GitHub is
+      # reached over SSH, so no HTTPS credentials are stored.
+      credential.helper = "";
       user.signingkey = "~/.ssh/mariovagomarzal.pub";
 
       # Only my own repositories: cloning anyone else's stays anonymous over HTTPS and needs no unlocked agent.
