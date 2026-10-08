@@ -7,7 +7,8 @@
 
 <p align="center">
   <img alt="Built with Nix" src="https://img.shields.io/badge/-Built_with_Nix-_?style=for-the-badge&logo=nixos&logoColor=%2389b4fa&labelColor=%23313244&color=%2389b4fa">
-  <img alt="GitHub Tag" src="https://img.shields.io/github/v/tag/mariovagomarzal/dotfiles?sort=date&style=for-the-badge&label=Tag&labelColor=%23313244&color=%23a6e3a1">
+  <a href="https://dotfiles.mariovagomarzal.com"><img alt="Docs" src="https://img.shields.io/badge/Docs-dotfiles.mariovagomarzal.com-_?style=for-the-badge&labelColor=%23313244&color=%23cba6f7"></a>
+  <a href="https://github.com/mariovagomarzal/dotfiles/actions/workflows/ci.yaml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/mariovagomarzal/dotfiles/ci.yaml?branch=main&style=for-the-badge&label=CI&labelColor=%23313244&color=%23a6e3a1"></a>
   <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/mariovagomarzal/dotfiles?style=for-the-badge&labelColor=%23313244&color=%23f9e2af">
   <img alt="GitHub License" src="https://img.shields.io/github/license/mariovagomarzal/dotfiles?style=for-the-badge&labelColor=%23313244&color=%23f38ba8">
 </p>
@@ -17,269 +18,93 @@
 ## Table of contents
 
 - [📖 About this repository](#about-this-repository)
-  - [Repository structure](#repository-structure)
 - [🚀 Setup](#setup)
   - [Mario's MacBook Pro](#marios-macbook-pro-marios-mbp)
 - [👨‍💻 Development](#development)
-  - [Environment](#environment)
-  - [Workflow and conventions](#workflow-and-conventions)
 
 ## About this repository
 
-This repository serves as my _personal_ dotfiles for setting up a new machine.
-This includes many system settings and the installation and configuration of
-most of the tools and applications I use on a daily basis on each of the
-machines handled by this repository.
+This repository holds the [Nix][nix] configuration of my NixOS and macOS
+machines, as a [flake][nix-flake] whose outputs are the machine configurations.
+It is maintained mostly with coding agents, following the instructions in
+[`AGENTS.md`](AGENTS.md).
+
+How the repository is organised, its conventions, the modules each machine uses
+and the changelog are on the [documentation site][docs].
 
 > [!IMPORTANT]
-> As mentioned, these dotfiles are tailored to my personal needs and
-> preferences. Therefore, in most cases, they will not be suitable for anyone
-> else. However, feel free to use them as a starting point for your own
-> dotfiles. This guide is intended to be a reference for myself, but also for
-> anyone else who might find it useful to build their own dotfiles.
-
-This dotfiles repository contains configurations for my NixOS and Darwin (macOS)
-machines. The configurations are managed with [Nix][nix], with this repository
-serving as a [Nix flake][nix-flake] whose outputs are the machine
-configurations.
-
-### Repository structure
-
-This repository's flake uses [Blueprint][blueprint], a library that maps a
-standard folder structure to flake outputs with an opinionated approach
-that keeps things simple and predictable.
-
-The `flake.nix` and `flake.lock` files remain at the repository root. Blueprint
-loads the Nix configuration from `nix/`, including the `checks/`, `hosts/`,
-`lib/`, `modules/`, and `packages/` directories and the development shell and
-formatter definitions. Repository tasks and documentation remain at the root.
-
-For comprehensive details on how Blueprint works, please refer to the [official
-documentation][blueprint].
-
-Check the specific directories under `nix/` to see which modules, hosts,
-and configurations are currently available.
+> These dotfiles are tailored to my personal needs and preferences, so they
+> will rarely suit anyone else as they are. Feel free to use them as a starting
+> point for your own.
 
 ## Setup
 
-In this section, we will describe how to setup each of the machines handled by
-this repository.
-
-> [!WARNING]
-> The following instructions will install and configure many tools and
-> applications on your machine. Make sure to read and understand what the setup
-> process does before running it.
-
 ### Mario's MacBook Pro (Marios-MBP)
 
-We're going to describe the setup process for my (Mario's) MacBook Pro. We will
-assume a fresh installation of macOS.
+We will assume a fresh installation of macOS.
 
-1. __Restore SSH keys__: I use [SSH keys][ssh-keys] to authenticate with GitHub
-  and other services. For that reason, we will need to safely restore the SSH
-  keys from a backup or [generate new ones][generate-ssh-keys] and store them
-  in the `~/.ssh` directory.
-
-2. __Install Xcode Command Line Tools__: For the setup process, we will need to
-  install the Xcode Command Line Tools, since they may be required in some
-  of the following steps. To do so, run the following command in the terminal:
+1. __Install Xcode Command Line Tools__:
 
     ```bash
     xcode-select --install
     ```
 
-3. __Install Nix__: We will use Nix to setup and manage the machine
-  configuration. Install Nix following the instructions in the [official
-  download page][download-nix].
+2. __Install Nix__: Follow the instructions in the [official download
+  page][download-nix].
 
-4. __Clone the repository__: Once Nix is installed and the SSH keys are in
-  place, we can clone the repository with Git (or by manually downloading it)
-  and `cd` into it:
+3. __Clone the repository__ into `~/Projects/dotfiles`, where the `dotfiles`
+  command expects it:
 
     ```bash
-    git clone https://github.com/mariovagomarzal/dotfiles.git
-    cd dotfiles
+    git clone https://github.com/mariovagomarzal/dotfiles.git ~/Projects/dotfiles
+    cd ~/Projects/dotfiles
     ```
 
-5. __Setup the machine__: If it is the first time we're setting up the machine
-  with these dotfiles, we have to run the following command:
+4. __Set up the machine__: The first time, nix-darwin is run from its flake.
+  Homebrew is installed and managed by nix-homebrew, with no manual steps.
 
     ```bash
     sudo nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake '.#Marios-MBP'
     ```
 
-> [!NOTE]
-> Homebrew will be automatically installed and managed by nix-homebrew during
-> the setup process. No manual installation is required.
+5. __Open the password vault__: Open the KeePassXC vault from iCloud Drive. It
+  holds the SSH key used for GitHub and commit signing, served by its SSH
+  agent.
 
-If the last command succeeds, the machine should be fully configured with the
-dotfiles. From now on, we can update the machine by running the following
-_Just_ recipe:
+6. __Authorise the machine's secrets__: The first activation creates the
+  machine's age key. Add its public key to `.sops.yaml`, re-encrypt the secrets
+  with the recovery key and apply again, as described in the [secrets
+  spec][secrets].
+
+From now on, the machine is updated with:
 
 ```bash
-just darwin-rebuild # or simply 'just dr'
+sudo darwin-rebuild switch --flake .
 ```
 
 #### Extra optional manual steps
 
-Here we will describe some extra optional manual steps which are not automated
-by the dotfiles.
-
 <details>
   <summary>Firefox</summary>
 
-- __Stylus user styles__: The [Stylus][stylus] extension is used to apply
-  custom styles to web pages. We use a curated list of user styles from the
-  [Catppuccin community][catppuccin]. In this [website][catppuccin-styles] we
-  can select the styles (and its flavors) we want to apply to get an
-  `import.json` file. Then we have to use this file with Stylus to apply the
-  styles.
+- __Stylus user styles__: The [Stylus][stylus] extension applies the
+  [Catppuccin][catppuccin] user styles. Select the styles and flavors in this
+  [website][catppuccin-styles] to get an `import.json` file, and import it in
+  Stylus.
 
 </details>
 
 ## Development
 
-In this section, we will describe how to setup the development environment, the
-workflows and the conventions used in this repository.
-
-### Environment
-
-The repository flake defines a development shell with all the necessary tools
-and configurations to work with the repository. Assuming that Nix is installed,
-you can enter the development shell by running the following command:
+The flake defines a development shell; entering it installs the git hooks that
+format files and check commit messages:
 
 ```bash
-nix --extra-experimental-features 'nix-command flakes' develop
+nix develop
 ```
 
-> [!TIP]
-> The `--extra-experimental-features 'nix-command flakes'` flag is only needed
-> if this features are no enabled by default in your Nix installation.
-
-If the command succeeds, you will see a welcome message with a list of the
-available tools and commands. You can type `menu` to see the list of available
-commands again in any moment.
-
-When entering the development shell, some git hooks are automatically installed
-to help with the workflow and conventions described in the next sections.
-
-However, most of the tasks related to the development are defined in the
-`Justfile` file. You can see the list of available tasks by simply running
-`just`. Development-related recipes are defined under the `development`
-category.
-
-> [!NOTE]
-> See the [Just documentation][just] for more information about how to use
-> the Just command runner. You can also check the `Justfile` file for
-> seeing how the tasks are defined.
-
-### Workflow and conventions
-
-Next, we will describe the workflow and conventions used in this repository.
-
-> [!NOTE]
-> Before version [2025.08.14], there were no strict rules for commit messages,
-> branching, or other aspects of the workflow. This may be reflected in the
-> commit history and other parts of the repository.
-
-#### Commit messages
-
-Commit messages follow the [Conventional Commits
-specification][conventional-commits], adapted to the context of a dotfiles
-repository. This ensures a consistent and readable commit history.
-
-The standard format remains the same:
-
-```text
-<type>(<scope>): <description>
-
-[optional body]
-
-[optional footer(s)]
-```
-
-We use the conventional commit types, where `feat` and `fix` take on meanings
-appropriate for dotfiles, like `feat` for adding new configurations, modules, or
-capabilities, and `fix` for correcting broken configurations or resolving
-issues. Other standard types (`docs`, `style`, `refactor`, `perf`, `test`,
-`build`, `ci`, `chore`) are used with their usual meanings.
-
-Scopes identify which part of the repository is affected and follow specific
-patterns depending on the part of the configuration (if any) being changed:
-
-- Module changes in the `nix/modules/` directory use simple platform identifiers:
-  `nixos`, `darwin`, or `home`. For example: `feat(nixos): add new firewall
-  module` or `fix(home): correct git module structure`.
-
-- Host configurations in the `nix/hosts/` directory use the host name directly,
-  such as `fix(Marios-MBP): update display settings`.
-
-- User configurations in the `nix/hosts/<host_name>/users/` directories follow the
-  pattern `<host_name>/<user_name>`, like `feat(Marios-MBP/mariovagomarzal): add
-  starship config`.
-
-- General changes use broader scopes:
-  - `config` for general configuration changes not specific to a module, system,
-    or home (flake-level changes, overlays, inputs, structure, etc.).
-  - `lib` for changes related to the custom Nix library, stored in `nix/lib/`.
-  - `overlays` for changes to package overlays, stored in `overlays/`.
-  - `packages` for changes to custom packages, stored in `nix/packages/`.
-  - `shells` for changes to development shells, stored in `shells/`.
-  - `checks` for changes to flake checks, stored in `nix/checks/`.
-
-Other scopes can be used as needed.
-
-> [!TIP]
-> A git hook automatically validates commit messages against this specification.
-
-#### Branching
-
-There are no strict rules for branching in this repository. The `main` branch
-holds the stable version of the dotfiles. Small changes can be committed
-directly to the `main` branch, while larger changes are recommended to be
-developed in separate feature branches.
-
-Every stable version of the dotfiles must be tagged with a version tag, whose
-format is described in the next section.
-
-#### Changelog
-
-All notable changes to this project will be documented in the
-[`CHANGELOG.md` file][changelog]. The format of the changelog is described in
-the file itself.
-
-The changelog is generated automatically with [git-cliff][git-cliff]. Use the
-following Just recipe to update the changelog:
-
-```bash
-just changelog
-```
-
-> [!IMPORTANT]
-> Use the following commit message when updating the changelog so that it is
-> ignored by git-cliff:
->
-> ```text
-> chore: update the changelog
-> ```
-
-#### Versioning
-
-Although Conventional Commits are used for commit messages, this repository does
-not follow Semantic Versioning for versioning. Instead, each stable version of
-the dotfiles repository is tagged with a date in the format `YYYY.MM.DD(.P)`,
-where `P` is an optional patch version separated by a dot if more than one
-version is released in the same day.
-
-Use the following Just recipe to create a new version tag:
-
-```bash
-just tag
-```
-
-> [!IMPORTANT]
-> The tag is obtained by reading the changelog. Thus, make sure that the
-> changelog is up to date before creating a new tag.
+Format with `nix fmt` and check with `nix flake check`. The rest of the
+commands and conventions are described in the [spec][spec].
 
 &nbsp;
 
@@ -291,18 +116,10 @@ just tag
 
 [nix]: https://nixos.org/
 [nix-flake]: https://nixos.wiki/wiki/Flakes
-[blueprint]: https://numtide.github.io/blueprint/
-[ssh-keys]:
-  <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh>
-[generate-ssh-keys]:
-  <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>
+[docs]: https://dotfiles.mariovagomarzal.com
+[spec]: https://dotfiles.mariovagomarzal.com/spec/overview
+[secrets]: https://dotfiles.mariovagomarzal.com/spec/secrets#boundaries
 [download-nix]: https://nixos.org/download
 [stylus]: https://addons.mozilla.org/en-US/firefox/addon/styl-us
 [catppuccin]: https://catppuccin.com/
 [catppuccin-styles]: https://catppuccin-userstyles-customizer.uncenter.dev/
-[just]: https://just.systems/man/en/
-[2025.08.14]:
-  <https://github.com/mariovagomarzal/dotfiles/releases/tag/2025.08.14>
-[conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0/
-[changelog]: /CHANGELOG.md
-[git-cliff]: https://git-cliff.org/

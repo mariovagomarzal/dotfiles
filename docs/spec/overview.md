@@ -39,3 +39,12 @@ home-manager alone, on any Linux or macOS.
 
 Applying a configuration is left to the person at the machine. Entering the development shell with `nix develop` installs
 the git hooks that format files and check commit messages.
+
+## README
+
+The README is the entry point on GitHub and stays short: what the repository is, how to set up each machine from
+scratch, and how to enter the development environment. Everything else is in this site, and the README links to it.
+
+- **Update it when those instructions change**: a new machine, a change in its setup steps, or in how the development
+  environment is entered.
+- **Leave it alone for the rest**: modules, conventions and history are documented here.
