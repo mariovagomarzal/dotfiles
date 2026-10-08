@@ -22,9 +22,5 @@ in
         package = pkgs.git;
         help = "Use Git for version control.";
       }
-      {
-        package = pkgs.just;
-        help = "Type 'just' to see the available tasks.";
-      }
     ];
   }

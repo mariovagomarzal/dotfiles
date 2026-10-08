@@ -25,7 +25,6 @@
 
     rumdl-format.enable = true;
     ruff-format.enable = true;
-    just.enable = true;
   };
 
   settings = {
