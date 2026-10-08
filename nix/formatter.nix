@@ -25,6 +25,7 @@
 
     rumdl-format.enable = true;
     ruff-format.enable = true;
+    gofmt.enable = true;
     actionlint.enable = true;
   };
 
