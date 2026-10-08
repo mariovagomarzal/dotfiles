@@ -40,8 +40,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim.url = "github:nix-community/nixvim";
-
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
