@@ -205,6 +205,7 @@ export const hostHistory = (name: string) => historyOf(filesIn(join(root, "nix/h
 export interface Release {
   /** The pull request's title, kept in the body of its merge commit; absent for unmerged or direct work. */
   title?: string;
+  pr?: number;
   branch?: string;
   date?: string;
   hash?: string;
@@ -232,11 +233,30 @@ function tagsByCommit(): Map<string, string[]> {
 
 // One merged pull request into main is one release. Work on the current branch that main lacks comes first, and
 // commits made straight on main are gathered between the merges around them.
+// A checkout made for CI may have no local `main`, only the remote's.
+function mainRef(): string {
+  for (const ref of ["main", "origin/main"]) {
+    try {
+      run("git", ["rev-parse", "--verify", "--quiet", ref]);
+      return ref;
+    } catch {}
+  }
+  throw new Error("No `main` or `origin/main` to read releases from.");
+}
+
+// Merge commits come in two shapes: GitHub's default, and the hand-edited one used before it.
+function parseMerge(subject: string): { pr?: number; branch?: string } {
+  const github = subject.match(/^Merge pull request #(\d+) from [^/]+\/(.+)$/);
+  if (github) return { pr: Number(github[1]), branch: github[2] };
+  return { branch: subject.match(/^Merge `([^`]+)`/)?.[1] };
+}
+
 export function releases(): Release[] {
   const tags = tagsByCommit();
   const out: Release[] = [];
+  const main = mainRef();
 
-  const pending = log("--no-merges", "main..HEAD");
+  const pending = log("--no-merges", `${main}..HEAD`);
   if (pending.length) out.push({ tags: [], commits: pending });
 
   let direct: Commit[] = [];
@@ -246,7 +266,7 @@ export function releases(): Release[] {
     direct = [];
   };
 
-  for (const line of run("git", ["log", "--first-parent", "--format=%H%x1f%P%x1f%as", "main"]).trim().split("\n")) {
+  for (const line of run("git", ["log", "--first-parent", "--format=%H%x1f%P%x1f%as", main]).trim().split("\n")) {
     const [hash, parents, date] = line.split(SEP);
     const [first, second] = parents.split(" ");
     if (!second) {
@@ -258,7 +278,7 @@ export function releases(): Release[] {
     const commits = log("--no-merges", `${first}..${second}`);
     out.push({
       title: body.join(" ").trim().replace(/\.$/, "") || subject,
-      branch: subject.match(/^Merge `([^`]+)`/)?.[1],
+      ...parseMerge(subject),
       date,
       hash,
       tags: [hash, ...commits.map((c) => c.hash)].flatMap((h) => tags.get(h) ?? []),
@@ -281,4 +301,5 @@ export const kinds: { type: string; label: string }[] = [
 ];
 
 export const commitUrl = (hash: string) => `${github}/commit/${hash}`;
+export const pullUrl = (pr: number) => `${github}/pull/${pr}`;
 export const sourceUrl = (path: string) => `${github}/blob/main/${path}`;

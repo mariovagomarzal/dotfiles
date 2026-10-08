@@ -1,7 +1,7 @@
 ---
 import History from "../components/History.astro";
 import Docs from "../layouts/Docs.astro";
-import { type Commit, commitUrl, kinds, releases } from "../lib/repo";
+import { type Commit, commitUrl, kinds, pullUrl, releases } from "../lib/repo";
 
 const list = releases().map((r, i) => ({
   ...r,
@@ -40,6 +40,7 @@ const grouped = (commits: Commit[]) => [
         <h2 id={r.slug} set:html={asHtml(r.heading)} />
         <p class="meta">
           {r.date && <span>{r.date}</span>}
+          {r.pr && <a href={pullUrl(r.pr)}>#{r.pr}</a>}
           {r.branch && <span>branch {r.branch}</span>}
           {r.hash && <a href={commitUrl(r.hash)}>merge {r.hash.slice(0, 7)}</a>}
           {r.tags.map((t) => (
