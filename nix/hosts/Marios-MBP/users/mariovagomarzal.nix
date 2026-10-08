@@ -1,12 +1,15 @@
 {flake, ...}: {
   home.stateVersion = "25.05";
 
+  programs.dotfiles.settings.path = "~/Projects/dotfiles";
+
   imports = with flake.modules; [
     alacritty.home
     bat.home
     catppuccin.home
     claude-code.home
     delta.home
+    dotfiles.home
     direnv.home
     fastfetch.home
     firefox.home
