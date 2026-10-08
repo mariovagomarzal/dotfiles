@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # Evaluates every output without building the systems, which is left to the machines themselves.
+  check:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Evaluate the flake
+        run: nix flake check --no-build
+      - name: Check formatting, lints and commit hooks
+        run: nix build --print-build-logs ".#checks.$(nix eval --impure --raw --expr builtins.currentSystem).git-hooks"
+
+  # Built on every run so a broken site fails the pull request, but published only from main.
+  docs:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # Module history and the changelog are read from git.
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build the documentation site
+        run: nix run .#dotfiles-docs -- build
+      - if: github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: docs/dist
+
+  deploy:
+    if: github.event_name == 'push'
+    needs: [check, docs]
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    # One deployment at a time, and one in flight is left to finish.
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
