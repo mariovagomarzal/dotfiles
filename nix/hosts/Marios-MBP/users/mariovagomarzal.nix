@@ -8,6 +8,7 @@
     bat.home
     catppuccin.home
     claude-code.home
+    codex.home
     delta.home
     dotfiles.home
     direnv.home
