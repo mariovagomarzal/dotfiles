@@ -1,0 +1,114 @@
+---
+import History from "../components/History.astro";
+import Docs from "../layouts/Docs.astro";
+import { type Commit, commitUrl, kinds, pullUrl, releases } from "../lib/repo";
+
+const list = releases().map((r, i) => ({
+  ...r,
+  slug: `release-${i}`,
+  heading: r.title ?? (r.hash || i > 0 ? "Commits on main" : "Unreleased"),
+}));
+
+// Pull request titles carry Markdown code spans: shown as code in the heading, as plain text in the outline.
+const escape = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+const asHtml = (t: string) => escape(t).replace(/`([^`]+)`/g, "<code>$1</code>");
+const asText = (t: string) => t.replace(/`/g, "");
+
+// Commits whose type has no heading of its own, or that predate Conventional Commits.
+const known = new Set(kinds.map((k) => k.type));
+const grouped = (commits: Commit[]) => [
+  ...kinds.map((k) => ({ label: k.label, commits: commits.filter((c) => c.type === k.type) })),
+  { label: "other", commits: commits.filter((c) => !c.type || !known.has(c.type)) },
+];
+---
+
+<Docs
+  title="Changelog"
+  description="Changes to the repository, grouped by pull request."
+  trail={[{ label: "changelog" }]}
+  headings={list.map((r) => ({ depth: 2, slug: r.slug, text: asText(r.heading) }))}
+>
+  <h1>Changelog</h1>
+  <p class="lead">
+    Changes to the repository, grouped by pull request. Each pull request merged into <code>main</code> is listed as a
+    release under its title.
+  </p>
+
+  {
+    list.map((r, i) => (
+      <>
+        <h2 id={r.slug} set:html={asHtml(r.heading)} />
+        <p class="meta">
+          {r.date && <span>{r.date}</span>}
+          {r.pr && <a href={pullUrl(r.pr)}>#{r.pr}</a>}
+          {r.branch && <span>branch {r.branch}</span>}
+          {r.hash && <a href={commitUrl(r.hash)}>merge {r.hash.slice(0, 7)}</a>}
+          {r.tags.map((t) => (
+            <span class="tag">{t}</span>
+          ))}
+          {!r.hash && !r.date && <span>Not yet merged into main</span>}
+        </p>
+        <details class="release" open={i < 2}>
+          <summary>
+            {r.commits.length} {r.commits.length === 1 ? "commit" : "commits"}
+          </summary>
+          {grouped(r.commits)
+            .filter((g) => g.commits.length)
+            .map((g) => (
+              <section>
+                <h3>{g.label}</h3>
+                <History commits={g.commits} dated={!r.hash} />
+              </section>
+            ))}
+        </details>
+      </>
+    ))
+  }
+</Docs>
+
+<style>
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+    margin-top: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--size-xs);
+    color: var(--color-muted);
+  }
+
+  h3 {
+    font-family: var(--font-mono);
+    font-size: var(--size-xs);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .release summary {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: var(--size-xs);
+    color: var(--color-muted);
+    cursor: pointer;
+  }
+
+  .release summary:hover {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+  }
+
+  .release section {
+    margin-top: 1.25rem;
+  }
+
+  .release h3 {
+    margin-bottom: 0.5rem;
+  }
+</style>

@@ -1,0 +1,51 @@
+---
+import { type Module } from "../lib/repo";
+import { path } from "../paths";
+
+interface Props {
+  modules: Module[];
+}
+
+const { modules } = Astro.props;
+---
+
+<div class="scroll">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>module</th>
+        <th>classes</th>
+        <th>summary</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        modules.map((m) => (
+          <tr>
+            <td>
+              <a href={path(`/modules/${m.name}`)}>{m.name}</a>
+            </td>
+            <td class="classes">
+              {m.classes.map((c) => (
+                <>
+                  <span class="tag">{c.name}</span>{" "}
+                </>
+              ))}
+            </td>
+            <td>{m.summary ?? <span class="missing">No description.</span>}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .classes {
+    white-space: nowrap;
+  }
+
+  .classes .tag {
+    margin-right: 0.25rem;
+  }
+</style>

@@ -1,33 +1,26 @@
 {
   description = "Mario's dotfiles with Nix";
 
-  # Dependencies for the flake.
   inputs = {
-    # nixpkgs, the Nix packages collection.
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-    # nur, the Nix User Repository.
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # blueprint, a library for Nix flakes.
     blueprint = {
       url = "github:numtide/blueprint";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nix-darwin, the Nix configuration for macOS.
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nix-homebrew, a Homebrew installation tool for Nix.
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
-    # Official Homebrew taps.
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -37,44 +30,43 @@
       flake = false;
     };
 
-    # nixpkgs-firefox-darwin, a Nixpkgs overlay for Firefox on macOS.
-    nixpkgs-firefox-darwin = {
-      url = "github:bandithedoge/nixpkgs-firefox-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # home-manager, the Nix configuration for user environments.
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # catppuccin, a color scheme for customizing programs.
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nixvim, a Neovim configuration framework.
     nixvim.url = "github:nix-community/nixvim";
 
-    # devshell, a tool for creating development environments.
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # git-hooks.nix, a tool for managing git hooks with Nix.
     git-hooks-nix = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  # The flake's outputs (managed by blueprint).
   outputs = inputs:
     inputs.blueprint {
       inherit inputs;
+      prefix = "nix/";
 
       nixpkgs.config = {
         allowUnfree = true;
@@ -82,7 +74,6 @@
 
       nixpkgs.overlays = with inputs; [
         nur.overlays.default
-        nixpkgs-firefox-darwin.overlay
         devshell.overlays.default
       ];
     };

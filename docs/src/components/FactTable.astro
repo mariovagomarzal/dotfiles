@@ -1,0 +1,75 @@
+---
+import { type Facts } from "../lib/repo";
+
+interface Props {
+  facts: Facts;
+}
+
+const { facts } = Astro.props;
+
+// What each kind of fact is called on the page, in the order they are shown.
+const labels: [keyof Facts, string][] = [
+  ["programs", "programs"],
+  ["services", "services"],
+  ["packages", "packages"],
+  ["fonts", "fonts"],
+  ["casks", "homebrew casks"],
+  ["brews", "homebrew brews"],
+  ["apps", "app store"],
+];
+
+const rows = labels.filter(([k]) => facts[k]?.length);
+---
+
+{
+  rows.length > 0 && (
+    <div class="scroll">
+      <table class="table facts">
+        <thead data-pagefind-ignore>
+          <tr>
+            <th>provides</th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(([k, label]) => (
+            <tr>
+              <th scope="row">{label}</th>
+              <td>
+                <span class="items">
+                  {facts[k]!.map((item) => (
+                    <>
+                      <code>{item}</code>{" "}
+                    </>
+                  ))}
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+<style>
+  tbody th {
+    width: 9rem;
+    font-family: var(--font-mono);
+    font-size: var(--size-xs);
+    font-weight: 400;
+    color: var(--color-muted);
+    white-space: nowrap;
+  }
+
+  /* Items wrap between each other, never inside a name. */
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  code {
+    white-space: nowrap;
+  }
+</style>

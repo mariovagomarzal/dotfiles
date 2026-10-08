@@ -1,0 +1,12 @@
+# Recipients for every secrets file: each machine's key, generated on that machine and readable only by root, and a
+# recovery key kept in the KeePassXC database.
+keys:
+  - &marios-mbp age1fxhudj74nw8zan2fhmcle0x32wv9jqytxkatdxp0nf4w385py3ysghples
+  - &recovery age1jsya6rylp5m5k728e78k30y7w9fzkhz8yvnstgw6vuzh9axjqveqex38hv
+
+creation_rules:
+  - path_regex: ^nix/.+/secrets\.yaml$
+    key_groups:
+      - age:
+          - *marios-mbp
+          - *recovery

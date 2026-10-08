@@ -1,0 +1,40 @@
+{flake, ...}: {
+  home.stateVersion = "25.05";
+
+  programs.dotfiles.settings.path = "~/Projects/dotfiles";
+
+  imports = with flake.modules; [
+    alacritty.home
+    bat.home
+    catppuccin.home
+    claude-code.home
+    codex.home
+    delta.home
+    dotfiles.home
+    direnv.home
+    fastfetch.home
+    firefox.home
+    fish.home
+    git.home
+    jujutsu.home
+    keepassxc.home
+    lazygit.home
+    lsd.home
+    lua.home
+    neovim.home
+    obsidian.home
+    packages.home
+    ssh.home
+    starship.home
+    vscode.home
+    zed.home
+    zoxide.home
+    aerospace.home-darwin
+    alacritty.home-darwin
+    home-manager.home-darwin
+    obsidian.home-darwin
+    firefox.home-darwin
+    zed.home-darwin
+    keepassxc.home-darwin
+  ];
+}

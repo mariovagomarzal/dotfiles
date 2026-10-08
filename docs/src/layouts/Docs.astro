@@ -1,0 +1,203 @@
+---
+import { Font } from "astro:assets";
+import { logoPresets, logoSvg } from "@mariovagomarzal/lattice/logo";
+import Pager from "../components/Pager.astro";
+import Search from "../components/Search.astro";
+import Sidebar from "../components/Sidebar.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import Toc, { type Heading } from "../components/Toc.astro";
+import { github } from "../lib/repo";
+import { path } from "../paths";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Where the page sits, read from the root: ["modules", "zed"]. */
+  trail?: { label: string; href?: string }[];
+  headings?: Heading[];
+}
+
+const { title, description, trail = [], headings = [] } = Astro.props;
+
+// The mark beside the name, inked by the page so it follows the theme like any other text.
+const mark = logoSvg({ ...logoPresets.inline, ink: "currentColor" });
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href={path("/favicon.svg")} />
+    <script is:inline>
+      const stored = localStorage.getItem("theme");
+      document.documentElement.dataset.theme =
+        stored ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+    <Font cssVariable="--font-sans" preload />
+    <Font cssVariable="--font-mono" preload />
+    <title>{title === "dotfiles" ? "dotfiles" : `${title} · dotfiles`}</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <button class="control menu" type="button" data-nav-toggle aria-controls="sidebar" aria-expanded="false">
+        menu
+      </button>
+      <a href={path("/")} class="home" aria-label="dotfiles, home">
+        <span class="mark" set:html={mark} />
+        <span>dotfiles</span>
+      </a>
+      <span class="spacer"></span>
+      <Search />
+      <a class="control" href={github}>github</a>
+      <ThemeToggle />
+    </header>
+
+    <div class="shell">
+      <Sidebar />
+      <main>
+        {
+          trail.length > 0 && (
+            <nav class="trail" aria-label="Breadcrumbs">
+              {trail.map((t, i) => (
+                <>
+                  {i > 0 && <span>/</span>}
+                  {t.href ? <a href={path(t.href)}>{t.label}</a> : <span>{t.label}</span>}
+                </>
+              ))}
+            </nav>
+          )
+        }
+        <article class="doc" data-pagefind-body>
+          <slot />
+        </article>
+        <Pager />
+      </main>
+      <Toc headings={headings} />
+    </div>
+
+    <style>
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        height: var(--bar);
+        padding-inline: 1.25rem;
+        background: var(--color-base);
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .home {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-mono);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .mark :global(svg) {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      .spacer {
+        flex: 1;
+      }
+
+      .menu {
+        height: 2rem;
+        font-family: var(--font-mono);
+        font-size: var(--size-xs);
+      }
+
+      @media (min-width: 60rem) {
+        .menu {
+          display: none;
+        }
+      }
+
+      .topbar .control {
+        font-family: var(--font-mono);
+        font-size: var(--size-xs);
+        text-decoration: none;
+        height: 2rem;
+      }
+
+      .shell {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        min-width: 0;
+        width: 100%;
+        max-width: calc(var(--measure) + 4rem);
+        margin-inline: auto;
+        padding: 2.5rem 1.25rem 4rem;
+      }
+
+      @media (min-width: 60rem) {
+        .shell {
+          grid-template-columns: var(--sidebar) minmax(0, 1fr);
+        }
+
+        main {
+          padding-inline: 2.5rem;
+        }
+      }
+
+      @media (min-width: 80rem) {
+        .shell {
+          grid-template-columns: var(--sidebar) minmax(0, 1fr) var(--toc);
+        }
+      }
+
+      .trail {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 1rem;
+        font-family: var(--font-mono);
+        font-size: var(--size-xs);
+        color: var(--color-muted);
+      }
+
+      .trail a {
+        text-decoration: none;
+      }
+
+      .trail a:hover {
+        color: var(--color-text);
+      }
+    </style>
+
+    <script>
+      // The drawer that holds the sidebar on a narrow screen: opened from the top bar, closed by choosing a page,
+      // tapping beside it, pressing Escape, or widening the window past the point where the sidebar has its own column.
+      const root = document.documentElement;
+      const toggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+      const wide = matchMedia("(min-width: 60rem)");
+
+      const setOpen = (open: boolean) => {
+        if (open) {
+          root.dataset.navOpen = "";
+          document.querySelector("#sidebar [aria-current]")?.scrollIntoView({ block: "center" });
+        } else delete root.dataset.navOpen;
+        toggle?.setAttribute("aria-expanded", String(open));
+      };
+
+      toggle?.addEventListener("click", () => setOpen(!("navOpen" in root.dataset)));
+      document.querySelector("[data-nav-close]")?.addEventListener("click", () => setOpen(false));
+      document.querySelectorAll("#sidebar a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+      addEventListener("keydown", (e) => e.key === "Escape" && setOpen(false));
+      wide.addEventListener("change", () => setOpen(false));
+    </script>
+  </body>
+</html>

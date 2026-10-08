@@ -1,0 +1,61 @@
+---
+title: Modules
+description: Module layout, how hosts import modules, docstrings and comments.
+order: 1
+---
+
+## Layout
+
+Configuration lives in `nix/modules/<module>/<class>.nix`: one directory per feature, named after the program or service
+it configures (`git`, `fish`, `firefox`), with one file per class. A large class can be a directory with a `default.nix`
+instead of a single file.
+
+| File               | Class                              | Imported by           |
+| ------------------ | ---------------------------------- | --------------------- |
+| `nixos.nix`        | NixOS                              | NixOS hosts           |
+| `darwin.nix`       | nix-darwin                         | macOS hosts           |
+| `home.nix`         | home-manager, on any platform      | users                 |
+| `home-linux.nix`   | home-manager, on Linux only        | users on Linux        |
+| `home-darwin.nix`  | home-manager, on macOS only        | users on macOS        |
+
+Blueprint exposes each file as `flake.modules.<module>.<class>`. A setting that only exists on one platform goes in that
+platform's file rather than behind a condition.
+
+- **Hosts import modules explicitly.** A host's system file and each of its user files list the modules they use. To add
+  a module, create its directory and import it from each host or user that needs it; a host that imports a missing module
+  fails to evaluate.
+- **Everything a feature needs lives in its directory**, in every class: removing the directory and its imports removes
+  the feature. External modules are imported by the module that uses them, and custom options are declared there too,
+  only when plain configuration is not enough.
+- **Values have a single source.** A path or value that belongs to one module is defined there and read from `config`
+  elsewhere, not written again.
+
+## Docstrings
+
+Every class file opens with an [RFC 145](https://github.com/NixOS/rfcs/pull/145) doc comment, written in Markdown:
+
+```nix
+/**
+Git with commit signing, short aliases and global ignores.
+*/
+{...}: {
+  programs.git = { ... };
+}
+```
+
+- **The first paragraph is a one-sentence summary** of what the file configures. It appears in module lists and on host
+  pages.
+- **Further paragraphs** explain anything the code does not, such as the reason for an approach or a known limitation.
+- **Programs, packages and importing hosts are not listed.** The documentation site computes them from the configuration.
+
+## Comments
+
+Use `#` comments only for information the code does not convey: a reason, a pending `TODO`, or the meaning of an opaque
+value. Avoid comments that restate the code, section banners and file headers.
+
+A workaround — an overlay for a broken package, a pinned version, something disabled because of an upstream issue — is
+marked so it can be found and removed once it is no longer needed:
+
+```nix
+# workaround: <what and why>. Remove when <condition> (<link>).
+```

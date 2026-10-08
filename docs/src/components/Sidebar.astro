@@ -1,0 +1,178 @@
+---
+import { navigation } from "../lib/nav";
+import { isHere, path } from "../paths";
+
+const sections = await navigation();
+const here = Astro.url.pathname;
+
+// Long sections start folded, except the one holding the current page.
+const holdsHere = (items: { href: string }[]) => items.some((item) => isHere(here, item.href));
+---
+
+<aside id="sidebar">
+  <nav aria-label="Documentation">
+    {
+      sections.map((s, i) => (
+        <details data-section={s.title} data-here={holdsHere(s.items) || undefined} open={i === 0 || holdsHere(s.items)}>
+          <summary>{s.title}</summary>
+          <ul>
+            {s.items.map((item) => (
+              <li>
+                <a href={path(item.href)} aria-current={isHere(here, item.href) ? "page" : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </details>
+      ))
+    }
+  </nav>
+</aside>
+<div class="backdrop" data-nav-close></div>
+
+<script is:inline>
+  // Sections keep whatever state the reader left them in across pages, except that the one holding the current page
+  // always shows it. Restored inline, before the sidebar is painted, so nothing jumps.
+  (() => {
+    let state = {};
+    try {
+      state = JSON.parse(localStorage.getItem("sidebar") ?? "{}");
+    } catch {}
+    document.querySelectorAll("#sidebar details[data-section]").forEach((d) => {
+      const saved = state[d.dataset.section];
+      if (saved === "open") d.open = true;
+      else if (saved === "closed" && !d.hasAttribute("data-here")) d.open = false;
+      d.addEventListener("toggle", () => {
+        state[d.dataset.section] = d.open ? "open" : "closed";
+        try {
+          localStorage.setItem("sidebar", JSON.stringify(state));
+        } catch {}
+      });
+    });
+  })();
+</script>
+
+<style>
+  aside {
+    background: var(--color-surface);
+    overflow-y: auto;
+  }
+
+  nav {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  details + details {
+    margin-top: 0.75rem;
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.35rem 0.5rem;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: var(--size-xs);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::after {
+    content: "+";
+    font-size: var(--size-sm);
+  }
+
+  details[open] > summary::after {
+    content: "−";
+  }
+
+  summary:hover {
+    color: var(--color-text);
+    background: var(--color-base);
+  }
+
+  ul {
+    list-style: none;
+    margin: 0.25rem 0 0 0.5rem;
+    padding: 0;
+    border-left: 1px solid var(--color-border);
+  }
+
+  a {
+    display: block;
+    margin-left: -1px;
+    padding: 0.2rem 0.75rem;
+    border-left: 2px solid transparent;
+    font-size: var(--size-sm);
+    color: var(--color-muted);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--color-text);
+  }
+
+  a[aria-current="page"] {
+    color: var(--color-text);
+    font-weight: 500;
+    background: var(--color-base);
+    border-left-color: var(--color-accent);
+  }
+
+  /* On a narrow screen the sidebar is a drawer over the page, opened from the top bar. */
+  @media (max-width: 59.99rem) {
+    aside {
+      position: fixed;
+      top: var(--bar);
+      bottom: 0;
+      left: 0;
+      z-index: 30;
+      width: min(18rem, 85vw);
+      border-right: 1px solid var(--color-border);
+      transform: translateX(-100%);
+      transition: transform 200ms;
+    }
+
+    .backdrop {
+      position: fixed;
+      inset: var(--bar) 0 0 0;
+      z-index: 25;
+      background: rgb(0 0 0 / 0.35);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 200ms;
+    }
+
+    :global(:root[data-nav-open]) aside {
+      transform: none;
+    }
+
+    :global(:root[data-nav-open]) .backdrop {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  /* On a wide screen it is a column of its own, scrolled apart from the page. */
+  @media (min-width: 60rem) {
+    aside {
+      position: sticky;
+      top: var(--bar);
+      height: calc(100vh - var(--bar));
+      border-right: 1px solid var(--color-border);
+    }
+
+    .backdrop {
+      display: none;
+    }
+  }
+</style>

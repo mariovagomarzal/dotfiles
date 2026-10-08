@@ -1,0 +1,63 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nix fmt)",
+      "Bash(nix fmt *)",
+      "Bash(nix flake check)",
+      "Bash(nix flake check *)",
+      "Bash(nix flake metadata *)",
+      "Bash(nix eval *)",
+      "Bash(nix build *)",
+      "Bash(nix path-info *)",
+      "Bash(nix store diff-closures *)",
+      "Bash(nix run .#dotfiles-docs *)"
+    ],
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git merge *)",
+      "Bash(gh pr create *)",
+      "Bash(gh pr merge *)"
+    ],
+    "deny": [
+      "Bash(sudo *)",
+      "Bash(darwin-rebuild switch *)",
+      "Bash(darwin-rebuild activate *)",
+      "Bash(nixos-rebuild switch *)",
+      "Bash(nixos-rebuild boot *)",
+      "Bash(nixos-rebuild test *)",
+      "Bash(home-manager switch *)",
+      "Bash(sops decrypt *)",
+      "Bash(sops -d *)",
+      "Bash(sops --decrypt *)",
+      "Bash(sops edit *)",
+      "Bash(age -d *)",
+      "Bash(age --decrypt *)",
+      "Bash(keepassxc-cli *)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nix develop --command true >/dev/null 2>&1; exit 0"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nix fmt >/dev/null 2>&1; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}

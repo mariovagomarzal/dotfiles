@@ -1,0 +1,28 @@
+/**
+Catppuccin Mocha with the mauve accent, applied to every program that
+supports it.
+*/
+{
+  inputs,
+  config,
+  ...
+}: {
+  imports = [inputs.catppuccin.homeModules.catppuccin];
+
+  catppuccin = {
+    # Auto-enroll every supported program/service ('autoEnable' will control
+    # this once the upcoming behavior lands; 'enable' becomes a global toggle).
+    autoEnable = true;
+    enable = true;
+
+    flavor = "mocha";
+    accent = "mauve";
+  };
+
+  home.sessionVariables = let
+    cfg = config.catppuccin;
+  in {
+    CATPPUCCIN_FLAVOR = cfg.flavor;
+    CATPPUCCIN_ACCENT = cfg.accent;
+  };
+}

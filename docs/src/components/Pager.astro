@@ -1,0 +1,66 @@
+---
+import { navigation } from "../lib/nav";
+import { isHere, path } from "../paths";
+
+// The pages either side of this one, in the order the sidebar lists them.
+const items = (await navigation()).flatMap((s) => s.items);
+const i = items.findIndex((item) => isHere(Astro.url.pathname, item.href));
+const prev = i > 0 ? items[i - 1] : undefined;
+const next = i >= 0 && i < items.length - 1 ? items[i + 1] : undefined;
+---
+
+{
+  (prev || next) && (
+    <nav class="pager" aria-label="Pages">
+      {prev ? (
+        <a href={path(prev.href)}>
+          <span>Previous</span>
+          {prev.label}
+        </a>
+      ) : (
+        <span />
+      )}
+      {next && (
+        <a class="next" href={path(next.href)}>
+          <span>Next</span>
+          {next.label}
+        </a>
+      )}
+    </nav>
+  )
+}
+
+<style>
+  .pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 4rem;
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.75rem 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    text-decoration: none;
+    transition: border-color 250ms;
+  }
+
+  a:hover {
+    border-color: var(--color-accent);
+  }
+
+  span {
+    font-family: var(--font-mono);
+    font-size: var(--size-xs);
+    color: var(--color-muted);
+  }
+
+  .next {
+    text-align: right;
+  }
+</style>

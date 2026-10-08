@@ -1,0 +1,14 @@
+# Asked first, unless the user allows them for the session.
+prefix_rule(pattern = ["git", ["commit", "push", "merge"]], decision = "prompt")
+prefix_rule(pattern = ["gh", "pr", ["create", "merge"]], decision = "prompt")
+
+# Applying a configuration is left to the person at the machine.
+prefix_rule(pattern = ["sudo"], decision = "forbidden")
+prefix_rule(pattern = ["darwin-rebuild", ["switch", "activate"]], decision = "forbidden")
+prefix_rule(pattern = ["nixos-rebuild", ["switch", "boot", "test"]], decision = "forbidden")
+prefix_rule(pattern = ["home-manager", "switch"], decision = "forbidden")
+
+# Secret values are never read, decrypted or edited by an agent.
+prefix_rule(pattern = ["sops", ["decrypt", "-d", "--decrypt", "edit"]], decision = "forbidden")
+prefix_rule(pattern = ["age", ["-d", "--decrypt"]], decision = "forbidden")
+prefix_rule(pattern = ["keepassxc-cli"], decision = "forbidden")

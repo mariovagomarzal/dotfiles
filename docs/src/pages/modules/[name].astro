@@ -1,0 +1,90 @@
+---
+import FactTable from "../../components/FactTable.astro";
+import Timeline from "../../components/Timeline.astro";
+import Docs from "../../layouts/Docs.astro";
+import { type Module, modules, sourceUrl } from "../../lib/repo";
+import { path } from "../../paths";
+
+export function getStaticPaths() {
+  return modules.map((module) => ({ params: { name: module.name }, props: { module } }));
+}
+
+const { module } = Astro.props as { module: Module };
+
+// A user's home is "user@host"; its page is the host's.
+const hostOf = (who: string) => who.split("@").at(-1)!;
+
+const headings = [
+  ...module.classes.map((c) => ({ depth: 2, slug: `class-${c.name}`, text: c.name })),
+  { depth: 2, slug: "history", text: "History" },
+];
+---
+
+<Docs
+  title={module.name}
+  description={module.summary ?? `The ${module.name} module.`}
+  trail={[{ label: "modules", href: "/modules" }, { label: module.name }]}
+  headings={headings}
+>
+  <h1>{module.name}</h1>
+  {module.summary ? <p class="lead">{module.summary}</p> : <p class="lead missing">No description.</p>}
+
+  {
+    module.classes.map((c) => (
+      <>
+        <h2 id={`class-${c.name}`}>
+          <code>{c.name}</code>
+        </h2>
+        <p class="meta">
+          <a href={sourceUrl(c.source)}>{c.source}</a>{" "}
+          <span>
+            {c.importedBy.length ? (
+              <>
+                Imported by{" "}
+                {c.importedBy.map((who, i) => (
+                  <>
+                    {i > 0 && ", "}
+                    <a href={path(`/hosts/${hostOf(who)}`)}>{who}</a>
+                  </>
+                ))}
+              </>
+            ) : (
+              "Not imported by any host"
+            )}
+          </span>
+        </p>
+        {c.doc.summary && c.doc.summary === module.summary ? (
+          c.doc.rest && <div class="doc" set:html={c.doc.rest} />
+        ) : c.doc.html ? (
+          <div class="doc" set:html={c.doc.html} />
+        ) : (
+          <p class="missing">No description.</p>
+        )}
+        <FactTable facts={c.facts} />
+      </>
+    ))
+  }
+
+  <h2 id="history">History</h2>
+  <Timeline commits={module.history} />
+</Docs>
+
+<style>
+  h2 code {
+    padding: 0;
+    background: none;
+    border: 0;
+    font-size: 0.95em;
+    color: var(--color-accent);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+    margin-top: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--size-xs);
+    color: var(--color-muted);
+  }
+</style>
