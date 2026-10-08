@@ -13,6 +13,8 @@ for it at startup; preferences are changed here, not in its settings window.
     settings = {
       Browser.Enabled = true;
       SSHAgent.Enabled = true;
+      # Locked when the screen locks or the app quits, not after idle time.
+      Security.LockDatabaseIdle = false;
       GUI = {
         ShowTrayIcon = true;
         MinimizeToTray = true;
