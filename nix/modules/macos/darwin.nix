@@ -32,7 +32,7 @@ configurations.
 
         StandardHideWidgets = false;
 
-        GloballyEnabled = false;
+        GloballyEnabled = true;
 
         AppWindowGroupingBehavior = true;
 
@@ -109,7 +109,7 @@ configurations.
         mru-spaces = true;
 
         expose-animation-duration = 0.5;
-        expose-group-apps = true;
+        expose-group-apps = false;
 
         wvous-bl-corner = 4; # Show Desktop.
         wvous-br-corner = 2; # Show Mission Control.
@@ -218,7 +218,7 @@ configurations.
         askForPasswordDelay = 10;
       };
 
-      spaces.spans-displays = true;
+      spaces.spans-displays = false;
 
       trackpad = {
         # Disable silent clicking.
