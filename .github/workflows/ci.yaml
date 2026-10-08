@@ -18,10 +18,17 @@ jobs:
       - uses: cachix/install-nix-action@v31
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Find the current system
+        run: echo "SYSTEM=$(nix eval --impure --raw --expr builtins.currentSystem)" >> "$GITHUB_ENV"
+      # Some modules read files from derivations while evaluating, which `--no-build` refuses to build, so every check is
+      # instantiated first.
+      - name: Instantiate the checks
+        run: |
+          nix eval --json ".#checks.$SYSTEM" --apply 'builtins.mapAttrs (_: check: check.drvPath)'
       - name: Evaluate the flake
         run: nix flake check --no-build
       - name: Check formatting, lints and commit hooks
-        run: nix build --print-build-logs ".#checks.$(nix eval --impure --raw --expr builtins.currentSystem).git-hooks"
+        run: nix build --print-build-logs ".#checks.$SYSTEM.git-hooks"
 
   # Built on every run so a broken site fails the pull request, but published only from main.
   docs:
