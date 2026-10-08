@@ -29,7 +29,6 @@
     vscode.home
     zed.home
     zoxide.home
-    aerospace.home-darwin
     alacritty.home-darwin
     home-manager.home-darwin
     obsidian.home-darwin

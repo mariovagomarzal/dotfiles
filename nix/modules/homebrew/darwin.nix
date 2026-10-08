@@ -60,8 +60,6 @@ from Nix. An app with configuration of its own is installed by its module's
     casks = [
       "godot"
 
-      "swipeaerospace"
-
       "google-chrome"
 
       "discord"
