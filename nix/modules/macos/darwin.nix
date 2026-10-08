@@ -32,7 +32,7 @@ configurations.
 
         StandardHideWidgets = false;
 
-        GloballyEnabled = true;
+        GloballyEnabled = false;
 
         AppWindowGroupingBehavior = true;
 
