@@ -82,6 +82,7 @@ from Nix. An app with configuration of its own is installed by its module's
 
     masApps = {
       Amphetamine = 937984704;
+      "eduVPN client" = 1317704208;
     };
   };
 }
