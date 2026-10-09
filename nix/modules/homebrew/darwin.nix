@@ -24,6 +24,7 @@ from Nix. An app with configuration of its own is installed by its module's
     taps = with inputs; {
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
+      "frankea/homebrew-whisky" = homebrew-whisky;
     };
   };
 
@@ -69,7 +70,7 @@ from Nix. An app with configuration of its own is installed by its module's
       "claude"
 
       "steam"
-      "whisky"
+      "frankea/whisky/whisky"
       "openemu"
 
       "calibre"

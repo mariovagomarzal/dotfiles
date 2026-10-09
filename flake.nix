@@ -29,6 +29,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    homebrew-whisky = {
+      url = "github:frankea/homebrew-whisky";
+      flake = false;
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
