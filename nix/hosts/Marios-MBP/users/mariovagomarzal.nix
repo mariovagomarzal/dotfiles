@@ -28,6 +28,7 @@
     packages.home
     ssh.home
     starship.home
+    vesktop.home
     vscode.home
     zed.home
     zoxide.home
@@ -39,5 +40,6 @@
     zed.home-darwin
     keepassxc.home-darwin
     mpv.home-darwin
+    vesktop.home-darwin
   ];
 }
