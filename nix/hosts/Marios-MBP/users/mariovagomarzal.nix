@@ -6,6 +6,7 @@
   imports = with flake.modules; [
     alacritty.home
     bat.home
+    calibre.home
     catppuccin.home
     claude-code.home
     codex.home
@@ -30,6 +31,7 @@
     zed.home
     zoxide.home
     alacritty.home-darwin
+    calibre.home-darwin
     home-manager.home-darwin
     obsidian.home-darwin
     firefox.home-darwin

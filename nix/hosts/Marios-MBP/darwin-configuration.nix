@@ -26,6 +26,7 @@
   imports = with flake.modules; [
     homebrew.darwin
     alacritty.darwin
+    calibre.darwin
     firefox.darwin
     obsidian.darwin
     macos.darwin

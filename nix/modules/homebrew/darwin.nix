@@ -73,7 +73,6 @@ from Nix. An app with configuration of its own is installed by its module's
       "frankea/whisky/whisky"
       "openemu"
 
-      "calibre"
       "skim"
       "iina"
       "maccy"
