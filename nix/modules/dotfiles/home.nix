@@ -30,7 +30,7 @@ in {
       inherit (toml) type;
       default = {};
       example = {
-        path = "~/Projects/dotfiles";
+        path = "~/Projects/mariovagomarzal/dotfiles";
         agent = "codex";
       };
       description = "Configuration written to `$XDG_CONFIG_HOME/dotfiles/config.toml`.";

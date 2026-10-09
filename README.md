@@ -52,12 +52,12 @@ We will assume a fresh installation of macOS.
 2. __Install Nix__: Follow the instructions in the [official download
   page][download-nix].
 
-3. __Clone the repository__ into `~/Projects/dotfiles`, where the `dotfiles`
-  command expects it:
+3. __Clone the repository__ into `~/Projects/mariovagomarzal/dotfiles`, where
+  the `dotfiles` command expects it:
 
     ```bash
-    git clone https://github.com/mariovagomarzal/dotfiles.git ~/Projects/dotfiles
-    cd ~/Projects/dotfiles
+    git clone https://github.com/mariovagomarzal/dotfiles.git ~/Projects/mariovagomarzal/dotfiles
+    cd ~/Projects/mariovagomarzal/dotfiles
     ```
 
 4. __Set up the machine__: The first time, nix-darwin is run from its flake.

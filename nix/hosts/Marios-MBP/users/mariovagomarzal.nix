@@ -1,7 +1,7 @@
 {flake, ...}: {
   home.stateVersion = "25.05";
 
-  programs.dotfiles.settings.path = "~/Projects/dotfiles";
+  programs.dotfiles.settings.path = "~/Projects/mariovagomarzal/dotfiles";
 
   imports = with flake.modules; [
     alacritty.home
