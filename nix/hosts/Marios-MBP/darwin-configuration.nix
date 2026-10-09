@@ -30,6 +30,7 @@
     firefox.darwin
     obsidian.darwin
     macos.darwin
+    mpv.darwin
     home-manager.darwin
     nix-settings.darwin
     fish.darwin

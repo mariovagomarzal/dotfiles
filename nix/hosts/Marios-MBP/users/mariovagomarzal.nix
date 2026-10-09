@@ -22,6 +22,7 @@
     lazygit.home
     lsd.home
     lua.home
+    mpv.home
     neovim.home
     obsidian.home
     packages.home
@@ -37,5 +38,6 @@
     firefox.home-darwin
     zed.home-darwin
     keepassxc.home-darwin
+    mpv.home-darwin
   ];
 }

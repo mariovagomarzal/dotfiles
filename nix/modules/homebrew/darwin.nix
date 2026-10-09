@@ -74,7 +74,6 @@ from Nix. An app with configuration of its own is installed by its module's
       "openemu"
 
       "skim"
-      "iina"
       "maccy"
       "google-drive"
     ];
