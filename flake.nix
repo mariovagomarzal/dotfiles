@@ -19,7 +19,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    nix-homebrew = {
+      url = "github:zhaofengli/nix-homebrew";
+      inputs.brew-src.follows = "brew-src";
+    };
+    # workaround: the brew pinned by nix-homebrew (7.0.4) cannot read
+    # homebrew-core formulae with test-only resources, added in brew 7.0.9.
+    # Remove when nix-homebrew pins brew 7.0.9 or later
+    # (https://github.com/zhaofengli/nix-homebrew/pulls).
+    brew-src = {
+      url = "github:Homebrew/brew/7.0.9";
+      flake = false;
+    };
 
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
