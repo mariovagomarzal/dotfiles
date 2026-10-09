@@ -8,6 +8,11 @@ in {
   programs.claude-code = {
     enable = true;
 
+    # Claude Code saves choices such as `/effort` and `/model` to its settings
+    # file, so it stays writable; the values declared here are merged into it
+    # on every activation.
+    mutableSettings = true;
+
     marketplaces = {
       "leanprover" = fetchFromGitHub {
         owner = "leanprover";
