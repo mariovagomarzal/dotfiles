@@ -15,7 +15,6 @@ toolchains and utilities.
 
     rustup
     nodejs
-    typst
     elan
     texliveFull
 

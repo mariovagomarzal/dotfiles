@@ -29,6 +29,7 @@
     packages.home
     ssh.home
     starship.home
+    typst.home
     vesktop.home
     vscode.home
     zed.home
@@ -40,6 +41,7 @@
     firefox.home-darwin
     zed.home-darwin
     keepassxc.home-darwin
+    typst.home-darwin
     mpv.home-darwin
     vesktop.home-darwin
   ];

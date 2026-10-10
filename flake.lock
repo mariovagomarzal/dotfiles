@@ -281,6 +281,22 @@
         "type": "github"
       }
     },
+    "quire": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791645877,
+        "narHash": "sha256-BqP0oGijRcMeMo0oJ+7BsWgPrMgEKp0Yb8zkP4qz3ZE=",
+        "owner": "mariovagomarzal",
+        "repo": "quire",
+        "rev": "b103568816b8e41c719eea437e3acf25e8bcd0f6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mariovagomarzal",
+        "repo": "quire",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "blueprint": "blueprint",
@@ -296,6 +312,7 @@
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
+        "quire": "quire",
         "sops-nix": "sops-nix",
         "treefmt-nix": "treefmt-nix"
       }
