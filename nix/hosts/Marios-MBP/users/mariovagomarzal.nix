@@ -14,6 +14,7 @@
     dotfiles.home
     direnv.home
     fastfetch.home
+    fonts.home
     firefox.home
     fish.home
     git.home

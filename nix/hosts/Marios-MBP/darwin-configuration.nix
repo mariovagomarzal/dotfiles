@@ -37,7 +37,6 @@
     keepassxc.darwin
     sops.darwin
     vesktop.darwin
-    fonts.darwin
     packages.darwin
   ];
 }
