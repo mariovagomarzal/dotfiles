@@ -38,6 +38,7 @@
     keepassxc.darwin
     loop.darwin
     sops.darwin
+    telegram.darwin
     vesktop.darwin
     packages.darwin
   ];
