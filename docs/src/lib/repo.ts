@@ -30,10 +30,22 @@ export interface Facts {
 
 export interface Host {
   name: string;
-  platform: string;
+  /** What manages the machine: "nix-darwin", "NixOS" or "home-manager" alone. */
+  manager: string;
+  /** The machine's system, or null for one managed by home-manager alone, which can be any. */
+  platform: string | null;
   modules: string[];
   users: { name: string; modules: string[] }[];
 }
+
+const switchCommands: Record<string, (host: Host) => string[]> = {
+  "nix-darwin": (h) => [`sudo darwin-rebuild switch --flake .#${h.name}`],
+  NixOS: (h) => [`sudo nixos-rebuild switch --flake .#${h.name}`],
+  "home-manager": (h) => h.users.map((u) => `home-manager switch --flake .#${u.name}@${h.name}`),
+};
+
+/** The commands that apply a host's configuration, run from the repository root. */
+export const switchCommandsOf = (host: Host): string[] => switchCommands[host.manager]?.(host) ?? [];
 
 interface Data {
   hosts: Host[];
@@ -159,7 +171,7 @@ function importers(id: string): string[] {
 }
 
 // Base classes first, so a module's summary comes from what every host can import.
-const classOrder = ["home", "darwin", "nixos", "home-darwin", "home-nixos"];
+const classOrder = ["home", "nixos", "darwin", "home-linux", "home-darwin"];
 const rank = (cls: string) => {
   const i = classOrder.indexOf(cls);
   return i === -1 ? classOrder.length : i;

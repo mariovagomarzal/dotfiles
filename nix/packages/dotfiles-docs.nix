@@ -103,42 +103,87 @@ and passed to the site as JSON.
       else id l)
     imported);
 
-  facts = cfg: hm:
+  # Facts from a system configuration; Homebrew only exists in nix-darwin.
+  systemFacts = cfg:
     builtins.concatLists [
       (itemsOf "packages" cfg.options.environment.systemPackages)
       (itemsOf "fonts" cfg.options.fonts.packages)
+      (enabledIn "programs" cfg.options.programs)
+      (enabledIn "services" cfg.options.services)
+    ]
+    ++ lib.optionals (cfg.options ? homebrew) (builtins.concatLists [
       (itemsOf "brews" cfg.options.homebrew.brews)
       (itemsOf "casks" cfg.options.homebrew.casks)
       (itemsOf "apps" cfg.options.homebrew.masApps)
-      (enabledIn "programs" cfg.options.programs)
-      (enabledIn "services" cfg.options.services)
+    ]);
+
+  homeFacts = hm:
+    builtins.concatLists [
       (itemsOf "packages" hm.options.home.packages)
       (enabledIn "programs" hm.options.programs)
       (enabledIn "services" hm.options.services)
     ];
 
-  hosts =
-    lib.mapAttrsToList (name: cfg: let
-      users = builtins.attrNames cfg.config.home-manager.users;
-    in {
-      inherit name;
-      platform = cfg.pkgs.stdenv.hostPlatform.system;
-      modules = importsOf (hostDir name + "/darwin-configuration.nix");
-      users =
-        map (user: {
-          name = user;
-          modules = importsOf (hostDir name + "/users/${user}.nix");
-        })
-        users;
+  # Homes are evaluated with the packages of the system building the site: reading their options builds a few files
+  # during evaluation, which only that system can do. Facts are names, so they do not change with the platform.
+  homeOf = user: host: flake.legacyPackages.${system}.homeConfigurations."${user}@${host}";
+
+  # Machines with a system configuration, and the file that defines each kind.
+  systemHosts =
+    lib.mapAttrsToList (name: cfg: {
+      inherit name cfg;
+      manager = "nix-darwin";
+      file = "darwin-configuration.nix";
     })
-    flake.darwinConfigurations;
+    flake.darwinConfigurations
+    ++ lib.mapAttrsToList (name: cfg: {
+      inherit name cfg;
+      manager = "NixOS";
+      file = "configuration.nix";
+    })
+    flake.nixosConfigurations;
+
+  # Machines managed by home-manager alone: homes whose host has no system configuration.
+  systemNames = map (h: h.name) systemHosts;
+  homeOnly = builtins.groupBy (h: h.host) (builtins.filter (h: !(builtins.elem h.host systemNames)) (map (key: let
+    parts = builtins.match "(.*)@(.*)" key;
+  in {
+    user = builtins.elemAt parts 0;
+    host = builtins.elemAt parts 1;
+  }) (builtins.attrNames (flake.legacyPackages.${system}.homeConfigurations or {}))));
+
+  userEntry = host: user: {
+    name = user;
+    modules = importsOf (hostDir host + "/users/${user}.nix");
+  };
+
+  hosts =
+    map (h: {
+      inherit (h) name manager;
+      platform = h.cfg.pkgs.stdenv.hostPlatform.system;
+      modules = importsOf (hostDir h.name + "/${h.file}");
+      users = map (userEntry h.name) (builtins.attrNames (h.cfg.config.home-manager.users or {}));
+    })
+    systemHosts
+    ++ lib.mapAttrsToList (host: homes: {
+      name = host;
+      manager = "home-manager";
+      platform = null;
+      modules = [];
+      users = map (h: userEntry host h.user) homes;
+    })
+    homeOnly;
 
   # Facts from every host, merged per module and class.
-  allFacts = lib.concatLists (lib.mapAttrsToList (name: cfg:
-    lib.concatMap (user:
-      facts cfg flake.legacyPackages.${system}.homeConfigurations."${user}@${name}")
-    (builtins.attrNames cfg.config.home-manager.users))
-  flake.darwinConfigurations);
+  allFacts =
+    lib.concatMap (h:
+      systemFacts h.cfg
+      ++ lib.concatMap (user: homeFacts (homeOf user h.name))
+      (builtins.attrNames (h.cfg.config.home-manager.users or {})))
+    systemHosts
+    ++ lib.concatLists (lib.mapAttrsToList (host: homes:
+      lib.concatMap (h: homeFacts (homeOf h.user host)) homes)
+    homeOnly);
 
   modules = builtins.foldl' (acc: f: let
     entry = acc.${f.id} or {};
@@ -160,5 +205,4 @@ in
       pnpm install --frozen-lockfile --silent
       exec pnpm "''${1:-build}" "''${@:2}"
     '';
-    meta.platforms = lib.platforms.darwin;
   }
