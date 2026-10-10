@@ -124,8 +124,12 @@ and passed to the site as JSON.
       (enabledIn "services" hm.options.services)
     ];
 
-  # Homes are evaluated with the packages of the system building the site: reading their options builds a few files
-  # during evaluation, which only that system can do. Facts are names, so they do not change with the platform.
+  # A system's users are read from the system configuration, on their host's platform. Their options come without
+  # home-manager's assertion checks, which would build files during evaluation and fail on another platform.
+  userOf = cfg: user: cfg.options.home-manager.users.valueMeta.attrs.${user}.configuration;
+
+  # Homes of machines managed by home-manager alone, which can be any platform, are evaluated for the system building
+  # the site.
   homeOf = user: host: flake.legacyPackages.${system}.homeConfigurations."${user}@${host}";
 
   # Machines with a system configuration, and the file that defines each kind.
@@ -178,7 +182,7 @@ and passed to the site as JSON.
   allFacts =
     lib.concatMap (h:
       systemFacts h.cfg
-      ++ lib.concatMap (user: homeFacts (homeOf user h.name))
+      ++ lib.concatMap (user: homeFacts (userOf h.cfg user))
       (builtins.attrNames (h.cfg.config.home-manager.users or {})))
     systemHosts
     ++ lib.concatLists (lib.mapAttrsToList (host: homes:
