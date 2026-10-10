@@ -82,18 +82,6 @@ From now on, the machine is updated with:
 sudo darwin-rebuild switch --flake .
 ```
 
-#### Extra optional manual steps
-
-<details>
-  <summary>Firefox</summary>
-
-- __Stylus user styles__: The [Stylus][stylus] extension applies the
-  [Catppuccin][catppuccin] user styles. Select the styles and flavors in this
-  [website][catppuccin-styles] to get an `import.json` file, and import it in
-  Stylus.
-
-</details>
-
 ## Development
 
 The flake defines a development shell; entering it installs the git hooks that
@@ -120,6 +108,3 @@ commands and conventions are described in the [spec][spec].
 [spec]: https://dotfiles.mariovagomarzal.com/spec/overview
 [secrets]: https://dotfiles.mariovagomarzal.com/spec/secrets#boundaries
 [download-nix]: https://nixos.org/download
-[stylus]: https://addons.mozilla.org/en-US/firefox/addon/styl-us
-[catppuccin]: https://catppuccin.com/
-[catppuccin-styles]: https://catppuccin-userstyles-customizer.uncenter.dev/
