@@ -62,7 +62,6 @@ is installed by its module's `darwin.nix`; the casks listed here need none.
       "chatgpt"
       "claude"
 
-      "steam"
       "frankea/whisky/whisky"
       "openemu"
 
