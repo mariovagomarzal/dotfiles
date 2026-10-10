@@ -18,7 +18,9 @@ hook.
 
 A release is a pull request merged into `main`.
 
-- **CI checks every pull request:** it evaluates the flake and checks formatting, without building the machines.
+- **CI checks every pull request:** it evaluates the flake and checks formatting, without building the machines. It runs
+  on Linux, and on macOS only what needs it, such as evaluating nix-darwin hosts. The documentation site is built on
+  Linux too.
 - **Merging is always done by a person**, with GitHub's default merge commit. Nothing merges on its own.
 - **CI publishes this site** when `main` changes, and each machine applies the release when its owner runs the apply
   command from the [overview](/spec/overview#commands).
