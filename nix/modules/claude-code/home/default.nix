@@ -1,21 +1,15 @@
 /**
-Claude Code with a custom status line, personal slash commands and the Lean
-plugin from the leanprover marketplace.
+Claude Code with a custom status line and no attribution in commits or pull
+requests.
 */
-{pkgs, ...}: let
-  inherit (pkgs) fetchFromGitHub;
-in {
+_: {
   programs.claude-code = {
     enable = true;
 
-    marketplaces = {
-      "leanprover" = fetchFromGitHub {
-        owner = "leanprover";
-        repo = "skills";
-        rev = "7d3da0282e7b724b07620e45cf212f2e05e19334";
-        sha256 = "sha256-wMGIyEwwM+R5B6pGtP/jsaA8KN2CDCE2SbNZ4b+REgk=";
-      };
-    };
+    # Claude Code saves choices such as `/effort` and `/model` to its settings
+    # file, so it stays writable; the values declared here are merged into it
+    # on every activation.
+    mutableSettings = true;
 
     settings = {
       statusLine = {
@@ -30,13 +24,8 @@ in {
       attribution = {
         commit = "";
         pr = "";
-      };
-
-      enabledPlugins = {
-        "lean@leanprover" = true;
+        sessionUrl = false;
       };
     };
-
-    commandsDir = ./commands;
   };
 }

@@ -52,12 +52,12 @@ We will assume a fresh installation of macOS.
 2. __Install Nix__: Follow the instructions in the [official download
   page][download-nix].
 
-3. __Clone the repository__ into `~/Projects/dotfiles`, where the `dotfiles`
-  command expects it:
+3. __Clone the repository__ into `~/Projects/mariovagomarzal/dotfiles`, where
+  the `dotfiles` command expects it:
 
     ```bash
-    git clone https://github.com/mariovagomarzal/dotfiles.git ~/Projects/dotfiles
-    cd ~/Projects/dotfiles
+    git clone https://github.com/mariovagomarzal/dotfiles.git ~/Projects/mariovagomarzal/dotfiles
+    cd ~/Projects/mariovagomarzal/dotfiles
     ```
 
 4. __Set up the machine__: The first time, nix-darwin is run from its flake.
@@ -81,18 +81,6 @@ From now on, the machine is updated with:
 ```bash
 sudo darwin-rebuild switch --flake .
 ```
-
-#### Extra optional manual steps
-
-<details>
-  <summary>Firefox</summary>
-
-- __Stylus user styles__: The [Stylus][stylus] extension applies the
-  [Catppuccin][catppuccin] user styles. Select the styles and flavors in this
-  [website][catppuccin-styles] to get an `import.json` file, and import it in
-  Stylus.
-
-</details>
 
 ## Development
 
@@ -120,6 +108,3 @@ commands and conventions are described in the [spec][spec].
 [spec]: https://dotfiles.mariovagomarzal.com/spec/overview
 [secrets]: https://dotfiles.mariovagomarzal.com/spec/secrets#boundaries
 [download-nix]: https://nixos.org/download
-[stylus]: https://addons.mozilla.org/en-US/firefox/addon/styl-us
-[catppuccin]: https://catppuccin.com/
-[catppuccin-styles]: https://catppuccin-userstyles-customizer.uncenter.dev/

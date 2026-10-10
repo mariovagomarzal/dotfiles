@@ -6,9 +6,9 @@ Nix language servers.
   programs.zed-editor = {
     enable = true;
 
-    # TODO: `mutableUserSettings` is `true` temporarily. With a read-only
-    # `settings.json` (symlink to `/nix/store`) `agent_servers` doesen't seem
-    # to work properly.
+    # workaround: external agents in `agent_servers` misbehave when
+    # `settings.json` is a read-only link into the Nix store. Remove when they
+    # work with `mutableUserSettings = false`.
     mutableUserSettings = true;
     mutableUserKeymaps = false;
     mutableUserTasks = false;

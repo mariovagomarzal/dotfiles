@@ -74,11 +74,9 @@ configurations.
         persistent-apps = [
           "/System/Applications/Apps.app"
         ];
+        # The Dock does not expand `~`.
         persistent-others = [
-          # NOTE: Ideally, the following path should be '~/Downloads', however,
-          # thid doesn't work as expected. For the moment, we use the full path
-          # to the Downloads folder of the defined primary user.
-          "/Users/${config.system.primaryUser}/Downloads"
+          "${config.users.users.${config.system.primaryUser}.home}/Downloads"
         ];
 
         show-recents = false;
@@ -109,7 +107,7 @@ configurations.
         mru-spaces = true;
 
         expose-animation-duration = 0.5;
-        expose-group-apps = true;
+        expose-group-apps = false;
 
         wvous-bl-corner = 4; # Show Desktop.
         wvous-br-corner = 2; # Show Mission Control.
@@ -218,7 +216,7 @@ configurations.
         askForPasswordDelay = 10;
       };
 
-      spaces.spans-displays = true;
+      spaces.spans-displays = false;
 
       trackpad = {
         # Disable silent clicking.

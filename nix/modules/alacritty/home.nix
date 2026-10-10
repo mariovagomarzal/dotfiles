@@ -1,17 +1,11 @@
 /**
-Alacritty terminal with Fish as its login shell, FiraCode Nerd Font and a
-translucent, blurred window.
+Alacritty terminal with FiraCode Nerd Font and a translucent, blurred window.
 */
-{config, ...}: {
+_: {
   programs.alacritty = {
     enable = true;
 
     settings = {
-      terminal.shell = {
-        program = "${config.programs.fish.package}/bin/fish";
-        args = ["-l"];
-      };
-
       window = {
         option_as_alt = "OnlyLeft";
         opacity = 0.95;

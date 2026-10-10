@@ -13,7 +13,16 @@ const { host } = Astro.props as { host: Host };
 const summaryOf = (id: string) => modules.find((m) => m.name === id.split("/")[0])?.summary;
 
 const groups = [
-  { title: "System", slug: "system", note: "nix-darwin modules imported by the system configuration.", ids: host.modules },
+  ...(host.manager === "home-manager"
+    ? []
+    : [
+        {
+          title: "System",
+          slug: "system",
+          note: `${host.manager} modules imported by the system configuration.`,
+          ids: host.modules,
+        },
+      ]),
   ...host.users.map((u) => ({
     title: u.name,
     slug: `user-${u.name}`,
@@ -33,7 +42,10 @@ const groups = [
   ]}
 >
   <h1>{host.name}</h1>
-  <p class="lead">Configuration for the <code>{host.name}</code> host (<code>{host.platform}</code>).</p>
+  <p class="lead">
+    Configuration for the <code>{host.name}</code> host, managed by {host.manager}{" "}
+    {host.platform ? <>on <code>{host.platform}</code></> : "on any platform"}.
+  </p>
 
   {
     groups.map((g) => (
