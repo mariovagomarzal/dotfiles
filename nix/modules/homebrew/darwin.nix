@@ -59,8 +59,6 @@ is installed by its module's `darwin.nix`; the casks listed here need none.
     ];
 
     casks = [
-      "godot"
-
       "chatgpt"
       "claude"
 

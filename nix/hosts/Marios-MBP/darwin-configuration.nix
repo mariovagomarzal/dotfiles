@@ -28,6 +28,7 @@
     alacritty.darwin
     calibre.darwin
     firefox.darwin
+    godot.darwin
     google-chrome.darwin
     obsidian.darwin
     macos.darwin
