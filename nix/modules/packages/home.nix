@@ -15,6 +15,7 @@ toolchains and utilities.
     rustup
     nodejs
     elan
+    julia-bin
     texliveFull
 
     uv

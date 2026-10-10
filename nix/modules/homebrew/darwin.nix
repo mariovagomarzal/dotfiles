@@ -47,8 +47,6 @@ is installed by its module's `darwin.nix`; the casks listed here need none.
     taps = builtins.attrNames config.nix-homebrew.taps;
 
     brews = [
-      "juliaup"
-
       # Dependencies for the Python libary `manim`.
       "py3cairo"
       "ffmpeg"
