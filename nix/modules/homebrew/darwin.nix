@@ -1,10 +1,10 @@
 /**
 Homebrew, installed by nix-homebrew from taps pinned in the flake lock, with
-the casks, brews and App Store apps that need no configuration.
+the casks and App Store apps that need no configuration.
 
 Desktop apps that integrate with macOS (keychain, Touch ID, permissions, menu
 bar, login items) come from Homebrew, signed by their developers, rather than
-from Nix. An app that needs any configuration, of its own or of the system,
+from Nix; command-line tools come from Nix. An app that needs any configuration, of its own or of the system,
 is installed by its module's `darwin.nix`; the casks listed here need none.
 */
 {
@@ -45,16 +45,6 @@ is installed by its module's `darwin.nix`; the casks listed here need none.
     };
 
     taps = builtins.attrNames config.nix-homebrew.taps;
-
-    brews = [
-      # Dependencies for the Python libary `manim`.
-      "py3cairo"
-      "ffmpeg"
-      "pkg-config"
-      "scipy"
-
-      "pdfpc"
-    ];
 
     casks = [
       "chatgpt"
