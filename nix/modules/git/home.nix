@@ -1,6 +1,6 @@
 /**
-Git with SSH-signed tags, nvimdiff as diff and merge tool, short aliases and
-global ignores for macOS and iCloud files.
+Git with SSH-signed tags, short aliases and global ignores for macOS and
+iCloud files.
 
 Signing uses the public key from the `ssh` module, with the private key
 served by KeePassXC's agent, and my own GitHub repositories are reached over SSH
@@ -30,10 +30,6 @@ in {
       # Only my own repositories: cloning anyone else's stays anonymous over HTTPS and needs no unlocked agent.
       url."git@github.com:mariovagomarzal/".insteadOf = "https://github.com/mariovagomarzal/";
 
-      core = {
-        editor = "nvim";
-      };
-
       init = {
         defaultBranch = "main";
       };
@@ -52,12 +48,7 @@ in {
         };
       };
 
-      diff = {
-        tool = "nvimdiff";
-      };
-
       merge = {
-        tool = "nvimdiff";
         log = true;
         conflictstyle = "diff3";
       };

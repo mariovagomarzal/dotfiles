@@ -4,8 +4,14 @@ a file picker and explorer from mini.nvim, and a few leader mappings. The
 colour scheme comes from the catppuccin module.
 
 Code editing happens in Zed, so there is no LSP, completion or formatting.
+Git uses it as its editor, through `$EDITOR`, and as its diff and merge tool.
 */
 {pkgs, ...}: {
+  programs.git.settings = {
+    diff.tool = "nvimdiff";
+    merge.tool = "nvimdiff";
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
