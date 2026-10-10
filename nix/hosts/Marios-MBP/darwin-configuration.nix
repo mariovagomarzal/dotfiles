@@ -27,6 +27,7 @@
     homebrew.darwin
     alacritty.darwin
     calibre.darwin
+    eduvpn.darwin
     firefox.darwin
     godot.darwin
     google-chrome.darwin

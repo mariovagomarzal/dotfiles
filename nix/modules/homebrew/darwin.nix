@@ -72,7 +72,6 @@ is installed by its module's `darwin.nix`; the casks listed here need none.
 
     masApps = {
       Amphetamine = 937984704;
-      "eduVPN client" = 1317704208;
     };
   };
 }
