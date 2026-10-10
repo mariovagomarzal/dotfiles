@@ -28,6 +28,7 @@
     alacritty.darwin
     calibre.darwin
     firefox.darwin
+    google-chrome.darwin
     obsidian.darwin
     macos.darwin
     mpv.darwin

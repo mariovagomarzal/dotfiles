@@ -18,6 +18,7 @@
     firefox.home
     fish.home
     git.home
+    google-chrome.home
     jujutsu.home
     keepassxc.home
     lazygit.home
@@ -39,6 +40,7 @@
     home-manager.home-darwin
     obsidian.home-darwin
     firefox.home-darwin
+    google-chrome.home-darwin
     zed.home-darwin
     keepassxc.home-darwin
     typst.home-darwin
