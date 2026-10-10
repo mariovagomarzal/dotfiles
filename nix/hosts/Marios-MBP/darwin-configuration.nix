@@ -35,6 +35,7 @@
     nix-settings.darwin
     fish.darwin
     keepassxc.darwin
+    loop.darwin
     sops.darwin
     vesktop.darwin
     packages.darwin

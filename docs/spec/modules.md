@@ -27,8 +27,26 @@ platform's file rather than behind a condition.
 - **Everything a feature needs lives in its directory**, in every class: removing the directory and its imports removes
   the feature. External modules are imported by the module that uses them, and custom options are declared there too,
   only when plain configuration is not enough.
+- **A feature's settings outside its program belong to it too.** When a feature needs something changed elsewhere — a
+  system preference, a key, a login item — its module sets it, overriding with `lib.mkForce` when another module sets
+  the same option. The other module keeps its own value and needs no knowledge of the feature, and removing the feature
+  brings that value back.
 - **Values have a single source.** A path or value that belongs to one module is defined there and read from `config`
   elsewhere, not written again.
+
+For example, a hypothetical menu bar app, `perch`, whose icons are hidden while `macos` auto-hides the menu bar, keeps
+the bar visible from its own module rather than by editing `macos`:
+
+```nix
+/**
+Perch, a menu bar organiser, with the menu bar always shown so its icons stay visible.
+*/
+{lib, ...}: {
+  homebrew.casks = ["perch"];
+
+  system.defaults.NSGlobalDomain._HIHideMenuBar = lib.mkForce false;
+}
+```
 
 ## Docstrings
 

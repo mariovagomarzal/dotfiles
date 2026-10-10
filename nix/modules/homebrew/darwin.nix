@@ -4,8 +4,8 @@ the casks, brews and App Store apps that need no configuration.
 
 Desktop apps that integrate with macOS (keychain, Touch ID, permissions, menu
 bar, login items) come from Homebrew, signed by their developers, rather than
-from Nix. An app with configuration of its own is installed by its module's
-`darwin.nix`; the casks listed here have none.
+from Nix. An app that needs any configuration, of its own or of the system,
+is installed by its module's `darwin.nix`; the casks listed here need none.
 */
 {
   inputs,
