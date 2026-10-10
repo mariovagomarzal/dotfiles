@@ -7,7 +7,8 @@ it follows, starting at `docs/spec/overview.md`. Follow it, and update it in the
 - Everything in the repository is written in English, whatever language the conversation is in.
 - Before configuring something, check what really exists: the documentation and source of the upstream module, and how
   the repository already handles similar cases.
-- `nix fmt` formats and `nix flake check` checks; building the affected machine shows whether a change works.
+- `nix fmt` formats and `nix flake check` checks the current platform; building the affected machines shows whether a
+  change works, for those the current machine can build, and CI evaluates the rest on its platform.
 - Ask before committing, pushing, opening a pull request or merging, unless the user has allowed it for the session.
 - Applying a configuration (`darwin-rebuild switch`, `nixos-rebuild switch`, `home-manager switch`) is left to the person
   at the machine: suggest the command instead of running it.

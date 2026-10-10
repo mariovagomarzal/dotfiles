@@ -18,6 +18,9 @@ instead of a single file.
 | `home-linux.nix`   | home-manager, on Linux only        | users on Linux        |
 | `home-darwin.nix`  | home-manager, on macOS only        | users on macOS        |
 
+`home-linux.nix` serves NixOS and any other Linux distribution managed by home-manager alone; what only NixOS has goes
+in `nixos.nix`.
+
 Blueprint exposes each file as `flake.modules.<module>.<class>`. A setting that only exists on one platform goes in that
 platform's file rather than behind a condition. A feature's platform files are written with it, even before a machine of
 that platform exists, but nothing evaluates them until a host imports them.
