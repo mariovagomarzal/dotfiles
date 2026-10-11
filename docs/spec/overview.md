@@ -34,7 +34,7 @@ home-manager alone, on any Linux or macOS.
 | Format everything                     | `nix fmt`                                                        |
 | Run the checks: evaluation, formatting, lints | `nix flake check`                                        |
 | Build a machine without applying it   | `nix build .#darwinConfigurations.<host>.system`, `.#nixosConfigurations.<host>.config.system.build.toplevel` or `.#homeConfigurations."<user>@<host>".activationPackage` |
-| Apply a machine                       | `sudo darwin-rebuild switch --flake .`, `sudo nixos-rebuild switch --flake .` or `home-manager switch --flake .` |
+| Apply a machine                       | `dotfiles switch` from anywhere, or `sudo darwin-rebuild switch --flake .`, `sudo nixos-rebuild switch --flake .` or `home-manager switch --flake .` |
 | Work on this site                     | `nix run .#dotfiles-docs -- dev`, or `build` and `preview`       |
 
 Checks and builds cover the platform of the machine running them: a machine of another platform is built on one of

@@ -43,6 +43,7 @@ const headings = [
   <h2 id="getting-started">Getting started</h2>
   <p>To apply a host's configuration, run its command from the repository root:</p>
   <Snippet code={hosts.flatMap(switchCommandsOf).join("\n")} />
+  <p>Once applied, <code>dotfiles switch</code> does the same from anywhere, with the tool that manages the machine.</p>
   <p>To build this documentation locally, or serve it with live reload:</p>
   <Snippet code={"nix run .#dotfiles-docs -- build\nnix run .#dotfiles-docs -- dev"} />
 

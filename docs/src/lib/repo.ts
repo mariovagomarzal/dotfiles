@@ -230,7 +230,7 @@ const noise = (c: Commit) => c.description === "update the changelog";
 
 const log = (...args: string[]) => parse(run("git", ["log", `--format=${FORMAT}`, ...args])).filter((c) => !noise(c));
 
-// Tags by the commit they point at, so old date tags can label the release that contains them.
+// Tags by the commit they point at, so date tags can label the release that contains them.
 function tagsByCommit(): Map<string, string[]> {
   // An annotated tag points at a tag object; `*objectname` is the commit behind it.
   const format = "%(if)%(*objectname)%(then)%(*objectname)%(else)%(objectname)%(end)%00%(refname:short)";

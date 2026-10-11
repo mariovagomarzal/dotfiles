@@ -47,8 +47,40 @@ jobs:
           nix eval --json ".#checks" --apply "checks: builtins.mapAttrs (_: check: check.drvPath)
             (removeAttrs checks.$SYSTEM (builtins.attrNames checks.x86_64-linux))"
 
+  # Each push to main is a release, tagged with the date it was merged on, in the merger's timezone, with a `.N` suffix
+  # when the day already has one. Tagged before the site is built so the changelog shows it.
+  tag:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Tag the release
+        run: |
+          if git tag --points-at HEAD | grep -qE '^[0-9]{4}\.[0-9]{2}\.[0-9]{2}(\.[0-9]+)?$'; then
+            echo "Already tagged."
+            exit 0
+          fi
+          date=$(git log -1 --format=%cd --date=format:%Y.%m.%d)
+          tag=$date
+          n=0
+          while git rev-parse -q --verify "refs/tags/$tag" > /dev/null; do
+            n=$((n + 1))
+            tag=$date.$n
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "$tag" -m "Version $tag"
+          git push origin "refs/tags/$tag"
+
   # Built on every run so a broken site fails the pull request, but published only from main.
   docs:
+    needs: tag
+    # On pull requests the tag job is skipped, which would otherwise skip this one too.
+    if: "!cancelled() && needs.tag.result != 'failure'"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7

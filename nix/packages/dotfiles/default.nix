@@ -1,6 +1,7 @@
 /**
-The `dotfiles` command, which opens this repository from anywhere: in a coding
-agent, the shell, the file manager or an editor.
+The `dotfiles` command, which works with this repository from anywhere: it
+opens it in a coding agent, the shell, the file manager or an editor, and
+applies a machine's configuration from it.
 */
 {pkgs, ...}:
 pkgs.buildGoModule (finalAttrs: {
