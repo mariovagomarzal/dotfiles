@@ -22,6 +22,8 @@ A release is a pull request merged into `main`.
   on Linux, and on macOS only what needs it, such as evaluating nix-darwin hosts. The documentation site is built on
   Linux too.
 - **Merging is always done by a person**, with GitHub's default merge commit. Nothing merges on its own.
+- **CI tags each release** with the date of its merge, `YYYY.MM.DD`, adding `.1`, `.2`… when a day has several, and
+  the changelog shows the tag next to the release.
 - **CI publishes this site** when `main` changes, and each machine applies the release when its owner runs the apply
   command from the [overview](/spec/overview#commands).
 
