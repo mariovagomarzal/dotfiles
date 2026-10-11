@@ -5,7 +5,6 @@ toolchains and utilities.
 {pkgs, ...}: {
   home.packages = with pkgs; [
     gnupg
-    git
     gh
     just
     # Fallback used by git hooks from git-hooks.nix once their store path is
@@ -15,8 +14,8 @@ toolchains and utilities.
 
     rustup
     nodejs
-    typst
     elan
+    julia-bin
     texliveFull
 
     uv

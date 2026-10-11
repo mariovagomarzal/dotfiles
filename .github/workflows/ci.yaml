@@ -10,9 +10,10 @@ permissions:
   contents: read
 
 jobs:
-  # Evaluates every output without building the systems, which is left to the machines themselves.
+  # Evaluates every output for Linux without building the systems, which is left to the machines themselves, and runs
+  # the formatting, lints and commit hooks.
   check:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       - uses: cachix/install-nix-action@v31
@@ -30,9 +31,25 @@ jobs:
       - name: Check formatting, lints and commit hooks
         run: nix build --print-build-logs ".#checks.$SYSTEM.git-hooks"
 
+  # Only what needs macOS: the checks Linux does not have, such as the nix-darwin hosts, whose evaluation builds files
+  # that only macOS can build.
+  check-darwin:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Find the current system
+        run: echo "SYSTEM=$(nix eval --impure --raw --expr builtins.currentSystem)" >> "$GITHUB_ENV"
+      - name: Evaluate the checks only macOS has
+        run: |
+          nix eval --json ".#checks" --apply "checks: builtins.mapAttrs (_: check: check.drvPath)
+            (removeAttrs checks.$SYSTEM (builtins.attrNames checks.x86_64-linux))"
+
   # Built on every run so a broken site fails the pull request, but published only from main.
   docs:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
         with:
@@ -50,7 +67,7 @@ jobs:
 
   deploy:
     if: github.event_name == 'push'
-    needs: [check, docs]
+    needs: [check, check-darwin, docs]
     runs-on: ubuntu-latest
     permissions:
       pages: write

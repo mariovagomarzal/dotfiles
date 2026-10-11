@@ -37,7 +37,8 @@ home-manager alone, on any Linux or macOS.
 | Apply a machine                       | `sudo darwin-rebuild switch --flake .`, `sudo nixos-rebuild switch --flake .` or `home-manager switch --flake .` |
 | Work on this site                     | `nix run .#dotfiles-docs -- dev`, or `build` and `preview`       |
 
-Applying a configuration is left to the person at the machine. Entering the development shell with `nix develop` installs
+Checks and builds cover the platform of the machine running them: a machine of another platform is built on one of
+its own, and CI evaluates every platform. Applying a configuration is left to the person at the machine. Entering the development shell with `nix develop` installs
 the git hooks that format files and check commit messages.
 
 ## README

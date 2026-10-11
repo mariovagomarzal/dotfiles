@@ -1,7 +1,18 @@
 /**
-Fish as the interactive shell, with a custom greeting.
+Fish as the interactive shell, with a custom greeting, also opened by Alacritty.
+
+home-manager cannot change the login shell, so Alacritty starts Fish itself on machines managed by home-manager alone.
 */
-_: {
+{
+  config,
+  lib,
+  ...
+}: {
+  programs.alacritty.settings.terminal.shell = {
+    program = lib.getExe config.programs.fish.package;
+    args = ["-l"];
+  };
+
   programs.fish = {
     enable = true;
 

@@ -16,23 +16,23 @@
               url = "https://www.youtube.com";
             }
             {
-              name = "Reddit";
-              url = "https://www.reddit.com";
-            }
-            {
               name = "GitHub";
               url = "https://github.com";
             }
             {
-              name = "Communication";
+              name = "AI";
               bookmarks = [
                 {
-                  name = "WhatsApp Web";
-                  url = "https://web.whatsapp.com";
+                  name = "Claude";
+                  url = "https://claude.ai";
                 }
                 {
-                  name = "Discord";
-                  url = "https://discord.com";
+                  name = "ChatGPT";
+                  url = "https://chatgpt.com";
+                }
+                {
+                  name = "Gemini";
+                  url = "https://gemini.google.com";
                 }
               ];
             }
@@ -58,29 +58,12 @@
               ];
             }
             {
-              name = "Nix Sites";
-              bookmarks = [
-                {
-                  name = "NixOS Wiki";
-                  url = "https://wiki.nixos.org";
-                }
-                {
-                  name = "Nixpkgs Reference Manual";
-                  url = "https://nixos.org/manual/nixpkgs/stable";
-                }
-                {
-                  name = "Nix-Darwin Configuration Options";
-                  url = "https://daiderd.com/nix-darwin/manual/index.html";
-                }
-                {
-                  name = "Home-Manager Configuration Options";
-                  url = "https://nix-community.github.io/home-manager/options.xhtml";
-                }
-              ];
-            }
-            {
               name = "University";
               bookmarks = [
+                {
+                  name = "Portal InvestMat";
+                  url = "https://www.uv.es/muinvestmat";
+                }
                 {
                   name = "Portal UV";
                   url = "https://portal.uv.es";
@@ -88,6 +71,10 @@
                 {
                   name = "Aula Virtual UV";
                   url = "https://aulavirtual.uv.es";
+                }
+                {
+                  name = "PoliformaT UPV";
+                  url = "https://poliformat.upv.es";
                 }
               ];
             }
@@ -248,8 +235,7 @@
     extensions = {
       force = true;
       packages = with pkgs.nur.repos.rycee.firefox-addons; [
-        stylus
-        firefox-color
+        ublock-origin
       ];
     };
 

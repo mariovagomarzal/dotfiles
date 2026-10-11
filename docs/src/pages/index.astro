@@ -2,7 +2,7 @@
 import ModuleTable from "../components/ModuleTable.astro";
 import Snippet from "../components/Snippet.astro";
 import Docs from "../layouts/Docs.astro";
-import { hosts, modules, releases } from "../lib/repo";
+import { hosts, modules, releases, switchCommandsOf } from "../lib/repo";
 import { path } from "../paths";
 
 const documented = modules.filter((m) => m.summary).length;
@@ -19,8 +19,8 @@ const headings = [
 <Docs title="dotfiles" description="Nix configuration for Mario's machines." headings={headings}>
   <h1>dotfiles</h1>
   <p class="lead">
-    Nix configuration for Mario's machines, built with nix-darwin, home-manager and Blueprint. This site documents
-    each host and module, and the history of changes.
+    Nix configuration for Mario's machines, built with Blueprint on NixOS, nix-darwin and home-manager. This site
+    documents each host and module, and the history of changes.
   </p>
 
   <h2 id="at-a-glance">At a glance</h2>
@@ -41,8 +41,8 @@ const headings = [
   </dl>
 
   <h2 id="getting-started">Getting started</h2>
-  <p>To apply a host's configuration, run the following from the repository root:</p>
-  <Snippet code="sudo darwin-rebuild switch --flake .#Marios-MBP" />
+  <p>To apply a host's configuration, run its command from the repository root:</p>
+  <Snippet code={hosts.flatMap(switchCommandsOf).join("\n")} />
   <p>To build this documentation locally, or serve it with live reload:</p>
   <Snippet code={"nix run .#dotfiles-docs -- build\nnix run .#dotfiles-docs -- dev"} />
 
@@ -50,7 +50,7 @@ const headings = [
   <div class="scroll">
     <table class="table">
       <thead>
-        <tr><th>host</th><th>platform</th><th>modules</th></tr>
+        <tr><th>host</th><th>managed by</th><th>platform</th><th>modules</th></tr>
       </thead>
       <tbody>
         {
@@ -59,11 +59,15 @@ const headings = [
               <td>
                 <a href={path(`/hosts/${h.name}`)}>{h.name}</a>
               </td>
+              <td>{h.manager}</td>
               <td>
-                <span class="tag">{h.platform}</span>
+                <span class="tag">{h.platform ?? "any"}</span>
               </td>
               <td>
-                {h.modules.length} system, {h.users.map((u) => `${u.modules.length} for ${u.name}`).join(", ")}
+                {[
+                  ...(h.manager === "home-manager" ? [] : [`${h.modules.length} system`]),
+                  ...h.users.map((u) => `${u.modules.length} for ${u.name}`),
+                ].join(", ")}
               </td>
             </tr>
           ))

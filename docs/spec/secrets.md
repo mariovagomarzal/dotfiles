@@ -40,6 +40,9 @@ applies its configuration, by [sops-nix](https://github.com/Mic92/sops-nix).
   that only system services need stay owned by root.
 - **Agents handle only the plumbing:** declarations, templates, `.sops.yaml` and checks on key names. The machine key is
   readable only by root, and the agents' own rules stop them from decrypting or editing values.
+- **Machines managed by home-manager alone** have no root-owned configuration, so their secrets would be decrypted with
+  sops-nix's home-manager module and a key of the user: anything running as that user can read them, so they can only
+  hold low-value secrets. None is set up yet.
 - **A new machine** gets its key on its first activation with a secret declared. Its public key is then added to
   `.sops.yaml`, and the files are re-encrypted with `sops updatekeys` from a machine that can decrypt them, or with the
   recovery key.

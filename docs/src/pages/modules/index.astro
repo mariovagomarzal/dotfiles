@@ -8,7 +8,8 @@ import { modules } from "../../lib/repo";
   <h1>Modules</h1>
   <p class="lead">
     Each module is a directory in <code>nix/modules</code> with one file per class: <code>home</code> for
-    home-manager, <code>darwin</code> for nix-darwin and <code>home-darwin</code> for home-manager on macOS.
+    home-manager on any platform, <code>nixos</code> for NixOS, <code>darwin</code> for nix-darwin, and
+    <code>home-linux</code> and <code>home-darwin</code> for home-manager on Linux or macOS only.
   </p>
   <ModuleTable modules={modules} />
 </Docs>
