@@ -29,8 +29,8 @@ func newRootCmd() *cobra.Command {
 
 	root := &cobra.Command{
 		Use:   "dotfiles",
-		Short: "Open the dotfiles repository from anywhere",
-		Long:  "Open the dotfiles repository from anywhere: talk to a coding agent in it, go to it, or open it.\nWith no command, it starts a conversation with the default agent.",
+		Short: "Work with the dotfiles repository from anywhere",
+		Long:  "Work with the dotfiles repository from anywhere: talk to a coding agent in it, go to it, open it, or apply\na machine's configuration from it. With no command, it starts a conversation with the default agent.",
 		Args:  cobra.NoArgs,
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			return chat(agent, nil)
@@ -39,6 +39,8 @@ func newRootCmd() *cobra.Command {
 	root.Flags().StringVarP(&agent, "agent", "a", "", "agent to talk to (default from the configuration)")
 
 	root.AddCommand(newChatCmd(), newCdCmd(), newOpenCmd(), newEditCmd(), newPathCmd(), newShellCmd())
+	root.AddCommand(newSwitchCmd(), newApplyCmd("darwin", darwinManager), newApplyCmd("nixos", nixosManager),
+		newApplyCmd("home", homeManager))
 	return root
 }
 

@@ -1,5 +1,5 @@
-// Command dotfiles opens the dotfiles repository from anywhere: in a coding agent, the shell, the file manager or an
-// editor.
+// Command dotfiles works with the dotfiles repository from anywhere: it opens it in a coding agent, the shell, the file
+// manager or an editor, and applies a machine's configuration from it.
 package main
 
 import (
