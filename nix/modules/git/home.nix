@@ -3,8 +3,7 @@ Git with SSH-signed tags, short aliases and global ignores for macOS and
 iCloud files.
 
 Signing uses the public key from the `ssh` module, with the private key
-served by KeePassXC's agent, and my own GitHub repositories are reached over SSH
-rather than HTTPS.
+served by KeePassXC's agent, and GitHub is reached over SSH rather than HTTPS.
 */
 {
   config,
@@ -32,8 +31,8 @@ in {
       credential.helper = "";
       user.signingkey = "key::${lib.trim publicKey}";
 
-      # Only my own repositories: cloning anyone else's stays anonymous over HTTPS and needs no unlocked agent.
-      url."git@github.com:mariovagomarzal/".insteadOf = "https://github.com/mariovagomarzal/";
+      # All of GitHub, so pushing works in any repository I can write to. Cloning needs the agent unlocked too.
+      url."git@github.com:".insteadOf = "https://github.com/";
 
       init = {
         defaultBranch = "main";
