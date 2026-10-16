@@ -44,6 +44,7 @@
     tailscale.darwin
     telegram.darwin
     vesktop.darwin
+    xcode.darwin
     packages.darwin
   ];
 }
