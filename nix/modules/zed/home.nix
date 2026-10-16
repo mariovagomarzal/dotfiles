@@ -6,10 +6,7 @@ Nix language servers.
   programs.zed-editor = {
     enable = true;
 
-    # workaround: external agents in `agent_servers` misbehave when
-    # `settings.json` is a read-only link into the Nix store. Remove when they
-    # work with `mutableUserSettings = false`.
-    mutableUserSettings = true;
+    mutableUserSettings = false;
     mutableUserKeymaps = false;
     mutableUserTasks = false;
     mutableUserDebug = false;
