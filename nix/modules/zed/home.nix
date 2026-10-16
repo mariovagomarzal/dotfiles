@@ -77,7 +77,7 @@ Nix language servers.
 
     userTasks = [];
 
-    userDebug = {};
+    userDebug = [];
 
     enableMcpIntegration = true;
 
