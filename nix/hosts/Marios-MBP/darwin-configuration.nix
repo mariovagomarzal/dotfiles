@@ -41,6 +41,7 @@
     loop.darwin
     sops.darwin
     steam.darwin
+    tailscale.darwin
     telegram.darwin
     vesktop.darwin
     packages.darwin
