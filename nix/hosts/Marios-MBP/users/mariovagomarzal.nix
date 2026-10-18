@@ -13,6 +13,7 @@
     delta.home
     dotfiles.home
     direnv.home
+    docker.home
     fastfetch.home
     fonts.home
     firefox.home
@@ -28,6 +29,7 @@
     neovim.home
     obsidian.home
     packages.home
+    podman.home
     ssh.home
     starship.home
     typst.home
@@ -37,6 +39,7 @@
     zoxide.home
     alacritty.home-darwin
     calibre.home-darwin
+    docker.home-darwin
     home-manager.home-darwin
     obsidian.home-darwin
     firefox.home-darwin
