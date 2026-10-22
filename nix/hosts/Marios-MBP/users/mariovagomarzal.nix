@@ -28,6 +28,7 @@
     mpv.home
     neovim.home
     obsidian.home
+    opencode.home
     packages.home
     podman.home
     ssh.home

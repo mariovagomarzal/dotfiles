@@ -52,7 +52,8 @@ func newChatCmd() *cobra.Command {
 		Long:  "Start an interactive session with a coding agent in the repository, optionally with a first message.",
 		Example: `  dotfiles chat
   dotfiles chat "add ripgrep to my packages"
-  dotfiles chat -a codex "update the dependencies"`,
+  dotfiles chat -a codex "update the dependencies"
+  dotfiles chat -a opencode "review the configuration"`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return chat(agent, args)
 		},
@@ -95,6 +96,9 @@ func chat(agent string, message []string) error {
 
 	args := []string{command}
 	if len(message) > 0 {
+		if agent == "opencode" {
+			args = append(args, "--prompt")
+		}
 		args = append(args, strings.Join(message, " "))
 	}
 	announce("Talking to "+agent+" in", tildify(repo))

@@ -31,7 +31,7 @@ func configFile() string {
 func loadConfig() (Config, error) {
 	cfg := Config{
 		Agent:    "claude",
-		Commands: map[string]string{"claude": "claude", "codex": "codex"},
+		Commands: map[string]string{"claude": "claude", "codex": "codex", "opencode": "opencode"},
 	}
 
 	var file Config
@@ -54,7 +54,7 @@ func loadConfig() (Config, error) {
 	if v := os.Getenv("DOTFILES_AGENT"); v != "" {
 		cfg.Agent = v
 	}
-	for _, name := range []string{"claude", "codex"} {
+	for _, name := range []string{"claude", "codex", "opencode"} {
 		if v := os.Getenv("DOTFILES_" + strings.ToUpper(name)); v != "" {
 			cfg.Commands[name] = v
 		}
