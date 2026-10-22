@@ -41,6 +41,7 @@
     alacritty.home-darwin
     calibre.home-darwin
     docker.home-darwin
+    podman.home-darwin
     home-manager.home-darwin
     obsidian.home-darwin
     firefox.home-darwin
