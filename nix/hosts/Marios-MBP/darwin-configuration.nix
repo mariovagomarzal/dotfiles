@@ -25,10 +25,10 @@
 
   imports = with flake.modules; [
     homebrew.darwin
-    alacritty.darwin
     calibre.darwin
     eduvpn.darwin
     firefox.darwin
+    ghostty.darwin
     godot.darwin
     google-chrome.darwin
     obsidian.darwin

@@ -4,7 +4,6 @@
   programs.dotfiles.settings.path = "~/Projects/mariovagomarzal/dotfiles";
 
   imports = with flake.modules; [
-    alacritty.home
     bat.home
     calibre.home
     catppuccin.home
@@ -18,6 +17,7 @@
     fonts.home
     firefox.home
     fish.home
+    ghostty.home
     git.home
     google-chrome.home
     jujutsu.home
@@ -38,7 +38,7 @@
     vscode.home
     zed.home
     zoxide.home
-    alacritty.home-darwin
+    ghostty.home-darwin
     calibre.home-darwin
     docker.home-darwin
     podman.home-darwin
