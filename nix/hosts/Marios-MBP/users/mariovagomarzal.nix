@@ -20,6 +20,7 @@
     ghostty.home
     git.home
     google-chrome.home
+    herdr.home
     jujutsu.home
     keepassxc.home
     lazygit.home
