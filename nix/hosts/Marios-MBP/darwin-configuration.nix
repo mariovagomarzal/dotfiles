@@ -38,6 +38,7 @@
     nix-settings.darwin
     fish.darwin
     keepassxc.darwin
+    linearmouse.darwin
     loop.darwin
     sops.darwin
     steam.darwin
