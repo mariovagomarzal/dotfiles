@@ -15,7 +15,7 @@ toolchains and utilities.
     rustup
     nodejs
     elan
-    # workaround: julia-bin 1.13.2 is not cached for aarch64-darwin, and its
+    # workaround: julia-bin 1.13.3 is not cached for aarch64-darwin, and its
     # install check runs Julia's whole test suite locally. Remove when
     # cache.nixos.org has it (https://hydra.nixos.org/job/nixpkgs/unstable/julia-bin.aarch64-darwin).
     (julia-bin.overrideAttrs {doInstallCheck = false;})

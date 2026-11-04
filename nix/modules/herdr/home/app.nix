@@ -17,7 +17,9 @@
   json = pkgs.formats.json {};
 in {
   options.programs.herdr-app = {
-    enable = lib.mkEnableOption "the settings of the Herdr desktop app, installed elsewhere";
+    enable = lib.mkEnableOption "the Herdr desktop app";
+
+    package = lib.mkPackageOption pkgs "herdr-desktop" {nullable = true;};
 
     settings = lib.mkOption {
       inherit (json) type;
@@ -42,6 +44,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = lib.mkIf (cfg.package != null) [cfg.package];
+
     home.activation.herdrAppSettings = lib.hm.dag.entryAfter ["linkGeneration"] (
       lib.hm.generators.mkImpureConfigMerger {
         inherit pkgs;

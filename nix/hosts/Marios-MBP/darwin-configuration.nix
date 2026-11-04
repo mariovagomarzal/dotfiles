@@ -31,7 +31,6 @@
     ghostty.darwin
     godot.darwin
     google-chrome.darwin
-    herdr.darwin
     obsidian.darwin
     macos.darwin
     mpv.darwin
