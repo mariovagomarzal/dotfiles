@@ -26,6 +26,9 @@ toolchains and utilities.
     antigravity-cli
 
     ghostscript
+    poppler-utils
+    qpdf
+    ffmpeg
     mermaid-cli
     cmatrix
   ];

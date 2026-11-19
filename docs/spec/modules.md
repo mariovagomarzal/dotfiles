@@ -83,7 +83,10 @@ Use `#` comments only for information the code does not convey: a reason, a pend
 value. Avoid comments that restate the code, section banners and file headers.
 
 A workaround — an overlay for a broken package, a pinned version, something disabled because of an upstream issue — is
-marked so it can be found and removed once it is no longer needed:
+marked so it can be found and removed once it is no longer needed. So is a package, module or option written here in
+place of one that upstream lacks, such as a program missing from nixpkgs or an option missing from a home-manager
+module: it is removed once upstream provides it. The repository's own code, which nobody else is expected to provide, is
+not a workaround.
 
 ```nix
 # workaround: <what and why>. Remove when <condition> (<link>).

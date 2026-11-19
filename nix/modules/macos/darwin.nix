@@ -109,6 +109,9 @@ configurations.
         expose-animation-duration = 0.5;
         expose-group-apps = false;
 
+        # Show Mission Control with the vertical swipe set in the trackpad defaults.
+        showMissionControlGestureEnabled = true;
+
         wvous-bl-corner = 4; # Show Desktop.
         wvous-br-corner = 2; # Show Mission Control.
         wvous-tr-corner = 12; # Show Notification Center.
@@ -232,9 +235,16 @@ configurations.
 
         TrackpadRightClick = true;
 
-        TrackpadThreeFingerDrag = true;
+        TrackpadThreeFingerDrag = false;
 
         TrackpadThreeFingerTapGesture = 0;
+
+        # Swipe between spaces and open Mission Control with four fingers. The three-finger swipes are
+        # disabled because they take precedence over the four-finger ones.
+        TrackpadThreeFingerHorizSwipeGesture = 0;
+        TrackpadThreeFingerVertSwipeGesture = 0;
+        TrackpadFourFingerHorizSwipeGesture = 2;
+        TrackpadFourFingerVertSwipeGesture = 2;
       };
 
       universalaccess = {

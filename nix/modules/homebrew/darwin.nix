@@ -55,6 +55,7 @@ is installed by its module's `darwin.nix`; the casks listed here need none.
 
       "skim"
       "maccy"
+      "bettershot"
       "google-drive"
     ];
 

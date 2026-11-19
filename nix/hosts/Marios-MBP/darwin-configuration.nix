@@ -25,10 +25,10 @@
 
   imports = with flake.modules; [
     homebrew.darwin
-    alacritty.darwin
     calibre.darwin
     eduvpn.darwin
     firefox.darwin
+    ghostty.darwin
     godot.darwin
     google-chrome.darwin
     obsidian.darwin
@@ -38,11 +38,14 @@
     nix-settings.darwin
     fish.darwin
     keepassxc.darwin
+    linearmouse.darwin
     loop.darwin
     sops.darwin
     steam.darwin
+    tailscale.darwin
     telegram.darwin
     vesktop.darwin
+    xcode.darwin
     packages.darwin
   ];
 }

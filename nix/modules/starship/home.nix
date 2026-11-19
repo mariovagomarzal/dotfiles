@@ -8,6 +8,10 @@ user, directory, Git status, language versions and command duration.
     enableFishIntegration = true;
 
     settings = {
+      # The default 30 ms is too tight for a cold home directory on macOS,
+      # where reaching cloud-storage mounts can stall the first scan.
+      scan_timeout = 100;
+
       format = lib.concatStrings [
         "[](fg:mauve)"
         "$os"

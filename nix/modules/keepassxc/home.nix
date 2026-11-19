@@ -19,6 +19,9 @@ settings window.
       General = {
         BackupBeforeSave = true;
         BackupFilePathPattern = "${config.xdg.dataHome}/keepassxc/backups/{DB_FILENAME}.kdbx";
+        # The answer to the startup question about update checks is saved in
+        # this read-only file, so it is declared here or asked on every launch.
+        UpdateCheckMessageShown = true;
       };
       SSHAgent.Enabled = true;
       # Locked when the screen locks or the app quits, not after idle time.
@@ -27,6 +30,8 @@ settings window.
         ShowTrayIcon = true;
         MinimizeToTray = true;
         MinimizeOnClose = true;
+        # Updates come from the package manager, not from the app.
+        CheckForUpdates = false;
       };
     };
   };
